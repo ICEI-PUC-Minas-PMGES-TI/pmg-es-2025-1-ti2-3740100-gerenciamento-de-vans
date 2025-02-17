@@ -6,15 +6,15 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 * Natalie Santana Dias Abreu
 * Maria Eduarda Paiva Ferraz
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Gabriel dos Santos Silva Coelho
+* Paulo Victor Fernandes de Araujo Silva
+* Luiz Gustavo Silva Oliveira
+* João Pedro de Oliveira Santos
 
 ## Professor
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Michelle Hanne Soares de Andrade
+* Joana Gabriela Ribeiro de Souza
 * Nome completo do professor 3
 
 ## Instruções de utilização
