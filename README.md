@@ -1,6 +1,6 @@
 # Gerenciamento de vans 
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+O objetivo deste projeto é desenvolver um sistema de gerenciamento de vans que abranja seis processos essenciais: gestão de contratos, gestão financeira, gestão de rotas, gestão de notificações, gestão de avaliações e gestão de cadastros e logins. O sistema visa otimizar a operação, garantindo mais eficiência, controle e segurança para gestores, motoristas e passageiros.
 
 ## Integrantes
 
