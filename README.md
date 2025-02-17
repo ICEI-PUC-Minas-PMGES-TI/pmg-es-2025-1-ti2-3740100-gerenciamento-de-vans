@@ -1,11 +1,11 @@
-# Nome do projeto
+# Gerenciamento de vans 
 
 Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
+* Natalie Santana Dias Abreu
+* Maria Eduarda Paiva Ferraz
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 * Nome completo do aluno 5
