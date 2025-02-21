@@ -15,7 +15,7 @@ O objetivo deste projeto é desenvolver um sistema de gerenciamento de vans que 
 
 * Michelle Hanne Soares de Andrade
 * Joana Gabriela Ribeiro de Souza
-* Nome completo do professor 3
+* Danilo de Quadros Maia Filho
 
 ## Instruções de utilização
 
