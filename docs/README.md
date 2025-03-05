@@ -1,27 +1,27 @@
-# TITULO DO PROJETO
+# Gerenciamento de Vans
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Natalie Santana Dias Abreu, natalie.abreu@pucminas.br**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Maria Eduarda Paiva Ferraz, dudaferrazp@gmail.com**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**Gabriel dos Santos Silva Coelho, gabriel.coelho@sga.pucminas.br**
 
-**Nome completo do Aluno 4, email do aluno 4**
+**Paulo Victor Fernandes de Araujo Silva, email do aluno 4**
 
-**Nome completo do Aluno 5, email do aluno 5**
+**Luiz Gustavo Silva Oliveira, email do aluno 5**
 
-**Nome completo do Aluno 6, email do aluno 6**
+**João Pedro de Oliveira Santos, email do aluno 6**
 
 ---
 
 Professores:
 
-** Prof. Nome do Prof 1 **
+** Michelle Hanne Soares de Andrade **
 
-** Prof. Nome do Prof 2 **
+** Joana Gabriela Ribeiro de Souza **
 
-** Prof. Nome do Prof 3 **
+** Danilo de Quadros Maia Filho **
 
 ---
 
@@ -31,47 +31,86 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade Cató
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+_**Resumo**. O Van Wise é um sistema que propõe soluções para otimizar o transporte escolar, nosso objetivo é acabar com alguns problemas como desorganização financeira, ineficiência nas rotas e a falta de transparência. As justificativas se baseiam em relatos e notícia que mostram incidentes como criança esquecida ou caindo da Van. Nosso projeto atende as necessidades para pessoas como motoristas, pais, estudantes e gestores.
 
 ---
 
 
 ## 1. Introdução
 
-_Apresente uma frase introdutória definindo o que será apresentado._
+O transporte escolar é fundamental para a locomoção segura dos estudantes, porém enfrenta desafios como a falta de otimização
 
 ### 1.1 Contextualização
 
-_Na **contextualização**, o aluno deve dizer do que se trata o trabalho, em que área ou contexto se insere.
-A **contextualização** deve ser desenvolvida de algo mais genérico para algo mais específico. 
-A citação de pesquisas quantitativas é bem aceita aqui (corretamente referenciadas)._
+O transporte escolar por vans é uma solução essencial para a locomoção de estudantes, garantindo acesso seguro e eficiente às instituições de ensino. No entanto, a gestão desse serviço pode ser desorganizada, com dificuldades no controle de pagamentos, rotas e comunicação entre responsáveis, motoristas e alunos. A digitalização desse processo pode oferecer mais segurança, transparência e eficiência para todos os envolvidos.
 
 ### 1.2 Problema
 
-_Em seguida o aluno deve caminhar a contextualização para descrever o **problema** que o trabalho trata. 
-O **problema** pode ser algo vivido em uma empresa específica. Neste caso, o aluno deve rapidamente apresentar 
-o cenário de problema da empresa. A empresa só deve ser citada explicitamente se o aluno tiver autorização 
-para tal._
+1-Dificuldade no Controle Financeiro – Muitos motoristas e responsáveis enfrentam problemas para registrar e acompanhar pagamentos, o que pode levar a inadimplência, cobranças incorretas e confusão sobre valores e prazos.
 
-### 1.3 Objetivo geral
+2-Desorganização nas Rotas – Sem uma plataforma integrada, a definição dos trajetos pode ser ineficiente, resultando em percursos mais longos, atrasos constantes e dificuldades na adaptação de novas rotas em casos de imprevistos.
 
-_O aluno deve escrever um pequeno parágrafo ou frase com o **objetivo geral** do trabalho. 
-O objetivo deve ser bem direto, específico e definido com verbos de ação (elaborar, propor, avaliar, comparar, desenvolver, etc.). No caso específico deste projeto, o objetivo deste trabalho é desenvolver um sistema para automação de processos para um problema específico._
+3-Falta de Transparência e Comunicação – A comunicação entre motoristas, responsáveis e alunos ocorre por meios descentralizados, como grupos de WhatsApp ou ligações, dificultando o repasse de informações importantes sobre horários, atrasos ou mudanças no serviço.
+
+4-Ausência de Monitoramento e Segurança – Os responsáveis muitas vezes não sabem exatamente quando seus filhos embarcaram ou desembarcaram da van, aumentando a preocupação com a segurança do transporte.
+
+#### 1.3 Objetivo Geral
+
+Desenvolver um aplicativo de gestão de transporte escolar por vans, proporcionando maior organização, eficiência e segurança na comunicação entre motoristas, responsáveis e alunos.
 
 #### 1.3.1 Objetivos específicos
 
-_Apresente também alguns (pelo menos 2) **objetivos específicos** dependendo de onde você vai querer 
-concentrar sua prática investigativa, ou como você irá aprofundar seu trabalho._
+1-Criar um sistema para o controle de pagamentos, facilitando o acompanhamento de mensalidades e evitando inadimplência.
+2-Incluir um sistema de avaliações para monitoramento da qualidade do serviço.
+3-Implementar um gerenciamento eficiente de rotas, otimizando trajetos e garantindo pontualidade.
 
 ### 1.4 Justificativas
 
-_Mostre também as **justificativas** para o 
-desenvolvimento do seu trabalho e, caso deseje, destaque alguma contribuição do trabalho._
+1-A recorrência de incidentes no transporte, como crianças esquecidas ou caindo de veículos, mostra a necessidade de mais segurança e controle. Falhas na gestão financeira, nas rotas e na comunicação aumentam os riscos e a ineficiência. Por isso, é essencial desenvolver um sistema que melhore o controle financeiro, organize rotas, aprimore a comunicação e garanta mais segurança no transporte.
+2-O transporte escolar por vans desempenha um papel fundamental na mobilidade dos estudantes, proporcionando um deslocamento seguro e acessível até as instituições de ensino.
 
 ## 2. Participantes do processo
 
-_Apresente aqui os perfis dos usuários-chave do sistema. Diversas são as informações que podem ser relevantes para a definição dos perfis dos usuários, tais como idade, gênero, aspectos culturais, nível de educação, entre outros. A pesquisa de mercado pode ser uma ferramenta poderosa para se identificar e caracterizar os perfis de usuários. Apresente claramente o papel a ser desempenhado por cada usuário._
+Nome: Ricardo Santos
+Idade: 45 anos
+Profissão: empresário do ramo de transporte escolar.
+Objetivo: Gerenciar as vans garantindo eficiência,
+segurança e rentabilidade.
+Necessidades:
+- Garantir que o motorista cumpra horários e rotas.
+- Controlar pagamentos e faturamento.
+- Manter um serviço confiável para atrair mais clientes.
+
+Nome: Marcos Oliveira
+Idade: 38 anos
+Profissão: motorista autônomo de transporte escolar.
+Objetivo: Transportar os alunos com segurança e garantir
+o recebimento do serviço prestado.
+Necessidades:
+- Visualizar sua rota com clareza.
+- Confirmar presença dos alunos da van.
+- Canal de comunicação com os pais e gestor da frota.
+
+Nome: Ana Carvalho
+Idade: 39 anos
+Profissão: Advogada
+Objetivo: Garantir que seu filho chegue à escola e volte
+para casa com segurança.
+Necessidades:
+- Confirmar se o filho está na van em tempo real.
+- Acompanhar o trajeto da van pelo aplicativo.
+- Realizar pagamentos de forma simples e segura.
+
+
+Nome: Pedro Henrique
+Idade: 19 anos
+Profissão: Estudante universitário
+Objetivo: Ter um transporte confiável para ir à faculdade
+sem depender de transporte público.
+Necessidades:
+- Saber o horário exato da chegada da van.
+- Ter um meio de comunicação rápido com o motorista.
+- Confirmar a presença ou ausência pelo sistema
 
 ## 3. Modelagem do processo de negócio
 
