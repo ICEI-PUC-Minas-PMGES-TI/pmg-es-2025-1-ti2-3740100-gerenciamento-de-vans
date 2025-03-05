@@ -67,6 +67,7 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 ### 1.4 Justificativas
 
 1-A recorrência de incidentes no transporte, como crianças esquecidas ou caindo de veículos, mostra a necessidade de mais segurança e controle. Falhas na gestão financeira, nas rotas e na comunicação aumentam os riscos e a ineficiência. Por isso, é essencial desenvolver um sistema que melhore o controle financeiro, organize rotas, aprimore a comunicação e garanta mais segurança no transporte.
+
 2-O transporte escolar por vans desempenha um papel fundamental na mobilidade dos estudantes, proporcionando um deslocamento seguro e acessível até as instituições de ensino.
 
 ## 2. Participantes do processo
