@@ -11,7 +11,7 @@
 
 **Luiz Gustavo Silva Oliveira, email do aluno 5**
 
-**João Pedro de Oliveira Santos, email do aluno 6**
+**João Pedro de Oliveira Santos, jjooao@gmail.com**
 
 ---
 
@@ -61,7 +61,9 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 #### 1.3.1 Objetivos específicos
 
 1-Criar um sistema para o controle de pagamentos, facilitando o acompanhamento de mensalidades e evitando inadimplência.
+
 2-Incluir um sistema de avaliações para monitoramento da qualidade do serviço.
+
 3-Implementar um gerenciamento eficiente de rotas, otimizando trajetos e garantindo pontualidade.
 
 ### 1.4 Justificativas
