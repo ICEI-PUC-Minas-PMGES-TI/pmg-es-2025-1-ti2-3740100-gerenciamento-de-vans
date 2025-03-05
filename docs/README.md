@@ -74,44 +74,72 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 Nome: Ricardo Santos
 
 Idade: 45 anos
+
 Profissão: empresário do ramo de transporte escolar.
+
 Objetivo: Gerenciar as vans garantindo eficiência,
 segurança e rentabilidade.
+
 Necessidades:
+
 - Garantir que o motorista cumpra horários e rotas.
 - Controlar pagamentos e faturamento.
 - Manter um serviço confiável para atrair mais clientes.
 
+
+
 Nome: Marcos Oliveira
+
 Idade: 38 anos
+
 Profissão: motorista autônomo de transporte escolar.
+
 Objetivo: Transportar os alunos com segurança e garantir
 o recebimento do serviço prestado.
+
 Necessidades:
+
 - Visualizar sua rota com clareza.
 - Confirmar presença dos alunos da van.
 - Canal de comunicação com os pais e gestor da frota.
 
+
+
 Nome: Ana Carvalho
+
 Idade: 39 anos
+
 Profissão: Advogada
+
 Objetivo: Garantir que seu filho chegue à escola e volte
 para casa com segurança.
+
 Necessidades:
+
 - Confirmar se o filho está na van em tempo real.
 - Acompanhar o trajeto da van pelo aplicativo.
 - Realizar pagamentos de forma simples e segura.
 
 
+
+
+
 Nome: Pedro Henrique
+
 Idade: 19 anos
+
 Profissão: Estudante universitário
+
 Objetivo: Ter um transporte confiável para ir à faculdade
 sem depender de transporte público.
+
 Necessidades:
+
 - Saber o horário exato da chegada da van.
 - Ter um meio de comunicação rápido com o motorista.
 - Confirmar a presença ou ausência pelo sistema
+
+  
 
 ## 3. Modelagem do processo de negócio
 
