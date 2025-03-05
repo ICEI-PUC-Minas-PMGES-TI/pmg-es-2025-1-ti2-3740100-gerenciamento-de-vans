@@ -17,11 +17,11 @@
 
 Professores:
 
-** Michelle Hanne Soares de Andrade **
+**Michelle Hanne Soares de Andrade**
 
-** Joana Gabriela Ribeiro de Souza **
+**Joana Gabriela Ribeiro de Souza**
 
-** Danilo de Quadros Maia Filho **
+**Danilo de Quadros Maia Filho**
 
 ---
 
@@ -31,7 +31,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade Cató
 
 ---
 
-_**Resumo**. O Van Wise é um sistema que propõe soluções para otimizar o transporte escolar, nosso objetivo é acabar com alguns problemas como desorganização financeira, ineficiência nas rotas e a falta de transparência. As justificativas se baseiam em relatos e notícia que mostram incidentes como criança esquecida ou caindo da Van. Nosso projeto atende as necessidades para pessoas como motoristas, pais, estudantes e gestores.
+**Resumo**. O Van Wise é um sistema que propõe soluções para otimizar o transporte escolar, nosso objetivo é acabar com alguns problemas como desorganização financeira, ineficiência nas rotas e a falta de transparência. As justificativas se baseiam em relatos e notícia que mostram incidentes como criança esquecida ou caindo da Van. Nosso projeto atende as necessidades para pessoas como motoristas, pais, estudantes e gestores.
 
 ---
 
@@ -72,6 +72,7 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 ## 2. Participantes do processo
 
 Nome: Ricardo Santos
+
 Idade: 45 anos
 Profissão: empresário do ramo de transporte escolar.
 Objetivo: Gerenciar as vans garantindo eficiência,
