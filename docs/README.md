@@ -7,9 +7,9 @@
 
 **Gabriel dos Santos Silva Coelho, gabriel.coelho@sga.pucminas.br**
 
-**Paulo Victor Fernandes de Araujo Silva, email do aluno 4**
+**Paulo Victor Fernandes de Araujo Silva, paulovictor0907@gmail.com**
 
-**Luiz Gustavo Silva Oliveira, email do aluno 5**
+**Luiz Gustavo Silva Oliveira, luiz.Igso12@gmail.com**
 
 **João Pedro de Oliveira Santos, jjooao@gmail.com**
 
