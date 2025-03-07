@@ -152,7 +152,30 @@ _Apresente uma descrição textual de como os sistemas atuais resolvem o problem
 
 ### 3.2. Descrição geral da proposta de solução
 
-_Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias._
+O Van Wise é um sistema digital para otimização do transporte escolar por vans. Ele visa solucionar desafios comuns, como a desorganização financeira, ineficiência das rotas e falta de transparência na comunicação. A proposta envolve a criação de um aplicativo que conecte motoristas, responsáveis e estudantes, permitindo um gerenciamento mais eficiente das operações.
+
+Limites da Proposta
+Apesar das vantagens, o sistema enfrenta alguns desafios e limitações:
+
+Adoção da tecnologia – Alguns motoristas e responsáveis podem resistir à digitalização, preferindo métodos tradicionais.
+Conectividade e acessibilidade – O aplicativo exige acesso contínuo à internet para algumas funcionalidades, o que pode ser um obstáculo em áreas com sinal instável. (chek in)
+Implementação gradual – A transição do modelo atual para o digital pode exigir treinamentos e ajustes no processo de uso.
+
+Ligações com as Estratégias e Objetivos do Negócio
+O Van Wise se alinha às seguintes estratégias e objetivos:
+
+Eficiência operacional – O aplicativo reduz o tempo gasto em processos manuais, como cobranças e definição de rotas, permitindo que motoristas e gestores foquem na qualidade do serviço.
+Segurança e confiabilidade – Funcionalidades como monitoramento em tempo real e confirmação de embarque/desembarque aumentam a confiança dos responsáveis.
+Valorização do serviço – O sistema de avaliações melhora a percepção de qualidade, tornando o transporte escolar mais competitivo.
+Sustentabilidade financeira – O controle financeiro automatizado reduz inadimplência e melhora o fluxo de caixa dos motoristas.
+Oportunidades de Melhorias
+
+Para fortalecer a nossa proposta, algumas melhorias podem ser implementadas:
+
+Integração com meios de pagamento diversificados – Inclusão de PIX, cartão de crédito e boletos automáticos para facilitar pagamentos.
+Sistema de inteligência artificial para otimização de rotas – Utilizar IA para sugerir os melhores trajetos em tempo real, reduzindo atrasos.
+Gamificação e incentivos – Criar um sistema de recompensas para motoristas e usuários com bom histórico, incentivando boas práticas.
+Suporte offline para funcionalidades essenciais – Permitir que informações básicas, como a rota planejada, fiquem disponíveis mesmo sem internet.
 
 ### 3.3. Modelagem dos processos
 
