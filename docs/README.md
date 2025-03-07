@@ -38,7 +38,9 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade Cató
 
 ## 1. Introdução
 
-O transporte escolar é fundamental para a locomoção segura dos estudantes, porém enfrenta desafios como a falta de otimização
+O transporte escolar por vans é uma alternativa essencial para garantir o deslocamento seguro e eficiente de estudantes até as instituições de ensino. No entanto, a falta de um sistema estruturado para gerenciar esse serviço pode gerar diversos desafios, como desorganização nas rotas, dificuldades no controle financeiro, falhas na comunicação entre motoristas e responsáveis, além da ausência de monitoramento adequado.
+
+Diante desses problemas, a digitalização do transporte escolar surge como uma solução promissora, oferecendo mais segurança, transparência e eficiência para todos os envolvidos. Este trabalho busca analisar os principais desafios do setor e propor uma solução tecnológica capaz de otimizar a gestão do transporte, garantindo um serviço mais organizado e seguro para os estudantes.
 
 ### 1.1 Contextualização
 
@@ -227,27 +229,26 @@ _A sessão a seguir apresenta a descrição do produto de software desenvolvido.
 
 [Documentação da interface do sistema](interface.md)
 
-## 7. Conclusão
+## 7. Conclusão 
 
-_Apresente aqui a conclusão do seu trabalho. Deve ser apresentada aqui uma discussão dos resultados obtidos no trabalho, local em que se verifica as observações pessoais de cada aluno. Essa seção poderá também apresentar sugestões de novas linhas de estudo._
+O transporte escolar por vans é essencial para a mobilidade dos estudantes, mas enfrenta desafios como falhas no controle financeiro, desorganização de rotas, comunicação ineficiente e falta de monitoramento. A digitalização desse processo pode oferecer mais segurança, transparência e eficiência para todos os envolvidos.  
+
+A recorrência de incidentes reforça a necessidade de um sistema estruturado que otimize a gestão e fortaleça a segurança. Futuras pesquisas podem explorar tecnologias como inteligência artificial e IoT para aprimorar o monitoramento e a organização do serviço, garantindo um transporte mais seguro e eficiente para os estudantes.
 
 # REFERÊNCIAS
 
-_Como um projeto de software não requer revisão bibliográfica, a inclusão das referências não é obrigatória. No entanto, caso você deseje incluir referências relacionadas às tecnologias, padrões, ou metodologias que serão usadas no seu trabalho, relacione-as de acordo com a ABNT._
 
-_Verifique no link abaixo como devem ser as referências no padrão ABNT:_
+**[1.1]** - BRASIL. Casa Civil. **Novo PAC: Transporte escolar**. Disponível em: https://www.gov.br/casacivil/pt-br/novopac/selecoes/eixos/educacao-ciencia-e-tecnologia/transporteescolar.
 
-http://portal.pucminas.br/imagedb/documento/DOC_DSC_NOME_ARQUI20160217102425.pdf
+**[1.2]** - FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCAÇÃO (FNDE). **Avaliação nacional do Programa Caminho da Escola – Volume I**. Disponível em: https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/caminho-daescola/media/cecates/Avaliao_Nacional_do_Programa_Caminho_da_Escola__Volume_I.pdf.
 
-**[1.1]** - _ELMASRI, Ramez; NAVATHE, Sham. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, c2019. E-book. ISBN 9788543025001._
+**[1.3]** - G1. **Número de vans escolares cadastradas na prefeitura tem queda de 50% em Campinas**. 16 jan. 2024. Disponível em: https://g1.globo.com/sp/campinas-regiao/noticia/2024/01/16/numero-de-vans-escolares-cadastradasna-prefeitura-tem-queda-de-50percent-em-campinas.ghtml.
 
-**[1.2]** - _COPPIN, Ben. **Inteligência artificial**. Rio de Janeiro, RJ: LTC, c2010. E-book. ISBN 978-85-216-2936-8._
+**[1.4]** - YOUTUBE. **Criança é esquecida dentro de van escolar por quatro horas**. Disponível em: https://www.youtube.com/watch?v=BD6Z903OCBo.
 
-**[1.3]** - _CORMEN, Thomas H. et al. **Algoritmos: teoria e prática**. Rio de Janeiro, RJ: Elsevier, Campus, c2012. xvi, 926 p. ISBN 9788535236996._
+**[1.5]** - RECORD R7. SP: **Menina de 9 anos cai de van escolar em movimento**. Disponível em: https://record.r7.com/balanco-geral/video/sp-menina-de-9-anos-cai-de-van-escolar-em-movimento24062024/.
 
-**[1.4]** - _SUTHERLAND, Jeffrey Victor. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo**. 2. ed. rev. São Paulo, SP: Leya, 2016. 236, [4] p. ISBN 9788544104514._
-
-**[1.5]** - _RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial**. Rio de Janeiro: Elsevier, c2013. xxi, 988 p. ISBN 9788535237016._
+**[1.6]** - YOUTUBE. **Pais reclamam de vans escolares em Guaratinguetá**. Disponível em: https://www.youtube.com/watch?v=f_kfEKJr8dY.
 
 
 
