@@ -5,7 +5,7 @@
 
 **Maria Eduarda Paiva Ferraz, dudaferrazp@gmail.com**
 
-**Gabriel dos Santos Silva Coelho, gabriel.coelho@sga.pucminas.br**
+**Gabriel dos Santos Silva Coelho, gabriel.coelho@pucminas.br**
 
 **Paulo Victor Fernandes de Araujo Silva, paulovictor0907@gmail.com**
 
