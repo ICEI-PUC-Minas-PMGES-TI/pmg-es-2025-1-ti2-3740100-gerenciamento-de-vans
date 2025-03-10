@@ -156,21 +156,32 @@ O transporte escolar por vans ainda é amplamente gerenciado por métodos tradic
 
 Atualmente, o controle financeiro das mensalidades é realizado de forma manual. Muitos motoristas utilizam anotações em cadernos, planilhas simples ou até mesmo registros informais via mensagens. Isso pode gerar diversos problemas, como inadimplência, esquecimentos de pagamentos, erros no cálculo de valores e dificuldade em rastrear quem já efetuou ou não o pagamento. Além disso, cobranças são feitas frequentemente via dinheiro em espécie ou transferência bancária sem integração a um sistema de gestão.
 
+Responsável pelo Processo: Motorista e gestor da frota.
+
 2. Definição e Organização de Rotas
 
 A definição das rotas é feita sem ferramentas que auxiliem na otimização do percurso. Motoristas costumam planejar o trajeto manualmente, sem considerar fatores como trânsito em tempo real, melhor sequência de paradas e ajustes em caso de imprevistos. Em alguns casos, pais ou responsáveis precisam informar mudanças de horário diretamente ao motorista, o que pode gerar falhas de comunicação e atrasos.
+
+Responsável pelo Processo: Motorista e gestor da frota.
 
 3. Comunicação entre Motoristas, Responsáveis e Estudantes
 
 A comunicação ocorre de maneira descentralizada, geralmente por meio de grupos de WhatsApp, mensagens de texto ou ligações telefônicas. Isso dificulta o acompanhamento das informações, pois mensagens podem ser perdidas ou não respondidas a tempo. Além disso, não há um canal oficial para registrar reclamações, sugestões ou atualizações sobre o serviço, tornando o processo confuso e ineficaz.
 
+Responsável pelo Processo: Motorista, responsável pelo aluno e gestor da frota.
+
 4. Monitoramento e Segurança
 
 O acompanhamento da localização dos alunos durante o transporte é uma grande preocupação. Muitos responsáveis não sabem exatamente quando seus filhos embarcaram ou desembarcaram da van, pois o processo de verificação ocorre apenas por comunicação direta com o motorista. Casos de crianças esquecidas ou deixadas no local errado ocorrem devido à falta de um sistema automatizado de registro e conferência.
 
+Responsável pelo Processo: Motorista e responsável pelo aluno.
+
 5. Experiência do Usuário
 
 Para os alunos e responsáveis, a falta de um sistema estruturado traz insegurança e inconvenientes. Não há uma previsão exata da chegada da van, tornando difícil o planejamento do tempo. Estudantes também não possuem um canal direto para relatar atrasos ou problemas com o transporte, o que pode afetar sua rotina acadêmica e pessoal.
+
+Responsável pelo Processo: Aluno e responsável pelo aluno.
+
 
 ### 3.2. Descrição geral da proposta de solução
 
