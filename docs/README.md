@@ -48,13 +48,7 @@ O transporte escolar por vans é uma solução essencial para a locomoção de e
 
 ### 1.2 Problema
 
-1-Dificuldade no Controle Financeiro – Muitos motoristas e responsáveis enfrentam problemas para registrar e acompanhar pagamentos, o que pode levar a inadimplência, cobranças incorretas e confusão sobre valores e prazos.
-
-2-Desorganização nas Rotas – Sem uma plataforma integrada, a definição dos trajetos pode ser ineficiente, resultando em percursos mais longos, atrasos constantes e dificuldades na adaptação de novas rotas em casos de imprevistos.
-
-3-Falta de Transparência e Comunicação – A comunicação entre motoristas, responsáveis e alunos ocorre por meios descentralizados, como grupos de WhatsApp ou ligações, dificultando o repasse de informações importantes sobre horários, atrasos ou mudanças no serviço.
-
-4-Ausência de Monitoramento e Segurança – Os responsáveis muitas vezes não sabem exatamente quando seus filhos embarcaram ou desembarcaram da van, aumentando a preocupação com a segurança do transporte.
+A gestão do transporte escolar enfrenta diversos desafios que comprometem sua eficiência e segurança. A dificuldade no controle financeiro é um dos principais problemas, pois muitos motoristas e responsáveis encontram obstáculos para registrar e acompanhar pagamentos, o que pode resultar em inadimplência, cobranças incorretas e confusão sobre valores e prazos. Além disso, a desorganização nas rotas, causada pela falta de uma plataforma integrada, leva a percursos mais longos, atrasos constantes e dificuldades na adaptação de novas rotas em casos de imprevistos. A falta de transparência e comunicação também é um fator crítico, já que a troca de informações entre motoristas, responsáveis e alunos ocorre por meios descentralizados, como grupos de WhatsApp ou ligações, dificultando o repasse de informações essenciais sobre horários, atrasos ou mudanças no serviço. Por fim, a ausência de monitoramento e segurança gera preocupação entre os responsáveis, que muitas vezes não sabem exatamente quando seus filhos embarcaram ou desembarcaram da van, aumentando a insegurança em relação ao transporte escolar.
 
 #### 1.3 Objetivo Geral
 
@@ -62,87 +56,24 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 
 #### 1.3.1 Objetivos específicos
 
-1-Criar um sistema para o controle de pagamentos, facilitando o acompanhamento de mensalidades e evitando inadimplência.
+**A gestão financeira** permitirá um controle automatizado dos pagamentos, reduzindo erros e garantindo mais transparência nas cobranças. **A gestão das rotas** otimizará os trajetos, minimizando atrasos e ajustando percursos conforme necessário para tornar o transporte mais ágil. Para aprimorar a comunicação, o **mural de avisos e reclamações** servirá como um canal centralizado, facilitando o repasse de informações importantes entre motoristas, responsáveis e alunos. Além disso, a **gestão de avaliações** possibilitará que os responsáveis forneçam feedback sobre o serviço prestado, contribuindo para a melhoria contínua da qualidade do transporte.  
 
-2-Incluir um sistema de avaliações para monitoramento da qualidade do serviço.
-
-3-Implementar um gerenciamento eficiente de rotas, otimizando trajetos e garantindo pontualidade.
+**A gestão de cadastros e logins** garantirá um acesso seguro e individualizado para motoristas, alunos e responsáveis, protegendo as informações do sistema. Já a **gestão de notificações** automatizará o envio de alertas sobre pagamentos, mudanças nas rotas e atrasos, mantendo todos informados em tempo real. A **digitalização e organização dos contratos** facilitarão o gerenciamento dos documentos firmados entre motoristas e responsáveis, tornando a gestão contratual mais eficiente. Por fim, a implementação de um **checklist diário** de exclusão ou inclusão do aluno na van garantirá um controle preciso da presença dos estudantes, proporcionando mais segurança e tranquilidade aos responsáveis. 
 
 ### 1.4 Justificativas
 
-1-A recorrência de incidentes no transporte, como crianças esquecidas ou caindo de veículos, mostra a necessidade de mais segurança e controle. Falhas na gestão financeira, nas rotas e na comunicação aumentam os riscos e a ineficiência. Por isso, é essencial desenvolver um sistema que melhore o controle financeiro, organize rotas, aprimore a comunicação e garanta mais segurança no transporte.
-
-2-O transporte escolar por vans desempenha um papel fundamental na mobilidade dos estudantes, proporcionando um deslocamento seguro e acessível até as instituições de ensino.
+A recorrência de incidentes no transporte, como crianças esquecidas ou caindo de veículos, evidencia a necessidade de mais segurança e controle. Além disso, falhas na gestão financeira, na organização das rotas e na comunicação aumentam os riscos e a ineficiência do serviço. Diante desse cenário, torna-se essencial desenvolver um sistema que melhore o controle financeiro, otimize a definição de rotas, aprimore a comunicação entre os envolvidos e, principalmente, garanta mais segurança no transporte. Considerando que o transporte escolar por vans desempenha um papel fundamental na mobilidade dos estudantes, assegurando um deslocamento seguro e acessível até as instituições de ensino, a implementação de um sistema eficiente se mostra indispensável para a qualidade e a confiabilidade desse serviço.
 
 ## 2. Participantes do processo
 
-Nome: Ricardo Santos
 
-Idade: 45 anos
+O **proprietário de empresa de vans**, como Ricardo Santos, precisa gerenciar sua frota com eficiência, garantindo que os motoristas cumpram horários e rotas, controlando pagamentos e faturamento e oferecendo um serviço confiável para atrair mais clientes. O sistema permitirá que ele tenha uma visão geral das operações, facilitando a gestão financeira e o monitoramento das rotas em tempo real.
 
-Profissão: empresário do ramo de transporte escolar.
+Para o **motorista autônomo de transporte escolar**, como Marcos Oliveira, a plataforma oferecerá ferramentas que otimizam seu trabalho diário. Ele poderá visualizar suas rotas com clareza, confirmar a presença dos alunos na van e se comunicar facilmente com os pais e o gestor da frota, garantindo um serviço mais seguro e organizado.
 
-Objetivo: Gerenciar as vans garantindo eficiência,
-segurança e rentabilidade.
+Os **responsáveis pelos alunos**, como Ana Carvalho, terão acesso a recursos que garantem a segurança de seus filhos durante o transporte. O sistema permitirá que eles confirmem, em tempo real, se a criança embarcou na van, acompanhem o trajeto pelo aplicativo e realizem pagamentos de forma simples e segura, trazendo mais tranquilidade para as famílias.
 
-Necessidades:
-
-- Garantir que o motorista cumpra horários e rotas.
-- Controlar pagamentos e faturamento.
-- Manter um serviço confiável para atrair mais clientes.
-
-
-
-Nome: Marcos Oliveira
-
-Idade: 38 anos
-
-Profissão: motorista autônomo de transporte escolar.
-
-Objetivo: Transportar os alunos com segurança e garantir
-o recebimento do serviço prestado.
-
-Necessidades:
-
-- Visualizar sua rota com clareza.
-- Confirmar presença dos alunos da van.
-- Canal de comunicação com os pais e gestor da frota.
-
-
-
-Nome: Ana Carvalho
-
-Idade: 39 anos
-
-Profissão: Advogada
-
-Objetivo: Garantir que seu filho chegue à escola e volte
-para casa com segurança.
-
-Necessidades:
-
-- Confirmar se o filho está na van em tempo real.
-- Acompanhar o trajeto da van pelo aplicativo.
-- Realizar pagamentos de forma simples e segura.
-
-
-
-
-
-Nome: Pedro Henrique
-
-Idade: 19 anos
-
-Profissão: Estudante universitário
-
-Objetivo: Ter um transporte confiável para ir à faculdade
-sem depender de transporte público.
-
-Necessidades:
-
-- Saber o horário exato da chegada da van.
-- Ter um meio de comunicação rápido com o motorista.
-- Confirmar a presença ou ausência pelo sistema
+Já os **passageiros que utilizam o serviço**, como Pedro Henrique, um estudante universitário, contarão com funcionalidades que garantem mais previsibilidade e praticidade no dia a dia. Ele poderá saber o horário exato da chegada da van, se comunicar rapidamente com o motorista e confirmar sua presença ou ausência pelo sistema, tornando o transporte mais eficiente e organizado.
 
   
 
