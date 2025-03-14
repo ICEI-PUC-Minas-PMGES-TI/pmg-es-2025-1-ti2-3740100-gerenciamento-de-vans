@@ -2,7 +2,7 @@
 
 O passageiro todos os dias deve marcar ser vai ou não naquele dia, para que o sistema possa calcular a rota do motorista naquele dia.
 
-![gestao-inclusao-exclusao](images/Gestão de exclusão_inclusão na van.png.")
+![gestao-inclusao-exclusao](images/Gestão de exclusão_inclusão na van.png)
 
 #### Detalhamento das atividades
 O passageiro na tela inicial terá a opção de marcar se vai ou não naquele dia. Todas essas informações ficaram salvas dentro do banco de dados.
