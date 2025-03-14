@@ -116,30 +116,36 @@ Responsável pelo Processo: Aluno e responsável pelo aluno.
 
 ### 3.2. Descrição geral da proposta de solução
 
-O Van Wise é um sistema digital para otimização do transporte escolar por vans. Ele visa solucionar desafios comuns, como a desorganização financeira, ineficiência das rotas e falta de transparência na comunicação. A proposta envolve a criação de um aplicativo que conecte motoristas, responsáveis e estudantes, permitindo um gerenciamento mais eficiente das operações.
+### Van Wise: Tornando o Transporte Escolar Mais Eficiente e Seguro
 
-Limites da Proposta
-Apesar das vantagens, o sistema enfrenta alguns desafios e limitações:
+O transporte escolar pode ser um verdadeiro desafio, tanto para motoristas quanto para responsáveis e estudantes. Pensando nisso, o **Van Wise** nasceu com a proposta de transformar essa experiência, trazendo mais organização, eficiência e transparência para o dia a dia. Nosso aplicativo conecta motoristas, responsáveis e alunos em um só lugar, facilitando a comunicação, otimizando rotas e garantindo mais segurança e controle sobre cada viagem.  
 
-Adoção da tecnologia – Alguns motoristas e responsáveis podem resistir à digitalização, preferindo métodos tradicionais.
-Conectividade e acessibilidade – O aplicativo exige acesso contínuo à internet para algumas funcionalidades, o que pode ser um obstáculo em áreas com sinal instável. (chek in)
-Implementação gradual – A transição do modelo atual para o digital pode exigir treinamentos e ajustes no processo de uso.
+### Desafios a Serem Superados
 
-Ligações com as Estratégias e Objetivos do Negócio
-O Van Wise se alinha às seguintes estratégias e objetivos:
+Apesar de todos os benefícios, sabemos que a transição para um sistema digital pode apresentar alguns desafios:  
 
-Eficiência operacional – O aplicativo reduz o tempo gasto em processos manuais, como cobranças e definição de rotas, permitindo que motoristas e gestores foquem na qualidade do serviço.
-Segurança e confiabilidade – Funcionalidades como monitoramento em tempo real e confirmação de embarque/desembarque aumentam a confiança dos responsáveis.
-Valorização do serviço – O sistema de avaliações melhora a percepção de qualidade, tornando o transporte escolar mais competitivo.
-Sustentabilidade financeira – O controle financeiro automatizado reduz inadimplência e melhora o fluxo de caixa dos motoristas.
-Oportunidades de Melhorias
+- *Adaptação à tecnologia** – Nem todos os motoristas e responsáveis estão acostumados com o uso de aplicativos, podendo preferir os métodos tradicionais.  
+- *Conectividade e acessibilidade** – Algumas funcionalidades exigem conexão com a internet, o que pode ser um problema em áreas com sinal instável.  
+- *Mudança gradual** – Implementar um novo modelo exige tempo, treinamentos e ajustes para que todos se sintam confortáveis com a nova forma de operar.  
 
-Para fortalecer a nossa proposta, algumas melhorias podem ser implementadas:
+### Como o Van Wise se Alinha com os Objetivos do Transporte Escolar
 
-Integração com meios de pagamento diversificados – Inclusão de PIX, cartão de crédito e boletos automáticos para facilitar pagamentos.
-Sistema de inteligência artificial para otimização de rotas – Utilizar IA para sugerir os melhores trajetos em tempo real, reduzindo atrasos.
-Gamificação e incentivos – Criar um sistema de recompensas para motoristas e usuários com bom histórico, incentivando boas práticas.
-Suporte offline para funcionalidades essenciais – Permitir que informações básicas, como a rota planejada, fiquem disponíveis mesmo sem internet.
+Nosso propósito é tornar o transporte escolar mais ágil, confiável e seguro. Por isso, o **Van Wise** se apoia em pilares essenciais:  
+
+- *Eficiência operacional** – Reduzimos o tempo gasto com processos manuais, como cobranças e definição de rotas, permitindo que os motoristas foquem no que realmente importa: transportar os alunos com qualidade e segurança.  
+- *Mais segurança e tranquilidade para os responsáveis** – Com o monitoramento em tempo real e a confirmação de embarque/desembarque, os pais podem acompanhar o trajeto dos filhos e ter mais confiança no serviço.  
+- *Valorização dos motoristas** – O sistema de avaliações cria um ambiente de credibilidade, incentivando um serviço de qualidade e tornando o transporte escolar mais competitivo.  
+- *Sustentabilidade financeira** – Automatizar o controle financeiro reduz a inadimplência e melhora o fluxo de caixa, garantindo mais previsibilidade e estabilidade para os motoristas.  
+
+### Oportunidades para Melhorar Ainda Mais
+
+Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas melhorias que podem ser implementadas incluem:  
+
+- *Mais opções de pagamento** – Além de PIX, incluir cartão de crédito e boletos automáticos, tornando os pagamentos mais fáceis e reduzindo o risco de atrasos.  
+- *Rotas mais inteligentes** – Utilizar inteligência artificial para definir os melhores trajetos em tempo real, evitando atrasos e tornando o transporte mais eficiente.  
+- *Incentivos para boas práticas** – Criar um sistema de recompensas para motoristas e usuários com bom histórico, tornando o serviço ainda mais confiável e agradável.  
+- *Funcionalidade offline para informações essenciais** – Permitir que motoristas acessem rotas planejadas, horários e registros de embarque/desembarque mesmo sem internet, garantindo o funcionamento do sistema em qualquer situação.  
+
 
 ### 3.3. Modelagem dos processos
 
