@@ -1,14 +1,12 @@
-### 3.3.1 Processo 1 – NOME DO PROCESSO
+### 3.3.1 Processo 1 – GESTÃO DE CADASTRO E LOGIN
 
-_Apresente aqui o nome e as oportunidades de melhoria para o processo 1. 
-Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN._
+A gestão de cadastro e login é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como nome, e-mail, telefone, cpf e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
 
-![Exemplo de um Modelo BPMN do PROCESSO 1](images/process.png "Modelo BPMN do Processo 1.")
+![PROCESSO DE GESTÃO DE CADASTRO/LOGIN](images/process.png "Modelo BPMN do Processo 1.")
 
 #### Detalhamento das atividades
 
-_Descreva aqui cada uma das propriedades das atividades do processo 1. 
-Devem estar relacionadas com o modelo de processo apresentado anteriormente._
+As pessoas que iram usar está aplicação (motorista, responsável, dono de rede de vans) terão que realizar o cadastro inicial, após o primeiro acesso será necessário entrar com o login para acessar ao site. Esse processo garante que apenas usuários autorizados possam usar o sistema, protegendo as informações e recursos importantes. Além de ajudar a idendificar quem está usando e levá-lo para a tela inicial correta. 
 
 _Os tipos de dados a serem utilizados são:_
 
@@ -18,26 +16,12 @@ _* **Caixa de texto** - campo texto de uma linha_
 
 _* **Número** - campo numérico_
 
-_* **Data** - campo do tipo data (dd-mm-aaaa)_
-
-_* **Hora** - campo do tipo hora (hh:mm:ss)_
-
-_* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
-
-_* **Imagem** - campo contendo uma imagem_
-
 _* **Seleção única** - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
-
-_* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
-
-_* **Arquivo** - campo de upload de documento_
 
 _* **Link** - campo que armazena uma URL_
 
-_* **Tabela** - campo formado por uma matriz de valores_
 
-
-**Nome da atividade 1**
+**Cadastro e login de usuários**
 
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
