@@ -21,7 +21,7 @@ _* **Seleção única** - campo com várias opções de valores que são mutuame
 _* **Link** - campo que armazena uma URL_
 
 
-**Cadastro e login de usuários**
+**Cadastro**
 
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
@@ -38,7 +38,7 @@ _* **Link** - campo que armazena uma URL_
 | cadastrar            | Início do proceso de cadastro  |                   |
 
 
-**Nome da atividade 2**
+**Login**
 
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
