@@ -30,16 +30,3 @@ _* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
 | ***Exemplo:***       |                                |                   |
 | entrar               | Fim do Processo 1              | default           |
 | cadastrar            | Início do proceso de cadastro  |                   |
-
-
-**Nome da atividade 2**
-
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-|                 |                  |                |                   |
-
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel/  ) |
-|                      |                                |                   |
