@@ -143,13 +143,21 @@ Suporte offline para funcionalidades essenciais – Permitir que informações b
 
 ### 3.3. Modelagem dos processos
 
-[PROCESSO 1 - Nome do Processo](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
+[PROCESSO 1 - Gestão financeira](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
 
-[PROCESSO 2 - Nome do Processo](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
+[PROCESSO 2 - Gestão de rotas](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Nome do Processo](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Mural de avisos/reclamações](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
 
-[PROCESSO 4 - Nome do Processo](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+[PROCESSO 4 - Gestão de avaliações](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+
+[PROCESSO 5 - Gestão de cadastro/login](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+
+[PROCESSO 6 - Gestão de notificações](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+
+[PROCESSO 7 - Gestão de contratos](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+
+[PROCESSO 8 - Gestão de checkList diário de exclusão ou inclusão do aluno](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
 ## 4. Projeto da solução
 
