@@ -1,38 +1,30 @@
-3.3.1 Processo 1 – GESTÃO DE CADASTRO E LOGIN
-A gestão de cadastro e login é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como nome, e-mail, telefone, cpf e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura.
+### 3.3.4 Processo 4 – Gestão de inclusão e exclusão do passageiro.
 
-![PROCESSO DE GESTÃO DE CADASTRO/LOGIN](images/Gestão de cadastro-login.png")
+O passageiro todos os dias deve marcar ser vai ou não naquele dia, para que o sistema possa calcular a rota do motorista naquele dia.
 
-Detalhamento das atividades
-As pessoas que iram usar está aplicação (motorista, responsável, dono de rede de vans) terão que realizar o cadastro inicial, após o primeiro acesso será necessário entrar com o login para acessar ao site. Esse processo garante que apenas usuários autorizados possam usar o sistema, protegendo as informações e recursos importantes. Além de ajudar a idendificar quem está usando e levá-lo para a tela inicial correta.
+![gestao-inclusao-exclusao](images/Gestão de exclusão_inclusão na van.png.")
 
-Os tipos de dados a serem utilizados são:
+#### Detalhamento das atividades
+O passageiro na tela inicial terá a opção de marcar se vai ou não naquele dia. Todas essas informações ficaram salvas dentro do banco de dados.
 
-* Área de texto - campo texto de múltiplas linhas
 
-* Caixa de texto - campo texto de uma linha
+_Os tipos de dados a serem utilizados são:_
 
-* Número - campo numérico
+_* **Data** - campo do tipo data (dd-mm-aaaa)_
 
-* Seleção única - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)
 
-* Link - campo que armazena uma URL
+**Nome da atividade 1**
 
-Cadastro e login de usuários
+| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
+| ---             | ---              | ---            | ---               |
+| [Nome do campo] | [tipo de dados]  |                |                   |
+| ***Exemplo:***  |                  |                |                   |
+| login           | Caixa de Texto   | formato de e-mail |                |
+| senha           | Caixa de Texto   | mínimo de 8 caracteres |           |
 
-Campo	Tipo	Restrições	Valor default
-[Nome do campo]	[tipo de dados]		
-Exemplo:			
-login	Caixa de Texto	formato de e-mail	
-senha	Caixa de Texto	mínimo de 8 caracteres	
-Comandos	Destino	Tipo
-[Nome do botão/link]	Atividade/processo de destino	(default/cancel )
-Exemplo:		
-entrar	Fim do Processo 1	default
-cadastrar	Início do proceso de cadastro	
-Nome da atividade 2
-
-Campo	Tipo	Restrições	Valor default
-[Nome do campo]	[tipo de dados]		
-Comandos	Destino	Tipo
-[Nome do botão/link]	Atividade/processo de destino	(default/cancel/ )
+| **Comandos**         |  **Destino**                   | **Tipo** |
+| ---                  | ---                            | ---               |
+| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel  ) |
+| ***Exemplo:***       |                                |                   |
+| entrar               | Fim do Processo 1              | default           |
+| cadastrar            | Início do proceso de cadastro  |                   |
