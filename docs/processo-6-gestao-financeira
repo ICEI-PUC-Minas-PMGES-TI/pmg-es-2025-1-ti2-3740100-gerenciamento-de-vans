@@ -1,27 +1,28 @@
-### 3.3.1 Processo 1 – GESTÃO DE CADASTRO E LOGIN
+### 3.3.1 Processo 1 – GESTÃO FINANCEIRA
+A gestão financeira de vans com passageiros, focada em pagamentos via boletos bancários ou Pix, é responsável pelo
+controle e organização dos pagamentos realizados pelos passageiros, garantindo a regularidade dos recebimentos e a 
+precisão nas transações financeiras. Essa atividade envolve o gerenciamento das formas de pagamento, a emissão de 
+boletos, o monitoramento dos pagamentos realizados e a conciliação dos valores recebidos com os serviços prestados.
 
-A gestão de cadastro e login é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como nome, e-mail, telefone, cpf e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
-
-![PROCESSO DE GESTÃO DE CADASTRO/LOGIN](images/Gestão de cadastro-login.png")
+![PROCESSO DE GESTÃO FINANCEIRA/LOGIN](images/Gestão financeira Contas.png")
 
 #### Detalhamento das atividades
 
-As pessoas que iram usar está aplicação (motorista, responsável, dono de rede de vans) terão que realizar o cadastro inicial, após o primeiro acesso será necessário entrar com o login para acessar ao site. Esse processo garante que apenas usuários autorizados possam usar o sistema, protegendo as informações e recursos importantes. Além de ajudar a idendificar quem está usando e levá-lo para a tela inicial correta. 
+1. Emissão de Boletos: Gerar e enviar boletos bancários para os passageiros de forma clara, com os valores corretos, datas de vencimento e instruções para pagamento.
+
+2. Gestão de Pagamentos via Pix: Controlar e registrar os pagamentos realizados por Pix, assegurando que as transferências sejam realizadas corretamente e no prazo estipulado.
+
+3. Acompanhamento de Pagamentos: Monitorar os pagamentos dos passageiros para garantir que sejam feitos no prazo e no valor correto. Caso haja atraso ou inconsistência, o responsável pela gestão deve tomar as ações necessárias, como enviar lembretes ou cobrar pelo pagamento.
+
+4. Conciliar Recebimentos: Realizar a conciliação bancária para verificar se todos os pagamentos, tanto via boleto quanto Pix, foram processados corretamente e se os valores recebidos batem com os registros financeiros.
+
 
 _Os tipos de dados a serem utilizados são:_
-
-_* **Área de texto** - campo texto de múltiplas linhas_
-
-_* **Caixa de texto** - campo texto de uma linha_
-
-_* **Número** - campo numérico_
-
-_* **Seleção única** - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
 
 _* **Link** - campo que armazena uma URL_
 
 
-**Cadastro**
+**Pagamento**
 
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
@@ -37,15 +38,3 @@ _* **Link** - campo que armazena uma URL_
 | entrar               | Fim do Processo 1              | default           |
 | cadastrar            | Início do proceso de cadastro  |                   |
 
-
-**Login**
-
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-|                 |                  |                |                   |
-
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel/  ) |
-|                      |                                |                   |
