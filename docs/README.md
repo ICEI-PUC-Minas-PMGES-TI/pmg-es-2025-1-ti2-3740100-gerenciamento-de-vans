@@ -124,27 +124,27 @@ O transporte escolar pode ser um verdadeiro desafio, tanto para motoristas quant
 
 Apesar de todos os benefícios, sabemos que a transição para um sistema digital pode apresentar alguns desafios:  
 
-- *Adaptação à tecnologia** – Nem todos os motoristas e responsáveis estão acostumados com o uso de aplicativos, podendo preferir os métodos tradicionais.  
-- *Conectividade e acessibilidade** – Algumas funcionalidades exigem conexão com a internet, o que pode ser um problema em áreas com sinal instável.  
-- *Mudança gradual** – Implementar um novo modelo exige tempo, treinamentos e ajustes para que todos se sintam confortáveis com a nova forma de operar.  
+- *Adaptação à tecnologia* – Nem todos os motoristas e responsáveis estão acostumados com o uso de aplicativos, podendo preferir os métodos tradicionais.  
+- *Conectividade e acessibilidade* – Algumas funcionalidades exigem conexão com a internet, o que pode ser um problema em áreas com sinal instável.  
+- *Mudança gradual* – Implementar um novo modelo exige tempo, treinamentos e ajustes para que todos se sintam confortáveis com a nova forma de operar.  
 
 ### Como o Van Wise se Alinha com os Objetivos do Transporte Escolar
 
-Nosso propósito é tornar o transporte escolar mais ágil, confiável e seguro. Por isso, o **Van Wise** se apoia em pilares essenciais:  
+Nosso propósito é tornar o transporte escolar mais ágil, confiável e seguro. Por isso, o Van Wise se apoia em pilares essenciais:  
 
-- *Eficiência operacional** – Reduzimos o tempo gasto com processos manuais, como cobranças e definição de rotas, permitindo que os motoristas foquem no que realmente importa: transportar os alunos com qualidade e segurança.  
-- *Mais segurança e tranquilidade para os responsáveis** – Com o monitoramento em tempo real e a confirmação de embarque/desembarque, os pais podem acompanhar o trajeto dos filhos e ter mais confiança no serviço.  
-- *Valorização dos motoristas** – O sistema de avaliações cria um ambiente de credibilidade, incentivando um serviço de qualidade e tornando o transporte escolar mais competitivo.  
-- *Sustentabilidade financeira** – Automatizar o controle financeiro reduz a inadimplência e melhora o fluxo de caixa, garantindo mais previsibilidade e estabilidade para os motoristas.  
+- *Eficiência operacional* – Reduzimos o tempo gasto com processos manuais, como cobranças e definição de rotas, permitindo que os motoristas foquem no que realmente importa: transportar os alunos com qualidade e segurança.  
+- *Mais segurança e tranquilidade para os responsáveis* – Com o monitoramento em tempo real e a confirmação de embarque/desembarque, os pais podem acompanhar o trajeto dos filhos e ter mais confiança no serviço.  
+- *Valorização dos motoristas* – O sistema de avaliações cria um ambiente de credibilidade, incentivando um serviço de qualidade e tornando o transporte escolar mais competitivo.  
+- *Sustentabilidade financeira* – Automatizar o controle financeiro reduz a inadimplência e melhora o fluxo de caixa, garantindo mais previsibilidade e estabilidade para os motoristas.  
 
 ### Oportunidades para Melhorar Ainda Mais
 
 Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas melhorias que podem ser implementadas incluem:  
 
-- *Mais opções de pagamento** – Além de PIX, incluir cartão de crédito e boletos automáticos, tornando os pagamentos mais fáceis e reduzindo o risco de atrasos.  
-- *Rotas mais inteligentes** – Utilizar inteligência artificial para definir os melhores trajetos em tempo real, evitando atrasos e tornando o transporte mais eficiente.  
-- *Incentivos para boas práticas** – Criar um sistema de recompensas para motoristas e usuários com bom histórico, tornando o serviço ainda mais confiável e agradável.  
-- *Funcionalidade offline para informações essenciais** – Permitir que motoristas acessem rotas planejadas, horários e registros de embarque/desembarque mesmo sem internet, garantindo o funcionamento do sistema em qualquer situação.  
+- *Mais opções de pagamento* – Além de PIX, incluir cartão de crédito e boletos automáticos, tornando os pagamentos mais fáceis e reduzindo o risco de atrasos.  
+- *Rotas mais inteligentes* – Utilizar inteligência artificial para definir os melhores trajetos em tempo real, evitando atrasos e tornando o transporte mais eficiente.  
+- *Incentivos para boas práticas* – Criar um sistema de recompensas para motoristas e usuários com bom histórico, tornando o serviço ainda mais confiável e agradável.  
+- *Funcionalidade offline para informações essenciais* – Permitir que motoristas acessem rotas planejadas, horários e registros de embarque/desembarque mesmo sem internet, garantindo o funcionamento do sistema em qualquer situação.  
 
 
 ### 3.3. Modelagem dos processos
