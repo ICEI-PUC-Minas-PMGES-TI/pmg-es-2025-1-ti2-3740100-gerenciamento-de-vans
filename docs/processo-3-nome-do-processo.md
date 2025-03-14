@@ -1,41 +1,19 @@
-### 3.3.3 Processo 3 – NOME DO PROCESSO
+### 3.3.3 Processo 3 – Gestão mural de avisos e/ou reclamações
 
-_Apresente aqui o nome e as oportunidades de melhoria para o processo 3. 
-Em seguida, apresente o modelo do processo 3, descrito no padrão BPMN._
+Um mural de reclamações ou avisos será um espaço virtual onde informações importantes, como críticas, sugestões ou comunicados, são expostos. Ele serve como uma ferramenta de comunicação entre os usuários, permitindo que problemas sejam reportados e que avisos ou atualizações sejam compartilhados de forma visível e acessível.
 
-![Exemplo de um Modelo BPMN do PROCESSO 3](images/process.png "Modelo BPMN do Processo 3.")
+![Gestao mural de avisos e reclamações](images/gestao-mural-avisos-reclamacoes.png")
 
 
 #### Detalhamento das atividades
 
-_Descreva aqui cada uma das propriedades das atividades do processo 3. 
-Devem estar relacionadas com o modelo de processo apresentado anteriormente._
+O mural tem como principal objetivo uma comunicação simples e objetiva entre os usuários, eles serão avisados atrás de uma notificação quando for enviado uma nova informação no mural.
 
 _Os tipos de dados a serem utilizados são:_
 
 _* **Área de texto** - campo texto de múltiplas linhas_
 
-_* **Caixa de texto** - campo texto de uma linha_
-
-_* **Número** - campo numérico_
-
-_* **Data** - campo do tipo data (dd-mm-aaaa)_
-
-_* **Hora** - campo do tipo hora (hh:mm:ss)_
-
 _* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
-
-_* **Imagem** - campo contendo uma imagem_
-
-_* **Seleção única** - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
-
-_* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
-
-_* **Arquivo** - campo de upload de documento_
-
-_* **Link** - campo que armazena uma URL_
-
-_* **Tabela** - campo formado por uma matriz de valores_
 
 **Nome da atividade 1**
 
