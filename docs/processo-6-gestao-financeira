@@ -17,7 +17,6 @@ conciliação dos valores recebidos com os serviços prestados.
 4. Conciliar Recebimentos: Realizar a conciliação bancária para verificar se todos os pagamentos, tanto via boleto quanto Pix, foram processados corretamente e se os valores recebidos batem com os registros financeiros.
 
 
-
 _Os tipos de dados a serem utilizados são:_
 
 _* **Link** - campo que armazena uma URL_
@@ -28,7 +27,6 @@ _* **Link** - campo que armazena uma URL_
 | **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
 | ---             | ---              | ---            | ---               |
 | link            | texto            |                |                   |
-
 
 
 | **Comandos**         |  **Destino**                   | **Tipo**          |
