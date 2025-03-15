@@ -2,7 +2,7 @@
 
 A gestão de rotas baseada no check-in de alunos e passageiros é uma abordagem eficiente para otimizar o trajeto e garantir a organização no transporte. Nesse sistema, as rotas são criadas e ajustadas com base nas confirmações de presença de cada passageiro, como alunos ou outros passageiros que utilizarão o serviço de transporte.
 
-![gestao-rota](images/rota.png)
+![gestao-rota](images/rotas.png)
 
 #### Detalhamento das atividades
 
