@@ -14,18 +14,17 @@ O passageiro na tela inicial terá a opção de marcar se vai ou não naquele di
 _Os tipos de dados a serem utilizados são:_
 
 _* **Data** - campo do tipo data (dd-mm-aaaa)_
-
-
+_* Seleção única - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)_
 
 
 **Inclusão e exclusão**
 
-| **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
-| ---             | ---              | ---                    | ---               |
-| arquivo         | arquivo          | formato de pdf         |                   |
+| **Campo**       | **Tipo**            | **Restrições**         | **Valor default** |
+| ---             | ---                 | ---                    | ---               |
+| seleção         | button              | seleção única          |                   |
 
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| assinar              | Fim do Processo 4              | default           |
+| salva                | Fim do Processo 5              | default           |
