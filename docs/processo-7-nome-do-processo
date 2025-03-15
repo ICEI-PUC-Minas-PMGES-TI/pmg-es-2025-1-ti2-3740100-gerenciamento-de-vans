@@ -1,36 +1,32 @@
-### 3.3.4 Processo 4 – Gestão de notificações
+### 3.3.3 Processo 3 – Gestão mural de avisos e/ou reclamações
 
-Usada para adminitrar as notificações recebidas, o usuário terá a opção de ver depois e responder depois também, mas também poderá
-ver e responder na mesma hora que for enviada. 
+Um mural de reclamações ou avisos será um espaço virtual onde informações importantes, como críticas, sugestões ou comunicados, são expostos. Ele serve como uma ferramenta de comunicação entre os usuários, permitindo que problemas sejam reportados e que avisos ou atualizações sejam compartilhados de forma visível e acessível.
 
-![gestao-notificaoes](images/Gestão de notificações.")
+![Gestao mural de avisos e reclamações](images/mural.png)
+
 
 #### Detalhamento das atividades
 
-1- Usuário recebe uma notificação. 
-2- Escolhe se deseja abrir ou não.
-3- Caso ele não abra a notifcação, ficará salva dentro da aba de notificações "não lidas". 
-4- Caso ele leia a notificação, ela ficará na aba de notificações "lidas". 
+O mural tem como principal objetivo uma comunicação simples e objetiva entre os usuários, eles serão avisados atrás de uma notificação quando for enviado uma nova informação no mural.
+
 
 
 _Os tipos de dados a serem utilizados são:_
 
-_* **Data e Hora** - campo do tipo data e hora (dd-mm-aaaa, hh:mm:ss)_
+_* **Área de texto** - campo texto de múltiplas linhas_
 
 
-**Nome da atividade 1**
 
-| **Campo**       | **Tipo**         | **Restrições** | **Valor default** |
-| ---             | ---              | ---            | ---               |
-| [Nome do campo] | [tipo de dados]  |                |                   |
-| ***Exemplo:***  |                  |                |                   |
-| login           | Caixa de Texto   | formato de e-mail |                |
-| senha           | Caixa de Texto   | mínimo de 8 caracteres |           |
+**Mural**
+
+| **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
+| ---             | ---              | ---                    | ---               |
+| aviso           | Caixa de Texto   | formato de mensagem    |                   |
+
+
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| [Nome do botão/link] | Atividade/processo de destino  | (default/cancel  ) |
-| ***Exemplo:***       |                                |                   |
-| entrar               | Fim do Processo 1              | default           |
-| cadastrar            | Início do proceso de cadastro  |                   |
-
+| adicionar            | Fim do Processo 3              | default           |
+| editar               | Início do proceso de editar    |                   |
+| excluir              | Início do proceso de excluir   |                   |
