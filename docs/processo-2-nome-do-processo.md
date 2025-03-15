@@ -15,7 +15,7 @@ _Os tipos de dados a serem utilizados são:_
 _* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
 
 
-**Nome da atividade 1**
+**Avaliação**
 
 | **Campo**             | **Tipo**           | **Restrições**         | **Valor default** |
 | ---                   | ---                | ---                    | ---               |
