@@ -2,7 +2,7 @@
 
 O sistema de avaliação utilizado irá permite que passageiros avaliem suas experiências após cada viagem. As notas variam de 1 a 5 estrelas, e as avaliações são uma forma de feedback para garantir qualidade no serviço.
 
-![Gestao de avaliacoes](images/avaliacao.png")
+![Gestao de avaliacoes](images/avaliacao.png)
 
 
 #### Detalhamento das atividades
