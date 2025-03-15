@@ -7,26 +7,24 @@ A gestão de contratos entre um motorista de van e o passageiro envolve a organi
 
 #### Detalhamento das atividades
 
-O mural tem como principal objetivo uma comunicação simples e objetiva entre os usuários, eles serão avisados atrás de uma notificação quando for enviado uma nova informação no mural.
-
+O passageiro que deseja ir na van, após uma negóciação deve enviar um pedido pelo contrato que é enviado de forma automática pelo sistema, após a assinatura o contrato entra no nosso banco de dados e o passageiro está registrado dentro da van desejada. 
 
 
 _Os tipos de dados a serem utilizados são:_
 
-_* **Área de texto** - campo texto de múltiplas linhas_
+_* **Arquivo** - campo de upload de documento_
+
+_* **Link** - campo que armazena uma URL_
 
 
-
-**Mural**
+**Contratação**
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| aviso           | Caixa de Texto   | formato de mensagem    |                   |
+| arquivo         | arquivo          | formato de pdf         |                   |
 
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| adicionar            | Fim do Processo 3              | default           |
-| editar               | Início do proceso de editar    |                   |
-| excluir              | Início do proceso de excluir   |                   |
+| assinar              | Fim do Processo 4              | default           |
