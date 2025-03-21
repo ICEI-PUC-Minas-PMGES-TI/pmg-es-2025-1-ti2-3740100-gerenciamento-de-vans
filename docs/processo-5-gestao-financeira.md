@@ -1,4 +1,4 @@
-### 3.3.6 Processo 6 – Gestão financeira.
+### 3.3.5 Processo 5 – Gestão financeira.
 
 A gestão financeira de vans com passageiros, focada em pagamentos via boletos bancários ou Pix, é responsável pelo controle e organização dos pagamentos realizados pelos passageiros, garantindo a 
 regularidade dos recebimentos e a precisão nas transações financeiras. Essa atividade envolve o gerenciamento das formas de pagamento, a emissão de boletos, o monitoramento dos pagamentos realizados e a 
