@@ -8,15 +8,12 @@ conciliação dos valores recebidos com os serviços prestados.
 
 
 #### Detalhamento das atividades
-1. Emissão de Boletos: Gerar e enviar boletos bancários para os passageiros de forma clara, com os valores corretos, datas de vencimento e instruções para pagamento.
+Permite que o passageiro informe diariamente se usará ou não o transporte, ajudando na organização das rotas.  
 
-2. Gestão de Pagamentos via Pix: Controlar e registrar os pagamentos realizados por Pix, assegurando que as transferências sejam realizadas corretamente e no prazo estipulado.
-
-3. Acompanhamento de Pagamentos: Monitorar os pagamentos dos passageiros para garantir que sejam feitos no prazo e no valor correto. Caso haja atraso ou inconsistência, o responsável pela gestão deve tomar as ações necessárias, como enviar lembretes ou cobrar pelo pagamento.
-
-4. Conciliar Recebimentos: Realizar a conciliação bancária para verificar se todos os pagamentos, tanto via boleto quanto Pix, foram processados corretamente e se os valores recebidos batem com os registros financeiros.
-
-
+### Atividades:  
+- **Solicitação da inclusão/exclusão:** O passageiro indica sua necessidade de transporte no dia.  
+- **Criação do registro:** O motorista recebe a solicitação e ajusta a rota conforme necessário.  
+- **Confirmação do status:** O passageiro recebe a confirmação do seu status no sistema.  
 _Os tipos de dados a serem utilizados são:_
 
 _* **Link** - campo que armazena uma URL_
