@@ -7,13 +7,13 @@ Usada para adminitrar as notificações recebidas, o usuário terá a opção de
 
 #### Detalhamento das atividades
 
-Controla os pagamentos, garantindo que os valores sejam cobrados corretamente e que inadimplências sejam evitadas.  
+Administra alertas importantes para usuários do sistema, facilitando a comunicação rápida entre passageiros, motoristas e gestores.  
 
 ### Atividades:  
-- **Envio de notificação:** O sistema lembra o passageiro sobre a data do pagamento.  
-- **Escolha da forma de pagamento:** O usuário decide entre Pix, boleto ou outro método.  
-- **Confirmação do pagamento:** O sistema registra a transação e mantém o histórico financeiro atualizado.  
-
+- **Disparo da notificação:** O sistema envia alertas sobre pagamentos, avaliações, mudanças de rota, entre outros.  
+- **Abertura e visualização:** O usuário acessa a notificação e decide se responde imediatamente ou depois.  
+- **Gerenciamento da notificação:** O usuário pode arquivar, apagar ou manter a notificação visível.
+- 
 _Os tipos de dados a serem utilizados são:_
 
 _* **imagem** - imagem_
