@@ -157,13 +157,11 @@ Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas 
 
 [PROCESSO 4 - Gestão de contratos](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
-[PROCESSO 5 - Gestão de inclusão e exclusão do passageiro](processo-5-nome-do-processo.md "Detalhamento do Processo 5.")
+[PROCESSO 5 - Gestão Financeira](processo-6-gestao-financeira.md "Detalhamento do Processo 5.")
 
-[PROCESSO 6 - Gestão Financeira](processo-6-gestao-financeira.md "Detalhamento do Processo 6.")
+[PROCESSO 6 - Gestão de notificações](processo-7-nome-do-processo.md "Detalhamento do Processo 6.")
 
-[PROCESSO 7 - Gestão de notificações](processo-7-nome-do-processo.md "Detalhamento do Processo 7.")
-
-[PROCESSO 8 - Gestão de rota](processo-8-nome-do-processo.md "Detalhamento do Processo 8.")
+[PROCESSO 7 - Gestão de rota](processo-8-nome-do-processo.md "Detalhamento do Processo 7.")
 
 ## 4. Projeto da solução
 
