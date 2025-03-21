@@ -7,7 +7,13 @@ Um mural de reclamações ou avisos será um espaço virtual onde informações 
 
 #### Detalhamento das atividades
 
-O mural tem como principal objetivo uma comunicação simples e objetiva entre os usuários, eles serão avisados atrás de uma notificação quando for enviado uma nova informação no mural.
+Esse mural é um canal de comunicação direta para que usuários relatem problemas, façam sugestões ou acompanhem comunicados importantes.  
+
+### Atividades:  
+- **Envio de mensagem:** O usuário escreve e publica uma reclamação ou aviso.  
+- **Interação com a mensagem:** Outros usuários podem adicionar respostas, editar ou excluir conteúdos.  
+- **Registro da atualização:** As interações ficam armazenadas e disponíveis para consulta.  
+
 
 
 
