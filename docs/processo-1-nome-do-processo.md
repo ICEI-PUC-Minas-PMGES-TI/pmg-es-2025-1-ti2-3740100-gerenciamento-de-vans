@@ -10,7 +10,7 @@ Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário in
 
 Atividades:
 
-Pesquisa de conta: O sistema verifica se o passageiro já tem um responsável cadastrado.
+Pesquisa de conta: O sistema verifica se o passageiro já tem um responsável cadastrado_
 Ação de decisão: O usuário pode excluir, alterar ou cadastrar um novo responsável.
 Atualização no sistema: As mudanças são salvas e a conta fica pronta para uso.
 
