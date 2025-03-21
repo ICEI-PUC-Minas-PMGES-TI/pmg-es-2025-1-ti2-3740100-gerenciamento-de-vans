@@ -7,12 +7,12 @@ Usada para adminitrar as notificações recebidas, o usuário terá a opção de
 
 #### Detalhamento das atividades
 
-1- Usuário recebe uma notificação. 
-2- Escolhe se deseja abrir ou não.
-3- Caso ele não abra a notificação, ficará salva dentro da aba de notificações "não lidas". 
-4- Caso ele leia a notificação, ela ficará na aba de notificações "lidas". 
+Controla os pagamentos, garantindo que os valores sejam cobrados corretamente e que inadimplências sejam evitadas.  
 
-
+### Atividades:  
+- **Envio de notificação:** O sistema lembra o passageiro sobre a data do pagamento.  
+- **Escolha da forma de pagamento:** O usuário decide entre Pix, boleto ou outro método.  
+- **Confirmação do pagamento:** O sistema registra a transação e mantém o histórico financeiro atualizado.  
 
 _Os tipos de dados a serem utilizados são:_
 
