@@ -7,9 +7,12 @@ A gestão de contratos entre um motorista de van e o passageiro envolve a organi
 
 #### Detalhamento das atividades
 
-O passageiro que deseja ir na van, após uma negóciação deve enviar um pedido pelo contrato que é enviado de forma automática pelo sistema, após a assinatura o contrato entra no nosso banco de dados e o passageiro está registrado dentro da van desejada. 
+Garante que os termos entre motoristas e passageiros sejam formalizados e cumpridos. Isso inclui valores, horários, regras de segurança e outros detalhes.  
 
-
+### Atividades:  
+- **Solicitação do contrato:** O passageiro solicita um contrato ao motorista.  
+- **Criação do contrato:** O motorista gera um documento com as informações acordadas.  
+- **Envio e assinatura:** O passageiro recebe, lê e assina o contrato.  
 _Os tipos de dados a serem utilizados são:_
 
 _* **Arquivo** - campo de upload de documento_
