@@ -6,13 +6,12 @@ A gestão de cadastro é essencial para controlar o acesso ao sistema de gerenci
 
 #### Detalhamento das atividades
 
-Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário insere informações como nome, e-mail, telefone, CPF e senha. No login, esses dados são usados para autenticação. O sistema precisa garantir segurança e facilidade no acesso.
+Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário insere informações como nome, e-mail, telefone, CPF e senha. No login, esses dados são usados para autenticação. O sistema precisa garantir segurança e facilidade no acesso.  
 
-Atividades:
-
-Pesquisa de conta: O sistema verifica se o passageiro já tem um responsável cadastrado
-Ação de decisão: O usuário pode excluir, alterar ou cadastrar um novo responsável.
-Atualização no sistema: As mudanças são salvas e a conta fica pronta para uso.
+### Atividades:  
+- **Pesquisa de conta:** O sistema verifica se o passageiro já tem um responsável cadastrado.  
+- **Ação de decisão:** O usuário pode excluir, alterar ou cadastrar um novo responsável.  
+- **Atualização no sistema:** As mudanças são salvas e a conta fica pronta para uso.  
 
 
 _Os tipos de dados a serem utilizados são:_
