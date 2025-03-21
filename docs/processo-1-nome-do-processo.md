@@ -6,7 +6,13 @@ A gestão de cadastro é essencial para controlar o acesso ao sistema de gerenci
 
 #### Detalhamento das atividades
 
-As pessoas que iram usar está aplicação (motorista, responsável, dono de rede de vans) terão que realizar o cadastro inicial, após o primeiro acesso será necessário entrar com o login para acessar ao site. Esse processo garante que apenas usuários autorizados possam usar o sistema, protegendo as informações e recursos importantes. Além de ajudar a idendificar quem está usando e levá-lo para a tela inicial correta. 
+Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário insere informações como nome, e-mail, telefone, CPF e senha. No login, esses dados são usados para autenticação. O sistema precisa garantir segurança e facilidade no acesso.
+
+Atividades:
+
+Pesquisa de conta: O sistema verifica se o passageiro já tem um responsável cadastrado.
+Ação de decisão: O usuário pode excluir, alterar ou cadastrar um novo responsável.
+Atualização no sistema: As mudanças são salvas e a conta fica pronta para uso.
 
 
 _Os tipos de dados a serem utilizados são:_
