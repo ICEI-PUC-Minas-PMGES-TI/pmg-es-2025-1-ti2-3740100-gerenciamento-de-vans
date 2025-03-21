@@ -149,11 +149,11 @@ Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas 
 
 ### 3.3. Modelagem dos processos
 
-[PROCESSO 1 - Gestão de cadastro/login](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
+[PROCESSO 1 - Gestão de cadastro](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
 
 [PROCESSO 2 - Gestão de avaliações](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Gestão mural de avisos e/ou reclamações](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Gestão do mural de avisos e/ou reclamações](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
 
 [PROCESSO 4 - Gestão de contratos](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
