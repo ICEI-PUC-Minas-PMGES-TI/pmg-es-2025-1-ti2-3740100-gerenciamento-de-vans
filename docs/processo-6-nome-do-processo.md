@@ -1,4 +1,4 @@
-### 3.3.7 Processo 7 – Gestão de notificações
+### 3.3.6 Processo 6 – Gestão de notificações
 
 Usada para adminitrar as notificações recebidas, o usuário terá a opção de ver depois e responder depois também, mas também poderá ver e responder na mesma hora que for enviada. 
 
