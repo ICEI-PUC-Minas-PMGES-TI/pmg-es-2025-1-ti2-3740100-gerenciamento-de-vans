@@ -7,7 +7,12 @@ O sistema de avaliação utilizado irá permite que passageiros avaliem suas exp
 
 #### Detalhamento das atividades
 
-Quando o motorista der o check-out de que o passageiro foi entregue no endereço cadastrado na rota, o passageiro recebe uma notificação pedindo para avaliar a corrida naquele dia, ele tem a possibilidade de não avaliar, como tem a possibilidade de avaliar colocando estrelas entre 0 e 5. Essas avaliações serão salvas dentro do banco de dados como histórico de corridas.
+O sistema permite que passageiros avaliem suas viagens, garantindo um feedback contínuo para melhorar o serviço. As notas variam de 1 a 5 estrelas.  
+
+### Atividades:  
+- **Recebimento de solicitação:** O passageiro recebe uma mensagem pedindo avaliação após o check-out da viagem.  
+- **Escolha da ação:** O usuário pode confirmar, editar ou excluir sua avaliação.  
+- **Registro no sistema:** O feedback é salvo e pode ser consultado pelos responsáveis pela gestão do transporte.  
 
 
 _Os tipos de dados a serem utilizados são:_
