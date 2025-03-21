@@ -2,7 +2,7 @@
 
 A gestão de cadastro é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como e-mail e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
 
-![Cadastro e login](images/)
+![Cadastro e login](images/cadastro.png)
 
 #### Detalhamento das atividades
 
