@@ -8,12 +8,13 @@ conciliação dos valores recebidos com os serviços prestados.
 
 
 #### Detalhamento das atividades
-Permite que o passageiro informe diariamente se usará ou não o transporte, ajudando na organização das rotas.  
+Controla os pagamentos, garantindo que os valores sejam cobrados corretamente e que inadimplências sejam evitadas.  
 
 ### Atividades:  
-- **Solicitação da inclusão/exclusão:** O passageiro indica sua necessidade de transporte no dia.  
-- **Criação do registro:** O motorista recebe a solicitação e ajusta a rota conforme necessário.  
-- **Confirmação do status:** O passageiro recebe a confirmação do seu status no sistema.  
+- **Envio de notificação:** O sistema lembra o passageiro sobre a data do pagamento.  
+- **Escolha da forma de pagamento:** O usuário decide entre Pix, boleto ou outro método.  
+- **Confirmação do pagamento:** O sistema registra a transação e mantém o histórico financeiro atualizado.  
+ 
 _Os tipos de dados a serem utilizados são:_
 
 _* **Link** - campo que armazena uma URL_
