@@ -1,8 +1,8 @@
-### 3.3.1 Processo 1 – GESTÃO DE CADASTRO E LOGIN
+### 3.3.1 Processo 1 – GESTÃO DE CADASTRO
 
-A gestão de cadastro e login é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como nome, e-mail, telefone, cpf e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
+A gestão de cadastro é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como e-mail e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
 
-![Cadastro e login](images/cadastro-login.png)
+![Cadastro e login](images/)
 
 #### Detalhamento das atividades
 
