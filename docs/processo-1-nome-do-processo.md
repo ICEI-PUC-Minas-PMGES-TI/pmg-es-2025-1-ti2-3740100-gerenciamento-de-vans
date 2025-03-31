@@ -1,8 +1,8 @@
 ### 3.3.1 Processo 1 – GESTÃO DE CADASTRO
 
-A gestão de cadastro é essencial para controlar o acesso ao sistema de gerenciamento de vans. No cadastro, o usuário cria uma conta com dados como e-mail e uma senha de acesso. No login, ele usa essas informações para acessar o sistema de forma segura. 
+O login e o cadastro são etapas essenciais para acessar sites com segurança. No cadastro, você cria sua conta informando nome, e-mail ou telefone e uma senha forte. Já o login permite acessar sua conta inserindo o e-mail e a senha cadastrados. Caso esqueça a senha, é possível redefini-la pelo e-mail. Para facilitar o acesso, você pode salvar credenciais em um gerenciador de senhas. No sistema de WiseVan teremos três tipo de cadastro, cadastros para responsáveis, motoristas e dono de redes de vans. Caso o passageiro que irá na van seja de menor de idade ele será cadastrado em nome do seu responsável legal.
 
-![Cadastro e login](images/cadastro.png)
+![Cadastro e login](images/D-gestao-cadastro.png)
 
 #### Detalhamento das atividades
 
