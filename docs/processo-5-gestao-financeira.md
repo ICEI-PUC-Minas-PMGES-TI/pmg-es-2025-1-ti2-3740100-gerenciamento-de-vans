@@ -1,10 +1,10 @@
 ### 3.3.5 Processo 5 – Gestão financeira.
 
-A gestão financeira de vans com passageiros, focada em pagamentos via boletos bancários ou Pix, é responsável pelo controle e organização dos pagamentos realizados pelos passageiros, garantindo a 
-regularidade dos recebimentos e a precisão nas transações financeiras. Essa atividade envolve o gerenciamento das formas de pagamento, a emissão de boletos, o monitoramento dos pagamentos realizados e a 
-conciliação dos valores recebidos com os serviços prestados.
+No sistema da WiseVan tem uma aba projetada para gerenciar pagamentos, recebimentos e transações de forma prática e segura. Irá permitir que os responsáveis realizem pagamentos por diferentes meios, como PIX ou boleto. O pagamento via PIX é especialmente popular por ser instantâneo e disponível 24/7, permitindo transferências rápidas entre contas bancárias com apenas um QR Code. Já os boletos geram documentos com valores e datas de vencimento, permitindo o pagamento em bancos, lotéricas ou por aplicativos, mas com o processamento podendo levar até três dias úteis. As telas também fornecem informações sobre os valores a serem recebidos, mostrando status da mensalidade e dando a opção de pagamento. 
 
-![gestao-financeira](images/financeira.png)
+Na tela do dono de redes de vans, ele irá conseguir ter uma base de visualização dos boletos por passageiro e também terá gráficos para analise de lucro e atrasos em mensalidades. 
+
+![gestao-financeira](images/D-gestao-financeira.png)
 
 
 #### Detalhamento das atividades
