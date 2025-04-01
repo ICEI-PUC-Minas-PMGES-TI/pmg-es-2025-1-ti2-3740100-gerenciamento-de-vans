@@ -1,8 +1,8 @@
-### 3.3.7 Processo 7 – Gestão de rota
+### 3.3.6 Processo 6 – Gestão de rota
 
 A gestão de rotas baseada no check-in de alunos e passageiros é uma abordagem eficiente para otimizar o trajeto e garantir a organização no transporte. Nesse sistema, as rotas são criadas e ajustadas com base nas confirmações de presença de cada passageiro, como alunos ou outros passageiros que utilizarão o serviço de transporte.
 
-![gestao-rota](images/rotas.png)
+![gestao-rota](images/D-gestao-rotas.png)
 
 #### Detalhamento das atividades
 
