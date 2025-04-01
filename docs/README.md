@@ -153,15 +153,14 @@ Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas 
 
 [PROCESSO 2 - Gestão de avaliações](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Gestão do mural de avisos e/ou reclamações](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Gestão do mural de avisos](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
 
 [PROCESSO 4 - Gestão de contratos](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
 
 [PROCESSO 5 - Gestão Financeira](processo-5-gestao-financeira.md "Detalhamento do Processo 5.")
 
-[PROCESSO 6 - Gestão de notificações](processo-6-nome-do-processo.md "Detalhamento do Processo 6.")
+[PROCESSO 6 - Gestão de rota](processo-6-nome-do-processo.md "Detalhamento do Processo 6.")
 
-[PROCESSO 7 - Gestão de rota](processo-7-nome-do-processo.md "Detalhamento do Processo 7.")
 
 ## 4. Projeto da solução
 
