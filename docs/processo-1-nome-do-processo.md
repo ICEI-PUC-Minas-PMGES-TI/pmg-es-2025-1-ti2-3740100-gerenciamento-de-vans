@@ -58,5 +58,5 @@ _* **Link** - campo que armazena uma URL_
 | entrar               | Fim do Processo de cadastro    | default           |
 | login                | Início do proceso de login     | ação              |
 | excluir              | Delete do cadastro             | ação              |
-| editar               | Editar cadastro                | ação              |
-| salvar               | Salvar cadastro                | ação              |
+| editar               | Editar cadastro                         | ação              |
+| salvar               | Salvar cadastro                         | ação              |
