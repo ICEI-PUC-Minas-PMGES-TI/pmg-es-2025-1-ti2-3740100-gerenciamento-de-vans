@@ -14,29 +14,25 @@ Esse mural não só dá voz aos usuários, mas também ajuda a melhorar os servi
 Esse mural é um canal de comunicação direta para que usuários relatem problemas, façam sugestões ou acompanhem comunicados importantes.  
 
 ### Atividades:  
-- **Envio de mensagem:** O usuário escreve e publica uma reclamação ou aviso.  
-- **Interação com a mensagem:** Outros usuários podem adicionar respostas, editar ou excluir conteúdos.  
-- **Registro da atualização:** As interações ficam armazenadas e disponíveis para consulta.  
-
-
-
+- **Acesso ao mural:** O usuário abre o mural no sistema.  
+- **Decisão de escolha:** O usuário escolher o que deseja, se vai abrir o aviso dado no mural ou se deseja acressentar um novo aviso.  
+- **Envio de mensagem:** O sistema faz o envio da mensagem.  
 
 _Os tipos de dados a serem utilizados são:_
 
-_* **Área de texto** - campo texto de múltiplas linhas_
-
-
+_**Área de texto** - campo texto de múltiplas linhas_
+_**
 
 **Mural**
 
-| **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
-| ---             | ---              | ---                    | ---               |
-| aviso           | Caixa de Texto   | formato de mensagem    |                   |
+| **Campo**       | **Tipo**         | **Restrições**                     | **Valor default** |
+| ---             | ---              | ---                                | ---               |
+| Aviso           | Área de Texto    | Deve ter no mínimo 10 caracteres   |                   |
 
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| adicionar            | Fim do Processo 3              | default           |
-| editar               | Início do proceso de editar    |                   |
-| excluir              | Início do proceso de excluir   |                   |
+| Adicionar            | Mural Atualizado               | Default           |
+| Editar               | Início do proceso de edição    | Ação              |
+| Excluir              | Início do proceso de exclusão  | Ação              |

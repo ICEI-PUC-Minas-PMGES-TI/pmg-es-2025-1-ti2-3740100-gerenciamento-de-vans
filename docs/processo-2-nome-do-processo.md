@@ -14,27 +14,30 @@ Avaliar um serviço de forma clara e honesta contribui para a melhoria contínua
 O sistema permite que passageiros avaliem suas viagens, garantindo um feedback contínuo para melhorar o serviço. As notas variam de 1 a 5 estrelas.  
 
 ### Atividades:  
-- **Recebimento de solicitação:** O passageiro recebe uma mensagem pedindo avaliação após o check-out da viagem.  
+- **Recebimento de solicitação:** O passageiro recebe uma mensagem pedindo avaliação após o check-out da viagem.
+- **Desição do usuário:** O passageiro escolhe se deseja ou não avaliar a viagem.
 - **Escolha da ação:** O usuário pode confirmar, editar ou excluir sua avaliação.  
 - **Registro no sistema:** O feedback é salvo e pode ser consultado pelos responsáveis pela gestão do transporte.  
 
 
 _Os tipos de dados a serem utilizados são:_
 
-_* **Seleção múltipla** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
+_**Seleção única** - campo com várias opções que podem ser selecionadas mutuamente (tradicional checkbox ou listbox)_
 
 
 **Avaliação**
 
 | **Campo**             | **Tipo**           | **Restrições**         | **Valor default** |
 | ---                   | ---                | ---                    | ---               |
-| estrelas de avaliação | seleção múltipla   | formato de seleção     |  default          |
+| Estrelas de avaliação | Seleção única      | Valores de 1 a 5       | Nenhum           |
 
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| confirmar            | Fim do Processo 2              | default           |
-| editar               | Início do proceso de editar    |                   |
-| excluir              | Início do proceso de deletar   |                   |
+| Avaliar              | Inicio do processo de avaliação| Default           |
+| Cancelar             | Fim do processo de avaliação   |                   |
+| Confirmar            | Registro de Avaliação          |                   |
+| Editar               | Início do proceso de edição    |                   |
+| Excluir              | Início do proceso de exclusão  |                   |
 
