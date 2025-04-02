@@ -2,6 +2,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent} from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom"
 
 
 
@@ -25,9 +26,9 @@ export default function LoginPage() {
                 <div className="grid gap-2">
                   <div className="flex items-center">
                     <Label htmlFor="password">Senha</Label>
-                    <a href="#" className="ml-auto text-sm underline-offset-2 hover:underline">
+                    <Link to="/forgotpassword" className="ml-auto text-sm underline-offset-2 hover:underline">
                       Esqueceu sua senha?
-                    </a>
+                    </Link>
                   </div>
                   <Input id="password" type="password" className="bg-[#222] border-[#333]" required />
                 </div>
@@ -36,9 +37,9 @@ export default function LoginPage() {
                 </Button>
                 <div className="text-center text-sm">
                   Não possui uma conta?{" "}
-                  <a href="#" className="underline underline-offset-4">
+                  <Link to="/register" className="underline underline-offset-4">
                     Cadastre-se
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

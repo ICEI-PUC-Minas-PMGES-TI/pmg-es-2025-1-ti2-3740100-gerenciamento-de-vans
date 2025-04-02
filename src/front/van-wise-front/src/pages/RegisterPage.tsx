@@ -9,6 +9,7 @@ import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
+import { Link } from "react-router-dom"
 
 
 export default function RegisterPage() {
@@ -90,9 +91,9 @@ export default function RegisterPage() {
             <Button className="w-full">Registrar</Button>
             <div className="text-center text-sm">
               ja possui cadastro?{" "}
-              <a href="/login" className="underline underline-offset-4">
+              <Link to="/login" className="underline underline-offset-4">
                 Entre com sua conta
-              </a>
+              </Link>
             </div>
           </CardFooter>
         </Card>
