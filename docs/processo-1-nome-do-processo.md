@@ -53,6 +53,8 @@ _* **Link** - campo que armazena uma URL_
 | tipo de perfil            | seleção única    | motorista ou dono da rede    |                   |
 
 
+**Comandos**
+
 | **Comandos**         |  **Destino**                   | **Tipo**          |
 | ---                  | ---                            | ---               |
 | entrar               | Fim do Processo de cadastro    | default           |
