@@ -30,7 +30,7 @@ _* **Link** - campo que armazena uma URL_
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| login           | caixa de texto   | formato de e-mail      |                   |
+| login           | caixa de texto   | formato de email       |                   |
 | senha           | caixa de texto   | mínimo de 8 caracteres |                   |
 
 
@@ -46,7 +46,7 @@ _* **Link** - campo que armazena uma URL_
 | **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
 | ---                       | ---              | ---                          | ---               |
 | nome                      | caixa de texto   | obrigatório                  |                   |
-| email                     | caixa de texto   | formato email (@endereço)    |                   |
+| email                     | caixa de texto   | formato de email             |                   |
 | telefone                  | numero           | mínimo de 10 caracteres      |                   |
 | CPF                       | caixa de texto   | 10 carecteres                |                   |
 | confirmar senha           | caixa de texto   | mínimo de 8 caracteres       |                   |
@@ -58,5 +58,5 @@ _* **Link** - campo que armazena uma URL_
 | entrar               | Fim do Processo de cadastro    | default           |
 | login                | Início do proceso de login     | ação              |
 | excluir              | Delete do cadastro             | ação              |
-| editar               | Editar cadastro                         | ação              |
-| salvar               | Salvar cadastro                         | ação              |
+| editar               | Editar cadastro                | ação              |
+| salvar               | Salvar cadastro                | ação              |
