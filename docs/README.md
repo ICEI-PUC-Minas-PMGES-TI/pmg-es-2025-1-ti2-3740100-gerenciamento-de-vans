@@ -11,7 +11,7 @@
 
 **Luiz Gustavo Silva Oliveira, luiz.Igso12@gmail.com**
 
-**João Pedro de Oliveira Santos, jjooao@gmail.com**
+**João Pedro de Oliveira Santos, http.jjooao@gmail.com**
 
 ---
 
