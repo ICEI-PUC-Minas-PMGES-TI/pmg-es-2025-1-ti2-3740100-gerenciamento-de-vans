@@ -15,7 +15,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Theme appearance="dark" >
+    <Theme appearance="light" >
       <BrowserRouter>
       <Routes>
        <Route path='/' element={<App />}/>
