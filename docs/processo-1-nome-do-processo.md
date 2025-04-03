@@ -6,7 +6,7 @@ O login e o cadastro são etapas essenciais para acessar sites com segurança. N
 
 #### Detalhamento das atividades
 
-Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário insere informações como nome, e-mail, telefone, CPF e senha. No login, esses dados são usados para autenticação. O sistema precisa garantir segurança e facilidade no acesso.  
+Esse processo gerencia o fluxo de cadastro de um usuário no sistema, visa que as informações sejam inseridas e que o usuário possa editar, excluir ou salvar os dados antes da finalização.
 
 ### Atividades:  
 - **Pesquisa de conta:** O sistema verifica se o passageiro já tem um responsável cadastrado.  
