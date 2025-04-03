@@ -6,10 +6,26 @@ A gestão de rotas é o processo de planejar, organizar e otimizar os trajetos d
 
 #### Detalhamento das atividades
 
-Ajusta os trajetos diários com base no check-in dos passageiros, otimizando o percurso e reduzindo atrasos.  
+Esse processo gerencia a confirmação de presença dos passageiros e a execução das rotas pelos motoristas.
 
 ### Atividades:  
-- **Pesquisa da rota:** O motorista acessa o sistema para verificar quais passageiros confirmaram presença.  
-- **Ajuste do trajeto:** O sistema sugere mudanças na rota conforme necessidade.  
-- **Confirmação do itinerário:** O motorista recebe a versão final do percurso e segue para as coletas.  
+- **Pesquisa da rota:** O motorista acessa o sistema para buscar a tela de rotas os passageiros confirmados para o dia.  
+- **Ajuste do trajeto:** O sistema gera a rota com base nas confirmações feitas pelos os responsáveis.  
+- **Confirmação de transportes:** O motorista registra no sistema a coleta e a chegada do passageiro ao destino.
+- **Notificação de avaliação:** O sistema envia uma notificação para que o passageiro avalie o serviço.  
 
+**Gestão de confirmações**
+
+| **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
+| ---             | ---              | ---                    | ---               |
+| Presença        | Checkbox         | Obrigatório            | Não confirmado    |
+| Data            | Data             | Formato válido         | Data atual        |
+| Rota            | Texto            | Seleção de lista       | Nenhum            |
+
+
+**Comandos**
+| **Comandos**         |  **Destino**                   | **Tipo**          |
+| ---                  | ---                            | ---               |
+| Confirmar presença   | Gerar rota                     | Ação              |
+| Iniciar Rota         | Notifica o motorista e salva   | Default           |
+| Finalizar Rota       | Enviar notificação             | Ação              |
