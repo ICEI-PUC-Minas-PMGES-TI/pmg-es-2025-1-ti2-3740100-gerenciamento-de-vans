@@ -29,3 +29,22 @@ Esse processo gerencia a confirmação de presença dos passageiros e a execuç�
 | Confirmar presença   | Gerar rota                     | Ação              |
 | Iniciar Rota         | Notifica o motorista e salva   | Default           |
 | Finalizar Rota       | Enviar notificação             | Ação              |
+
+
+#### **Tela para visualizar tela incial do dono**
+![Rotas](images/8W-Tela-Inicial-Dono.png)
+
+#### **Tela para visualizar tela incial do responsável**
+![Rotas](images/16-W-Tela-Inicial-Pais.png)
+
+
+#### **Tela de checkin responsável**
+![Rotas](images/9W-TelaCheckin-passageiro.png)
+
+
+#### **Tela de checkin motorista**
+![Rotas](10-W-TelaChekout-motorista.png)
+
+
+
+
