@@ -168,6 +168,22 @@ _O documento a seguir apresenta o detalhamento do projeto da solução. São apr
 
 [Projeto da solução](solution-design.md "Detalhamento do projeto da solução: modelo relacional e tecnologias.")
 
+### 4.1. Modelo de Dados
+
+
+
+
+### 4.2. Tecnologias
+
+
+A equipe utilizará diversas tecnologias para garantir um desenvolvimento ágil e organizado. Para o **front end**, serão utilizados **HTML, CSS, JavaScript, React, TypeScript, Tailwind CSS e a biblioteca Shadcn**, permitindo a criação de interfaces dinâmicas e responsivas.
+No back end, será adotado o **Spring Boot em Java**, garantindo uma solução robusta para a construção de APIs e aplicações escaláveis. O **VS Code** será o editor de código principal. O **GitHub** será utilizado tanto para o controle de versão quanto para o gerenciamento de tarefas, aproveitando seu recurso de quadros **Kanban** para organizar e acompanhar o progresso do projeto.
+O **Miro** será utilizado para criar wireframes e protótipos colaborativos, enquanto o **Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
+O **banco de dados** utilizado será o **MySQL**, que proporcionará uma solução eficiente e confiável para armazenamento de dados.
+Com essas ferramentas, a equipe terá um ambiente colaborativo e eficiente, facilitando o desenvolvimento e a comunicação ao longo do projeto.
+
+
+
 
 ## 5. Indicadores de desempenho
 
