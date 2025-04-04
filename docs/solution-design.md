@@ -8,34 +8,42 @@ A entidade Vans armazena informações sobre os veículos, como placa, modelo e 
 
 Esse modelo garante um gerenciamento organizado, com todas as informações interconectadas, facilitando a operação do sistema de transporte.
 
-![Exemplo de um modelo relacional](images/modeloRelacional.png "Exemplo de Modelo Relacional.")
+![Modelo de dados](images/modeloDados.png)
 ---
 
 ### 4.2. Tecnologias
 
-Tecnologias: 
- - MySQL: Será usada para auxiliar na criação do Banco de dados em código. 
- - HTML + CSS + JS: Será feito todo o front-end da WiseVan. 
- - Java SpringBoot: Será usado para fazer todo o funcionamento do front-end. 
- - Github Pages: usado para gerenciar e armazenar os nosso projeto. 
+**1. Introdução**
 
-IDE:
- - Apache netbeans: IDE usada para implentar o back-end. 
+Este relatório descreve as tecnologias e ferramentas adotadas pela equipe para o desenvolvimento do projeto, com foco em front end, back end, banco de dados, modelagem de dados e processos, além de controle de versão e gerenciamento de tarefas.
 
-Bibliotecas/frameworks:
+**2. Tecnologias de Front End**
+
+A equipe utilizará **HTML, CSS e JavaScript, além de React, TypeScript, Tailwind CSS e a biblioteca Shadcn**. Essas tecnologias permitirão a criação de interfaces dinâmicas, responsivas e de fácil manutenção.
+
+**3. Tecnologia de Back End**
+
+No back end, será utilizado **Spring Boots com Java**, proporcionando uma plataforma robusta para o desenvolvimento de APIs e aplicações escaláveis.
 - Spring Boot Starter Web: será usado para criação de aplicações web, com suporte para RESTful APIs.
 - Spring Boot Starter Thymeleaf: Para aplicações web que precisam de uma camada de template para renderizar HTML dinâmico. Thymeleaf é o motor de templates padrão para Spring Boot.
-- Spring Boot Starter Security: Para adicionar autenticação e controle de acesso em sua aplicação, incluindo autenticação via login. 
+- Spring Boot Starter Security: Para adicionar autenticação e controle de acesso em sua aplicação, incluindo autenticação via login.
 - Spring Boot Starter Test:usado para testar, incluindo suporte para testes unitários e integração.
 - Spring Boot Starter Mail: Para enviar e-mails a partir da sua aplicação, como confirmações de registro ou notificações.
 - Spring Boot Starter Validation: Para validar dados, como entrada de formulários, usando anotações como @Valid e @NotNull.
 
+**4. Ferramentas de Desenvolvimento**
 
-| **Dimensão**   | **Tecnologia**  |
-| ---            | ---             |
-| SGBD           | MySQL           |
-| Front end      | HTML+CSS+JS     |
-| Back end       | Java SpringBoot |
-| Deploy         | Github Pages    |
-| IDE            | Apache netbeans |
+**VS Code** será o editor de código, oferecendo um ambiente ágil e personalizável.
+**GitHub** será usado para o controle de versão e para o gerenciamento de tarefas, aproveitando os quadros Kanban para organização do progresso do projeto.
+
+**5. Banco de Dados**
+
+O banco de dados adotado será o **MySQL**, garantindo uma solução confiável e eficiente para armazenamento de dados.
+
+
+**6. Ferramentas de Modelagem**
+
+**Miro** será utilizado para a criação de wireframes e protótipos colaborativos.
+**Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
+**Heflo** será utilizado para a modelagem de processos de negócios, permitindo a construção de diagramas de fluxo.
 

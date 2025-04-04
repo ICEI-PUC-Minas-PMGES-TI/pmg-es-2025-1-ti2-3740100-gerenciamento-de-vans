@@ -11,7 +11,7 @@ Esse mural não só dá voz aos usuários, mas também ajuda a melhorar os servi
 
 #### Detalhamento das atividades
 
-Esse mural é um canal de comunicação direta para que usuários relatem problemas, façam sugestões ou acompanhem comunicados importantes.  
+O mural de avisos é aberto para todos os usuários, ele tem a funcionalidade de visualizar ou cadastrar um aviso. 
 
 ### Atividades:  
 - **Acesso ao mural:** O usuário abre o mural no sistema.  
@@ -36,3 +36,23 @@ _**
 | Adicionar            | Mural Atualizado               | Default           |
 | Editar               | Início do proceso de edição    | Ação              |
 | Excluir              | Início do proceso de exclusão  | Ação              |
+
+
+#### **Tela para cadastrar no mural**
+![Mural](images/19-W-Tela-cadastrar-mural.png)
+
+
+#### **Tela para visualizar avisos do mural**
+![Mural](images/20-W-Tela-visualizacao-mural.png)
+
+
+#### **Tela para visualizar o mural**
+![Mural](images/21-W-Tela-mural.png)
+
+
+
+
+
+
+
+

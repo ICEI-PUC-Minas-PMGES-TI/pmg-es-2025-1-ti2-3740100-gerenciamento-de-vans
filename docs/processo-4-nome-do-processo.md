@@ -9,27 +9,56 @@ Na WiseVan fazer o contrato entre responsável e motorista é fácil e objetivo.
 
 #### Detalhamento das atividades
 
-Garante que os termos entre motoristas e passageiros sejam formalizados e cumpridos. Isso inclui valores, horários, regras de segurança e outros detalhes.  
+Na gestão de contratos, o cliente solicita ao motorista o contrato, após receber, o cliente visualiza e decide se quer ou não assinar, caso assine, o motorista recebe o contrato de volta assinado, assim finalizando o processo.
 
 ### Atividades:  
 - **Solicitação do contrato:** O passageiro solicita um contrato ao motorista.  
 - **Criação do contrato:** O motorista gera um documento com as informações acordadas.  
-- **Envio e assinatura:** O passageiro recebe, lê e assina o contrato.  
-_Os tipos de dados a serem utilizados são:_
+- **Envio do contrato:** O motorista envia o contrato para o cliente.
+- **Decisão do Passageiro:** O passageiro decide se quer ou não assinar o contrato.
+  
+_**Os tipos de dados a serem utilizados são:**_
 
-_* **Arquivo** - campo de upload de documento_
+_**Arquivo** - campo de upload de contrato em formato PDF_
 
-_* **Link** - campo que armazena uma URL_
+_**Link** - campo que armazena uma URL_
 
 
 **Contratação**
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| arquivo         | arquivo          | formato de pdf         |                   |
+| Arquivo         | Arquivo          | Formato de pdf         |                   |
+| Link            | Link             | URL Inválida           |                   |
 
 
 
-| **Comandos**         |  **Destino**                   | **Tipo** |
+**Comandos**
+| **Comandos**         |  **Destino**                   | **Tipo**          |
 | ---                  | ---                            | ---               |
-| assinar              | Fim do Processo 4              | default           |
+| Solicitar            | Inicio do processo             | Ação              |
+| Assinar              | Notifica o motorista e salva   | Default           |
+| Recusar              | Fim do peocesso                | Ação              |
+
+
+#### **Tela para visualizar todos os contratos do motoristas**
+![Mural](images/11-W-TelaContrato-Motorista.png)
+
+
+#### **Tela para vizualizar um contrato específico do motoristas**
+![Mural](images/14-W-TelaContrato-especifico-Motorista.png)
+
+
+
+#### **Tela para vizualizar contratos vinculado ao Responsável**
+![Mural](images/12-W-TelaContrato-Responsavel.png)
+
+
+
+#### **Tela para visualizar todos os contratos do dono da rede**
+![Mural](images/15-W-TelaContrato-Dono-geral.png)
+
+
+#### **Tela para vizualizar um contrato específico do dono da rede**
+![Mural](images/13-W-TelaContrato-Visu-Dono.png)
+

@@ -6,7 +6,7 @@ O login e o cadastro são etapas essenciais para acessar sites com segurança. N
 
 #### Detalhamento das atividades
 
-Esse processo cuida do controle de acesso ao sistema. No cadastro, o usuário insere informações como nome, e-mail, telefone, CPF e senha. No login, esses dados são usados para autenticação. O sistema precisa garantir segurança e facilidade no acesso.  
+Esse processo gerencia o fluxo de cadastro de um usuário no sistema, visa que as informações sejam inseridas e que o usuário possa editar, excluir ou salvar os dados antes da finalização.
 
 ### Atividades:  
 - **Pesquisa de conta:** O sistema verifica se o passageiro já tem um responsável cadastrado.  
@@ -62,3 +62,38 @@ _* **Link** - campo que armazena uma URL_
 | excluir              | Delete do cadastro             | ação              |
 | editar               | Editar cadastro                | ação              |
 | salvar               | Salvar cadastro                | ação              |
+
+
+#### **Tela de LOGING**
+![Login](images/1W-Tela-Login.png)
+
+#### **Tela de para escolha de tipo de usuário**
+![Cadastro](images/2W-Tela-Cadastro-TIPO-usuario.png)
+
+#### **Tela de para escolha de tipo de usuário**
+![Cadastro](images/3W-Cadastro-Qual-Passageiro.png)
+
+
+#### **Tela de para cadastro de maiores de idade**
+![Cadastro](images/4W-Cadastro-Maior-Idade.png)
+
+#### **Tela de para cadastro de menores de idade**
+![Cadastro](images/5W-Cadastro-Menor-idade.png)
+
+#### **Tela de para cadastro de motoristas**
+![Cadastro](images/6W-Cadastro-Motoristas.png)
+
+#### **Tela de para confirmação de Email**
+![Cadastro](images/6W-Cadastro-Motoristas.png)
+
+
+#### **Tela de para redefinir senha**
+![Cadastro](images/26-W-Tela-esqueceu-senha.png)
+
+
+
+
+
+
+
+
