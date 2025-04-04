@@ -169,8 +169,14 @@ _O documento a seguir apresenta o detalhamento do projeto da solução. São apr
 [Projeto da solução](solution-design.md "Detalhamento do projeto da solução: modelo relacional e tecnologias.")
 
 ### 4.1. Modelo de Dados
+O modelo relacional da WiseVan descreve a estrutura de dados utilizada para gerenciar o transporte de passageiros de maneira eficiente. Nesse modelo, as principais entidades podem incluir Vans, Motoristas, Passageiros, Rotas, Pagamentos e Controle de Presença. 
 
+A entidade Vans armazena informações sobre os veículos, como placa, modelo e capacidade. A Motorista relaciona-se com a Van, identificando quem está responsável por cada viagem, enquanto os Passageiros estão associados a uma Rota específica e ao Controle de Presença. A Rota define os trajetos, horários e pontos de partida e chegada. Pagamentos registram os valores pagos pelos passageiros, com informações sobre data, método de pagamento (como PIX ou boleto) e status do pagamento. 
 
+Esse modelo garante um gerenciamento organizado, com todas as informações interconectadas, facilitando a operação do sistema de transporte.
+
+![Modelo de dados](images/modeloDados.png)
+---
 
 
 ### 4.2. Tecnologias
@@ -186,7 +192,7 @@ A equipe utilizará **HTML, CSS e JavaScript, além de React, TypeScript, Tailwi
 
 **3. Tecnologia de Back End**
 
-No back end, será utilizado **Spring Boot com Java**, proporcionando uma plataforma robusta para o desenvolvimento de APIs e aplicações escaláveis.
+No back end, será utilizado **Spring Boots com Java**, proporcionando uma plataforma robusta para o desenvolvimento de APIs e aplicações escaláveis.
 
 **4. Ferramentas de Desenvolvimento**
 
