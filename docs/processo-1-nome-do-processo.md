@@ -62,3 +62,6 @@ _* **Link** - campo que armazena uma URL_
 | excluir              | Delete do cadastro             | ação              |
 | editar               | Editar cadastro                | ação              |
 | salvar               | Salvar cadastro                | ação              |
+
+
+images/W - Tela e Login.pdf
