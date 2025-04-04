@@ -87,6 +87,10 @@ _* **Link** - campo que armazena uma URL_
 ![Cadastro](images/6W-Cadastro-Motoristas.png)
 
 
+#### **Tela de para redefinir senha**
+![Cadastro](images/26-W-Tela-esqueceu-senha.png)
+
+
 
 
 
