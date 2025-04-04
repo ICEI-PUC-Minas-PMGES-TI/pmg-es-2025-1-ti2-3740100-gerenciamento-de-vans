@@ -65,4 +65,3 @@ _* **Link** - campo que armazena uma URL_
 
 
 
-![Cadastro e login](images/W-1TeladeLogin.pdf)
