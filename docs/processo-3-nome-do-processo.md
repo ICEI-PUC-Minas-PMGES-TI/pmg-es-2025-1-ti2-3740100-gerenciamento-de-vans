@@ -36,3 +36,23 @@ _**
 | Adicionar            | Mural Atualizado               | Default           |
 | Editar               | Início do proceso de edição    | Ação              |
 | Excluir              | Início do proceso de exclusão  | Ação              |
+
+
+#### **Tela para cadastrar no mural**
+![Mural](images/19-W-Tela-cadastrar-mural.png)
+
+
+#### **Tela para visualizar avisos do mural**
+![Mural](images/20-W-Tela-visualizacao-mural.png)
+
+
+#### **Tela para visualizar o mural**
+![Mural](images/21-W-Tela-mural.png)
+
+
+
+
+
+
+
+
