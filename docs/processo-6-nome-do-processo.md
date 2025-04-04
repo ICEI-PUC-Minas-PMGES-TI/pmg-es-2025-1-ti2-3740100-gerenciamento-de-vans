@@ -43,7 +43,7 @@ Esse processo gerencia a confirmação de presença dos passageiros e a execuç�
 
 
 #### **Tela de checkin motorista**
-![Rotas](10-W-TelaChekout-motorista.png)
+![Rotas](images/10-W-TelaChekout-motorista.png)
 
 
 
