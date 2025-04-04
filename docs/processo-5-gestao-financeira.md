@@ -51,3 +51,25 @@ _* **Link** - campo que armazena uma URL_
 | Notificar Motorista  | Atualização do sistema         | Ação              |
 | Finalizar Processo   | 	Fim do fluxo financeiro       | Ação              |
 
+
+
+
+
+#### **Tela para visualizar extrato financeiro do dono da rede**
+![Mural](images/23-W-Tela-financeiro-Dono-geral.png)
+
+
+#### **Tela para visualizar extrato financeiro de um passageiro do dono da rede**
+![Mural](images/22-W-Tela-financeiro-Dono-especifico.png)
+
+
+#### **Tela para visualizar extrato financeiro do responsável**
+![Mural](images/25-W-Tela-financeiro-Responsavel.png)
+
+#### **Tela para visualizar QRCODE**
+![Mural](images/24-W-Tela-financeiro-pix.png)
+
+
+
+
+
