@@ -176,11 +176,29 @@ _O documento a seguir apresenta o detalhamento do projeto da solução. São apr
 ### 4.2. Tecnologias
 
 
-A equipe utilizará diversas tecnologias para garantir um desenvolvimento ágil e organizado. Para o **front end**, serão utilizados **HTML, CSS, JavaScript, React, TypeScript, Tailwind CSS e a biblioteca Shadcn**, permitindo a criação de interfaces dinâmicas e responsivas.
-No back end, será adotado o **Spring Boot em Java**, garantindo uma solução robusta para a construção de APIs e aplicações escaláveis. O **VS Code** será o editor de código principal. O **GitHub** será utilizado tanto para o controle de versão quanto para o gerenciamento de tarefas, aproveitando seu recurso de quadros **Kanban** para organizar e acompanhar o progresso do projeto.
-O **Miro** será utilizado para criar wireframes e protótipos colaborativos, enquanto o **Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
-O **banco de dados** utilizado será o **MySQL**, que proporcionará uma solução eficiente e confiável para armazenamento de dados. Para a **modelagem de processos**, a ferramenta **Heflo** será empregada, permitindo a construção de diagramas de fluxo e a análise detalhada de processos de negócios.
-Com essas ferramentas, a nossa equipe terá um ambiente colaborativo e eficiente, facilitando o desenvolvimento e a comunicação ao longo do projeto.
+**1. Introdução**
+Este relatório descreve as tecnologias e ferramentas adotadas pela equipe para o desenvolvimento do projeto, com foco em front end, back end, banco de dados, modelagem de dados e processos, além de controle de versão e gerenciamento de tarefas.
+
+**2. Tecnologias de Front End**
+A equipe utilizará **HTML, CSS e JavaScript, além de React, TypeScript, Tailwind CSS e a biblioteca Shadcn**. Essas tecnologias permitirão a criação de interfaces dinâmicas, responsivas e de fácil manutenção.
+
+**3. Tecnologia de Back End**
+No back end, será utilizado **Spring Boot com Java**, proporcionando uma plataforma robusta para o desenvolvimento de APIs e aplicações escaláveis.
+
+**4. Ferramentas de Desenvolvimento**
+**VS Code** será o editor de código, oferecendo um ambiente ágil e personalizável.
+
+**GitHub** será usado para o controle de versão e para o gerenciamento de tarefas, aproveitando os quadros Kanban para organização do progresso do projeto.
+
+**5. Banco de Dados**
+O banco de dados adotado será o **MySQL**, garantindo uma solução confiável e eficiente para armazenamento de dados.
+
+**6. Ferramentas de Modelagem**
+**Miro** será utilizado para a criação de wireframes e protótipos colaborativos.
+
+**Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
+
+**Heflo** será utilizado para a modelagem de processos de negócios, permitindo a construção de diagramas de fluxo.
 
 
 
