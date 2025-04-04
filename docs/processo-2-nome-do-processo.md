@@ -46,6 +46,6 @@ _**Seleção única** - campo com várias opções que podem ser selecionadas mu
 #### **Tela de  cadastro de avaliação do responsável**
 ![Avalizacao](images/17-W-TelaAvaliacao-Resposavel.png)
 
-#### **Tela gerencia de avaliaçaõ**
+#### **Tela gerencia de avaliação**
 ![Avalizacao](images/18-W-Tela-GestaoAvaliacao-Dono.png)
 
