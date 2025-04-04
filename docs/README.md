@@ -180,7 +180,7 @@ A equipe utilizará diversas tecnologias para garantir um desenvolvimento ágil 
 No back end, será adotado o **Spring Boot em Java**, garantindo uma solução robusta para a construção de APIs e aplicações escaláveis. O **VS Code** será o editor de código principal. O **GitHub** será utilizado tanto para o controle de versão quanto para o gerenciamento de tarefas, aproveitando seu recurso de quadros **Kanban** para organizar e acompanhar o progresso do projeto.
 O **Miro** será utilizado para criar wireframes e protótipos colaborativos, enquanto o **Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
 O **banco de dados** utilizado será o **MySQL**, que proporcionará uma solução eficiente e confiável para armazenamento de dados. Para a **modelagem de processos**, a ferramenta **Heflo** será empregada, permitindo a construção de diagramas de fluxo e a análise detalhada de processos de negócios.
-Com essas ferramentas, a equipe terá um ambiente colaborativo e eficiente, facilitando o desenvolvimento e a comunicação ao longo do projeto.
+Com essas ferramentas, a nossa equipe terá um ambiente colaborativo e eficiente, facilitando o desenvolvimento e a comunicação ao longo do projeto.
 
 
 
