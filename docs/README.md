@@ -193,6 +193,12 @@ A equipe utilizará **HTML, CSS e JavaScript, além de React, TypeScript, Tailwi
 **3. Tecnologia de Back End**
 
 No back end, será utilizado **Spring Boots com Java**, proporcionando uma plataforma robusta para o desenvolvimento de APIs e aplicações escaláveis.
+- Spring Boot Starter Web: será usado para criação de aplicações web, com suporte para RESTful APIs.
+- Spring Boot Starter Thymeleaf: Para aplicações web que precisam de uma camada de template para renderizar HTML dinâmico. Thymeleaf é o motor de templates padrão para Spring Boot.
+- Spring Boot Starter Security: Para adicionar autenticação e controle de acesso em sua aplicação, incluindo autenticação via login.
+- Spring Boot Starter Test:usado para testar, incluindo suporte para testes unitários e integração.
+- Spring Boot Starter Mail: Para enviar e-mails a partir da sua aplicação, como confirmações de registro ou notificações.
+- Spring Boot Starter Validation: Para validar dados, como entrada de formulários, usando anotações como @Valid e @NotNull.
 
 **4. Ferramentas de Desenvolvimento**
 
