@@ -18,7 +18,7 @@ export default function ForgotPasswordPage() {
             <Label htmlFor="email">Email</Label>
             <Input type="email" id="email" required />
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full cursor-pointer">
             Enviar email de recuperação
           </Button>
           <div className="text-center text-sm">

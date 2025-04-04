@@ -12,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popove
 import { Link } from "react-router-dom"
 
 
+
 export default function RegisterPage() {
   const [date, setDate] = React.useState<Date>()
 
@@ -88,7 +89,7 @@ export default function RegisterPage() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center gap-2">
-            <Button className="w-full">Registrar</Button>
+            <Button className="w-full cursor-pointer">Registrar</Button>
             <div className="text-center text-sm">
               ja possui cadastro?{" "}
               <Link to="/login" className="underline underline-offset-4">

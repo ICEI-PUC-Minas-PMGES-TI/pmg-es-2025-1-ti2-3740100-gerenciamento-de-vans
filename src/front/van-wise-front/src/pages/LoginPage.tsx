@@ -11,7 +11,7 @@ export default function LoginPage() {
     <main>
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm md:max-w-4xl">
-        <Card className="overflow-hidden bg-[#1a1a1a] text-white border-[#333]">
+        <Card className="overflow-hidden">
           <CardContent className="grid p-0 md:grid-cols-2 h-500px">
             <form className="p-6 md:p-10">
               <div className="flex flex-col gap-8">
@@ -21,7 +21,7 @@ export default function LoginPage() {
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" className="bg-[#222] border-[#333]" required />
+                  <Input id="email" type="email"  required />
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
@@ -30,9 +30,9 @@ export default function LoginPage() {
                       Esqueceu sua senha?
                     </Link>
                   </div>
-                  <Input id="password" type="password" className="bg-[#222] border-[#333]" required />
+                  <Input id="password" type="password"  required />
                 </div>
-                <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200">
+                <Button type="submit" className="w-full cursor-pointer">
                   Login
                 </Button>
                 <div className="text-center text-sm">
