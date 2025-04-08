@@ -3,7 +3,7 @@
 A gestão financeira é o processo no qual permite onde os passageiros façam o pagamento via Pix, onde tem o prazo de o 7º dia útil para efetuar o pagamento. 
 Na tela do motorista, ele irá conseguir ter uma base de visualização das pendências por passageiro e também terá gráficos para analise de lucro e atrasos em mensalidades.
 
-![gestao-financeira](images/D-gestao-financeira.png)
+![gestao-financeira](images/BPMN-gestaofinanceira.png)
 
 
 #### Detalhamento das atividades
