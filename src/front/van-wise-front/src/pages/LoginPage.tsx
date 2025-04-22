@@ -3,6 +3,7 @@ import { Card, CardContent} from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom"
+import { ModeToggle } from "@/components/ui/themebutton";
 
 
 
@@ -12,6 +13,9 @@ export default function LoginPage() {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm md:max-w-4xl">
         <Card className="overflow-hidden">
+          <div className="absolute top-4 right-4">
+                      <ModeToggle />
+                    </div>
           <CardContent className="grid p-0 md:grid-cols-2 h-500px">
             <form className="p-6 md:p-10">
               <div className="flex flex-col gap-8">
