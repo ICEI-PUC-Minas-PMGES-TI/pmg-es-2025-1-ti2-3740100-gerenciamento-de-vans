@@ -12,7 +12,6 @@ import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popove
 import { Link } from "react-router-dom"
 
 
-
 export default function RegisterPage() {
   const [date, setDate] = React.useState<Date>()
 
@@ -70,15 +69,17 @@ export default function RegisterPage() {
                 </PopoverContent>
               </Popover>
               </div>         
-            {/* Fim do calendario */}           
+            {/* Fim do calendario */}    
+
             <div className="flex-1">
               <Label htmlFor="tel" className="mb-1 block">Telefone</Label>
-              <Input type="tel" id="telefone" className="h-10" />
+              <Input maskType="phone" id="telefone" className="h-10" />
               </div>
               </div>
 
               <Label htmlFor="cpf">CPF</Label>
-              <Input type="cpf" id="cpf" />
+              <Input maskType="cpf" id="cpf" />
+
               <Label htmlFor="email">Email</Label>
               <Input type="email" id="email" />
               <Label htmlFor="password">Senha</Label>
