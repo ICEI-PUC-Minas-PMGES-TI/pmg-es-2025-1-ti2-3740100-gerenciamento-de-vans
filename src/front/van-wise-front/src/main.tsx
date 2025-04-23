@@ -2,8 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from './components/ui/theme-provider.tsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //pages import
@@ -15,7 +14,13 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Theme appearance="light" >
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+    
       <BrowserRouter>
       <Routes>
        <Route path='/' element={<App />}/>
@@ -24,8 +29,7 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
       
       </Routes>
-   
     </BrowserRouter>
-    </Theme>
+    </ThemeProvider>
   </StrictMode>,
 )

@@ -6,7 +6,7 @@ As mensagens são organizadas por categorias, como reclamações, dúvidas e fee
 
 Esse mural não só dá voz aos usuários, mas também ajuda a melhorar os serviços oferecidos, criando uma experiência mais transparente e confiável para todos.
 
-![Gestao mural de avisos e reclamações](images/D-gestao-mural-avisos.png)
+![Gestao mural de avisos e reclamações](images/BPMN-gestaoavisosmural.png)
 
 
 #### Detalhamento das atividades

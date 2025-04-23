@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import { Card } from "@radix-ui/themes";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { ModeToggle } from "@/components/ui/themebutton";
 
 
 export default function ForgotPasswordPage() {
   return (
     <main className="flex justify-center items-center min-h-screen">
       <Card className="w-full max-w-[400px] flex flex-col justify-center">
+       <div className="absolute top-4 right-4">
+                   <ModeToggle />
+                 </div>
         <CardHeader>
           <CardTitle className="text-center">Recuperar Senha</CardTitle>
         </CardHeader>

@@ -3,23 +3,22 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/co
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
-import * as React from "react"
-import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
-import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
 import { Link } from "react-router-dom"
+import { ModeToggle } from "@/components/ui/themebutton"
 
 
 
 export default function RegisterPage() {
-  const [date, setDate] = React.useState<Date>()
+
 
   return (
     <main>
       <div className="flex justify-center items-center min-h-screen ">
         <Card className="w-[500px] space=-y-4">
+          <div className="absolute top-4 right-4">
+            <ModeToggle />
+          </div>
+
           <CardHeader >
             <h1 className="text-2xl font-bold">Crie Sua Conta</h1>
             <CardDescription>Crie uma conta utilizando seus dados</CardDescription>
@@ -57,28 +56,21 @@ export default function RegisterPage() {
             {/* Calendario para data de Nascimento */}
             <div className="flex gap-3">
               <div className="flex-1">
-              <Label htmlFor="data" className="mb-1 block">Data de Nascimento</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className={cn("w-full h-10 justify-start text-left font-normal", !date && "text-muted-foreground")}>
-                    {date ? format(date, "dd/MM/yyyy") : <span>Selecione uma data</span>}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-                </PopoverContent>
-              </Popover>
+              <Label htmlFor="date" className="mb-1 block">Data de Nascimento</Label>
+              <Input maskType="data" id="data" className="h-10" />
+             
               </div>         
-            {/* Fim do calendario */}           
+            {/* Fim do calendario */}    
+
             <div className="flex-1">
               <Label htmlFor="tel" className="mb-1 block">Telefone</Label>
-              <Input type="tel" id="telefone" className="h-10" />
+              <Input maskType="phone" id="telefone" className="h-10" />
               </div>
               </div>
 
               <Label htmlFor="cpf">CPF</Label>
-              <Input type="cpf" id="cpf" />
+              <Input maskType="cpf" id="cpf" />
+
               <Label htmlFor="email">Email</Label>
               <Input type="email" id="email" />
               <Label htmlFor="password">Senha</Label>
