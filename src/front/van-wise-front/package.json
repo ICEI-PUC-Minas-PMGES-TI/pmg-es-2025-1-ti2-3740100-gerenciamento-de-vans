@@ -34,8 +34,8 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/node": "^22.13.14",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
     "@types/react-input-mask": "^3.0.6",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
