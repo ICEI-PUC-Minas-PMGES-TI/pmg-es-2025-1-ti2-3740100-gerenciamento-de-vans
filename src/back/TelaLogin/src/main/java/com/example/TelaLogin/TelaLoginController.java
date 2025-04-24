@@ -1,8 +1,10 @@
 package com.example.TelaLogin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/login")
@@ -10,21 +12,16 @@ import org.springframework.web.bind.annotation.*;
 public class TelaLoginController {
 
     @Autowired
-    private TelaLoginRepository repository;
+    private TelaLoginRepository loginRepository;
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody TelaLogin usuario) {
-        if (repository.existsById(usuario.getEmail())) {
-            return ResponseEntity.badRequest().body("Usuário já cadastrado");
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody TelaLogin loginRequest) {
+        Optional<TelaLogin> usuario = loginRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
+
+        if (usuario.isPresent() && usuario.get().getPassword().equals(loginRequest.getPassword())) {
+            return ResponseEntity.ok("Login bem-sucedido!");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha inválidos");
         }
-        repository.save(usuario);
-        return ResponseEntity.ok("Usuário registrado com sucesso");
-    }
-
-    @PostMapping
-    public ResponseEntity<?> login(@RequestBody TelaLogin usuario) {
-        return repository.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword())
-                .map(user -> ResponseEntity.ok("Login realizado com sucesso!"))
-                .orElse(ResponseEntity.status(401).body("Email ou senha incorretos"));
     }
 }

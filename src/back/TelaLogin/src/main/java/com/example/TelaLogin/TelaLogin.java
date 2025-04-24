@@ -2,6 +2,7 @@ package com.example.TelaLogin;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,9 +11,10 @@ import jakarta.persistence.Table;
 public class TelaLogin {
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY) // auto incremento
-    private String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incremento
+    private Long id;
 
+    private String email;
     private String password;
 
     public TelaLogin() {}
