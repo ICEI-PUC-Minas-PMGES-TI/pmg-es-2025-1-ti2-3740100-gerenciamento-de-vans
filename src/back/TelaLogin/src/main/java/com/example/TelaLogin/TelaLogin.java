@@ -1,5 +1,6 @@
 package com.example.TelaLogin;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,14 +15,26 @@ public class TelaLogin {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incremento
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String email;
+    
     private String password;
 
+    // Construtores
     public TelaLogin() {}
 
     public TelaLogin(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -40,3 +53,4 @@ public class TelaLogin {
         this.password = password;
     }
 }
+
