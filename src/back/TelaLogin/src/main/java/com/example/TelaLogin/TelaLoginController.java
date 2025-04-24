@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/login")
@@ -39,7 +40,22 @@ public class TelaLoginController {
         }
         loginRepository.save(novoUsuario);
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso");
-}
+    }
+
+    @PostMapping("/recover-password")
+    public ResponseEntity<String> recoverPassword(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+
+        Optional<TelaLogin> usuario = loginRepository.findByEmail(email);
+
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok("Email de recuperação enviado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email não encontrado");
+        }
+    }
 
 }
+
+
 
