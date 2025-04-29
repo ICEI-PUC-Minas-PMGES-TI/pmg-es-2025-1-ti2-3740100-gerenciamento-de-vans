@@ -9,6 +9,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
+import ResponsibleHomePage from './pages/ResponsibleHomePage.tsx';
+import DriverHomePage from './pages/DriverHomePage.tsx';
+import AdminHomePage from './pages/AdminHomePage.tsx';
 
 
 
@@ -27,7 +30,11 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/login' element={<LoginPage />}/>
        <Route path='/register' element={<RegisterPage />}/>
        <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
-      
+       <Route path='/responsible' element={<ResponsibleHomePage />}/>
+       <Route path='/driver' element={<DriverHomePage />}/>
+       <Route path='/admin' element={<AdminHomePage />}/>
+
+            
       </Routes>
     </BrowserRouter>
     </ThemeProvider>
