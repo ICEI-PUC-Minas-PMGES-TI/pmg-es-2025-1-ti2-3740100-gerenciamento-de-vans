@@ -16,6 +16,8 @@ export default function RegisterPage() {
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cpf, setCpf] = useState("");
+  const [cnh, setCnh] = useState("");
+  const [antt, setAntt] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [tipoUsuario, setTipoUsuario] = useState("");
   const [modalMessage, setModalMessage] = useState("");
@@ -25,7 +27,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     // Validação no front-end
-    if (!nome || !sobrenome || !email || !senha || !confirmaSenha || !telefone || !cpf || !dataNascimento || !tipoUsuario) {
+    if (!nome || !sobrenome || !email || !senha || !confirmaSenha || !telefone || !cpf || !cnh || !dataNascimento || !tipoUsuario) {
       setModalMessage("Por favor, preencha todos os campos obrigatórios.");
       setIsModalOpen(true);
       return;
@@ -90,9 +92,10 @@ export default function RegisterPage() {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Tipo de Usuario</SelectLabel>
-                    <SelectItem value="responsavel">Responsável</SelectItem>
-                    <SelectItem value="aluno">Aluno</SelectItem>
+                    <SelectItem value="responsavel">Responsável/Maior de idade</SelectItem>
+                    <SelectItem value="aluno">Aluno menor de idade</SelectItem>
                     <SelectItem value="motorista">Motorista</SelectItem>
+                    <SelectItem value="donoderede">Dono de rede</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -149,6 +152,30 @@ export default function RegisterPage() {
                   />
                 </div>
               </div>
+
+              {/* Campo caso seja motorista */}
+              {tipoUsuario === "motorista" && (
+                <>
+                <Label htmlFor="cnh">CNH</Label>
+                  <Input
+                  maskType="cnh"
+                  id="cnh"
+                  value={cnh}
+                  onChange={(e) => setCnh(e.target.value)}
+                  placeholder="Número da CNH"
+                  />
+
+                  <Label htmlFor="antt">Registro ANTT</Label>
+                  <Input
+                  maskType="antt"
+                  id="antt"
+                  value={antt}
+                  onChange={(e) => setAntt(e.target.value)}
+                  placeholder="Número do registro ANTT"
+                  />
+                
+                </>
+              )}
 
               <Label htmlFor="cpf">CPF</Label>
               <Input
