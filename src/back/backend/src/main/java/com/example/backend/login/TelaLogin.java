@@ -1,4 +1,4 @@
-package com.example.TelaLogin;
+package com.example.backend.login;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -53,4 +53,3 @@ public class TelaLogin {
         this.password = password;
     }
 }
-

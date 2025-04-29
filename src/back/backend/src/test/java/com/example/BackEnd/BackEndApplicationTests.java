@@ -1,10 +1,10 @@
-package com.example.TelaLogin;
+package com.example.BackEnd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TelaLoginApplicationTests {
+class BackEndApplicationTests {
 
 	@Test
 	void contextLoads() {
