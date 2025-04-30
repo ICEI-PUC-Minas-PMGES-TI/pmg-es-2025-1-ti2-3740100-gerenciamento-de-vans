@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,9 +21,27 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8080/api/login/login', { email, password });
-      console.log(response.data); // Login bem-sucedido
-      // Aqui você pode redirecionar para outra página ou armazenar o token de autenticação
+      const response = await axios.post('http://localhost:8080/api/login/login', {
+        email,
+        password,
+      });
+
+      const tipoUsuario = response.data?.tipoUsuario?.toLowerCase();
+
+      if (!tipoUsuario) {
+        setError('Tipo de usuário não identificado. Verifique seu cadastro.');
+        return;
+      }
+
+      // Redirecionamento com base no tipo de usuário
+      if (tipoUsuario === 'responsavel' || tipoUsuario === 'aluno') {
+        navigate('/responible');
+      } else if (tipoUsuario === 'motorista') {
+        navigate('/driver');
+      } else {
+        setError('Tipo de usuário inválido.');
+      }
+
     } catch (err: any) {
       setError('Email ou senha inválidos');
       console.error(err);
@@ -42,9 +62,10 @@ export default function LoginPage() {
               <form onSubmit={handleLogin} className="p-6 md:p-10">
                 <div className="flex flex-col gap-8">
                   <div className="flex flex-col items-start">
-                    <h1 className="text-2xl font-bold">Bem Vindo</h1>
-                    <p className="text-balance text-muted-foreground">Entre em sua conta da wise</p>
+                    <h1 className="text-2xl font-bold">Bem-vindo</h1>
+                    <p className="text-balance text-muted-foreground">Entre em sua conta da Wise</p>
                   </div>
+
                   <div className="grid gap-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -55,6 +76,7 @@ export default function LoginPage() {
                       required
                     />
                   </div>
+
                   <div className="grid gap-2">
                     <div className="flex items-center">
                       <Label htmlFor="password">Senha</Label>
@@ -70,10 +92,13 @@ export default function LoginPage() {
                       required
                     />
                   </div>
+
                   <Button type="submit" className="w-full cursor-pointer" disabled={loading}>
                     {loading ? 'Carregando...' : 'Login'}
                   </Button>
+
                   {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+
                   <div className="text-center text-sm">
                     Não possui uma conta?{" "}
                     <Link to="/register" className="underline underline-offset-4">
@@ -82,6 +107,7 @@ export default function LoginPage() {
                   </div>
                 </div>
               </form>
+
               <div className="relative hidden md:block">
                 <img
                   src="/vanescolar.jpg"

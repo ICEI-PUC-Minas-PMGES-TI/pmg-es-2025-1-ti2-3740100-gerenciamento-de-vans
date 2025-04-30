@@ -41,7 +41,6 @@ export default function RegisterPage() {
   
     }
 
-
     try {
       const response = await axios.post("http://localhost:8080/api/login/register", {
         nome,
