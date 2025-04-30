@@ -58,8 +58,22 @@ export const maskAntt = (event: React.FormEvent<HTMLInputElement>) => {
     .replace(/(\.\d{4})\d+?$/, '$1'); // Impede mais dígitos após os 8 números totais
 }
 
+export const maskCnpj = (event: React.FormEvent<HTMLInputElement>) => {
+  event.currentTarget.maxLength = 18;
+  let { value } = event.currentTarget;
 
-export type MaskTypes = 'cpf' | 'phone' | 'cep' | 'data' | 'cnh' | 'antt';
+  return value
+    .replace(/\D/g, '') // Remove tudo que não é dígito
+    .replace(/(\d{2})(\d)/, '$1.$2') // 00.0...
+    .replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2/$3') // 00.000.000/0...
+    .replace(/(\d{4})(\d)/, '$1-$2') // 00.000.000/0000-0
+    .replace(/(-\d{2})\d+?$/, '$1'); // Impede mais dígitos após os 14 números
+}
+
+
+
+
+export type MaskTypes = 'cpf' | 'phone' | 'cep' | 'data' | 'cnh' | 'antt'| 'cnpj';
 
 type Masks = Record<MaskTypes, (event: React.FormEvent<HTMLInputElement>) => string>;
 
@@ -69,7 +83,8 @@ const masks: Masks = {
   cep: maskCEP,  
   data: maskDate,
   cnh: maskCnh,
-  antt: maskAntt
+  antt: maskAntt,
+  cnpj: maskCnpj,
 };
 
 export default masks;
