@@ -1,52 +1,87 @@
 import * as React from 'react';
 
-export const maskPhone = (event: React.FormEvent<HTMLInputElement>) => {
-  event.currentTarget.maxLength = 15;
-  const { value } = event.currentTarget;
-  return value
-    .replace(/\D/g, '') // Remove non-digit characters
-    .replace(/(\d{2})(\d)/, '($1) $2') // Format as (XX) X
-    .replace(/(\d)(\d{4})$/, '$1-$2'); // Format as XXXX-XXXX
-}
-
+// masks.ts
 
 export const maskCpf = (event: React.FormEvent<HTMLInputElement>) => {
   event.currentTarget.maxLength = 14;
   const { value } = event.currentTarget;
   return value
-    .replace(/\D/g, '') // Remove non-digit characters
-    .replace(/(\d{3})(\d)/, '$1.$2') // Format as XXX.XXX
-    .replace(/(\d{3})(\d)/, '$1.$2') // Format as XXX.XXX.XXX
-    .replace(/(\d)(\d{2})$/, '$1-$2'); // Format as XXX.XXX.XXX-XX
-}
+    .replace(/\D/g, '')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d)(\d{2})$/, '$1-$2');
+};
+
 export const maskCEP = (event: React.FormEvent<HTMLInputElement>) => {
   event.currentTarget.maxLength = 9;
   const { value } = event.currentTarget;
-  return value.replace(/\D/g, '').replace(/(\d{5})(\d)/, '$1-$2'); // Format as XXXXX-XXX
-}
+  return value.replace(/\D/g, '').replace(/(\d{5})(\d)/, '$1-$2');
+};
 
 export const maskDate = (event: React.FormEvent<HTMLInputElement>) => {
-  event.currentTarget.maxLength = 10; // DD/MM/AAAA tem 10 caracteres
+  event.currentTarget.maxLength = 10;
   let { value } = event.currentTarget;
-  
+
   return value
-    .replace(/\D/g, '') // Remove tudo que não é dígito
-    .replace(/(\d{2})(\d)/, '$1/$2') // Coloca barra após os dois primeiros dígitos (dia)
-    .replace(/(\d{2})\/(\d{2})(\d)/, '$1/$2/$3') // Coloca barra após o mês
-    .replace(/(\/\d{4})\d+?$/, '$1'); // Impede mais dígitos após o ano (AAAA)
-}
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '$1/$2')
+    .replace(/(\d{2})\/(\d{2})(\d)/, '$1/$2/$3')
+    .replace(/(\/\d{4})\d+?$/, '$1');
+};
 
+export const maskPhone = (event: React.FormEvent<HTMLInputElement>) => {
+  event.currentTarget.maxLength = 15;
+  let { value } = event.currentTarget;
 
+  return value
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1) $2')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .replace(/(-\d{4})\d+?$/, '$1');
+};
 
-export type MaskTypes = 'cpf' | 'phone' | 'cep' | 'data';
+export const maskCNPJ = (event: React.FormEvent<HTMLInputElement>) => {
+  event.currentTarget.maxLength = 18;
+  const { value } = event.currentTarget;
+  return value
+    .replace(/\D/g, '')
+    .replace(/^(\d{2})(\d)/, '$1.$2')
+    .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+    .replace(/\.(\d{3})(\d)/, '.$1/$2')
+    .replace(/(\d{4})(\d)/, '$1-$2');
+};
+
+export const maskANTT = (event: React.FormEvent<HTMLInputElement>) => {
+  event.currentTarget.maxLength = 11;
+  const { value } = event.currentTarget;
+  return value.replace(/\D/g, '');
+};
+
+export const maskCNH = (event: React.FormEvent<HTMLInputElement>) => {
+  event.currentTarget.maxLength = 11;
+  const { value } = event.currentTarget;
+  return value.replace(/\D/g, '');
+};
+
+export type MaskTypes =
+  | 'cpf'
+  | 'phone'
+  | 'cep'
+  | 'data'
+  | 'cnpj'
+  | 'antt'
+  | 'cnh';
 
 type Masks = Record<MaskTypes, (event: React.FormEvent<HTMLInputElement>) => string>;
 
 const masks: Masks = {
   cpf: maskCpf,
   phone: maskPhone,
-  cep: maskCEP,  
+  cep: maskCEP,
   data: maskDate,
+  cnpj: maskCNPJ,
+  antt: maskANTT,
+  cnh: maskCNH,
 };
 
 export default masks;
