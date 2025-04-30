@@ -32,7 +32,15 @@ export default function RegisterPage() {
 
 
   const [cnh, setCnh] = useState("");
+  const [cnpj, setCnpj] = useState("");
   const [antt, setAntt] = useState("");
+  const [cep, setCep] = useState("");
+  const [rua, setRua] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [estado, setEstado] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
 
 
   const handleReponsavelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,7 +155,6 @@ export default function RegisterPage() {
                   <SelectGroup>
                     <SelectLabel>Tipo de Usuario</SelectLabel>
                     <SelectItem value="responsavel">Responsável/Maior de idade</SelectItem>
-                    <SelectItem value="aluno">Aluno menor de idade</SelectItem>
                     <SelectItem value="motorista">Motorista</SelectItem>
                     <SelectItem value="donoderede">Dono de rede</SelectItem>
                   </SelectGroup>
@@ -244,7 +251,7 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <div className="flex-1">
                   <Label htmlFor="data" className="mb-1 block">
                     Data de Nascimento
@@ -271,6 +278,19 @@ export default function RegisterPage() {
                   />
                 </div>
               </div>
+              {/* Campo caso seja dono de rede */}
+              {tipoUsuario === "donoderede" && (
+                <>
+                <Label htmlFor="cnpj" className="mb-1 block">CNPJ</Label>
+                <Input
+                maskType="cnpj"
+                id="cnpj"
+                value={cnpj}
+                onChange={(e) => setCnpj(e.target.value)}
+                placeholder="00.000.000/0000-00"
+                />
+                </>
+              )}
               {/* Campo caso seja motorista */}
               {tipoUsuario === "motorista" && (
                 <>
@@ -301,7 +321,84 @@ export default function RegisterPage() {
                 id="cpf"
                 value={cpf}
                 onChange={(e) => setCpf(e.target.value)}
+                placeholder="000.000.000-00"
               />
+              
+              
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <Label htmlFor="CEP" className="mb-1 block">CEP</Label>
+                  <Input
+                    maskType="cep"
+                    id="cep"
+                    value={cep}
+                    onChange={(e) => setCep(e.target.value)}
+                    placeholder="00000-000"
+                  />
+                  </div>
+                  <div className="flex-1">
+                    <Label htmlFor="rua" className="mb-1 block">Rua</Label>
+                    <Input
+                    type="text"
+                    id="rua"
+                    value={rua}
+                    onChange={(e) => setRua(e.target.value)}
+                    />
+                  </div>          
+              </div>
+
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <Label htmlFor="cidade" className="mb-1 block">Cidade</Label>
+                  <Input
+                    type="text"
+                    id="cidade"
+                    value={cidade}
+                    onChange={(e) => setCidade(e.target.value)}
+                  />
+                </div>
+                <div className="flex-1">
+                  <Label htmlFor="estado" className="mb-1 block">Estado</Label>
+                  <Input
+                  type="text"
+                  id="estado"
+                  value={estado}
+                  onChange={(e) => setEstado(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <Label htmlFor="bairro" className="mb-1 block">Bairro</Label>
+                  <Input
+                  type="text"
+                  id="bairro"
+                  value={bairro}
+                  onChange={(e) => setBairro(e.target.value)}
+                  />
+
+                </div>
+                <div className="flex-1">
+                  <Label htmlFor="complemento" className="mb-1 block">Complemento</Label>
+                  <Input
+                  type="text"
+                  id="complemento"
+                  value={complemento}
+                  onChange={(e) => setComplemento(e.target.value)}
+                  />
+                </div>
+                <div className="flex-1">
+                  <Label htmlFor="numero" className="mb-1 block">Número</Label>
+                  <Input
+                  type="number"
+                  id="numero"
+                  value={numero}
+                  onChange={(e) => setNumero(e.target.value)}
+                  />
+
+                </div>
+              </div>
 
               <Label htmlFor="email" className="mb-1 block">Email</Label>
               <Input
