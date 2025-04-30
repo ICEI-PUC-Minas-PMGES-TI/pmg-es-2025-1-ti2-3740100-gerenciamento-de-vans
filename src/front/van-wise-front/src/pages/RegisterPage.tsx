@@ -31,12 +31,14 @@ export default function RegisterPage() {
       setModalMessage("Por favor, preencha todos os campos obrigatórios.");
       setIsModalOpen(true);
       return;
+    }
       
     if (password !== confirmaSenha) {
 
       setModalMessage("As senhas não coincidem.");
       setIsModalOpen(true);
       return;
+  
     }
 
 
