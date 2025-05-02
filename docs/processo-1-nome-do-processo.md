@@ -30,38 +30,106 @@ _* **Link** - campo que armazena uma URL_
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| login           | caixa de texto   | formato de email       |                   |
+| email           | caixa de texto   | formato de email       |                   |
 | senha           | caixa de texto   | mínimo de 8 caracteres |                   |
+
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| entrar               | Fim do Processo                | default           |
-| cadastrar            | Início do proceso de cadastro  | ação              |
-| excluir              | Delete do cadastro             | ação              |
+| Login                | Tela inicial do usuário        | ação              |
+| Cadastre - se        | Início do proceso de cadastro  | ação              |
+| Esqueceu senha       | Tela recuperar senha           | ação              |
 
 
-**Cadastro**
+**Cadastro Motoristas**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CNH                       | numero           | 10 carecteres                |                   |
+| ANTT                      | numero           | 04 carecteres                |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+| Registrar                 | Salvar cadastro  |                              |                   |
+| Entrar com sua conta      | Vai para o login |                              |                   |
+
+
+**Cadastro Dono da Rede**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CNPJ                      | numero           | 10 carecteres                |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+| Registrar                 | Salvar cadastro  |                              |                   |
+| Entrar com sua conta      | Vai para o login |                              |                   |
+
+
+**Cadastro Responsável / Aluno maior de idade**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| Sou responsável           | check box        | caso seja resp ou maior      |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+| Registrar                 | Salvar cadastro  | Vai para tela do filho       |                   |
+| Entrar com sua conta      | Vai para o login |                              |                   |
+
+**Cadastro do menor de idade**
 
 | **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
 | ---                       | ---              | ---                          | ---               |
 | nome                      | caixa de texto   | obrigatório                  |                   |
-| email                     | caixa de texto   | formato de email             |                   |
-| telefone                  | numero           | mínimo de 10 caracteres      |                   |
-| CPF                       | caixa de texto   | 10 carecteres                |                   |
-| confirmar senha           | caixa de texto   | mínimo de 8 caracteres       |                   |
-| tipo de perfil            | seleção única    | motorista ou dono da rede    |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| Cancelar                  | Cancela cadastro | Volta para o responsável     |                   |
+| Cadastrar filho           | Salva cadastro   |                              |                   |
 
 
-**Comandos**
 
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| entrar               | Fim do Processo de cadastro    | default           |
-| login                | Início do proceso de login     | ação              |
-| excluir              | Delete do cadastro             | ação              |
-| editar               | Editar cadastro                | ação              |
-| salvar               | Salvar cadastro                | ação              |
 
 
 #### **Tela de LOGING**
