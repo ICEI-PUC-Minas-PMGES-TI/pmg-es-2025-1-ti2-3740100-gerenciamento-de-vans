@@ -64,7 +64,7 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Salvar cadastro  |                              |                   |
+| Registrar                 | Ação             |                              |                   |
 | Entrar com sua conta      | Vai para o login |                              |                   |
 
 
@@ -89,7 +89,7 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Salvar cadastro  |                              |                   |
+| Registrar                 | Ação             |                              |                   |
 | Entrar com sua conta      | Vai para o login |                              |                   |
 
 
@@ -114,7 +114,7 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Salvar cadastro  | Vai para tela do filho       |                   |
+| Registrar                 | Ação             | Vai para tela do filho       |                   |
 | Entrar com sua conta      | Vai para o login |                              |                   |
 
 **Cadastro do menor de idade**
@@ -125,8 +125,8 @@ _* **Link** - campo que armazena uma URL_
 | sobrenome                 | caixa de texto   | obrigatório                  |                   |
 | Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
 | CPF                       | numero           | 10 carecteres                |                   |
-| Cancelar                  | Cancela cadastro | Volta para o responsável     |                   |
-| Cadastrar filho           | Salva cadastro   |                              |                   |
+| Cancelar                  | Ação             | Volta para o responsável     |                   |
+| Cadastrar filho           | Ação             |                              |                   |
 
 
 
