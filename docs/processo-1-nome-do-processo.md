@@ -64,8 +64,13 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Ação             |                              |                   |
-| Entrar com sua conta      | Vai para o login |                              |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | Vai para o login               | Ação      |                   
+| Entrar com sua conta | Vai para o login               | Ação      |                   
 
 
 **Cadastro Dono da Rede**
@@ -89,8 +94,13 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Ação             |                              |                   |
-| Entrar com sua conta      | Vai para o login |                              |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | Vai para o login               | Ação      |                   
+| Entrar com sua conta | Vai para o login               | Ação      |
 
 
 **Cadastro Responsável / Aluno maior de idade**
@@ -114,8 +124,13 @@ _* **Link** - campo que armazena uma URL_
 | Email                     | caixa de texto   | formato de email             |                   |
 | Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
 | Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
-| Registrar                 | Ação             | Vai para tela do filho       |                   |
-| Entrar com sua conta      | Vai para o login |                              |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | Vai para o login               | Ação      |                   
+| Entrar com sua conta | Vai para o login               | Ação      |
 
 **Cadastro do menor de idade**
 
@@ -125,8 +140,13 @@ _* **Link** - campo que armazena uma URL_
 | sobrenome                 | caixa de texto   | obrigatório                  |                   |
 | Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
 | CPF                       | numero           | 10 carecteres                |                   |
-| Cancelar                  | Ação             | Volta para o responsável     |                   |
-| Cadastrar filho           | Ação             |                              |                   |
+
+
+
+| **Comandos**         |  **Destino**                                                |  **Tipo** |
+| ---                  | ---                                                         |  ---      |
+| Cancelar             | Volta para a tela de cadastro de responsável                | Ação      |                   
+| Cadastrar filho      | Vai para o login                                            | Ação      |
 
 
 
