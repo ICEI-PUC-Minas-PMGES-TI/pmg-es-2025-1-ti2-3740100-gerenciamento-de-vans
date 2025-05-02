@@ -42,6 +42,7 @@ _* **Link** - campo que armazena uma URL_
 | Esqueceu senha       | Tela recuperar senha           | ação              |
 
 
+
 **Cadastro Motoristas**
 
 | **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
@@ -147,6 +148,7 @@ _* **Link** - campo que armazena uma URL_
 | ---                  | ---                                                         |  ---      |
 | Cancelar             | Volta para a tela de cadastro de responsável                | Ação      |                   
 | Cadastrar filho      | Vai para o login                                            | Ação      |
+| Registrar            | Vai para o login                                            | Ação      |
 
 
 
