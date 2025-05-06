@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Contract, columns } from "@/components/ui/columns";
-import { DataTable } from "@/components/ui/contract-page-components/data-table";
+import { Contract, columns } from "@/components/ui/hardcomponents/columns";
+import { DataTable } from "@/components/ui/hardcomponents/data-table";
 import { ModeToggle } from "@/components/ui/themebutton";
 
 async function getData(): Promise<Contract[]> {

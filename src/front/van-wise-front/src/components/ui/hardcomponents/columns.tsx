@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react"
-import { ContractDetailsDialog } from "@/components/ui/contract-page-components/ContractModal";
+import { ContractDetailsDialog } from "@/components/ui/hardcomponents/ContractModal";
 
 import {
   DropdownMenu,
