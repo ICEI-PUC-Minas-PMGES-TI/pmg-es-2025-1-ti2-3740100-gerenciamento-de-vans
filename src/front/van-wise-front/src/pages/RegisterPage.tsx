@@ -18,9 +18,18 @@ export default function RegisterPage() {
   const [telefone, setTelefone] = useState("");
   const [cpf, setCpf] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
+  const [cep, setCep] = useState("");
+  const [rua, setRua] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [estado, setEstado] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
   const [tipoUsuario, setTipoUsuario] = useState("");
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Campos específicos para responsável
 
   const [isResponsavel, setIsResponsavel] = useState(false);
   const [isFilhoModalOpen, setIsFilhoModalOpen] = useState(false);
@@ -30,17 +39,13 @@ export default function RegisterPage() {
   const [filhoDataNascimento, setFilhoDataNascimento] = useState("");
   const [filhosCadastrados, setFilhosCadastrados] = useState<{ nome: string; sobrenome: string; cpf: string; dataNascimento: string; }[]>([]);
 
-
+  // Campos específicos para motorista
   const [cnh, setCnh] = useState("");
-  const [cnpj, setCnpj] = useState("");
   const [antt, setAntt] = useState("");
-  const [cep, setCep] = useState("");
-  const [rua, setRua] = useState("");
-  const [bairro, setBairro] = useState("");
-  const [cidade, setCidade] = useState("");
-  const [estado, setEstado] = useState("");
-  const [numero, setNumero] = useState("");
-  const [complemento, setComplemento] = useState("");
+
+  // Campos específicos para dono de rede
+  const [cnpj, setCnpj] = useState("");
+  
 
 
   const handleReponsavelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,11 +92,17 @@ export default function RegisterPage() {
     e.preventDefault();
 
     // Validação no front-end
-    if (!nome || !sobrenome || !email || !senha || !confirmaSenha || !telefone || !cpf || !cnh || !dataNascimento || !tipoUsuario) {
+    if (
+      !nome || !sobrenome || !email || !senha || !confirmaSenha || !telefone || !cpf ||
+      !dataNascimento || !cep || !rua || !bairro || !cidade || !estado || !numero || !complemento || !tipoUsuario ||
+      (tipoUsuario === "motorista" && (!cnh || !antt)) ||
+      (tipoUsuario === "donoderede" && !cnpj)
+    ) {
       setModalMessage("Por favor, preencha todos os campos obrigatórios.");
       setIsModalOpen(true);
       return;
     }
+    
 
     // Verificar se as senhas coincidem
     if (senha !== confirmaSenha) {
@@ -102,7 +113,7 @@ export default function RegisterPage() {
 
     try {
       // Enviar dados para o backend
-      const response = await axios.post("http://localhost:8080/api/usuarios/registrar", {
+      const response = await axios.post("http://localhost:8081/usuarios/salvar", {
         nome,
         sobrenome,
         email,
@@ -111,11 +122,19 @@ export default function RegisterPage() {
         cpf,
         dataNascimento,
         tipoUsuario,
+        cep,
+        rua,
+        bairro,
+        cidade,
+        estado,
+        numero,
+        complemento,
+        ...(tipoUsuario === "donoderede" && { cnpj }),
         ...(tipoUsuario === "motorista" && { cnh, antt }),
         filhos: isResponsavel ? filhosCadastrados : []
       });
 
-      if (response.status === 201) {
+      if (response.status === 200 || response.status === 201) {
         setModalMessage("Cadastro realizado com sucesso!");
       } else {
         setModalMessage("Erro ao registrar. Tente novamente.");

@@ -19,7 +19,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8080/api/login/login', { email, password });
+      const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
       console.log(response.data); // Login bem-sucedido
       // Aqui você pode redirecionar para outra página ou armazenar o token de autenticação
     } catch (err: any) {
