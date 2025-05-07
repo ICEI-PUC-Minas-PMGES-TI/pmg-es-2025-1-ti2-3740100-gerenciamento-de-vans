@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRowModel,getFilteredRowModel,ColumnFiltersState, type SortingState, getSortedRowModel } from "@tanstack/react-table"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import * as React from "react"
-import { NewContractModal } from "./NewContractModal"
-
-
+import {ColumnDef,flexRender,getCoreRowModel,useReactTable,getPaginationRowModel,getFilteredRowModel,ColumnFiltersState,type SortingState,getSortedRowModel,
+} from "@tanstack/react-table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import * as React from "react";
+import { NewContractModal } from "./NewContractModal";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  actionButton?: React.ReactNode 
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  onAddContract: (newContract: TData) => void;
+  onDeleteContract: (id: string) => void;
 }
 
-export function DataTable<TData, TValue>({ 
+export function DataTable<TData, TValue>({
   columns,
   data,
-}: DataTableProps<TData, TValue>){
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  
+  onAddContract,
+  onDeleteContract,
+}: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+
   const table = useReactTable({
     data,
     columns,
@@ -34,17 +34,27 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
-    sorting,
-    columnFilters,
+      sorting,
+      columnFilters,
     },
-  })
+    initialState: {
+      pagination: {
+        pageSize: 8, 
+      },
+    },
+    meta: {
+      onDeleteContract,
+    },
+  });
 
-
+  const handleAddContractAndNavigate = (newContract: TData) => {
+    onAddContract(newContract);
+    table.setPageIndex(table.getPageCount() - 1);
+  };
 
   return (
-    <div className="space-y-4 ">
-      
-        <div className="flex items-center py-4 space-x-4">
+    <div className="space-y-4">
+      <div className="flex items-center py-4 space-x-4">
         <Input
           placeholder="Buscar por email..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -53,53 +63,49 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-       
-         <NewContractModal />
-         
+        <NewContractModal onAddContract={handleAddContractAndNavigate} />
       </div>
-      
-    <div className="rouded-md border">
-      <Table >
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup)=>(
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header)=> {
-                return (
-                  <TableHead key={header.id}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header,
-                    header.getContext())}                    
-                  </TableHead>
-                )
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
 
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
+      <div className="rouded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                Sem dados para exibir.
-              </TableCell>
-            </TableRow>
-          )}
+            ))}
+          </TableHeader>
+
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  Sem dados para exibir.
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
-          </Table>
-    </div>
-        <div className="flex items-center justify-end space-x-2 py-4">
+        </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
           size="sm"
@@ -108,6 +114,10 @@ export function DataTable<TData, TValue>({
         >
           Anterior
         </Button>
+        <span className="text-sm">
+          Página {table.getState().pagination.pageIndex + 1} de{" "}
+          {table.getPageCount()}
+        </span>
         <Button
           variant="outline"
           size="sm"
@@ -117,7 +127,6 @@ export function DataTable<TData, TValue>({
           Próximo
         </Button>
       </div>
- </div>
+    </div>
   );
-                  
 }

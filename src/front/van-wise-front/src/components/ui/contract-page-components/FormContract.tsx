@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import {
   Form,
   FormControl,
@@ -10,38 +10,47 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const contractSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
   email: z.string().email("Por favor, insira um email válido"),
-  
-})
+});
 
 interface FormContractProps {
   onSuccess: () => void;
   onCancel: () => void;
+  onAddContract: (newContract: { id: string; name: string; email: string; status: string }) => void;
 }
 
-export function FormContract({}: FormContractProps) {
+export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
   const form = useForm<z.infer<typeof contractSchema>>({
     resolver: zodResolver(contractSchema),
     defaultValues: {
       name: "",
       email: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof contractSchema>) {
-    console.log("Dados do contrato:", values)
+    const newContract = {
+      name: values.name,
+      email: values.email,
+      status: "Contrato ativo",
+    };
+
+    onAddContract(newContract);
+    onSuccess(); 
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-4">
-
+      <form
+        onSubmit={form.handleSubmit(onSubmit)} 
+        className="space-y-6 p-4"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -70,11 +79,11 @@ export function FormContract({}: FormContractProps) {
           )}
         />
 
-
+        {/* Botão de envio */}
         <Button type="submit" className="w-full">
           Cadastrar Contrato
         </Button>
       </form>
     </Form>
-  )
+  );
 }

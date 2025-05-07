@@ -50,8 +50,8 @@ export const columns: ColumnDef<Contract>[] = [
         <span className={`
           px-2 py-1 rounded-full text-xs font-semibold
           ${status === "Contrato ativo"
-           ? "bg-green-100 text-green-800" 
-           : "bg-red-100 text-red-800"}     
+          ? "bg-green-100 text-green-800" 
+          : "bg-red-100 text-red-800"}     
           `}>
             {status}
 
@@ -63,34 +63,36 @@ export const columns: ColumnDef<Contract>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const id = row.original
       const contract = row.original;
- 
+
       return (
         <div className="flex space-x-2 justify-end items-center">
-           <ContractDetailsDialog contract={contract} />
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(id.id)}
-            >
-              Copiar ID do contrato
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive">Excluir Contrato</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem
+                onClick={() => navigator.clipboard.writeText(contract.id)}
+              >
+                Copiar ID do contrato
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                variant="destructive"
+                onClick={() => {
+                  row.table.options.meta?.onDeleteContract(contract.id);
+                }}
+              >
+                Excluir Contrato
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-      )
+      );
     },
   },
-  
 ];
