@@ -23,22 +23,29 @@ _**Arquivo** - campo de upload de contrato em formato PDF_
 
 _**Link** - campo que armazena uma URL_
 
+* Caixa de texto - campo texto de uma linha
 
-**Contratação**
+* Número - campo numérico
+
+* Seleção única - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)
+
+
+
+** Nova Contratação**
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| Arquivo         | Arquivo          | Formato de pdf         |                   |
-| Link            | Link             | URL Inválida           |                   |
+| Nome            | Texto            |                        |                   |
+| Email           | email            | ser um email valido  @ |                   |
 
 
 
 **Comandos**
 | **Comandos**         |  **Destino**                   | **Tipo**          |
 | ---                  | ---                            | ---               |
-| Solicitar            | Inicio do processo             | Ação              |
-| Assinar              | Notifica o motorista e salva   | Default           |
-| Recusar              | Fim do peocesso                | Ação              |
+| Novo      Contrato   | Inicio do processo             | Ação              |
+| Cadastrar Contrato   | Fim do processo e salva        | Ação              |
+| Fechar               | Cancela o cadastro             | Ação              |
 
 
 #### **Tela para visualizar todos os contratos do motoristas**
