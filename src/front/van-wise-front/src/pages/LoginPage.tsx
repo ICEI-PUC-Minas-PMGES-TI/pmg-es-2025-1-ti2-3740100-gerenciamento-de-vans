@@ -6,12 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "@/components/ui/themebutton";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,9 +25,11 @@ export default function LoginPage() {
       const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
       console.log(response.data); // Login bem-sucedido
       // Aqui você pode redirecionar para outra página ou armazenar o token de autenticação
+      navigate("/HomePage");
     } catch (err: any) {
       setError('Email ou senha inválidos');
       console.error(err);
+      setError(`Erro de autenticação: ${err.response ? err.response.data.message : err.message}`);
     } finally {
       setLoading(false);
     }

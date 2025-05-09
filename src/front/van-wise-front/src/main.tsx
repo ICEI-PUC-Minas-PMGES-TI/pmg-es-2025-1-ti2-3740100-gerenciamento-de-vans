@@ -10,7 +10,7 @@ import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 import ContractForm from './pages/ContractForm.tsx';
-
+import HomePage from './pages/HomePage.tsx';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -29,7 +29,8 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/register' element={<RegisterPage />}/>
        <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
        <Route path='/contractform' element={<ContractForm />}/>
-      
+       <Route path='/homepage' element={<HomePage />}/>
+
       </Routes>
     </BrowserRouter>
     </ThemeProvider>
