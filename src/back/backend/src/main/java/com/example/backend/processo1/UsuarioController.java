@@ -71,5 +71,34 @@ public class UsuarioController {
             this.senha = senha;
         }
     }
+
+
+    // Endpoint para recuperar a senha (simulação)
+    @PostMapping("/recover-password")
+    public ResponseEntity<String> recuperarSenha(@RequestBody EmailRequest emailRequest) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(emailRequest.getEmail());
+
+        if (usuario.isPresent()) {
+            // Simula envio de e-mail (aqui apenas uma mensagem, sem envio real)
+            return ResponseEntity.ok("Um link de recuperação foi enviado para seu email.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                .body("Email não encontrado");
+        }
+    }
+
+    // Classe auxiliar para capturar apenas o e-mail
+    public static class EmailRequest {
+        private String email;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+    }
 }
 
