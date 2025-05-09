@@ -37,6 +37,7 @@ _**Link** - campo que armazena uma URL_
 | ---             | ---              | ---                    | ---               |
 | Nome            | Texto            |                        |                   |
 | Email           | email            | ser um email valido  @ |                   |
+| Buscar          | texto            |                        |                   |
 
 
 
