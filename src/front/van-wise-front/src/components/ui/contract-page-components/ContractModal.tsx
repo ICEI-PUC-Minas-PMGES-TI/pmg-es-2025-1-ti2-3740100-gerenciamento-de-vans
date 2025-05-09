@@ -31,7 +31,7 @@ export function ContractDetailsDialog({ contract }: {
           <DialogTitle>Detalhes do Contrato</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* Campos ID, Nome e Email */}
+          {}
           <div className="grid grid-cols-4 items-center gap-4">
             <span className="text-sm font-medium">ID:</span>
             <span className="col-span-3 p-2 bg-muted rounded">
@@ -51,7 +51,7 @@ export function ContractDetailsDialog({ contract }: {
             </span>
           </div>
           
-          {/* Campo Status com cores temáticas */}
+          {}
           <div className="grid grid-cols-4 items-center gap-4">
             <span className="text-sm font-medium">Status:</span>
             <span className={`col-span-3 p-2 rounded ${

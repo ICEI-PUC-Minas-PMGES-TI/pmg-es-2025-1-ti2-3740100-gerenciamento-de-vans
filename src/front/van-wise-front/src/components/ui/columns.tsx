@@ -1,26 +1,17 @@
-"use client"
+"use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown } from "lucide-react"
 import { ContractDetailsDialog } from "@/components/ui/contract-page-components/ContractModal";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
 export type Contract = {
-  id: string
-  name: string
-  email: string
-  status: "Contrato ativo" | "Contrato inativo"
+  id: string;
+  name: string;
+  email: string;
+  status: "Contrato ativo" | "Contrato inativo";
 };
+
 export const columns: ColumnDef<Contract>[] = [
   {
     accessorKey: "name",
@@ -37,7 +28,7 @@ export const columns: ColumnDef<Contract>[] = [
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
   },
   {
@@ -47,51 +38,15 @@ export const columns: ColumnDef<Contract>[] = [
       const status = row.getValue("status") as Contract["status"];
 
       return (
-        <span className={`
-          px-2 py-1 rounded-full text-xs font-semibold
-          ${status === "Contrato ativo"
-          ? "bg-green-100 text-green-800" 
-          : "bg-red-100 text-red-800"}     
-          `}>
-            {status}
-
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-semibold ${
+            status === "Contrato ativo"
+              ? "bg-green-100 text-green-800"
+              : "bg-red-100 text-red-800"
+          }`}
+        >
+          {status}
         </span>
-      )
-
-    }
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => {
-      const contract = row.original;
-
-      return (
-        <div className="flex space-x-2 justify-end items-center">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(contract.id)}
-              >
-                Copiar ID do contrato
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                variant="destructive"
-                onClick={() => {
-                  row.table.options.meta?.onDeleteContract(contract.id);
-                }}
-              >
-                Excluir Contrato
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
       );
     },
   },

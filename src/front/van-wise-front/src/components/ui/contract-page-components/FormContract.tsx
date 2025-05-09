@@ -79,7 +79,7 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
           )}
         />
 
-        {/* Botão de envio */}
+        {}
         <Button type="submit" className="w-full">
           Cadastrar Contrato
         </Button>

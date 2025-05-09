@@ -1,7 +1,6 @@
 "use client";
 
-import {ColumnDef,flexRender,getCoreRowModel,useReactTable,getPaginationRowModel,getFilteredRowModel,ColumnFiltersState,type SortingState,getSortedRowModel,
-} from "@tanstack/react-table";
+import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRowModel, getFilteredRowModel, ColumnFiltersState, type SortingState, getSortedRowModel } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,14 +11,12 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   onAddContract: (newContract: TData) => void;
-  onDeleteContract: (id: string) => void;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   onAddContract,
-  onDeleteContract,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -39,11 +36,8 @@ export function DataTable<TData, TValue>({
     },
     initialState: {
       pagination: {
-        pageSize: 8, 
+        pageSize: 8,
       },
-    },
-    meta: {
-      onDeleteContract,
     },
   });
 
