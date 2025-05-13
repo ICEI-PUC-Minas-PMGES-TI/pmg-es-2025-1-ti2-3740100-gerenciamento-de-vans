@@ -38,7 +38,7 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
     const newContract = {
       name: values.name,
       email: values.email,
-      status: "Contrato ativo",
+      status: "Contrato pendente",
     };
 
     onAddContract(newContract);
