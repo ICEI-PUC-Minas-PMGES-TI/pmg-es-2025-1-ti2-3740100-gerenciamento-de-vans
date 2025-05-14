@@ -22,4 +22,16 @@ public class TelaContratoController {
     public TelaContrato addContract(@RequestBody TelaContrato newContract) {
         return repository.save(newContract);
     }
+
+    @DeleteMapping("/{id}")
+public ResponseEntity<Void> deleteContract(@PathVariable Long id) {
+    System.out.println("Recebida requisição para excluir contrato com ID: " + id);
+    if (repository.existsById(id)) {
+        repository.deleteById(id);
+        System.out.println("Contrato excluído com sucesso.");
+        return ResponseEntity.noContent().build(); 
+    }
+    System.out.println("Contrato não encontrado.");
+    return ResponseEntity.notFound().build(); 
+}
 }

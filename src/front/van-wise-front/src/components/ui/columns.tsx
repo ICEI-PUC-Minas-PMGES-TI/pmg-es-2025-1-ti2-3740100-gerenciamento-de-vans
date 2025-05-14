@@ -4,9 +4,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContractDetailsDialog } from "@/components/ui/contract-page-components/ContractModal";
+import { useState } from "react";
 
 export type Contract = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   status: "Contrato ativo" | "Contrato pendente" | "Contrato inativo";
@@ -49,6 +50,24 @@ export const columns: ColumnDef<Contract>[] = [
         >
           {status}
         </span>
+      );
+    },
+  },
+  {
+    id: "actions",
+    header: "Ações",
+    cell: ({ row }) => {
+      const [data, setData] = useState<Contract[]>([]);
+      const contract = row.original as Contract;
+
+      return (
+        <ContractDetailsDialog
+          contract={contract}
+          onDeleteContract={(id) => {
+            const updatedData = data.filter((c) => c.id !== id);
+            setData(updatedData);
+          }}
+        />
       );
     },
   },

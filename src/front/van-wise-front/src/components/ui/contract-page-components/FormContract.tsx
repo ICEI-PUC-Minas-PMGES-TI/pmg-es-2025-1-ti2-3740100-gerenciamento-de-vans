@@ -35,20 +35,31 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
   });
 
   function onSubmit(values: z.infer<typeof contractSchema>) {
-    const newContract = {
-      name: values.name,
-      email: values.email,
-      status: "Contrato pendente",
-    };
-
-    onAddContract(newContract);
-    onSuccess(); 
+    fetch("http://localhost:8080/contracts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        status: "Contrato pendente",
+      }),
+    })
+      .then((response) => response.json())
+      .then((newContract) => {
+        onAddContract(newContract); 
+        onSuccess(); 
+      })
+      .catch((error) => {
+        console.error("Erro ao cadastrar contrato:", error);
+      });
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)} 
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6 p-4"
       >
         <FormField
@@ -79,7 +90,6 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
           )}
         />
 
-        {}
         <Button type="submit" className="w-full">
           Cadastrar Contrato
         </Button>
