@@ -7,13 +7,18 @@ import { Input } from "@/components/ui/input";
 import * as React from "react";
 import { NewContractModal } from "./NewContractModal";
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData extends { id: string; 
+  name: string; 
+  email: string; 
+  status: string; 
+  pdfFile?: string;
+}, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   onAddContract: (newContract: TData) => void;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends { id: string; name: string; email: string; status: string; pdfFile?: string }, TValue>({
   columns,
   data,
   onAddContract,
@@ -57,7 +62,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <NewContractModal onAddContract={handleAddContractAndNavigate} />
+        <NewContractModal onAddContract={handleAddContractAndNavigate as (newContract: { id: string; name: string; email: string; status: string; pdfFile?: File | null }) => void} />
       </div>
 
       <div className="rouded-md border">

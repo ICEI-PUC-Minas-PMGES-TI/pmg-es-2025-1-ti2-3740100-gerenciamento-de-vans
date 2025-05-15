@@ -17,12 +17,13 @@ import { Button } from "@/components/ui/button";
 const contractSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
   email: z.string().email("Por favor, insira um email válido"),
+  pdfFile: z.instanceof(File).optional(),
 });
 
 interface FormContractProps {
   onSuccess: () => void;
   onCancel: () => void;
-  onAddContract: (newContract: { id: string; name: string; email: string; status: string }) => void;
+  onAddContract: (newContract: { id: string; name: string; email: string; status: string; pdfFile?: File | null}) => void;
 }
 
 export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
@@ -31,8 +32,11 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
     defaultValues: {
       name: "",
       email: "",
+      pdfFile: undefined,
     },
   });
+
+  const fileRef = form.register("pdfFile");
 
   function onSubmit(values: z.infer<typeof contractSchema>) {
     fetch("http://localhost:8080/contracts", {
@@ -44,6 +48,7 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
         name: values.name,
         email: values.email,
         status: "Contrato pendente",
+        pdfFile: values.pdfFile,
       }),
     })
       .then((response) => response.json())
@@ -84,6 +89,26 @@ export function FormContract({ onSuccess, onAddContract }: FormContractProps) {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input placeholder="exemplo@email.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="pdfFile"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contrato PDF</FormLabel>
+              <FormControl>
+                <Input 
+                  type="file" 
+                  accept=".pdf" 
+                  {...fileRef}
+                  onChange={(e) => {
+                    field.onChange(e.target.files?.[0]);
+                  }}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

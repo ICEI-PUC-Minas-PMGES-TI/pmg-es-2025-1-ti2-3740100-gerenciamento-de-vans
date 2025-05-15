@@ -13,7 +13,7 @@ import React from "react";
 import { FormContract } from "./FormContract";
 
 interface NewContractModalProps {
-  onAddContract: (newContract: { id: string; name: string; email: string; status: string }) => void;
+  onAddContract: (newContract: { id: string; name: string; email: string; status: string; pdfFile?: File | null }) => void;
 }
 
 export function NewContractModal({ onAddContract }: NewContractModalProps) {

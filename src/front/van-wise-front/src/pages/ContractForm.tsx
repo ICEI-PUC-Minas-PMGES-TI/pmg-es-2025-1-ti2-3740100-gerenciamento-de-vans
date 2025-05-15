@@ -3,6 +3,7 @@ import { Contract, columns } from "@/components/ui/columns";
 import { DataTable } from "@/components/ui/contract-page-components/data-table";
 import { ModeToggle } from "@/components/ui/themebutton";
 
+
 export default function ContractForm() {
   const [data, setData] = useState<Contract[]>([]);
 
@@ -12,6 +13,7 @@ export default function ContractForm() {
       .then((contracts) => setData(contracts))
       .catch((error) => console.error("Erro ao carregar contratos:", error));
   }, []);
+
 
   return (
     <main>

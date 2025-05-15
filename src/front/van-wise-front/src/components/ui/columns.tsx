@@ -11,6 +11,7 @@ export type Contract = {
   name: string;
   email: string;
   status: "Contrato ativo" | "Contrato pendente" | "Contrato inativo";
+  pdfUrl?: string; 
 };
 
 export const columns: ColumnDef<Contract>[] = [
@@ -62,13 +63,31 @@ export const columns: ColumnDef<Contract>[] = [
 
       return (
         <ContractDetailsDialog
-          contract={contract}
+          contract={{ ...contract, id: contract.id.toString() }}
           onDeleteContract={(id) => {
-            const updatedData = data.filter((c) => c.id !== id);
+            const updatedData = data.filter((c) => c.id !== Number(id));
             setData(updatedData);
           }}
         />
       );
     },
   },
+  {
+    accessorKey: "pdfFile",
+    header: "Contrato PDF",
+    cell: ({ row }) => {
+      const pdfFile = row.getValue("pdfFile") as File | null;
+
+      return (
+        <a
+          href={pdfFile ? URL.createObjectURL(pdfFile) : "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          {pdfFile ? "Baixar PDF" : "Nenhum PDF disponível"}
+        </a>
+      );
+    },
+  }
 ];
