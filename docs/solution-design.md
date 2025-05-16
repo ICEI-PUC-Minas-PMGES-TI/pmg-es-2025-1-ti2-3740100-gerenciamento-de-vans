@@ -8,7 +8,7 @@ A entidade Vans armazena informações sobre os veículos, como placa, modelo e 
 
 Esse modelo garante um gerenciamento organizado, com todas as informações interconectadas, facilitando a operação do sistema de transporte.
 
-![Modelo de dados](images/modeloAtualizados2.png)
+![Modelo de dados](images/modelo-atualizado-novo.png)
 ---
 
 ### 4.2. Tecnologias
