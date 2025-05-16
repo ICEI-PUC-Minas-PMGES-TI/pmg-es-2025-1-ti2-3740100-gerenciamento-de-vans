@@ -70,8 +70,8 @@ _* **Link** - campo que armazena uma URL_
 
 | **Comandos**         |  **Destino**                   |  **Tipo** |
 | ---                  | ---                            |  ---      |
-| Registrar            | Vai para o login               | Ação      |                   
-| Entrar com sua conta | Vai para o login               | Ação      |                   
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |                   
 
 
 **Cadastro Dono da Rede**
@@ -100,8 +100,8 @@ _* **Link** - campo que armazena uma URL_
 
 | **Comandos**         |  **Destino**                   |  **Tipo** |
 | ---                  | ---                            |  ---      |
-| Registrar            | Vai para o login               | Ação      |                   
-| Entrar com sua conta | Vai para o login               | Ação      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
 
 
 **Cadastro Responsável / Aluno maior de idade**
@@ -130,8 +130,8 @@ _* **Link** - campo que armazena uma URL_
 
 | **Comandos**         |  **Destino**                   |  **Tipo** |
 | ---                  | ---                            |  ---      |
-| Registrar            | Vai para o login               | Ação      |                   
-| Entrar com sua conta | Vai para o login               | Ação      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
 
 **Cadastro do menor de idade**
 
@@ -144,12 +144,11 @@ _* **Link** - campo que armazena uma URL_
 
 
 
-| **Comandos**         |  **Destino**                                                |  **Tipo** |
-| ---                  | ---                                                         |  ---      |
-| Cancelar             | Volta para a tela de cadastro de responsável                | Ação      |                   
-| Cadastrar filho      | Vai para o login                                            | Ação      |
-| Registrar            | Vai para o login                                            | Ação      |
-
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
+| Cancelar             | retorna para cadastro do filho | Ação      | 
 
 
 
