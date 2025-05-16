@@ -13,15 +13,12 @@ Na gestão de contratos, o cliente solicita ao motorista o contrato, após receb
 
 ### Atividades:  
 - **Solicitação do contrato:** O passageiro solicita um contrato ao motorista.  
-- **Criação do contrato:** O motorista gera um documento com as informações acordadas.  
-- **Envio do contrato:** O motorista envia o contrato para o cliente.
-- **Decisão do Passageiro:** O passageiro decide se quer ou não assinar o contrato.
+- **Criação do contrato:** O motorista cria o contrato.  
+- **Decisão do Passageiro:** O passageiro decide se realmente confirma a assinatura do contratos.
   
 _**Os tipos de dados a serem utilizados são:**_
 
 _**Arquivo** - campo de upload de contrato em formato PDF_
-
-_**Link** - campo que armazena uma URL_
 
 * Caixa de texto - campo texto de uma linha
 
@@ -37,16 +34,15 @@ _**Link** - campo que armazena uma URL_
 | ---             | ---              | ---                    | ---               |
 | Nome            | Texto            |                        |                   |
 | Email           | email            | ser um email valido  @ |                   |
-| Buscar          | texto            |                        |                   |
 
 
 
 **Comandos**
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| Novo      Contrato   | Inicio do processo             | Ação              |
-| Cadastrar Contrato   | Fim do processo e salva        | Ação              |
-| Fechar               | Cancela o cadastro             | Ação              |
+| **Comandos**         |  **Destino**                                    | **Tipo**          |
+| ---                  | ---                                             | ---               |
+| Cadastrar Contrato   | Cria e Salva o novo contrato                    | Ação              |
+| Fechar               | Fecha a tela de criar novo contrato             | Ação              |
+| Olhinho              | Visualizar detalhes dos contratos               | Ação              |
 
 
 #### **Tela para visualizar todos os contratos do motoristas**
