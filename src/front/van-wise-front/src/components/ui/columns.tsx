@@ -1,26 +1,18 @@
-"use client"
+"use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown } from "lucide-react"
 import { ContractDetailsDialog } from "@/components/ui/contract-page-components/ContractModal";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { useState } from "react";
 
 export type Contract = {
-  id: string
-  name: string
-  email: string
-  status: "Contrato ativo" | "Contrato inativo"
+  id: number;
+  name: string;
+  email: string;
+  status: "Contrato ativo" | "Contrato pendente" | "Contrato inativo";
 };
+
 export const columns: ColumnDef<Contract>[] = [
   {
     accessorKey: "name",
@@ -37,7 +29,7 @@ export const columns: ColumnDef<Contract>[] = [
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
   },
   {
@@ -47,50 +39,54 @@ export const columns: ColumnDef<Contract>[] = [
       const status = row.getValue("status") as Contract["status"];
 
       return (
-        <span className={`
-          px-2 py-1 rounded-full text-xs font-semibold
-          ${status === "Contrato ativo"
-           ? "bg-green-100 text-green-800" 
-           : "bg-red-100 text-red-800"}     
-          `}>
-            {status}
-
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-semibold ${
+            status === "Contrato ativo"
+              ? "bg-green-100 text-green-800"
+              : status === "Contrato pendente"
+              ? "bg-orange-100 text-orange-900"
+              : "bg-red-100 text-red-800"
+          }`}
+        >
+          {status}
         </span>
-      )
-
-    }
+      );
+    },
   },
   {
     id: "actions",
+    header: "Ações",
     cell: ({ row }) => {
-      const id = row.original
-      const contract = row.original;
- 
-      return (
-        <div className="flex space-x-2 justify-end items-center">
-           <ContractDetailsDialog contract={contract} />
+      const [data, setData] = useState<Contract[]>([]);
+      const contract = row.original as Contract;
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(id.id)}
-            >
-              Copiar ID do contrato
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive">Excluir Contrato</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        </div>
-      )
+      return (
+        <ContractDetailsDialog
+          contract={{ ...contract, id: contract.id.toString() }}
+          onDeleteContract={(id) => {
+            const updatedData = data.filter((c) => c.id !== Number(id));
+            setData(updatedData);
+          }}
+        />
+      );
     },
   },
-  
+  {
+    accessorKey: "pdfFile",
+    header: "Contrato PDF",
+    cell: ({ row }) => {
+      const pdfFile = row.getValue("pdfFile") as File | null;
+
+      return (
+        <a
+          href={pdfFile ? URL.createObjectURL(pdfFile) : "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          {pdfFile ? "Baixar PDF" : "Nenhum PDF disponível"}
+        </a>
+      );
+    },
+  }
 ];

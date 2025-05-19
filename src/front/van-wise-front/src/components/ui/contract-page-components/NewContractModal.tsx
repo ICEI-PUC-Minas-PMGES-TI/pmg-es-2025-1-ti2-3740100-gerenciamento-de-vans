@@ -1,19 +1,23 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Plus } from "lucide-react"
-import React from "react"
-import { FormContract } from "./FormContract"
+} from "@/components/ui/dialog";
+import { Plus } from "lucide-react";
+import React from "react";
+import { FormContract } from "./FormContract";
 
-export function NewContractModal() {
-  const [isOpen, setIsOpen] = React.useState(false)
+interface NewContractModalProps {
+  onAddContract: (newContract: { id: string; name: string; email: string; status: string; pdfFile?: File | null }) => void;
+}
+
+export function NewContractModal({ onAddContract }: NewContractModalProps) {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -28,10 +32,11 @@ export function NewContractModal() {
           <DialogTitle>Criar Novo Contrato</DialogTitle>
         </DialogHeader>
         <FormContract
-          onSuccess={() => setIsOpen(false)} 
+          onSuccess={() => setIsOpen(false)}
           onCancel={() => setIsOpen(false)}
+          onAddContract={onAddContract}
         />
       </DialogContent>
     </Dialog>
-  )
+  );
 }
