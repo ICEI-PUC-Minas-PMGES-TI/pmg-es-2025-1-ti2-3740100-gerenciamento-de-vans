@@ -13,7 +13,9 @@ export default function RegisterPage() {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+
+  const [password, setPassword] = useState("");
+
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cpf, setCpf] = useState("");
@@ -91,6 +93,7 @@ export default function RegisterPage() {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
+
     // Validação no front-end
     if (
       !nome || !sobrenome || !email || !senha || !confirmaSenha || !telefone || !cpf ||
@@ -98,26 +101,31 @@ export default function RegisterPage() {
       (tipoUsuario === "motorista" && (!cnh || !antt)) ||
       (tipoUsuario === "donoderede" && !cnpj)
     ) {
+
       setModalMessage("Por favor, preencha todos os campos obrigatórios.");
       setIsModalOpen(true);
       return;
     }
+
     
 
-    // Verificar se as senhas coincidem
-    if (senha !== confirmaSenha) {
+
       setModalMessage("As senhas não coincidem.");
       setIsModalOpen(true);
       return;
+  
     }
 
+
     try {
+
       // Enviar dados para o backend
       const response = await axios.post("http://localhost:8081/usuarios/salvar", {
+
         nome,
         sobrenome,
         email,
-        senha,
+        password,
         telefone,
         cpf,
         dataNascimento,
@@ -134,14 +142,17 @@ export default function RegisterPage() {
         filhos: isResponsavel ? filhosCadastrados : []
       });
 
+
       if (response.status === 200 || response.status === 201) {
+
         setModalMessage("Cadastro realizado com sucesso!");
       } else {
         setModalMessage("Erro ao registrar. Tente novamente.");
       }
       setIsModalOpen(true);
     } catch (error: any) {
-      // Exibir mensagem de erro do back-end, se disponível
+
+
       const errorMessage = error.response?.data || "Erro ao registrar. Tente novamente.";
       setModalMessage(errorMessage);
       setIsModalOpen(true);
@@ -162,11 +173,13 @@ export default function RegisterPage() {
           </CardHeader>
 
           <CardContent>
+
             <div className="space-y-4">
               <Select
                 value={tipoUsuario}
                 onValueChange={(value) => setTipoUsuario(value)}
               >
+
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Tipo de usuário" />
                 </SelectTrigger>
@@ -247,41 +260,29 @@ export default function RegisterPage() {
 
               <div className="flex gap-2">
                 <div className="flex-1">
-                  <Label htmlFor="name" className="mb-1 block">
-                    Nome
-                  </Label>
-                  <Input
-                    type="text"
-                    id="name"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                  />
+
+                  <Label htmlFor="name" className="mb-1 block">Nome</Label>
+                  <Input type="text" id="name" value={nome} onChange={(e) => setNome(e.target.value)} />
                 </div>
                 <div className="flex-1">
-                  <Label htmlFor="sobrenome" className="mb-1 block">
-                    Sobrenome
-                  </Label>
-                  <Input
-                    type="text"
-                    id="sobrenome"
-                    value={sobrenome}
-                    onChange={(e) => setSobrenome(e.target.value)}
-                  />
+                  <Label htmlFor="sobrenome" className="mb-1 block">Sobrenome</Label>
+                  <Input type="text" id="sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+
                 </div>
               </div>
 
               <div className="flex gap-2">
                 <div className="flex-1">
-                  <Label htmlFor="data" className="mb-1 block">
-                    Data de Nascimento
-                  </Label>
+
+                  <Label htmlFor="data" className="mb-1 block">Data de Nascimento</Label>
+
                   <Input
                     type="date"
                     id="data"
                     max={new Date().toISOString().split("T")[0]}
-                    min={new Date(new Date().setFullYear(new Date().getFullYear() - 100))
-                      .toISOString()
-                      .split("T")[0]}
+
+                    min={new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toISOString().split("T")[0]}
+
                     value={dataNascimento}
                     onChange={(e) => setDataNascimento(e.target.value)}
                   />
@@ -321,6 +322,7 @@ export default function RegisterPage() {
                     onChange={(e) => setCnh(e.target.value)}
                     placeholder="Número da CNH"
                   />
+
 
                   <Label htmlFor="antt" className="mb-1 block">Registro ANTT</Label>
                   <Input
@@ -442,21 +444,22 @@ export default function RegisterPage() {
                 value={confirmaSenha}
                 onChange={(e) => setConfirmaSenha(e.target.value)}
               />
+
             </div>
           </CardContent>
+
           <CardFooter className="flex flex-col items-center gap-2">
-            <Button className="w-full cursor-pointer" onClick={handleRegister}>
-              Registrar
-            </Button>
+
+            <Button className="w-full cursor-pointer" onClick={handleRegister}>Registrar</Button>
             <div className="text-center text-sm">
               Já possui cadastro?{" "}
-              <Link to="/login" className="underline underline-offset-4">
-                Entre com sua conta
-              </Link>
+              <Link to="/login" className="underline underline-offset-4">Entre com sua conta</Link>
+
             </div>
           </CardFooter>
         </Card>
       </div>
+
 
       {isFilhoModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
@@ -567,7 +570,12 @@ export default function RegisterPage() {
             </div>
           </div>
         </div>
+
       )}
     </main>
   );
 }
+
+
+
+

@@ -2,7 +2,7 @@
 
 O login e o cadastro são etapas essenciais para acessar sites com segurança. No cadastro, você cria sua conta informando nome, e-mail ou telefone e uma senha forte. Já o login permite acessar sua conta inserindo o e-mail e a senha cadastrados. Caso esqueça a senha, é possível redefini-la pelo e-mail. Para facilitar o acesso, você pode salvar credenciais em um gerenciador de senhas. No sistema de WiseVan teremos três tipo de cadastro, cadastros para responsáveis, motoristas e dono de redes de vans. Caso o passageiro que irá na van seja menor de idade, ele será cadastrado em nome do seu responsável legal.
 
-![Cadastro e login](images/BPMN-gestaodecadastro.png)
+![Cadastro e login](images/gestaoCadastro.png)
 
 #### Detalhamento das atividades
 
@@ -30,65 +30,146 @@ _* **Link** - campo que armazena uma URL_
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| login           | caixa de texto   | formato de email       |                   |
+| email           | caixa de texto   | formato de email       |                   |
 | senha           | caixa de texto   | mínimo de 8 caracteres |                   |
+
 
 
 | **Comandos**         |  **Destino**                   | **Tipo** |
 | ---                  | ---                            | ---               |
-| entrar               | Fim do Processo                | default           |
-| cadastrar            | Início do proceso de cadastro  | ação              |
-| excluir              | Delete do cadastro             | ação              |
+| Login                | Tela inicial do usuário        | ação              |
+| Cadastre - se        | Início do proceso de cadastro  | ação              |
+| Esqueceu senha       | Tela recuperar senha           | ação              |
 
 
-**Cadastro**
+
+**Cadastro Motoristas**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CNH                       | numero           | 10 carecteres                |                   |
+| ANTT                      | numero           | 04 carecteres                |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |                   
+
+
+**Cadastro Dono da Rede**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CNPJ                      | numero           | 10 carecteres                |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
+
+
+**Cadastro Responsável / Aluno maior de idade**
+
+| **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
+| ---                       | ---              | ---                          | ---               |
+| Tipo de usuário           | seleção única    | motorista/dono/resposável    |                   |
+| Sou responsável           | check box        | caso seja resp ou maior      |                   |
+| nome                      | caixa de texto   | obrigatório                  |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| Telefone                  | numero           | mínimo de 10 caracteres      |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
+| CEP                       | numero           | 08 carecteres                |                   |
+| Rua                       | caixa de texto   | obrigatório                  |                   |
+| Cidades                   | caixa de texto   | obrigatório                  |                   |
+| Estado                    | caixa de texto   | obrigatório                  |                   |
+| Bairro                    | caixa de texto   | obrigatório                  |                   |
+| Complemento               | caixa de texto   | obrigatório                  |                   |
+| Número                    | caixa de texto   | número                       |                   |
+| Email                     | caixa de texto   | formato de email             |                   |
+| Senha                     | caixa de texto   | mínimo 08 caracteres         |                   |
+| Confirma Senha            | caixa de texto   | mínimo 08 caracteres         |                   |
+
+
+
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
+
+**Cadastro do menor de idade**
 
 | **Campo**                 | **Tipo**         | **Restrições**               | **Valor default** |
 | ---                       | ---              | ---                          | ---               |
 | nome                      | caixa de texto   | obrigatório                  |                   |
-| email                     | caixa de texto   | formato de email             |                   |
-| telefone                  | numero           | mínimo de 10 caracteres      |                   |
-| CPF                       | caixa de texto   | 10 carecteres                |                   |
-| confirmar senha           | caixa de texto   | mínimo de 8 caracteres       |                   |
-| tipo de perfil            | seleção única    | motorista ou dono da rede    |                   |
+| sobrenome                 | caixa de texto   | obrigatório                  |                   |
+| Data de nascimento        | caixa de data    | formato 00/00/0000           |                   |
+| CPF                       | numero           | 10 carecteres                |                   |
 
 
-**Comandos**
 
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| entrar               | Fim do Processo de cadastro    | default           |
-| login                | Início do proceso de login     | ação              |
-| excluir              | Delete do cadastro             | ação              |
-| editar               | Editar cadastro                | ação              |
-| salvar               | Salvar cadastro                | ação              |
+| **Comandos**         |  **Destino**                   |  **Tipo** |
+| ---                  | ---                            |  ---      |
+| Registrar            | encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | encaminha para a tela de inicio| Ação      |
+| Cancelar             | retorna para cadastro do filho | Ação      | 
+
+
 
 
 #### **Tela de LOGING**
-![Login](images/1W-Tela-Login.png)
-
-#### **Tela de para escolha de tipo de usuário**
-![Cadastro](images/2W-Tela-Cadastro-TIPO-usuario.png)
-
-#### **Tela de para escolha de tipo de usuário**
-![Cadastro](images/3W-Cadastro-Qual-Passageiro.png)
-
+![Login](images/W1Tela_login.jpg)
 
 #### **Tela de para cadastro de maiores de idade**
-![Cadastro](images/4W-Cadastro-Maior-Idade.png)
+![Cadastro](images/W5Tela_CadastroResposavelOUMaior.jpg)
 
 #### **Tela de para cadastro de menores de idade**
-![Cadastro](images/5W-Cadastro-Menor-idade.png)
+![Cadastro](images/W6Tela_CadastroMenor.jpg)
 
 #### **Tela de para cadastro de motoristas**
-![Cadastro](images/6W-Cadastro-Motoristas.png)
+![Cadastro](images/W3Tela_CadastroMotorista.jpg)
 
-#### **Tela de para confirmação de Email**
-![Cadastro](images/6W-Cadastro-Motoristas.png)
-
+#### **Tela de para cadastro de dono da rede**
+![Cadastro](images/W4Tela_CadastroDono.jpg)
 
 #### **Tela de para redefinir senha**
-![Cadastro](images/26-W-Tela-esqueceu-senha.png)
+![Cadastro](images/W2Tela_RecuperarSenha.jpg)
 
 
 

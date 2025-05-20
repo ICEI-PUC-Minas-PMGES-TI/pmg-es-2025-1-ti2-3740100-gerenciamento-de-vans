@@ -13,6 +13,7 @@ import ContractForm from './pages/ContractForm.tsx';
 import HomePage from './pages/HomePage.tsx';
 
 
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider
@@ -31,8 +32,3 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/contractform' element={<ContractForm />}/>
        <Route path='/homepage' element={<HomePage />}/>
 
-      </Routes>
-    </BrowserRouter>
-    </ThemeProvider>
-  </StrictMode>,
-)

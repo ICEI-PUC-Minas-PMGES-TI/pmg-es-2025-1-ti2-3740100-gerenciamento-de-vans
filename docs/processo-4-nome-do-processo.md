@@ -4,7 +4,7 @@ Os contratos de vans são importantes para garantir segurança, transparência e
 
 Na WiseVan fazer o contrato entre responsável e motorista é fácil e objetivo. O responsável consegue assinar pela própria plataforma ou cancelar a solicitação feita, além de conseguir ler todo o contrato. Para o motorista, ele precisará apenas subir o arquivo de contrato e selecionar a pessoa que deseja. Quando for feito a assinatura perguntará dados que não estão salvos no cadastro, apenas para fins de segurança. O restantes dos dados serão retirados do cadastro feito pelo próprio usuário. 
 
-![Gestao de contratos](images/D-gestao-contratos.png)
+![Gestao de contratos](images/gestaoContratos.png)
 
 
 #### Detalhamento das atividades
@@ -13,32 +13,36 @@ Na gestão de contratos, o cliente solicita ao motorista o contrato, após receb
 
 ### Atividades:  
 - **Solicitação do contrato:** O passageiro solicita um contrato ao motorista.  
-- **Criação do contrato:** O motorista gera um documento com as informações acordadas.  
-- **Envio do contrato:** O motorista envia o contrato para o cliente.
-- **Decisão do Passageiro:** O passageiro decide se quer ou não assinar o contrato.
+- **Criação do contrato:** O motorista cria o contrato.  
+- **Decisão do Passageiro:** O passageiro decide se realmente confirma a assinatura do contratos.
   
 _**Os tipos de dados a serem utilizados são:**_
 
 _**Arquivo** - campo de upload de contrato em formato PDF_
 
-_**Link** - campo que armazena uma URL_
+* Caixa de texto - campo texto de uma linha
+
+* Número - campo numérico
+
+* Seleção única - campo com várias opções de valores que são mutuamente exclusivas (tradicional radio button ou combobox)
 
 
-**Contratação**
+
+** Nova Contratação**
 
 | **Campo**       | **Tipo**         | **Restrições**         | **Valor default** |
 | ---             | ---              | ---                    | ---               |
-| Arquivo         | Arquivo          | Formato de pdf         |                   |
-| Link            | Link             | URL Inválida           |                   |
+| Nome            | Texto            |                        |                   |
+| Email           | email            | ser um email valido  @ |                   |
 
 
 
 **Comandos**
-| **Comandos**         |  **Destino**                   | **Tipo**          |
-| ---                  | ---                            | ---               |
-| Solicitar            | Inicio do processo             | Ação              |
-| Assinar              | Notifica o motorista e salva   | Default           |
-| Recusar              | Fim do peocesso                | Ação              |
+| **Comandos**         |  **Destino**                                    | **Tipo**          |
+| ---                  | ---                                             | ---               |
+| Cadastrar Contrato   | Cria e Salva o novo contrato                    | Ação              |
+| Fechar               | Fecha a tela de criar novo contrato             | Ação              |
+| Olhinho              | Visualizar detalhes dos contratos               | Ação              |
 
 
 #### **Tela para visualizar todos os contratos do motoristas**
