@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import ContractForm from "./ContractForm"; // <-- importa o componente
+import ContractForm from "./ContractForm";
+import RoutesPage  from "./RoutesPage";
+
 
 const menuItems = [
   "Home",
@@ -69,11 +71,17 @@ export default function Homepage() {
         </div>
       )}
 
-      {page !== "Home" && page !== "Contratos" && (
+      {page !== "Home" && page !== "Contratos" && page !=="Rota" && (
         <div className="p-8 text-center text-gray-500 text-xl">
           A tela <strong>{page}</strong> está em construção.
         </div>
       )}
+
+      {page === "Rota" && (
+        <div className="p-8">
+          <RoutesPage />
+        </div>
+  )}
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
         &copy; {new Date().getFullYear()} Wise Vans. Todos os direitos reservados.
