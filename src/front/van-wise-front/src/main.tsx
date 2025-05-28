@@ -11,6 +11,11 @@ import RegisterPage from './pages/RegisterPage.tsx';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 import ContractForm from './pages/ContractForm.tsx';
 import HomePage from './pages/HomePage.tsx';
+import MotoristaHomepage from './pages/Motoristahomepage.tsx';
+import DonoHomePage from './pages/DonoHomePage.tsx';
+
+
+
 
 
 createRoot(document.getElementById('root')!).render(
@@ -30,6 +35,8 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
        <Route path='/contractform' element={<ContractForm />}/>
        <Route path='/homepage' element={<HomePage />}/>
+        <Route path='/MotoristaHomepage' element={<MotoristaHomepage />}/>
+        <Route path='/DonoHomepage' element={<DonoHomePage />}/>
 
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,192 @@
+import React, { useState } from "react";
+
+// Dados simulados (seriam recebidos via API)
+const vanResponsavel = {
+  placa: "ABC-1234",
+  modelo: "Sprinter 16 lugares",
+  capacidade: 16,
+};
+
+const horariosTurnos = [
+  { turno: "Manhã", inicio: "6:00", fim: "8:00" },
+  { turno: "Tarde", inicio: "10:30", fim: "13:30" },
+  { turno: "Noite", inicio: "17:00", fim: "19:30" },
+];
+
+const passageiros = [
+  {
+    nome: "João Silva",
+    turno: "Manhã",
+    embarque: "Rua A, 123",
+    destino: "Escola Modelo",
+  },
+  {
+    nome: "Maria Oliveira",
+    turno: "Tarde",
+    embarque: "Av. B, 456",
+    destino: "Colégio Central",
+  },
+  {
+    nome: "Pedro Santos",
+    turno: "Manhã",
+    embarque: "Rua C, 789",
+    destino: "Escola Modelo",
+  },
+];
+
+const menuItems = ["Rota", "Mural"];
+
+export default function MotoristaHomepage() {
+  const [active, setActive] = useState("Rota");
+  const [page, setPage] = useState("Rota");
+  const [modalVanOpen, setModalVanOpen] = useState(false);
+  const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
+
+  const handleMenuClick = (item: string) => {
+    setActive(item);
+    setPage(item);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-200">
+      <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
+        <h1 className="text-xl font-bold text-gray-400">Olá Motorista, seja bem-vindo</h1>
+        <nav className="flex gap-8">
+          {menuItems.map((item) => (
+            <button
+              key={item}
+              className={`hover:underline ${active === item ? "underline font-semibold" : ""}`}
+              onClick={() => handleMenuClick(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </nav>
+      </header>
+
+      <main className="p-8 flex flex-col gap-10 flex-grow">
+        <div className="flex gap-6">
+          {/* Info Van */}
+          <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
+            <div>
+              <h2 className="text-xl font-bold mb-4">Sua Van</h2>
+              <p><strong>Placa:</strong> {vanResponsavel.placa}</p>
+              <p><strong>Modelo:</strong> {vanResponsavel.modelo}</p>
+              <p><strong>Capacidade:</strong> {vanResponsavel.capacidade} passageiros</p>
+            </div>
+            <button
+              onClick={() => setModalVanOpen(true)}
+              className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 rounded-md transition"
+            >
+              Ver detalhes
+            </button>
+          </section>
+
+          {/* Horários e Turnos */}
+          <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
+            <div>
+              <h2 className="text-xl font-bold mb-4">Horários e Turnos</h2>
+              <p><strong>Turnos:</strong> Manhã, Tarde, Noite</p>
+            </div>
+            <button
+              onClick={() => setModalHorarioOpen(true)}
+              className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 rounded-md transition"
+            >
+              Ver detalhes
+            </button>
+          </section>
+        </div>
+
+        {/* Passageiros */}
+        <section className="bg-white p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold mb-4">Passageiros da Van</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-2 border">Nome</th>
+                  <th className="p-2 border">Turno</th>
+                  <th className="p-2 border">Embarque</th>
+                  <th className="p-2 border">Destino</th>
+                </tr>
+              </thead>
+              <tbody>
+                {passageiros.map((p, index) => (
+                  <tr key={index} className="text-center">
+                    <td className="p-2 border">{p.nome}</td>
+                    <td className="p-2 border">{p.turno}</td>
+                    <td className="p-2 border">{p.embarque}</td>
+                    <td className="p-2 border">{p.destino}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
+        &copy; {new Date().getFullYear()} Wise Vans. Todos os direitos reservados.
+      </footer>
+
+      {/* Modal Van */}
+      {modalVanOpen && (
+        <div className="fixed inset-0 flex justify-center items-center z-50 pointer-events-none">
+          <div
+            className="bg-white rounded-xl p-8 w-96 max-w-full shadow-lg relative pointer-events-auto"
+            style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
+              onClick={() => setModalVanOpen(false)}
+              aria-label="Fechar modal"
+            >
+              &times;
+            </button>
+            <h2 className="text-3xl font-bold mb-6">Detalhes da Van</h2>
+            <p className="mb-2"><strong>Placa:</strong> {vanResponsavel.placa}</p>
+            <p className="mb-2"><strong>Modelo:</strong> {vanResponsavel.modelo}</p>
+            <p className="mb-2"><strong>Capacidade:</strong> {vanResponsavel.capacidade} passageiros</p>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Horários */}
+      {modalHorarioOpen && (
+        <div className="fixed inset-0 flex justify-center items-center z-50 pointer-events-none">
+          <div
+            className="bg-white rounded-xl p-8 w-80 max-w-full shadow-lg relative pointer-events-auto"
+            style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
+              onClick={() => setModalHorarioOpen(false)}
+              aria-label="Fechar modal"
+            >
+              &times;
+            </button>
+            <h2 className="text-3xl font-bold mb-6">Detalhes dos Turnos</h2>
+            <table className="w-full text-left">
+              <thead>
+                <tr>
+                  <th className="border-b pb-2">Turno</th>
+                  <th className="border-b pb-2">Início</th>
+                  <th className="border-b pb-2">Fim</th>
+                </tr>
+              </thead>
+              <tbody>
+                {horariosTurnos.map(({ turno, inicio, fim }, i) => (
+                  <tr key={i}>
+                    <td className="py-1">{turno}</td>
+                    <td className="py-1">{inicio}</td>
+                    <td className="py-1">{fim}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

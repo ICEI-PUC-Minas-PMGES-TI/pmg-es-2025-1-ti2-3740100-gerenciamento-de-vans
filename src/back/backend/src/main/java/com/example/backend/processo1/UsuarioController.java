@@ -14,6 +14,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private VanRepository vanRepository;
+
 
     // Salvar novo usuário
     @PostMapping("/salvar")
@@ -100,5 +103,39 @@ public class UsuarioController {
         }
 
     }
+
+    // cadastrar uma van
+    @PostMapping("/cadastrarvan")
+    public ResponseEntity<?> cadastrarVan(@RequestBody CadastroVan van) {
+        try {
+            CadastroVan novaVan = vanRepository.save(van);
+            return ResponseEntity.ok(novaVan);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao cadastrar van: " + e.getMessage());
+        }
+    }
+
+    // (Opcional) Listar vans cadastradas
+    @GetMapping("/listarvans")
+    public ResponseEntity<?> listarVans() {
+        return ResponseEntity.ok(vanRepository.findAll());
+    }
+
+    // deletar van pelo campo placa
+    @DeleteMapping("/deletarvan/{placa}")
+    public ResponseEntity<?> deletarVan(@PathVariable String placa) {
+        try {
+            CadastroVan van = vanRepository.findByPlaca(placa);
+            if (van == null) {
+                return ResponseEntity.status(404).body("Van não encontrada");
+            }
+            vanRepository.delete(van);
+            return ResponseEntity.ok("Van deletada com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erro ao deletar van: " + e.getMessage());
+        }
+    }
 }
+
+
 

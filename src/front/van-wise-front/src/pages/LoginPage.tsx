@@ -24,15 +24,29 @@ export default function LoginPage() {
     try {
       const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
       console.log(response.data); // Login bem-sucedido
-      // Aqui você pode redirecionar para outra página ou armazenar o token de autenticação
-      navigate("/HomePage");
+      const userType = response.data.tipoUsuario.toLowerCase();
+      if (userType === "donoderede" || userType === "motorista" || userType === "responsavel") {
+        localStorage.setItem("userType", userType);
+
+        if(userType === "motorista") {
+          navigate("/MotoristaHomepage");
+        }
+        else if (userType === "donoderede"){
+          navigate("/DonoHomePage");
+        }
+        else if (userType === "responsavel") {
+          navigate("/HomePage");
+        }
+      } else {
+        setError("Tipo de usuário inválido.");
+      }
     } catch (err: any) {
       setError('Email ou senha inválidos');
       console.error(err);
-      setError(`Erro de autenticação: ${err.response ? err.response.data.message : err.message}`);
     } finally {
       setLoading(false);
-    }
+    } 
+
   };
 
   return (

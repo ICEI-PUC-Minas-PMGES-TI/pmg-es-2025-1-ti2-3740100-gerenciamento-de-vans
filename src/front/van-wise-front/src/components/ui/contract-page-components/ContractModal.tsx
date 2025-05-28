@@ -28,7 +28,7 @@ export function ContractDetailsDialog({
 
   const handleDeleteContract = () => {
   console.log(`Tentando excluir o contrato com ID: ${contract.id}`);
-  fetch(`http://localhost:8081/contracts/${contract.id}`, {
+  fetch(`http://localhost:8081  q/contracts/${contract.id}`, {
     method: "DELETE",
   })
     .then((response) => {
