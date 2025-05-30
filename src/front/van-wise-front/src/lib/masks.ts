@@ -64,16 +64,15 @@ export const maskCnpj = (event: React.FormEvent<HTMLInputElement>) => {
 
   return value
     .replace(/\D/g, '') // Remove tudo que não é dígito
-    .replace(/(\d{2})(\d)/, '$1.$2') // 00.0...
-    .replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2/$3') // 00.000.000/0...
-    .replace(/(\d{4})(\d)/, '$1-$2') // 00.000.000/0000-0
+    .replace(/(\d{2})(\d)/, '$1.$2') // Coloca ponto após os dois primeiros dígitos (XX.)
+    .replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2.$3') // Coloca ponto após os três dígitos (XX.XXX.)
+    .replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2/$3') // Coloca barra após os três dígitos (XX.XXX/)
+    .replace(/(\d{4})(\d)/, '$1-$2') // Coloca hífen após os quatro dígitos (XX.XXX/XXXX-)
     .replace(/(-\d{2})\d+?$/, '$1'); // Impede mais dígitos após os 14 números
 }
 
 
-
-
-export type MaskTypes = 'cpf' | 'phone' | 'cep' | 'data' | 'cnh' | 'antt'| 'cnpj';
+export type MaskTypes = 'cpf' | 'phone' | 'cep' | 'data' | 'cnh' | 'antt' | 'cnpj';
 
 type Masks = Record<MaskTypes, (event: React.FormEvent<HTMLInputElement>) => string>;
 

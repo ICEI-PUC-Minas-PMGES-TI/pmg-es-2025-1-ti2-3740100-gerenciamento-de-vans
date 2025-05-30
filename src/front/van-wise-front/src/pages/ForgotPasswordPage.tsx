@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login/recover-password", {
+      const response = await axios.post("http://localhost:8081/usuarios/recover-password", {
         email: email,
       });
 

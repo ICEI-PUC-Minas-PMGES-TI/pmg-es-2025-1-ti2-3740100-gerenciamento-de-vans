@@ -10,8 +10,8 @@ import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 import ContractForm from './pages/ContractForm.tsx';
-import FinancialPage from './pages/FinancialPage.tsx';
-
+import HomePage from './pages/HomePage.tsx';
+import RoutesPage from './pages/RoutesPage.tsx';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -30,8 +30,10 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/register' element={<RegisterPage />}/>
        <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
        <Route path='/contractform' element={<ContractForm />}/>
-       <Route path='/financialpage' element={<FinancialPage />}/>
-      
+       <Route path='/homepage' element={<HomePage />}/>
+       <Route path='/routespage' element={<RoutesPage />}/>
+
+
       </Routes>
     </BrowserRouter>
     </ThemeProvider>
