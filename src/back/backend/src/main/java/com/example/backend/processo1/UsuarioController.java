@@ -12,10 +12,17 @@ import java.util.Optional;
 @CrossOrigin(origins = "*") // permite chamadas de outros domínios
 public class UsuarioController {
 
+    //=============================== REPOSITORIES =================================
+
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
     private VanRepository vanRepository;
+    @Autowired
+    private ContratarRepository contratarRepository;
+
+
+    //==================================SALVAR USUÁRIO=================================
 
 
     // Salvar novo usuário
@@ -24,10 +31,13 @@ public class UsuarioController {
         return usuarioRepository.save(usuario);
     }
 
+    //================================ TESTE USUÁRIO =================================
+
     @GetMapping("/teste")
     public ResponseEntity<?> testarUsuario(@RequestParam String email) {
         return ResponseEntity.ok(usuarioRepository.findByEmail(email));
 }
+    //================================== LOGIN USUÁRIO =================================
 
 
     // Login por e-mail e senha
@@ -75,6 +85,8 @@ public class UsuarioController {
         }
     }
 
+    //==============================RECUPERAR A SENHA=================================
+
 
     // Endpoint para recuperar a senha (simulação)
     @PostMapping("/recover-password")
@@ -103,6 +115,8 @@ public class UsuarioController {
         }
 
     }
+
+    //================================== CADASTRO DE VAN =================================
 
     // cadastrar uma van
     @PostMapping("/cadastrarvan")
@@ -134,6 +148,27 @@ public class UsuarioController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Erro ao deletar van: " + e.getMessage());
         }
+    }
+
+
+    //================================ CONTRATAÇÃO DE VAN =================================
+
+
+    //contratar
+    @PostMapping("/contratar")
+    public ResponseEntity<?> contratarVan(@RequestBody Contratar contratacao) {
+        try {
+            Contratar novaContratacao = contratarRepository.save(contratacao);
+            return ResponseEntity.ok(novaContratacao);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao contratar van: " + e.getMessage());
+        }
+    }
+
+    // Listar todas as contratações
+    @GetMapping("/listarcontratacoes")
+    public ResponseEntity<?> listarContratacoes() {
+        return ResponseEntity.ok(contratarRepository.findAll());
     }
 }
 

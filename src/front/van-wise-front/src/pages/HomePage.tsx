@@ -72,13 +72,38 @@ export default function Homepage() {
     setShowConfirmModal(false);
   };
 
-  const handleSubmit = () => {
-    console.log("Contratação enviada:", formData, selectedVan);
+  const handleSubmit = async () => {
+  try {
+    const response = await fetch("http://localhost:8081/usuarios/contratar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        endereco: formData.endereco,
+        formaPagamento: formData.pagamento.toUpperCase(), // garante que envie "PIX", "CARTÃO" etc
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    const data = await response.json();
     setVanContratada(selectedVan);
     setSelectedVan(null);
     setShowConfirmModal(false);
     alert(`Contratação enviada com sucesso para a van ${selectedVan.modelo}`);
-  };
+  } catch (error: any) {
+    console.error("Erro ao contratar:", error);
+    alert("Erro ao contratar van: " + error.message);
+  }
+};
+
 
   return (
     <div className="min-h-screen flex flex-col relative">
