@@ -1,35 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const menuItems = ["Home", "Mural", "Avaliações", "Rotas"];
 
-const vans = [
-  {
-    id: 1,
-    modelo: "Sprinter 16 lugares",
-    placa: "ABC-1234",
-    bairroInicial: "Centro",
-    destinoFinal: "Bairro das Flores",
-    horarios: "07:00 / 12:00 / 18:00",
-    turnos: "Manhã / Tarde / Noite",
-    preco: "R$ 250,00",
-  },
-  {
-    id: 2,
-    modelo: "Fiat Ducato 15 lugares",
-    placa: "DEF-5678",
-    bairroInicial: "Jardim América",
-    destinoFinal: "Centro",
-    horarios: "06:30 / 13:00 / 17:30",
-    turnos: "Manhã / Tarde / Noite",
-    preco: "R$ 230,00",
-  },
-];
+type Van = {
+  id: number;
+  modelo: string;
+  placa: string;
+  bairroInicial: string;
+  destinoFinal: string;
+  horarios: string;
+  turnos: string;
+  preco: string;
+};
 
 export default function Homepage() {
+  const [vans, setVans] = useState<Van[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState<string | null>(null);
+
   const [active, setActive] = useState("Home");
   const [page, setPage] = useState("Home");
 
-  const [selectedVan, setSelectedVan] = useState<any | null>(null);
+  const [selectedVan, setSelectedVan] = useState<Van | null>(null);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -38,7 +31,21 @@ export default function Homepage() {
     pagamento: "pix",
   });
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [vanContratada, setVanContratada] = useState<any | null>(null);
+  const [vanContratada, setVanContratada] = useState<Van | null>(null);
+
+  useEffect(() => {
+    axios
+      .get<Van[]>("http://localhost:8081/usuarios/listarvans")
+      .then((res) => {
+        setVans(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setErro("Erro ao buscar as vans");
+        setLoading(false);
+      });
+  }, []);
 
   const handleMenuClick = (item: string) => {
     setActive(item);
@@ -47,7 +54,7 @@ export default function Homepage() {
     setShowConfirmModal(false);
   };
 
-  const handleContratarClick = (van: any) => {
+  const handleContratarClick = (van: Van) => {
     setSelectedVan(van);
     setFormData({
       nome: "",
@@ -73,37 +80,36 @@ export default function Homepage() {
   };
 
   const handleSubmit = async () => {
-  try {
-    const response = await fetch("http://localhost:8081/usuarios/contratar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nome: formData.nome,
-        email: formData.email,
-        telefone: formData.telefone,
-        endereco: formData.endereco,
-        formaPagamento: formData.pagamento.toUpperCase(), // garante que envie "PIX", "CARTÃO" etc
-      }),
-    });
+    try {
+      const response = await fetch("http://localhost:8081/usuarios/contratar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          telefone: formData.telefone,
+          endereco: formData.endereco,
+          formaPagamento: formData.pagamento.toUpperCase(),
+        }),
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(errorText);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
+
+      const data = await response.json();
+      setVanContratada(selectedVan);
+      setSelectedVan(null);
+      setShowConfirmModal(false);
+      alert(`Contratação enviada com sucesso para a van ${selectedVan?.modelo}`);
+    } catch (error: any) {
+      console.error("Erro ao contratar:", error);
+      alert("Erro ao contratar van: " + error.message);
     }
-
-    const data = await response.json();
-    setVanContratada(selectedVan);
-    setSelectedVan(null);
-    setShowConfirmModal(false);
-    alert(`Contratação enviada com sucesso para a van ${selectedVan.modelo}`);
-  } catch (error: any) {
-    console.error("Erro ao contratar:", error);
-    alert("Erro ao contratar van: " + error.message);
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen flex flex-col relative">
@@ -133,37 +139,25 @@ export default function Homepage() {
         </div>
       )}
 
-      {/* Página inicial */}
+      {/* Página Home */}
       {page === "Home" && (
         <main className="p-8">
           <h2 className="text-3xl font-bold mb-6">Escolha a sua van</h2>
+          {loading && <p>Carregando vans...</p>}
+          {erro && <p className="text-red-500">{erro}</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {vans.map((van) => (
               <div
                 key={van.id}
                 className="bg-white p-4 rounded-lg shadow space-y-1 text-sm"
               >
-                <p>
-                  <strong>Modelo:</strong> {van.modelo}
-                </p>
-                <p>
-                  <strong>Placa:</strong> {van.placa}
-                </p>
-                <p>
-                  <strong>Bairro Inicial:</strong> {van.bairroInicial}
-                </p>
-                <p>
-                  <strong>Destino Final:</strong> {van.destinoFinal}
-                </p>
-                <p>
-                  <strong>Horários:</strong> {van.horarios}
-                </p>
-                <p>
-                  <strong>Turnos:</strong> {van.turnos}
-                </p>
-                <p>
-                  <strong>Preço:</strong> {van.preco}
-                </p>
+                <p><strong>Modelo:</strong> {van.modelo}</p>
+                <p><strong>Placa:</strong> {van.placa}</p>
+                <p><strong>Bairro Inicial:</strong> {van.bairroInicial}</p>
+                <p><strong>Destino Final:</strong> {van.destinoFinal}</p>
+                <p><strong>Horários:</strong> {van.horarios}</p>
+                <p><strong>Turnos:</strong> {van.turnos}</p>
+                <p><strong>Preço:</strong> {van.preco}</p>
                 <button
                   className="mt-2 bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded text-sm"
                   onClick={() => handleContratarClick(van)}
@@ -176,16 +170,10 @@ export default function Homepage() {
         </main>
       )}
 
-      {/* Outras páginas */}
+      {/* Outras páginas em construção */}
       {["Mural", "Avaliações", "Rotas"].includes(page) && (
         <div className="p-8 text-center text-gray-500 text-xl">
           A tela <strong>{page}</strong> está em construção.
-        </div>
-      )}
-
-      {page === "Contratos" && (
-        <div className="p-8">
-          <ContractForm />
         </div>
       )}
 
@@ -199,9 +187,7 @@ export default function Homepage() {
             >
               ✕
             </button>
-            <h3 className="text-xl font-bold mb-4">
-              Contratar: {selectedVan.modelo}
-            </h3>
+            <h3 className="text-xl font-bold mb-4">Contratar: {selectedVan.modelo}</h3>
             <form onSubmit={handleOpenConfirmModal} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium">Nome</label>
@@ -266,54 +252,34 @@ export default function Homepage() {
         </div>
       )}
 
-      {/* Modal confirmação final */}
+      {/* Modal de confirmação final */}
       {showConfirmModal && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-60 bg-black bg-opacity-30">
           <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm text-center">
             <h3 className="text-xl font-bold mb-4">Confirme seus dados</h3>
-            <p>
-              <strong>Van:</strong> {selectedVan?.modelo}
-            </p>
-            <p>
-              <strong>Nome:</strong> {formData.nome}
-            </p>
-            <p>
-              <strong>E-mail:</strong> {formData.email}
-            </p>
-            <p>
-              <strong>Telefone:</strong> {formData.telefone}
-            </p>
-            <p>
-              <strong>Endereço:</strong> {formData.endereco}
-            </p>
-            <p>
-              <strong>Pagamento:</strong> {formData.pagamento}
-            </p>
+            <p><strong>Van:</strong> {selectedVan?.modelo}</p>
+            <p><strong>Nome:</strong> {formData.nome}</p>
+            <p><strong>E-mail:</strong> {formData.email}</p>
+            <p><strong>Telefone:</strong> {formData.telefone}</p>
+            <p><strong>Endereço:</strong> {formData.endereco}</p>
+            <p><strong>Pagamento:</strong> {formData.pagamento}</p>
             <div className="flex justify-between mt-6">
               <button
                 onClick={handleCloseConfirmModal}
-                className="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded"
+                className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded"
               >
                 Voltar
               </button>
               <button
                 onClick={handleSubmit}
-                className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
               >
-                Confirmar
+                Enviar
               </button>
             </div>
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function ContractForm() {
-  return (
-    <div className="text-center text-gray-500 text-xl">
-      Formulário de contratos está em construção.
     </div>
   );
 }
