@@ -11,8 +11,10 @@ import RegisterPage from './pages/RegisterPage.tsx';
 import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 import ContractForm from './pages/ContractForm.tsx';
 import HomePage from './pages/HomePage.tsx';
-import MotoristaHomepage from './pages/Motoristahomepage.tsx';
+import MotoristaHomepage from './pages/MotoristaHomepage.tsx';
 import DonoHomePage from './pages/DonoHomePage.tsx';
+import AvaliacaoMotoristasPage from './pages/AvaliacaoMotoristasPage';
+import AvaliarMotoristaPage from './pages/AvaliarMotoristaPage';
 
 
 
@@ -36,8 +38,9 @@ createRoot(document.getElementById('root')!).render(
        <Route path='/contractform' element={<ContractForm />}/>
        <Route path='/homepage' element={<HomePage />}/>
         <Route path='/MotoristaHomepage' element={<MotoristaHomepage />}/>
-        <Route path='/DonoHomepage' element={<DonoHomePage />}/>
-
+        <Route path='/DonoHomePage' element={<DonoHomePage />}/>
+        <Route path='/avaliacao-motoristas' element={<AvaliacaoMotoristasPage />}/>
+        <Route path='/avaliar-motorista/:id' element={<AvaliarMotoristaPage />}/>
       </Routes>
     </BrowserRouter>
     </ThemeProvider>
