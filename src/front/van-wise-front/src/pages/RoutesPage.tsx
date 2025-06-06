@@ -3,6 +3,8 @@ import { Clock } from "lucide-react";
 import { ModeToggle } from "@/components/ui/themebutton";
 import axios from "axios";
 import { MapPin } from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 
 interface StudentCheckin {
@@ -11,15 +13,20 @@ interface StudentCheckin {
     status: string;
 }
 
-const routeId = 1
+
+
 
 const RoutesPage = () => {
+    const { routeId } = useParams();
+    const routeIdNumber = Number(routeId);
     const [routeStatus, setRouteStatus] = useState<string>("");
     const [students, setStudents] = useState<StudentCheckin[]>([]);
     const dataHoje = new Date().toLocaleDateString("pt-BR");
+    const navigate = useNavigate();
 
     const handleRouteAction = async (action: "iniciar" | "pausar" | "finalizar" | "cancelar" | "expandir") => {
         let endpoint = "";
+        let method: "put" | "delete" = "put";
         switch (action) {
             case "iniciar":
                 endpoint = `/routes/${routeId}/iniciar`;
@@ -28,15 +35,23 @@ const RoutesPage = () => {
                 endpoint = `/routes/${routeId}/pausar`;
                 break;
             case "finalizar":
+                const confirmed = window.confirm("Tem certeza que deseja finalizar e excluir esta rota? Esta ação não pode ser desfeita.");
+                if (!confirmed) return;
                 endpoint = `/routes/${routeId}/finalizar`;
+                method = "delete";
                 break;
             default:
                 return;
         }
         try {
-            await axios.put(`http://localhost:8080${endpoint}`);
-            const res = await axios.get(`http://localhost:8080/routes/${routeId}`);
-            setRouteStatus(res.data.status);
+            if (method === "put") {
+                await axios.put(`http://localhost:8080${endpoint}`);
+                const res = await axios.get(`http://localhost:8080/routes/${routeId}`);
+                setRouteStatus(res.data.status);
+            } else if (method === "delete") {
+                await axios.delete(`http://localhost:8080${endpoint}`);
+                navigate("/myroutes"); // ajuste para o caminho correto da sua lista de rotas
+            }
         } catch (err) {
             alert("Erro ao executar ação na rota.");
             console.error(err);
@@ -48,7 +63,7 @@ const RoutesPage = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/checkin/route/${routeId}`)
+            .get(`http://localhost:8080/checkins/route/${routeIdNumber}`)
             .then((res) => {
                 const alunos = res.data.map((checkin: any) => ({
                     nome: checkin.user.username,

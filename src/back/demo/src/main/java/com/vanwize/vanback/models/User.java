@@ -76,7 +76,7 @@ public class User {
   @Column(name = "cpf", unique = true, nullable = false, updatable = false)
   @NotNull(groups = CreateUser.class)
   @NotEmpty(groups = CreateUser.class)
-  @Size(groups = CreateUser.class, min = 11, max = 11)
+  @Size(groups = CreateUser.class, min = 14, max = 14)
   private String cpf;
   // phone
   @Column(name = "phone", length = 15, nullable = false)
@@ -88,6 +88,28 @@ public class User {
   @Column(name = "birthdate", length = 10, nullable = false)
   @NotNull(groups = { CreateUser.class, UpdateUser.class })
   private Date birthdate;
+  // cep
+  @Column(name = "cep", length = 9, nullable = true)
+  @Size(groups = CreateUser.class, min = 9, max = 9)
+  @NotNull(groups = { CreateUser.class, UpdateUser.class })
+  private String cep;
+  //Cidade
+  @Column(name = "cidade", length = 50, nullable = true)
+  @Size(groups = CreateUser.class, min = 3, max = 50)
+  private String cidade;
+  //Estado
+  @Column(name = "estado", length = 50, nullable = true)
+  @Size(groups = CreateUser.class, min = 2, max = 50)
+  private String estado;
+ //Complemento
+  @Column(name = "complemento", length = 50, nullable = true)
+  @Size(groups = CreateUser.class, min = 3, max = 50)
+  private String complemento;
+  //numero
+  @Column(name = "numero", length = 10, nullable = true)
+  @Size(groups = CreateUser.class, min = 1, max = 10)
+  private String numero;
+
   
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -96,7 +118,7 @@ public class User {
   public User() {
   }
 
-  public User(Long id, String username, String password, String email, String cpf, String phone, Date birthdate) {
+  public User(Long id, String username, String password, String email, String cpf, String phone, Date birthdate, String cep, String cidade, String estado, String complemento, String numero) {
     this.id = id;
     this.username = username;
     this.password = password;
@@ -104,6 +126,11 @@ public class User {
     this.cpf = cpf;
     this.phone = phone;
     this.birthdate = birthdate;
+    this.cep = cep;
+    this.cidade = cidade;
+    this.estado = estado;
+    this.complemento = complemento;
+    this.numero = numero;
   }
 
   public Long getId() {
@@ -162,6 +189,46 @@ public class User {
     this.birthdate = birthdate;
   }
 
+  public String getCep() {
+    return this.cep;
+  }
+
+  public void setCep(String cep) {
+    this.cep = cep;
+  }
+
+  public String getCidade() {
+    return this.cidade;
+  }
+
+  public void setCidade(String cidade) {
+    this.cidade = cidade;
+  }
+
+  public String getEstado() {
+    return this.estado;
+  }
+
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
+
+  public String getComplemento() {
+    return this.complemento;
+  }
+
+  public void setComplemento(String complemento) {
+    this.complemento = complemento;
+  } 
+
+  public String getNumero() {
+    return this.numero;
+  }
+
+  public void setNumero(String numero) {
+    this.numero = numero;
+  }
+  
   @JsonIgnore
   public List<Checkin> getCheckins() {
     return this.checkins;
@@ -211,15 +278,15 @@ class Driver extends User {
   @Size(groups = CreateUser.class, min = 11, max = 11)
   private String cnh;
   //ANTT
-  @Column(name = "antt", length = 8, nullable = true, unique = true)
-  @Size(groups = CreateUser.class, min = 8, max = 8)
+  @Column(name = "antt", length = 9, nullable = true, unique = true)
+  @Size(groups = CreateUser.class, min = 9, max = 9)
   private String antt;
 
   public Driver() { }
 
   public Driver(Long id, String Username, String password, String email, String cpf, String phone,
-    Date birthdate, String cnh, String antt) {
-    super(id, Username, password, email, cpf, phone, birthdate);
+    Date birthdate, String cnh, String antt, String cep, String cidade, String estado, String complemento, String numero) {
+    super(id, Username, password, email, cpf, phone, birthdate, cep, cidade, estado, complemento, numero);
     this.cnh = cnh;
     this.antt = antt;
   }
@@ -251,7 +318,7 @@ class Filho {
   @Column(name = "nome", length = 50, nullable = false)
   private String nome;
   //cpf filho
-  @Column(name = "cpf", length = 11, nullable = false, unique = true)
+  @Column(name = "cpf", length = 14, nullable = false, unique = true)
   private String cpf;
   //nascimento filho
   @Column(name = "nascimento", length = 10, nullable = false)
@@ -323,21 +390,20 @@ class Responsavel extends User {
     this.filhos = filhos;
   }
 
-
 }
 
 @Entity
 @DiscriminatorValue("Dono")
 class Dono extends User {
-  @Column(name = "cnpj", length = 14, nullable = true, unique = true)
-  @Size(groups = CreateUser.class, min = 14, max = 14)
+  @Column(name = "cnpj", length = 18, nullable = true, unique = true)
+  @Size(groups = CreateUser.class, min = 18, max = 18)
   private String cnpj;
   
   public Dono() { }
 
   public Dono(Long id, String username, String password, String email, String cpf, String phone,
-    Date birthdate, String cnpj) {
-    super(id, username, password, email, cpf, phone, birthdate);
+    Date birthdate, String cnpj, String cep, String cidade, String estado, String complemento, String numero) {
+    super(id, username, password, email, cpf, phone, birthdate, cep, cidade, estado, complemento, numero);
     this.cnpj = cnpj;
   }
   public String getCnpj() {

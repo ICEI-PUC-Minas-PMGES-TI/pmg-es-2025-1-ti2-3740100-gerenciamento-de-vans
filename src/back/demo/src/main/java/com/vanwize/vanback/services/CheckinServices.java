@@ -30,6 +30,9 @@ public class CheckinServices {
    List<Checkin> checkins = this.checkinRepository.findByUser_Id(userId);
    return checkins;
   }
+  public List<Checkin> findAll() {
+    return checkinRepository.findAll();
+}
 
  @Transactional
  public Checkin create(Checkin obj){

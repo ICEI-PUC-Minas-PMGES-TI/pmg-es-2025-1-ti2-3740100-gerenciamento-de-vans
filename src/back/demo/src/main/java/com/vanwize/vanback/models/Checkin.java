@@ -1,6 +1,7 @@
 package com.vanwize.vanback.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -33,7 +34,7 @@ public class Checkin {
   @Column(name = "checkin_date", nullable = false)
   @NotNull
   @FutureOrPresent
-  private Date date;
+  private LocalDate date;
 
   @Column(name = "checkin_time", nullable = false, length = 5)
   @NotNull
@@ -57,7 +58,7 @@ public class Checkin {
 
   }
 
-  public Checkin(Long id, User user, Date date, String time,String destino, CheckinStatus status, Route route) {
+  public Checkin(Long id, User user, LocalDate date, String time,String destino, CheckinStatus status, Route route) {
     this.id = id;
     this.user = user;
     this.date = date;
@@ -84,11 +85,11 @@ public class Checkin {
     this.user = user;
   }
 
-  public Date getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 

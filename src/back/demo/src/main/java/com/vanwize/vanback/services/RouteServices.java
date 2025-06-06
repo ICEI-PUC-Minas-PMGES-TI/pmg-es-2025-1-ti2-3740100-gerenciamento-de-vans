@@ -1,6 +1,8 @@
 package com.vanwize.vanback.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,5 +56,14 @@ public class RouteServices {
     return routeRepository.save(route); 
 
   }
+
+  public List<Route> getAllRoutes(){
+    return routeRepository.findAll();
+  }
+
+  public void finalizarEExcluirRota(Long routeId) {
+    checkinRepository.deleteByRouteId(routeId);
+    routeRepository.deleteById(routeId);
+}
 
 }

@@ -88,7 +88,8 @@ public class Route {
     PAUSADA,
     INICIADA,
     COMPLETA,
-    CANCELADA
+    CANCELADA,
+    PENDENTE
   }
   public RouteStatus getStatus() {
     return status;

@@ -22,9 +22,11 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
+      const response = await axios.post('http://localhost:8080/auth/login', { email, password});
       console.log(response.data); // Login bem-sucedido
       // Aqui você pode redirecionar para outra página ou armazenar o token de autenticação
+      localStorage.setItem("userId", response.data.id);
+      localStorage.setItem("username", response.data.username);
       navigate("/HomePage");
     } catch (err: any) {
       setError('Email ou senha inválidos');

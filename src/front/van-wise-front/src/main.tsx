@@ -12,6 +12,9 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.tsx';
 import ContractForm from './pages/ContractForm.tsx';
 import HomePage from './pages/HomePage.tsx';
 import RoutesPage from './pages/RoutesPage.tsx';
+import MyRoutes from './pages/MyRoutes.tsx';
+import Checkins from './pages/Checkins.tsx';
+
 
 
 createRoot(document.getElementById('root')!).render(
@@ -22,20 +25,23 @@ createRoot(document.getElementById('root')!).render(
       enableSystem
       disableTransitionOnChange
     >
-    
-      <BrowserRouter>
-      <Routes>
-       <Route path='/' element={<App />}/>
-       <Route path='/login' element={<LoginPage />}/>
-       <Route path='/register' element={<RegisterPage />}/>
-       <Route path='/forgotpassword' element={<ForgotPasswordPage />}/>
-       <Route path='/contractform' element={<ContractForm />}/>
-       <Route path='/homepage' element={<HomePage />}/>
-       <Route path='/routespage' element={<RoutesPage />}/>
+
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<App />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/forgotpassword' element={<ForgotPasswordPage />} />
+            <Route path='/contractform' element={<ContractForm />} />
+            <Route path='/homepage' element={<HomePage />} />
+            <Route path='/routes/:routeId' element={<RoutesPage />} />
+            <Route path='/myroutes' element={<MyRoutes />} />
+            <Route path='/checkin' element={<Checkins />} />
 
 
-      </Routes>
-    </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+
     </ThemeProvider>
   </StrictMode>,
 )

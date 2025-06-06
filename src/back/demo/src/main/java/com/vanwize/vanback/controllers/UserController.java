@@ -3,6 +3,7 @@ package com.vanwize.vanback.controllers;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,8 @@ public class UserController {
      User obj = this.userService.findById(id);
      return ResponseEntity.ok().body(obj);
   }
+
+
  
   @PostMapping
   @Validated(CreateUser.class)
