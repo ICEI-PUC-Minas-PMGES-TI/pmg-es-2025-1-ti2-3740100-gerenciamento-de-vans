@@ -22,6 +22,16 @@ public class AvaliacaoController {
         return avaliacaoRepository.save(avaliacao);
     }
 
+    @GetMapping("/count")
+    public long contarAvaliacoes() {
+        return avaliacaoRepository.count();
+    }
+
+    @GetMapping("/count/motorista/{id}")
+    public long contarAvaliacoesPorMotorista(@PathVariable Long id) {
+        return avaliacaoRepository.countByMotoristaId(id);
+    }
+
     // DTO para receber dados do frontend
     public static class AvaliacaoDTO {
         private Long motoristaId;

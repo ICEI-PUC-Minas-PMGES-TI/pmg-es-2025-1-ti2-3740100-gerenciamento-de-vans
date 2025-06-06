@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import StarRating from '../components/StarRating';
+import { Card } from '../components/ui/card';
+import { Button } from '../components/ui/button';
 
 interface Motorista {
   id: number;
@@ -15,7 +17,12 @@ const AvaliarMotoristaPage: React.FC = () => {
   const [rating, setRating] = useState(0);
   const [comentario, setComentario] = useState('');
   const [enviando, setEnviando] = useState(false);
+  const [mensagem, setMensagem] = useState('');
+  const [qtdAvaliacoesMotorista, setQtdAvaliacoesMotorista] = useState(0);
   const navigate = useNavigate();
+
+  // Simulação de quantidade de avaliações feitas
+  const qtdAvaliacoes = 100;
 
   useEffect(() => {
     fetch(`http://localhost:8081/api/motoristas/${id}`)
@@ -26,49 +33,63 @@ const AvaliarMotoristaPage: React.FC = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (motorista) {
+      fetch(`http://localhost:8081/api/avaliacoes/count/motorista/${motorista.id}`)
+        .then(res => res.json())
+        .then(data => setQtdAvaliacoesMotorista(data));
+    }
+  }, [motorista]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMensagem('Enviando sua avaliação, aguarde um instante...');
     setEnviando(true);
-    await fetch('/api/avaliacoes', {
+    await fetch('http://localhost:8081/api/avaliacoes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        motoristaId: id,
+        motoristaId: motorista?.id,
         estrelas: rating,
         comentario,
       }),
     });
     setEnviando(false);
-    alert('Avaliação enviada com sucesso!');
+    setMensagem('');
     navigate('/avaliacao-motoristas');
   };
 
-  if (loading) return <div>Carregando motorista...</div>;
-  if (!motorista) return <div>Motorista não encontrado.</div>;
+  if (loading) return <div className="text-center mt-10">Carregando motorista...</div>;
+  if (!motorista) return <div className="text-center mt-10">Motorista não encontrado.</div>;
 
   return (
-    <div style={{ maxWidth: 600, margin: '0 auto', padding: 24 }}>
-      <h2>Avaliar Motorista</h2>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
-        <img
-          src={motorista.fotoUrl || 'https://via.placeholder.com/64'}
-          alt={motorista.nome}
-          style={{ width: 64, height: 64, borderRadius: '50%', marginRight: 16 }}
-        />
-        <span style={{ fontSize: 20 }}>{motorista.nome}</span>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <label style={{ display: 'block', marginBottom: 8 }}>Avaliação</label>
-        <StarRating value={rating} onChange={setRating} />
+    <div className="max-w-2xl mx-auto p-6">
+      {/* Painel superior */}
+      <Card className="flex items-center gap-6 mb-8 p-6">
+        <img src={motorista.fotoUrl || 'https://via.placeholder.com/64'} alt="avatar motorista" className="rounded-full w-16 h-16" />
+        <div>
+          <div className="text-lg font-semibold">{motorista.nome}</div>
+          <div className="text-gray-500">Avaliações recebidas</div>
+          <div className="text-3xl font-bold">{qtdAvaliacoesMotorista}</div>
+        </div>
+      </Card>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-semibold">AVALIAÇÃO</span>
+          <StarRating value={rating} onChange={setRating} />
+        </div>
         <textarea
-          placeholder="Deixe um comentário (opcional)"
+          className="border rounded-md p-3 min-h-[100px] resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Descreva sobre a sua experiência"
           value={comentario}
           onChange={e => setComentario(e.target.value)}
-          style={{ width: '100%', minHeight: 80, marginTop: 16, marginBottom: 16 }}
         />
-        <button type="submit" disabled={enviando || rating === 0}>
+        {mensagem && (
+          <div className="text-center text-blue-600 font-medium animate-pulse">{mensagem}</div>
+        )}
+        <Button type="submit" className="w-full h-12 text-lg" disabled={enviando || rating === 0}>
           {enviando ? 'Enviando...' : 'Enviar avaliação'}
-        </button>
+        </Button>
       </form>
     </div>
   );
