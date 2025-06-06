@@ -27,10 +27,18 @@ export default function DonoRedeHomepage() {
   ]);
 
   const [showModal, setShowModal] = useState(false);
-  const [novaVan, setNovaVan] = useState({ modelo: "", placa: "", capacidade: "" });
+  const [novaVan, setNovaVan] = useState({
+    modelo: "",
+    placa: "",
+    capacidade: "",
+    bairroInicial: "",
+    destinoFinal: "",
+    horarios: "",
+    turnos: "",
+    preco: ""
+  });
 
   const handleMenuClick = (item: string) => setActive(item);
-
   /*const handleAddVan = () => {
     setVans([...vans, { ...novaVan, capacidade: Number(novaVan.capacidade) }]);
     setNovaVan({ modelo: "", placa: "", capacidade: "" });
@@ -67,6 +75,11 @@ const handleAddVan = async () => {
         modelo: novaVan.modelo,
         placa: novaVan.placa,
         capacidade: Number(novaVan.capacidade),
+        bairroInicial: novaVan.bairroInicial,
+        destinoFinal: novaVan.destinoFinal,
+        horarios: novaVan.horarios,
+        turnos: novaVan.turnos,
+        preco: Number(novaVan.preco),
       }),
     });
 
@@ -76,7 +89,18 @@ const handleAddVan = async () => {
 
     const vanCadastrada = await response.json();
     setVans([...vans, vanCadastrada]);
-    setNovaVan({ modelo: "", placa: "", capacidade: "" });
+
+    setNovaVan({
+      modelo: "",
+      placa: "",
+      capacidade: "",
+      bairroInicial: "",
+      destinoFinal: "",
+      horarios: "",
+      turnos: "",
+      preco: ""
+    });
+
     setShowModal(false);
   } catch (error) {
     console.error("Erro ao cadastrar van:", error);
@@ -84,12 +108,13 @@ const handleAddVan = async () => {
   }
 };
 
+
 useEffect(() => {
   const buscarVans = async () => {
     try {
       const response = await fetch("http://localhost:8081/usuarios/listarvans");
       const data = await response.json();
-      setVans(data);
+      setVans(data); // Certifique-se de que o backend retorna todos os campos esperados
     } catch (error) {
       console.error("Erro ao buscar vans:", error);
     }
@@ -97,6 +122,7 @@ useEffect(() => {
 
   buscarVans();
 }, []);
+
 
 
 
@@ -115,13 +141,13 @@ const handleDeleteVan = async (placa: string) => {
       throw new Error("Erro ao deletar van");
     }
 
-    // Atualiza o estado só depois de excluir no backend
     setVans(vans.filter((van) => van.placa !== placa));
   } catch (error) {
     console.error("Erro ao deletar van:", error);
     alert("Erro ao deletar van.");
   }
 };
+
 
 
 
@@ -264,9 +290,9 @@ const handleDeleteVan = async (placa: string) => {
       {/* Modal de Cadastro */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-96">
+          <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
             <h2 className="text-xl font-bold mb-4">Cadastrar Nova Van</h2>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 max-h-[70vh] overflow-y-auto pr-1">
               <input
                 className="border p-2 rounded"
                 placeholder="Modelo"
@@ -285,6 +311,37 @@ const handleDeleteVan = async (placa: string) => {
                 type="number"
                 value={novaVan.capacidade}
                 onChange={(e) => setNovaVan({ ...novaVan, capacidade: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Bairro Inicial"
+                value={novaVan.bairroInicial}
+                onChange={(e) => setNovaVan({ ...novaVan, bairroInicial: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Destino Final"
+                value={novaVan.destinoFinal}
+                onChange={(e) => setNovaVan({ ...novaVan, destinoFinal: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Horários (ex: 07:00 - 07:45)"
+                value={novaVan.horarios}
+                onChange={(e) => setNovaVan({ ...novaVan, horarios: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Turnos (ex: Manhã, Tarde)"
+                value={novaVan.turnos}
+                onChange={(e) => setNovaVan({ ...novaVan, turnos: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Preço"
+                type="number"
+                value={novaVan.preco}
+                onChange={(e) => setNovaVan({ ...novaVan, preco: e.target.value })}
               />
             </div>
             <div className="flex justify-end mt-4 gap-2">

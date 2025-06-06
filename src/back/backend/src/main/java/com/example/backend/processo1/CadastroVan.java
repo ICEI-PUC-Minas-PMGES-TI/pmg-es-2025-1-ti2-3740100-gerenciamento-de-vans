@@ -17,6 +17,11 @@ public class CadastroVan {
     private String modelo;
     private String placa;
     private int capacidade;
+    private String bairroInicial;
+    private String destinoFinal;
+    private String horarios;
+    private String turnos;
+    private String preco;
 
     public CadastroVan() {
         // Construtor vazio
@@ -45,4 +50,46 @@ public class CadastroVan {
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
+
+    public String getBairroInicial() {
+        return bairroInicial;
+    }
+
+    public void setBairroInicial(String bairroInicial) {
+        this.bairroInicial = bairroInicial;
+    }
+
+    public String getDestinoFinal() {
+        return destinoFinal;
+    }
+
+    public void setDestinoFinal(String destinoFinal) {
+        this.destinoFinal = destinoFinal;
+    }
+
+    public String getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(String horarios) {
+        this.horarios = horarios;
+    }
+
+    public String getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(String turnos) {
+        this.turnos = turnos;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+
+    
 }
