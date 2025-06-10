@@ -1,26 +1,28 @@
 import React from 'react';
 
-interface StarRatingProps {
+export interface StarRatingProps {
   value: number;
-  onChange: (value: number) => void;
+  onChange?: (value: number) => void;
+  readonly?: boolean;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
+const StarRating: React.FC<StarRatingProps> = ({ value, onChange, readonly = false }) => {
+  const stars = [1, 2, 3, 4, 5];
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', gap: 4 }}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <span
+    <div className="flex items-center gap-1">
+      {stars.map((star) => (
+        <button
           key={star}
-          style={{
-            cursor: 'pointer',
-            color: star <= value ? '#FFD700' : '#CCC',
-            fontSize: 32,
-          }}
-          onClick={() => onChange(star)}
-          data-testid={`star-${star}`}
+          type="button"
+          onClick={() => !readonly && onChange?.(star)}
+          className={`text-2xl ${
+            readonly ? 'cursor-default' : 'cursor-pointer hover:scale-110 transition-transform'
+          }`}
+          disabled={readonly}
         >
-          ★
-        </span>
+          {star <= value ? '★' : '☆'}
+        </button>
       ))}
     </div>
   );

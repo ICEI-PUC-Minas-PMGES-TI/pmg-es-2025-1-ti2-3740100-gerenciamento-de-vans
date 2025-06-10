@@ -1,96 +1,177 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import StarRating from '../components/StarRating';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
+import { Textarea } from '../components/ui/textarea';
+import StarRating from '../components/StarRating';
+import { toast } from 'sonner';
 
 interface Motorista {
   id: number;
   nome: string;
-  fotoUrl?: string;
 }
 
 const AvaliarMotoristaPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [motorista, setMotorista] = useState<Motorista | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [rating, setRating] = useState(0);
-  const [comentario, setComentario] = useState('');
-  const [enviando, setEnviando] = useState(false);
-  const [mensagem, setMensagem] = useState('');
-  const [qtdAvaliacoesMotorista, setQtdAvaliacoesMotorista] = useState(0);
   const navigate = useNavigate();
-
-  // Simulação de quantidade de avaliações feitas
-  const qtdAvaliacoes = 100;
+  const [motorista, setMotorista] = useState<Motorista | null>(null);
+  const [nota, setNota] = useState(0);
+  const [comentario, setComentario] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState<string>('');
+  const dataAvaliacao = new Date().toLocaleDateString('pt-BR');
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    const storedUserName = localStorage.getItem('userName');
+    const userId = localStorage.getItem('userId');
+
+    console.log('Dados do usuário:', { token, storedUserName, userId });
+
+    if (!token || !userId) {
+      toast.error('Você precisa estar logado para acessar esta página');
+      navigate('/login');
+      return;
+    }
+
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    // Buscar dados do motorista
     fetch(`http://localhost:8081/api/motoristas/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
+        console.log('Dados do motorista:', data);
         setMotorista(data);
         setLoading(false);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar dados do motorista:', error);
+        setLoading(false);
       });
-  }, [id]);
-
-  useEffect(() => {
-    if (motorista) {
-      fetch(`http://localhost:8081/api/avaliacoes/count/motorista/${motorista.id}`)
-        .then(res => res.json())
-        .then(data => setQtdAvaliacoesMotorista(data));
-    }
-  }, [motorista]);
+  }, [id, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMensagem('Enviando sua avaliação, aguarde um instante...');
-    setEnviando(true);
-    await fetch('http://localhost:8081/api/avaliacoes', {
+    if (nota === 0) {
+      toast.error('Por favor, selecione uma nota');
+      return;
+    }
+
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      toast.error('Você precisa estar logado para enviar uma avaliação');
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const motoristaId = Number(id);
+      const usuarioId = Number(userId);
+
+      console.log('IDs convertidos:', { motoristaId, usuarioId });
+
+      const avaliacaoData = {
+        motoristaId: motoristaId,
+        usuarioId: usuarioId,
+        nota: nota,
+        comentario: comentario
+      };
+
+      console.log('Enviando avaliação:', avaliacaoData);
+
+      const response = await fetch('http://localhost:8081/api/avaliacoes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        motoristaId: motorista?.id,
-        estrelas: rating,
-        comentario,
-      }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(avaliacaoData),
     });
-    setEnviando(false);
-    setMensagem('');
+
+      const data = await response.json();
+      console.log('Resposta do servidor:', data);
+
+      if (response.ok) {
+        toast.success('Avaliação enviada com sucesso!');
     navigate('/avaliacao-motoristas');
+      } else {
+        toast.error(data.message || 'Erro ao enviar avaliação');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar avaliação:', error);
+      toast.error('Erro ao enviar avaliação');
+    }
   };
 
-  if (loading) return <div className="text-center mt-10">Carregando motorista...</div>;
-  if (!motorista) return <div className="text-center mt-10">Motorista não encontrado.</div>;
+  if (loading) {
+    return <div className="text-center mt-10">Carregando...</div>;
+  }
+
+  if (!motorista) {
+    return <div className="text-center mt-10">Motorista não encontrado</div>;
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      {/* Painel superior */}
-      <Card className="flex items-center gap-6 mb-8 p-6">
-        <img src={motorista.fotoUrl || 'https://via.placeholder.com/64'} alt="avatar motorista" className="rounded-full w-16 h-16" />
-        <div>
-          <div className="text-lg font-semibold">{motorista.nome}</div>
-          <div className="text-gray-500">Avaliações recebidas</div>
-          <div className="text-3xl font-bold">{qtdAvaliacoesMotorista}</div>
+      <Card className="p-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-bold">Avaliar Motorista</h2>
+          <div className="text-right">
+            <p className="text-sm text-gray-600">Avaliando como</p>
+            <p className="font-semibold">{userName}</p>
+          </div>
         </div>
-      </Card>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-semibold">AVALIAÇÃO</span>
-          <StarRating value={rating} onChange={setRating} />
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Motorista
+            </label>
+            <div className="text-lg">{motorista.nome}</div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Data da Avaliação
+            </label>
+            <div className="text-lg bg-gray-100 p-2 rounded-md">{dataAvaliacao}</div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Avaliação
+            </label>
+            <StarRating value={nota} onChange={setNota} />
         </div>
-        <textarea
-          className="border rounded-md p-3 min-h-[100px] resize-none focus:outline-none focus:ring-2 focus:ring-primary"
-          placeholder="Descreva sobre a sua experiência"
-          value={comentario}
-          onChange={e => setComentario(e.target.value)}
-        />
-        {mensagem && (
-          <div className="text-center text-blue-600 font-medium animate-pulse">{mensagem}</div>
-        )}
-        <Button type="submit" className="w-full h-12 text-lg" disabled={enviando || rating === 0}>
-          {enviando ? 'Enviando...' : 'Enviar avaliação'}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Comentário
+            </label>
+            <Textarea
+              value={comentario}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComentario(e.target.value)}
+              placeholder="Digite seu comentário sobre o motorista..."
+              className="w-full"
+          />
+        </div>
+
+          <div className="flex gap-4">
+            <Button type="submit" className="flex-1">
+              Enviar Avaliação
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => navigate('/avaliacao-motoristas')}
+              className="flex-1"
+            >
+              Cancelar
         </Button>
+          </div>
       </form>
+      </Card>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const menuItems = ["Home", "Mural", "Avaliações", "Rotas"];
 
@@ -32,6 +34,8 @@ export default function Homepage() {
   });
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [vanContratada, setVanContratada] = useState<Van | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -166,6 +170,28 @@ export default function Homepage() {
                 </button>
               </div>
             ))}
+          </div>
+          <div className="flex flex-col gap-4">
+            <Button
+              onClick={() => navigate('/login')}
+              className="w-full"
+            >
+              Entrar
+            </Button>
+            <Button
+              onClick={() => navigate('/register')}
+              variant="outline"
+              className="w-full"
+            >
+              Cadastrar
+            </Button>
+            <Button
+              onClick={() => navigate('/avaliacao-motoristas')}
+              variant="secondary"
+              className="w-full"
+            >
+              Avaliar Motoristas
+            </Button>
           </div>
         </main>
       )}

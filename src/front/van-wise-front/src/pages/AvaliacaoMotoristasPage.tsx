@@ -2,69 +2,100 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
+import StarRating from '../components/StarRating';
+import { toast } from 'sonner';
 
 interface Motorista {
   id: number;
   nome: string;
-  fotoUrl?: string;
+  mediaAvaliacao: number;
+  totalAvaliacoes: number;
 }
 
 const AvaliacaoMotoristasPage: React.FC = () => {
-  const [motoristas, setMotoristas] = useState<Motorista[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [qtdAvaliacoes, setQtdAvaliacoes] = useState(0);
-  const [avaliacoesPorMotorista, setAvaliacoesPorMotorista] = useState<{[id: number]: number}>({});
   const navigate = useNavigate();
   const location = useLocation();
+  const [motoristas, setMotoristas] = useState<Motorista[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState<string>('');
 
-  // Simulação de dono e quantidade de avaliações
-  const nomeDono = 'Nome Dono';
+  const carregarMotoristas = async () => {
+    try {
+      const response = await fetch('http://localhost:8081/api/motoristas');
+      const data = await response.json();
+      
+      // Buscar estatísticas de avaliação para cada motorista
+      const motoristasComAvaliacoes = await Promise.all(
+        data.map(async (motorista: Motorista) => {
+          const statsRes = await fetch(`http://localhost:8081/api/avaliacoes/motorista/${motorista.id}/estatisticas`);
+          const stats = await statsRes.json();
+          return {
+            ...motorista,
+            mediaAvaliacao: stats.media,
+            totalAvaliacoes: stats.total
+          };
+        })
+      );
+      setMotoristas(motoristasComAvaliacoes);
+    } catch (error) {
+      console.error('Erro ao carregar motoristas:', error);
+      toast.error('Erro ao carregar lista de motoristas');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/motoristas')
-      .then((res) => res.json())
-      .then((data) => {
-        setMotoristas(data);
-        setLoading(false);
-        // Para cada motorista, buscar o total de avaliações
-        data.forEach((m: Motorista) => {
-          fetch(`http://localhost:8081/api/avaliacoes/count/motorista/${m.id}`)
-            .then(res => res.json())
-            .then(count => setAvaliacoesPorMotorista(prev => ({ ...prev, [m.id]: count })));
-        });
-      });
-  }, []);
+    const token = localStorage.getItem('token');
+    const storedUserName = localStorage.getItem('userName');
+    const userId = localStorage.getItem('userId');
 
-  // Atualiza o total de avaliações sempre que a página for exibida novamente
-  useEffect(() => {
-    fetch('http://localhost:8081/api/avaliacoes/count')
-      .then(res => res.json())
-      .then(data => setQtdAvaliacoes(data));
-  }, [location]);
+    if (!token || !userId) {
+      toast.error('Você precisa estar logado para acessar esta página');
+      navigate('/login');
+      return;
+    }
 
-  if (loading) return <div className="text-center mt-10">Carregando motoristas...</div>;
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+
+    carregarMotoristas();
+  }, [navigate, location]); // Adicionado location como dependência para recarregar quando voltar da avaliação
+
+  if (loading) {
+    return <div className="text-center mt-10">Carregando...</div>;
+  }
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      {/* Painel superior */}
-      <Card className="flex items-center gap-6 mb-8 p-6">
-        <img src="https://via.placeholder.com/64" alt="avatar dono" className="rounded-full w-16 h-16" />
-        <div>
-          <div className="text-lg font-semibold">{nomeDono}</div>
-          <div className="text-gray-500">Quantidades de avaliação</div>
-          <div className="text-3xl font-bold">{qtdAvaliacoes}</div>
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Avaliação de Motoristas</h1>
+        <div className="text-right">
+          <p className="text-sm text-gray-600">Bem-vindo(a),</p>
+          <p className="font-semibold">{userName}</p>
         </div>
-      </Card>
-      <h2 className="text-xl font-bold mb-4">AVALIAÇÃO</h2>
-      <div className="flex flex-col gap-4">
+      </div>
+
+      <div className="grid gap-6">
         {motoristas.map((motorista) => (
-          <Card key={motorista.id} className="flex items-center justify-between p-4">
-            <div className="flex items-center gap-4">
-              <img src={motorista.fotoUrl || 'https://via.placeholder.com/48'} alt={motorista.nome} className="rounded-full w-12 h-12" />
-              <span className="font-medium">{motorista.nome}</span>
-              <span className="ml-2 text-gray-500 text-sm">{avaliacoesPorMotorista[motorista.id] ?? 0} avaliações</span>
+          <Card key={motorista.id} className="p-6">
+            <div className="flex justify-between items-start">
+              <div>
+                <h2 className="text-xl font-semibold mb-2">{motorista.nome}</h2>
+                <div className="flex items-center gap-2">
+                  <StarRating value={motorista.mediaAvaliacao} readonly />
+                  <span className="text-sm text-gray-600">
+                    ({motorista.totalAvaliacoes} avaliações)
+                  </span>
+                </div>
+              </div>
+              <Button
+                onClick={() => navigate(`/avaliar-motorista/${motorista.id}`)}
+              >
+                Avaliar
+              </Button>
             </div>
-            <Button onClick={() => navigate(`/avaliar-motorista/${motorista.id}`)} className="ml-4">Avaliar</Button>
           </Card>
         ))}
       </div>

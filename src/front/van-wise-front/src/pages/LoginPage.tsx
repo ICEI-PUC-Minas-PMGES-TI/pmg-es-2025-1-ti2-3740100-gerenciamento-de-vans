@@ -25,7 +25,11 @@ export default function LoginPage() {
       const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
       console.log(response.data); // Login bem-sucedido
       const userType = response.data.tipoUsuario.toLowerCase();
-      if (userType === "donoderede" || userType === "motorista" || userType === "responsavel") {
+      
+      // Salvar informações do usuário no localStorage
+      localStorage.setItem("token", response.data.token || "dummy-token"); // Token temporário se não existir
+      localStorage.setItem("userId", response.data.id);
+      localStorage.setItem("userName", response.data.nome);
         localStorage.setItem("userType", userType);
 
         if(userType === "motorista") {
@@ -36,9 +40,6 @@ export default function LoginPage() {
         }
         else if (userType === "responsavel") {
           navigate("/HomePage");
-        }
-      } else {
-        setError("Tipo de usuário inválido.");
       }
     } catch (err: any) {
       setError('Email ou senha inválidos');
