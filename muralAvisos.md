@@ -1,4 +1,4 @@
-### 3.3.3 Processo 3 – Gestão mural de avisos
+### 3.3.3 Processo 3 – Gestão mural de avisos (CANCELADO)
 
 O sistema da WiseVan conta com um mural que funciona como um espaço aberto para que usuários deixem mensagens de aviso, sugestões ou reclamações sobre suas experiências. Nele, os responsáveis, motoristas e os donos de redes de vans podem colocar avisos sobre aumento de mensalidade, sobre atrasos, relatar problemas, sugerir melhorias ou elogiar um bom atendimento.
 
