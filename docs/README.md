@@ -54,9 +54,10 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 
 #### 1.3.1 Objetivos específicos
 
-**A gestão financeira** permitirá um controle automatizado dos pagamentos, reduzindo erros e garantindo mais transparência nas cobranças. **A gestão das rotas** otimizará os trajetos, minimizando atrasos e ajustando percursos conforme necessário para tornar o transporte mais ágil. Para aprimorar a comunicação, o **mural de avisos e reclamações** servirá como um canal centralizado, facilitando o repasse de informações importantes entre motoristas, responsáveis e alunos. Além disso, a **gestão de avaliações** possibilitará que os responsáveis forneçam feedback sobre o serviço prestado, contribuindo para a melhoria contínua da qualidade do transporte.  
+**A gestão financeira** permitirá um controle automatizado dos pagamentos, reduzindo erros e garantindo mais transparência nas cobranças. **A gestão das rotas** otimizará os trajetos, minimizando atrasos e ajustando percursos conforme necessário para tornar o transporte mais ágil. Além disso, a **gestão de avaliações** possibilitará que os passageiros forneçam feedback sobre o serviço prestado, contribuindo para a melhoria contínua da qualidade do transporte.  
 
-**A gestão de cadastros e logins** garantirá um acesso seguro e individualizado para motoristas, alunos e responsáveis, protegendo as informações do sistema. Já a **gestão de notificações** automatizará o envio de alertas sobre pagamentos, mudanças nas rotas e atrasos, mantendo todos informados em tempo real. A **digitalização e organização dos contratos** facilitarão o gerenciamento dos documentos firmados entre motoristas e responsáveis, tornando a gestão contratual mais eficiente. Por fim, a implementação de um **checklist diário** de exclusão ou inclusão do aluno na van garantirá um controle preciso da presença dos estudantes, proporcionando mais segurança e tranquilidade aos responsáveis. 
+**A gestão de cadastros e logins** garantirá um acesso seguro e individualizado para motoristas, alunos e responsáveis, protegendo as informações do sistema.  A **digitalização e organização dos contratos** facilitarão o gerenciamento dos documentos firmados entre motoristas e responsáveis, tornando a gestão contratual mais eficiente. 
+
 
 ### 1.4 Justificativas
 
@@ -85,31 +86,25 @@ O transporte escolar por vans ainda é amplamente gerenciado por métodos tradic
 
 Atualmente, o controle financeiro das mensalidades é realizado de forma manual. Muitos motoristas utilizam anotações em cadernos, planilhas simples ou até mesmo registros informais via mensagens. Isso pode gerar diversos problemas, como inadimplência, esquecimentos de pagamentos, erros no cálculo de valores e dificuldade em rastrear quem já efetuou ou não o pagamento. Além disso, cobranças são feitas frequentemente via dinheiro em espécie ou transferência bancária sem integração a um sistema de gestão.
 
-Responsável pelo Processo: Motorista e gestor da frota.
+Responsável pelo Processo: Motorista, gestor da frota e responsável. 
 
 2. Definição e Organização de Rotas
 
 A definição das rotas é feita sem ferramentas que auxiliem na otimização do percurso. Motoristas costumam planejar o trajeto manualmente, sem considerar fatores como trânsito em tempo real, melhor sequência de paradas e ajustes em caso de imprevistos. Em alguns casos, pais ou responsáveis precisam informar mudanças de horário diretamente ao motorista, o que pode gerar falhas de comunicação e atrasos.
 
-Responsável pelo Processo: Motorista e gestor da frota.
+Responsável pelo Processo: Motorista, gestor da frota e responsável. 
 
-3. Comunicação entre Motoristas, Responsáveis e Estudantes
-
-A comunicação ocorre de maneira descentralizada, geralmente por meio de grupos de WhatsApp, mensagens de texto ou ligações telefônicas. Isso dificulta o acompanhamento das informações, pois mensagens podem ser perdidas ou não respondidas a tempo. Além disso, não há um canal oficial para registrar reclamações, sugestões ou atualizações sobre o serviço, tornando o processo confuso e ineficaz.
-
-Responsável pelo Processo: Motorista, responsável pelo aluno e gestor da frota.
-
-4. Monitoramento e Segurança
+3. Monitoramento e Segurança
 
 O acompanhamento da localização dos alunos durante o transporte é uma grande preocupação. Muitos responsáveis não sabem exatamente quando seus filhos embarcaram ou desembarcaram da van, pois o processo de verificação ocorre apenas por comunicação direta com o motorista. Casos de crianças esquecidas ou deixadas no local errado ocorrem devido à falta de um sistema automatizado de registro e conferência.
 
-Responsável pelo Processo: Motorista e responsável pelo aluno.
+Responsável pelo Processo: Motorista e passagerio maior de idade ou responsável por passageiro menor de idade. 
 
 5. Experiência do Usuário
 
 Para os alunos e responsáveis, a falta de um sistema estruturado traz insegurança e inconvenientes. Não há uma previsão exata da chegada da van, tornando difícil o planejamento do tempo. Estudantes também não possuem um canal direto para relatar atrasos ou problemas com o transporte, o que pode afetar sua rotina acadêmica e pessoal.
 
-Responsável pelo Processo: Aluno e responsável pelo aluno.
+Responsável pelo Processo: Passageiro maior de idade e responsável por passageiro menor de idade.
 
 
 ### 3.2. Descrição geral da proposta de solução
@@ -147,17 +142,17 @@ Estamos sempre buscando formas de aprimorar a experiência do Van Wise. Algumas 
 
 ### 3.3. Modelagem dos processos
 
-[PROCESSO 1 - Gestão de cadastro](processo-1-nome-do-processo.md "Detalhamento do Processo 1.")
+[PROCESSO 1 - Gestão de cadastro](cadastro-login.md "Detalhamento do Processo 1.")
 
-[PROCESSO 2 - Gestão de avaliações](processo-2-nome-do-processo.md "Detalhamento do Processo 2.")
+[PROCESSO 2 - Gestão de avaliações](avaliacao-servicos.md "Detalhamento do Processo 2.")
 
-[PROCESSO 3 - Gestão do mural de avisos](processo-3-nome-do-processo.md "Detalhamento do Processo 3.")
+[PROCESSO 3 - Gestão do mural de avisos - CANCELADO](muralAvisos.md "Detalhamento do Processo 3.") 
 
-[PROCESSO 4 - Gestão de contratos](processo-4-nome-do-processo.md "Detalhamento do Processo 4.")
+[PROCESSO 4 - Gestão de contratos](contratos.md "Detalhamento do Processo 4.")
 
-[PROCESSO 5 - Gestão Financeira](processo-5-gestao-financeira.md "Detalhamento do Processo 5.")
+[PROCESSO 5 - Gestão Financeira - CANCELADO](financeiro.md "Detalhamento do Processo 5.")
 
-[PROCESSO 6 - Gestão de rota](processo-6-nome-do-processo.md "Detalhamento do Processo 6.")
+[PROCESSO 6 - Gestão de rota](rota.md "Detalhamento do Processo 6.")
 
 
 ## 4. Projeto da solução
@@ -167,9 +162,9 @@ _O documento a seguir apresenta o detalhamento do projeto da solução. São apr
 [Projeto da solução](solution-design.md "Detalhamento do projeto da solução: modelo relacional e tecnologias.")
 
 ### 4.1. Modelo de Dados
-O modelo relacional da WiseVan descreve a estrutura de dados utilizada para gerenciar o transporte de passageiros de maneira eficiente. Nesse modelo, as principais entidades podem incluir Vans, Motoristas, Passageiros, Rotas, Pagamentos e Controle de Presença. 
+O modelo relacional da WiseVan descreve a estrutura de dados utilizada para gerenciar o transporte de passageiros de maneira eficiente. Nesse modelo, as principais entidades podem incluir as seguintes tabelas: Vans, Motoristas, Donos da frota, Passageiros, Rota, Avaliação, Contrato. 
 
-A entidade Vans armazena informações sobre os veículos, como placa, modelo e capacidade. A Motorista relaciona-se com a Van, identificando quem está responsável por cada viagem, enquanto os Passageiros estão associados a uma Rota específica e ao Controle de Presença. A Rota define os trajetos, horários e pontos de partida e chegada. Pagamentos registram os valores pagos pelos passageiros, com informações sobre data, método de pagamento (como PIX ou boleto) e status do pagamento. 
+A entidade Vans armazena informações sobre os veículos, como placa, modelo e capacidade. A Motorista relaciona-se com a Van, identificando quem está responsável por cada viagem, enquanto os Passageiros estão associados a uma Rota específica e ao Controle de Presença. A Rota define os trajetos, horários e pontos de partida e chegada.
 
 Esse modelo garante um gerenciamento organizado, com todas as informações interconectadas, facilitando a operação do sistema de transporte.
 
@@ -213,8 +208,6 @@ O banco de dados adotado será o **MySQL**, garantindo uma solução confiável 
 **Miro** será utilizado para a criação de wireframes e protótipos colaborativos.
 **Draw.io** será empregado na modelagem de dados e diagramas de arquitetura.
 **Heflo** será utilizado para a modelagem de processos de negócios, permitindo a construção de diagramas de fluxo.
-
-
 
 
 ## 5. Indicadores de desempenho
