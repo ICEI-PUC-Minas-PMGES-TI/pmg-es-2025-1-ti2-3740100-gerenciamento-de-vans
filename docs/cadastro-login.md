@@ -14,7 +14,6 @@ Esse processo gerencia o fluxo de cadastro de um usuário no sistema, visa que a
 - **Atualização no sistema:** As mudanças são salvas e a conta fica pronta para uso.  
  
 
-
 _Os tipos de dados a serem utilizados são:_
 
 _* **Caixa de texto** - campo texto de uma linha_
