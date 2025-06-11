@@ -5,7 +5,6 @@ O objetivo deste projeto é desenvolver um sistema de gerenciamento de vans que 
 ## Integrantes
 
 * Natalie Santana Dias Abreu
-* Maria Eduarda Paiva Ferraz
 * Gabriel dos Santos Silva Coelho
 * Paulo Victor Fernandes de Araujo Silva
 * Luiz Gustavo Silva Oliveira
@@ -43,8 +42,7 @@ Desenvolver um aplicativo de gestão de transporte escolar por vans, proporciona
 * Criar um sistema para o controle de pagamentos, facilitando o acompanhamento de mensalidades e evitando inadimplência.
 * Implementar um gerenciamento eficiente de rotas, otimizando trajetos e garantindo pontualidade.
 * Disponibilizar notificações automáticas para informar horários de embarque e desembarque.
-* Estabelecer um canal de comunicação direto entre motoristas e responsáveis.
-* Incluir um sistema de avaliações para monitoramento da qualidade do serviço.
+* Incluir um sistema de avaliações para monitoramento da qualidade do serviço dos motoristas.
 
  
  ## Justificativa
