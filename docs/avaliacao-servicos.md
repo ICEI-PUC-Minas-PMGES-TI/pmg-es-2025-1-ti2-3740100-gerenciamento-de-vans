@@ -11,7 +11,7 @@ Avaliar um serviço de forma clara e honesta contribui para a melhoria contínua
 
 #### Detalhamento das atividades
 
-O sistema permite que o cliente faça a avaliação para o motorista, caso deseja fazer a avaliação, o cliente dará uma nota entre 1 a 5 estrelas.
+O sistema permite que os passageiros faça uma avaliação sobre o serviço realizado pelo motorista, caso deseja fazer a avaliação, o cliente dará uma nota entre 1 a 5 estrelas e tem a opção de enviar observações sobre a sua nota.
 
 ### Atividades:  
 - **Recebimento de solicitação:** O passageiro recebe uma mensagem pedindo avaliação após o check-out da viagem.
