@@ -6,8 +6,6 @@ As mensagens são organizadas por categorias, como reclamações, dúvidas e fee
 
 Esse mural não só dá voz aos usuários, mas também ajuda a melhorar os serviços oferecidos, criando uma experiência mais transparente e confiável para todos.
 
-![Gestao mural de avisos e reclamações](images/BPMN-gestaoavisosmural.png)
-
 
 #### Detalhamento das atividades
 
@@ -38,16 +36,6 @@ _**
 | Excluir              | Início do proceso de exclusão  | Ação              |
 
 
-#### **Tela para cadastrar no mural**
-![Mural](images/19-W-Tela-cadastrar-mural.png)
-
-
-#### **Tela para visualizar avisos do mural**
-![Mural](images/20-W-Tela-visualizacao-mural.png)
-
-
-#### **Tela para visualizar o mural**
-![Mural](images/21-W-Tela-mural.png)
 
 
 
