@@ -6,13 +6,11 @@ O login e o cadastro são etapas essenciais para acessar sites com segurança. N
 
 #### Detalhamento das atividades
 
-Esse processo gerencia o fluxo de cadastro de um usuário no sistema, visa que as informações sejam inseridas e que o usuário possa editar, excluir ou salvar os dados antes da finalização.
+Esse processo gerencia o fluxo de cadastro de um usuário no sistema, visando que as informações sejam inseridas e salvas na finalização do processo. 
 
 ### Atividades:  
 - **Pesquisa de conta:** O sistema verifica se o passageiro já tem um responsável cadastrado.  
-- **Ação de decisão:** O usuário pode excluir, alterar ou cadastrar um novo responsável.  
-- **Atualização no sistema:** As mudanças são salvas e a conta fica pronta para uso.  
- 
+- **Ação de decisão:** O usuário pode se cadastrar, caso não tenha login.  
 
 _Os tipos de dados a serem utilizados são:_
 
@@ -34,11 +32,11 @@ _* **Link** - campo que armazena uma URL_
 
 
 
-| **Comandos**         |  **Destino**                   | **Tipo** |
-| ---                  | ---                            | ---               |
-| Login                | Tela inicial do usuário        | ação              |
-| Cadastre - se        | Início do proceso de cadastro  | ação              |
-| Esqueceu senha       | Tela recuperar senha           | ação              |
+| **Comandos**         |  **Destino**                                        | **Tipo** |
+| ---                  | ---                                                 | ---               |
+| Login                | Tela inicial de acordo com o tipo do usuário        | ação              |
+| Cadastre - se        | Início do proceso de cadastro                       | ação              |
+| Esqueceu senha       | Tela recuperar senha                                | ação              |
 
 
 
@@ -69,8 +67,8 @@ _* **Link** - campo que armazena uma URL_
 
 | **Comandos**         |  **Destino**                   |  **Tipo** |
 | ---                  | ---                            |  ---      |
-| Registrar            | encaminha para a tela de login | Ação      |                   
-| Entrar com sua conta | encaminha para a tela de inicio| Ação      |                   
+| Registrar            | Encaminha para a tela de login | Ação      |                   
+| Entrar com sua conta | Rncaminha para a tela de inicio| Ação      |                   
 
 
 **Cadastro Dono da Rede**
