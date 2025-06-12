@@ -2,13 +2,13 @@
 
 ### 4.1. Modelo de dados
 
-O modelo relacional da WiseVan descreve a estrutura de dados utilizada para gerenciar o transporte de passageiros de maneira eficiente. Nesse modelo, as principais entidades podem incluir: Vans, Motoristas, Donos de frotas, Passageiros, Rotas, Pagamentos (que não será implementado), Controle de Presença e contratos. 
+O modelo relacional da WiseVan descreve a estrutura de dados utilizada para gerenciar o transporte de passageiros de maneira eficiente. Nesse modelo, as principais entidades podem incluir: Vans, Motoristas, Donos de frotas, Passageiros, Rotas e contratos. 
 
 A entidade Vans armazena informações sobre os veículos, como placa, modelo e capacidade. A Motorista relaciona-se com a Van, identificando quem está responsável por cada viagem, enquanto os Passageiros estão associados a uma Rota específica e ao Controle de Presença. A Rota define os trajetos, horários e pontos de partida e chegada. Pagamentos registram os valores pagos pelos passageiros, com informações sobre data, método de pagamento (como PIX ou boleto) e status do pagamento. 
 
 Esse modelo garante um gerenciamento organizado, com todas as informações interconectadas, facilitando a operação do sistema de transporte.
 
-![Modelo de dados](images/modelo-atualizado-novo.png)
+![Modelo de dados](images/modelo-dados-atualizado-retirado-tabelas.png)
 ---
 
 ### 4.2. Tecnologias
