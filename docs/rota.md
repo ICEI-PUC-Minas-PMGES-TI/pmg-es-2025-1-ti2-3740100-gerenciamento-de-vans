@@ -2,7 +2,7 @@
 
 A gestão de rotas é o processo de planejar, organizar e otimizar os trajetos de veículos para garantir eficiência, economia de tempo e recursos. Esse processo envolve o mapeamento das melhores rotas, levando em consideração fatores como distância, condições de tráfego, custos de combustível e tempo de viagem. Além disso, a gestão de rotas também envolve o monitoramento em tempo real. Na WiseVan permite que o motorista veja a sua rota após o check-in dos responsáveis. 
 
-![gestao-rota](images/BPMN-gestaorota.png)
+![gestao-rota](images/bpmn-rota.png)
 
 #### Detalhamento das atividades
 
