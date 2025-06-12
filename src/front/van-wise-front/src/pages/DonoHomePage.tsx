@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 const menuItems = ["Rota", "Mural"];
 
 const passageiros = [
@@ -19,12 +20,53 @@ const rotas = [
   { turno: "Tarde", origem: "Bairro B", destino: "Escola Y", horario: "13:00 - 13:50" },
 ];
 
+const dadosMensais = [
+  { mes: "Jan", Vans: '' },
+  { mes: "Fev", Vans: '' },
+  { mes: "Mar", Vans: '' },
+  { mes: "Abr", Vans: '' },
+  { mes: "Mai", Vans: '' },
+  { mes: "Jun", Vans: '' },
+  { mes: "Jul", Vans: '' },
+  { mes: "Ago", Vans: '' },
+  { mes: "Set", Vans: '' },
+  { mes: "Out", Vans: '' },
+  { mes: "Nov", Vans: '' },
+  { mes: "Dez", Vans: '' },
+];
+
+const dadosMensaisContratos = [
+  { mes: "Jan", contratos: 30 },
+  { mes: "Fev", contratos: 28 },
+  { mes: "Mar", contratos: 35 },
+  { mes: "Abr", contratos: 40 },
+  { mes: "Mai", contratos: 38 },
+  { mes: "Jun", contratos: 42 },
+  { mes: "Jul", contratos: 45 },
+  { mes: "Ago", contratos: 50 },
+  { mes: "Set", contratos: 48 },
+  { mes: "Out", contratos: 52 },
+  { mes: "Nov", contratos: 49 },
+  { mes: "Dez", contratos: 55 },
+];
+
+const taxaContratos = [
+  { name: "Renovados", value: 45 },
+  { name: "Novos", value: 30 },
+  { name: "Cancelados", value: 25 },
+];
+
+
+
 export default function DonoRedeHomepage() {
   const [active, setActive] = useState("Rota");
   const [vans, setVans] = useState([
     { placa: "ABC-1234", modelo: "Sprinter 16L", capacidade: 16 },
     { placa: "DEF-5678", modelo: "Master 20L", capacidade: 20 },
   ]);
+
+const [modalAberto, setModalAberto] = useState(false);
+  const contratosResumo = dadosMensaisContratos.slice(dadosMensaisContratos.length - 3);
 
   const [showModal, setShowModal] = useState(false);
   const [novaVan, setNovaVan] = useState({
@@ -281,6 +323,46 @@ const handleDeleteVan = async (placa: string) => {
             </tbody>
           </table>
         </section>
+
+        {/* Dashboard*/}
+        <section className="bg-white p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold mb-4">Vans Ativas</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={dadosMensais} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="mes" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="Vans" fill="#3182ce" name="Vans" />
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+
+      {/* Dashboard Gráfico Mensal de Contratos */}
+        <section className="bg-white p-6 rounded-xl shadow-md">
+        <h2 className="text-2xl font-bold mb-4">Contratos Mensais</h2>
+        <ResponsiveContainer width="100%" height={350}>
+          <BarChart data={contratosResumo} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="mes" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="contratos" fill="#2f855a" name="Contratos" />
+          </BarChart>
+        </ResponsiveContainer>
+
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => setModalAberto(true)}
+            className="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            Ver mais
+          </button>
+        </div>
+      </section>
+
       </main>
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
@@ -361,6 +443,36 @@ const handleDeleteVan = async (placa: string) => {
           </div>
         </div>
       )}
+
+      {/* Modal com gráfico completo */}
+      {modalAberto && (
+  <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
+    <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-3xl max-h-[80vh] overflow-auto">
+      <h2 className="text-xl font-bold mb-4">Contratos Mensais</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={dadosMensaisContratos} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="mes" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="contratos" fill="#2f855a" name="Contratos" />
+        </BarChart>
+      </ResponsiveContainer>
+
+      <div className="flex justify-end mt-4">
+        <button
+          onClick={() => setModalAberto(false)}
+          className="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-700"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 }

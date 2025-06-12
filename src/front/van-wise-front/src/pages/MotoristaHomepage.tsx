@@ -1,6 +1,33 @@
 import React, { useState } from "react";
+import { Star } from "lucide-react";
 
-// Dados simulados (seriam recebidos via API)
+const AvaliacaoGeral = () => {
+  const mediaAvaliacao = 4.2;
+
+  const renderEstrelas = () => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        fill={i < Math.floor(mediaAvaliacao) ? "#facc15" : "none"}
+        stroke="#facc15"
+        className="w-6 h-6"
+      />
+    ));
+  };
+
+  return (
+    <section className="bg-white p-6 rounded-xl shadow-md w-1/2">
+      <h2 className="text-xl font-bold mb-4">Avaliação dos Passageiros</h2>
+      <div className="flex items-center gap-2">
+        {renderEstrelas()}
+        <span className="text-lg font-semibold text-gray-700">
+          {mediaAvaliacao.toFixed(1)}/5
+        </span>
+      </div>
+    </section>
+  );
+};
+
 const vanResponsavel = {
   placa: "ABC-1234",
   modelo: "Sprinter 16 lugares",
@@ -38,13 +65,11 @@ const menuItems = ["Rota", "Mural"];
 
 export default function MotoristaHomepage() {
   const [active, setActive] = useState("Rota");
-  const [page, setPage] = useState("Rota");
   const [modalVanOpen, setModalVanOpen] = useState(false);
   const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
 
-  const handleMenuClick = (item: string) => {
+  const handleMenuClick = (item) => {
     setActive(item);
-    setPage(item);
   };
 
   return (
@@ -66,7 +91,6 @@ export default function MotoristaHomepage() {
 
       <main className="p-8 flex flex-col gap-10 flex-grow">
         <div className="flex gap-6">
-          {/* Info Van */}
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
             <div>
               <h2 className="text-xl font-bold mb-4">Sua Van</h2>
@@ -82,7 +106,6 @@ export default function MotoristaHomepage() {
             </button>
           </section>
 
-          {/* Horários e Turnos */}
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
             <div>
               <h2 className="text-xl font-bold mb-4">Horários e Turnos</h2>
@@ -97,7 +120,7 @@ export default function MotoristaHomepage() {
           </section>
         </div>
 
-        {/* Passageiros */}
+
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Passageiros da Van</h2>
           <div className="overflow-x-auto">
@@ -122,20 +145,20 @@ export default function MotoristaHomepage() {
               </tbody>
             </table>
           </div>
+
+          
         </section>
+
+              <AvaliacaoGeral />
       </main>
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
         &copy; {new Date().getFullYear()} Wise Vans. Todos os direitos reservados.
       </footer>
 
-      {/* Modal Van */}
       {modalVanOpen && (
         <div className="fixed inset-0 flex justify-center items-center z-50 pointer-events-none">
-          <div
-            className="bg-white rounded-xl p-8 w-96 max-w-full shadow-lg relative pointer-events-auto"
-            style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
-          >
+          <div className="bg-white rounded-xl p-8 w-96 max-w-full shadow-lg relative pointer-events-auto">
             <button
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
               onClick={() => setModalVanOpen(false)}
@@ -151,13 +174,9 @@ export default function MotoristaHomepage() {
         </div>
       )}
 
-      {/* Modal Horários */}
       {modalHorarioOpen && (
         <div className="fixed inset-0 flex justify-center items-center z-50 pointer-events-none">
-          <div
-            className="bg-white rounded-xl p-8 w-80 max-w-full shadow-lg relative pointer-events-auto"
-            style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
-          >
+          <div className="bg-white rounded-xl p-8 w-80 max-w-full shadow-lg relative pointer-events-auto">
             <button
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold"
               onClick={() => setModalHorarioOpen(false)}
