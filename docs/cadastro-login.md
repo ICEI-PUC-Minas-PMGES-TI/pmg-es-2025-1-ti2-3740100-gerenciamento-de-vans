@@ -165,10 +165,10 @@ _* **Link** - campo que armazena uma URL_
 #### **Tela de para cadastro de dono da rede**
 ![Cadastro](images/tela-cadastro-novo-dono-rede.jpg)
 
-#### **Tela de para redefinir senha**
+#### **Tela inicio dono de rede**
 ![Cadastro](images/tela-inicio-dono-rede.jpg)
 
-#### **Tela de para redefinir senha**
+#### **Tela inicio motorista**
 ![Cadastro](images/tela-inicial-motorista.jpg)
 
 #### **Tela de para redefinir senha**
