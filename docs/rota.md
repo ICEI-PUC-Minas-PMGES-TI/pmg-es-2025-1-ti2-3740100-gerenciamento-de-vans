@@ -38,9 +38,9 @@ Esse processo gerencia a confirmação de presença dos passageiros e a execuç�
 #### **Tela para criar a rota**
 ![Rotas](images/tela-criar-rota.jpg)
 
-#### **Tela para visualizar tela incial do responsável**
+#### **Tela para visualizar a rota**
 ![Rotas](images/tela-visualizacao-rota.jpg)
 
 
-#### **Tela de checkin responsável**
+#### **Tela de checkin da rota**
 ![Rotas](images/tela-checkin-rota.jpg)
