@@ -40,8 +40,8 @@ _**Seleção múltipla** - campo com várias opções que podem ser selecionadas
 
 
 #### **Tela de  cadastro de avaliação do responsável**
-![Avalizacao](images/tela-avaliacao.png)
+![Avalizacao](images/tela-avaliacao.jpg)
 
 #### **Tela gerencia de avaliação**
-![Avalizacao](images/tela-avaliacao-2.png)
+![Avalizacao](images/tela-avaliacao-2.jpg)
 
