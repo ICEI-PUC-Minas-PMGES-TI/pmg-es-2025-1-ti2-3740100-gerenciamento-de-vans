@@ -151,22 +151,28 @@ _* **Link** - campo que armazena uma URL_
 
 
 #### **Tela de LOGING**
-![Login](images/W1Tela_login.jpg)
+![Login](images/tela-entrada.jpg)
 
 #### **Tela de para cadastro de maiores de idade**
-![Cadastro](images/W5Tela_CadastroResposavelOUMaior.jpg)
+![Cadastro](images/tela-cadastro-novo-usuario.jpg)
 
 #### **Tela de para cadastro de menores de idade**
-![Cadastro](images/W6Tela_CadastroMenor.jpg)
+![Cadastro](images/tela-cadastro-novo-usuario-menor-idade.jpg)
 
 #### **Tela de para cadastro de motoristas**
-![Cadastro](images/W3Tela_CadastroMotorista.jpg)
+![Cadastro](images/tela-cadastro-novo-motorista.jpg)
 
 #### **Tela de para cadastro de dono da rede**
-![Cadastro](images/W4Tela_CadastroDono.jpg)
+![Cadastro](images/tela-cadastro-novo-dono-rede.jpg)
 
 #### **Tela de para redefinir senha**
-![Cadastro](images/W2Tela_RecuperarSenha.jpg)
+![Cadastro](images/tela-inicio-dono-rede.jpg)
+
+#### **Tela de para redefinir senha**
+![Cadastro](images/tela-inicial-motorista.jpg)
+
+#### **Tela de para redefinir senha**
+![Cadastro](images/tela-esqueceu-senha.jpg)
 
 
 
