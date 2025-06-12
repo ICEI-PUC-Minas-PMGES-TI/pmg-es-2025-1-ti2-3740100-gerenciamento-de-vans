@@ -39,7 +39,7 @@ _**Seleção múltipla** - campo com várias opções que podem ser selecionadas
 | Cancelar             | Inicia o processo de cancelamento|                 |
 
 
-#### **Tela de  cadastro de avaliação do responsável**
+#### **Tela de avaliação**
 ![Avalizacao](images/tela-avaliacao.jpg)
 
 #### **Tela gerencia de avaliação**
