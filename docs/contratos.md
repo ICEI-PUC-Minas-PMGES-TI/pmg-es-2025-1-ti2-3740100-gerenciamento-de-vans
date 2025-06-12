@@ -4,12 +4,12 @@ Os contratos de vans são importantes para garantir segurança, transparência e
 
 Na WiseVan fazer o contrato entre responsável e motorista é fácil e objetivo. O responsável consegue assinar pela própria plataforma ou cancelar a solicitação feita, além de conseguir ler todo o contrato. Para o motorista, ele precisará apenas subir o arquivo de contrato e selecionar a pessoa que deseja. Quando for feito a assinatura perguntará dados que não estão salvos no cadastro, apenas para fins de segurança. O restantes dos dados serão retirados do cadastro feito pelo próprio usuário. 
 
-![Gestao de contratos](images/contratosDiagrama.png)
+![Gestao de contratos](images/bpmn-contratos.png)
 
 
 #### Detalhamento das atividades
 
-Na gestão de contratos, o cliente solicita ao motorista o contrato, após receber, o cliente visualiza e decide se quer ou não assinar, caso assine, o motorista recebe o contrato de volta assinado, assim finalizando o processo.
+Na gestão de contratos, o cliente contrata aquela van, envia informações necessárias, o motorista realiza a criação do contrato e envia para o cliente, após receber, o cliente assina o contrato e confirma a sua assinatura e envia ao motorista novamente. O motorista ao receber o contrato confirma se está tudo correto, assim finalizando o processo.
 
 ### Atividades:  
 - **Solicitação do contrato:** O passageiro solicita um contrato ao motorista.  
