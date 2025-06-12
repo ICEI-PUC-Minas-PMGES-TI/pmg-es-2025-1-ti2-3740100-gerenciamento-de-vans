@@ -55,19 +55,6 @@ _* **Link** - campo que armazena uma URL_
 
 
 
-#### **Tela para visualizar extrato financeiro do dono da rede**
-![Finan](images/23-W-Tela-financeiro-Dono-geral.png)
-
-
-#### **Tela para visualizar extrato financeiro de um passageiro do dono da rede**
-![Finan](images/22-W-Tela-financeiro-Dono-especifico.png)
-
-
-#### **Tela para visualizar extrato financeiro do responsável**
-![Finan](images/25-W-Tela-financeiro-Responsavel.png)
-
-#### **Tela para visualizar QRCODE**
-![Finan](images/24-W-Tela-financeiro-pix.png)
 
 
 
