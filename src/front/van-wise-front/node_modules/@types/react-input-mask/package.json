@@ -1,0 +1,38 @@
+{
+    "name": "@types/react-input-mask",
+    "version": "3.0.6",
+    "description": "TypeScript definitions for react-input-mask",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-input-mask",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Alexandre Paré",
+            "githubUsername": "apare",
+            "url": "https://github.com/apare"
+        },
+        {
+            "name": "Dima Danylyuk",
+            "githubUsername": "dima7a14",
+            "url": "https://github.com/dima7a14"
+        },
+        {
+            "name": "Lucas Rêgo",
+            "githubUsername": "lucasraziel",
+            "url": "https://github.com/lucasraziel"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/react-input-mask"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/react": "*"
+    },
+    "peerDependencies": {},
+    "typesPublisherContentHash": "095b9ba249174817a5abe5e4af9dc137cfd2fbb3db70e16ffa9d02c4f148c13c",
+    "typeScriptVersion": "4.9"
+}
