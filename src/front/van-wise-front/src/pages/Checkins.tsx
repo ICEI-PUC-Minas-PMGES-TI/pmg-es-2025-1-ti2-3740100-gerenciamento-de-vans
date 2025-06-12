@@ -6,8 +6,10 @@ import { ModeToggle } from "@/components/ui/themebutton";
 import axios from "axios";
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { APIProvider, Map, ControlPosition } from '@vis.gl/react-google-maps';
+import { AutocompleteInput } from "@/components/ui/hardcomponents/AutocompleteInput";
 
-
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
 
 const Checkins = () => {
 
@@ -16,7 +18,7 @@ const Checkins = () => {
     if (id) {
       setUserId(id);
     } else {
-      setUserId(""); // ou redirecione para login se preferir
+      setUserId("");
     }
   }, []);
 
@@ -174,6 +176,7 @@ const Checkins = () => {
               ))}
             </TableBody>
           </Table>
+
         </div>
       </div>
 
@@ -184,33 +187,28 @@ const Checkins = () => {
             <DialogTitle>Fazer Checkin</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-4">
-              <div>
-                <label>Destino</label>
-                <div>
-                  <Input
-                    placeholder="Digite o destino"
-                    value={checkinDestino}
-                    onChange={e => setCheckinDestino(e.target.value)}
-                    required
-                  />
-                </div>
+            <div className="flex flex-col items-center gap-4 justify-center mt-6">
+              <AutocompleteInput
+                onPlaceSelected={(place) => {
+                  console.log("PLACE AUTOCOMPLETE:", place);
+                  setCheckinDestino(place.formatted_addres || "");
+                }}
+              />              
+              <div className="flex flex-row gap-4 mt-2">
+                <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">
+                  Confirmar Checkin
+                </Button>
+                <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
+                  Cancelar
+                </Button>
               </div>
-            </div>
-            <div className="flex justify-end gap-2 mt-4">
-              <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
-                Cancelar
-              </Button>
-              <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">
-                Confirmar Checkin
-              </Button>
             </div>
           </form>
         </DialogContent>
       </Dialog>
 
       {/*Checkins confirmados*/}
-      
+
     </main>
   );
 };

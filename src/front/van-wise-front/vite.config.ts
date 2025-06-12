@@ -21,6 +21,5 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['@googlemaps/extended-component-library']
   }
 })
