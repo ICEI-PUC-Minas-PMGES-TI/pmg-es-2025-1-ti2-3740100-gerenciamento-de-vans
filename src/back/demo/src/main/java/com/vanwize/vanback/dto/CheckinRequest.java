@@ -7,6 +7,7 @@ public class CheckinRequest {
     private String destino;
     private Long userId;
     private Long routeId;
+    private String destinoPlaceId;
 
     public String getDate() { return date; }
     public void setDate(String date) { this.date = date; }
@@ -20,4 +21,6 @@ public class CheckinRequest {
     public void setUserId(Long userId) { this.userId = userId; }
     public Long getRouteId() { return routeId; }
     public void setRouteId(Long routeId) { this.routeId = routeId; }
+    public String getDestinoPlaceId() { return destinoPlaceId; }
+    public void setDestinoPlaceId(String destinoPlaceId) { this.destinoPlaceId = destinoPlaceId; }
 }

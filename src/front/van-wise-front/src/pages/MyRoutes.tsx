@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Link } from "react-router-dom";
+import { AutocompleteInput } from "@/components/ui/hardcomponents/AutocompleteInput";
 
 
 const MyRoutes = () => {
@@ -14,6 +15,9 @@ const MyRoutes = () => {
   const [driverId, setDriverId] = useState("");
   const [message, setMessage] = useState("");
   const [routes, setRoutes] = useState([]);
+  const [origem, setOrigem] = useState("");
+  const [origemPlaceId, setOrigemPlaceId] = useState("");
+
 
   const fetchRoutes = async () => {
     try {
@@ -35,6 +39,8 @@ const MyRoutes = () => {
         date,
         time,
         status: "PENDENTE",
+        origem,
+        origemPlaceId,
         driver: {
           id: Number(driverId),
           user_type: "Motorista"
@@ -75,6 +81,16 @@ const MyRoutes = () => {
                 value={time}
                 onChange={e => setTime(e.target.value)}
                 required
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="origem">Endereço de Partida</Label>
+              <AutocompleteInput
+                onPlaceSelected={(place) => {
+                  console.log("Selecionado:", place); // Veja se place.place_id aparece aqui!
+                  setOrigem(place.formatted_address);
+                  setOrigemPlaceId(place.place_id); 
+                }}
               />
             </div>
             <div className="grid gap-2">

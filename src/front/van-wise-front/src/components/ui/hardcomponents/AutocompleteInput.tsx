@@ -6,7 +6,7 @@ import { Input } from '../input';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
 
 interface Props {
-  onPlaceSelected: (place: { formatted_addres: string}) => void;
+  onPlaceSelected: (place: { formatted_address: string; place_id: string }) => void;
 }
 
 export function AutocompleteInput({ onPlaceSelected }: Props) {
@@ -22,12 +22,16 @@ export function AutocompleteInput({ onPlaceSelected }: Props) {
     service.getDetails(
       {
         placeId,
-        fields: ['formatted_address'],
+        fields: ['formatted_address', 'place_id'],
         language: 'pt-BR',
       },
       (result: any, status: any) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK && result?.formatted_address) {
-          onPlaceSelected({ formatted_addres: result.formatted_address });
+          console.log(result);
+          onPlaceSelected({ 
+            formatted_address: result.formatted_address,
+            place_id: result.place_id
+           });
         } else {
           console.error('Erro ao buscar detalhes do lugar', status, result);
         }

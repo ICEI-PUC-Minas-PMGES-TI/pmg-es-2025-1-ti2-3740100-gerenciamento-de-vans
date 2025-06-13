@@ -78,6 +78,7 @@ public class CheckinController {
     checkin.setTime(req.getTime());
     checkin.setStatus(Checkin.CheckinStatus.valueOf(req.getStatus()));
     checkin.setDestino(req.getDestino());
+    checkin.setDestinoPlaceId(req.getDestinoPlaceId());
     checkin.setUser(user);
     checkin.setRoute(route);
 

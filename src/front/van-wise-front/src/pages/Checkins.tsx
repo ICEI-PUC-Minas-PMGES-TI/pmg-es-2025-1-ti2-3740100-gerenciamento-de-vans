@@ -8,6 +8,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { APIProvider, Map, ControlPosition } from '@vis.gl/react-google-maps';
 import { AutocompleteInput } from "@/components/ui/hardcomponents/AutocompleteInput";
+import DirectionsMap from "@/components/ui/hardcomponents/DirectionsMap";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
 
@@ -35,6 +36,7 @@ const Checkins = () => {
   const [checkinDate, setCheckinDate] = React.useState("");
   const [checkinTime, setCheckinTime] = React.useState("");
   const [checkinDestino, setCheckinDestino] = React.useState("");
+  const [destinoPlaceId, setCheckinDestinoPlaceId] = React.useState<string>("");
   const [userId, setUserId] = React.useState("");
   const [routeId, setRouteId] = React.useState("");
   const [routes, setRoutes] = React.useState([]);
@@ -92,6 +94,7 @@ const Checkins = () => {
         time: selectedRoute.time || selectedRoute.route_time,
         status: "PENDING",
         destino: checkinDestino,
+        destinoPlaceId: destinoPlaceId,
         userId: Number(userId),
         routeId: selectedRoute.id,
       });
@@ -175,6 +178,7 @@ const Checkins = () => {
                 </TableRow>
               ))}
             </TableBody>
+            
           </Table>
 
         </div>
@@ -191,7 +195,8 @@ const Checkins = () => {
               <AutocompleteInput
                 onPlaceSelected={(place) => {
                   console.log("PLACE AUTOCOMPLETE:", place);
-                  setCheckinDestino(place.formatted_addres || "");
+                  setCheckinDestino(place.formatted_address);
+                  setCheckinDestinoPlaceId(place.place_id)
                 }}
               />              
               <div className="flex flex-row gap-4 mt-2">

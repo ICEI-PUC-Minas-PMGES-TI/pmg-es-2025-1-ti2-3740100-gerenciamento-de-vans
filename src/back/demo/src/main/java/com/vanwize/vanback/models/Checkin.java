@@ -53,12 +53,16 @@ public class Checkin {
   @JoinColumn(name = "route_id", nullable = false)
   private Route route;
 
+  @Column(name = "destino_place_id")
+  private String destinoPlaceId;
+
 
   public Checkin() {
 
   }
 
-  public Checkin(Long id, User user, LocalDate date, String time,String destino, CheckinStatus status, Route route) {
+  public Checkin(Long id, User user, LocalDate date, String time,String destino, CheckinStatus status, Route route, String destinoPlaceId) {
+    this.destinoPlaceId = destinoPlaceId;
     this.id = id;
     this.user = user;
     this.date = date;
@@ -132,6 +136,21 @@ public class Checkin {
     CANCELED,
     PENDING
   }
+
+  public String getDestinoPlaceId() {
+    return destinoPlaceId;
+  }
+
+  public void setDestinoPlaceId(String destinoPlaceId) {
+    this.destinoPlaceId = destinoPlaceId;
+  }
+
+   @Override
+   public String toString() {
+        return "Checkin [id=" + id + ", user=" + user + ", date=" + date + ", time=" + time 
+        + ", destino=" + destino + ", status=" + status + ", route=" + route 
+        + ", destinoPlaceId=" + destinoPlaceId + "]";
+   }
 
   @Override
    public boolean equals(Object obj) {

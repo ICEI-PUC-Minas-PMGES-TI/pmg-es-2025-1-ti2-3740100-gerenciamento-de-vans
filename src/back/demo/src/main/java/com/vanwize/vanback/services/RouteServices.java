@@ -23,6 +23,7 @@ public class RouteServices {
     if (existingRoute != null) {
       existingRoute.setTime(route.getTime());
       existingRoute.setStatus(route.getStatus());
+      existingRoute.setOrigemPlaceId(route.getOrigemPlaceId());
       return routeRepository.save(existingRoute);
     } else {
       return routeRepository.save(route);

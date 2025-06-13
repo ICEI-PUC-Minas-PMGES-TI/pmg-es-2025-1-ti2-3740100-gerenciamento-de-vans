@@ -36,6 +36,11 @@ public class Route {
   @Pattern(regexp = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$")
   private String time;
 
+  @Column(name = "origem")
+  private String origem;
+
+  @Column(name = "origem_place_id")
+  private String origemPlaceId;
 
 
   @Enumerated(EnumType.STRING)
@@ -51,12 +56,14 @@ public class Route {
   
   public Route() {
   }
-  public Route(Long id, LocalDate date, String time,RouteStatus status, User driver) {
+  public Route(Long id, LocalDate date, String time,RouteStatus status, User driver, String origem, String origemPlaceId) {
     this.id = id;
     this.date = date;
     this.time = time;
     this.status = status;
     this.driver = driver;
+    this.origem = origem;
+    this.origemPlaceId = origemPlaceId;
   }
 
   public Long getId(){
@@ -102,6 +109,22 @@ public class Route {
   }
   public void setDriver(User driver) {
     this.driver = driver;
+  }
+
+  public String getOrigem() {
+    return origem;
+  }
+
+  public void setOrigem(String origem){
+    this.origem = origem;
+  }
+
+  public String getOrigemPlaceId() {
+    return origemPlaceId;
+  }
+
+  public void setOrigemPlaceId(String origemPlaceId) {
+    this.origemPlaceId = origemPlaceId;
   }
 
   @Override
