@@ -200,7 +200,7 @@ No back end, será utilizado **Spring Boots com Java**, proporcionando uma plata
 
 **5. Banco de Dados**
 
-O banco de dados adotado será o **MySQL**, garantindo uma solução confiável e eficiente para armazenamento de dados.
+O banco de dados adotado será o **PostgreSQL**, garantindo uma solução confiável e eficiente para armazenamento de dados.
 
 
 **6. Ferramentas de Modelagem**
