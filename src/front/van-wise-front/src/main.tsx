@@ -15,6 +15,7 @@ import MotoristaHomepage from './pages/MotoristaHomepage.tsx';
 import Checkins from './pages/Checkins.tsx';
 import RoutesPage from './pages/RoutesPage.tsx';
 import MyRoutes from './pages/MyRoutes.tsx';
+import DonoRedeHomepage from './pages/DonoHomePage.tsx';
 
 
 
@@ -35,7 +36,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/forgotpassword' element={<ForgotPasswordPage />} />
           <Route path='/contractform' element={<ContractForm />} />
           <Route path='/homepage' element={<HomePage />} />
-          <Route path='/mootoristahomepage' element={< MotoristaHomepage />} />
+          <Route path='/MotoristaHomePage' element={< MotoristaHomepage />} />
+          <Route path='/DonoHomePage' element={<DonoRedeHomepage/>}/>
           <Route path='/routes/:routeId' element={<RoutesPage />} />
           <Route path='/myroutes' element={<MyRoutes />} />
           <Route path='/checkin' element={<Checkins />} />

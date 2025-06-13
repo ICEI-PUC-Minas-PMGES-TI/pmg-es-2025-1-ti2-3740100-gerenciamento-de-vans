@@ -52,7 +52,7 @@ const Checkins = () => {
   //Mostrar os checkins
   const fetchCheckins = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/checkins");
+      const res = await axios.get("http://localhost:8081/checkins");
       setCheckins(res.data);
     } catch (err) {
       setMessage("Erro ao carregar checkins: " + (err as Error).message);
@@ -75,7 +75,7 @@ const Checkins = () => {
   //Mostrar as rotas
   const fetchRoutes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/routes");
+      const res = await axios.get("http://localhost:8081/routes");
       setRoutes(res.data);
     } catch (err) {
       setMessage("Erro ao carregar rotas: " + (err as Error).message);
@@ -89,7 +89,7 @@ const Checkins = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/checkins", {
+      await axios.post("http://localhost:8081/checkins", {
         date: formatDate(selectedRoute.date || selectedRoute.route_date),
         time: selectedRoute.time || selectedRoute.route_time,
         status: "PENDING",
@@ -108,7 +108,7 @@ const Checkins = () => {
 
   const handleEditStatus = async (chekinId: number, newStatus: string) => {
     try {
-      await axios.put(`http://localhost:8080/checkins/${chekinId}`, {
+      await axios.put(`http://localhost:8081/checkins/${chekinId}`, {
         status: newStatus
       })
       setMessage("Status atualizado com sucesso!");

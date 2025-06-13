@@ -37,7 +37,7 @@ const RoutesPage = () => {
         let origemDaRota = "";
 
         axios
-            .get(`http://localhost:8080/routes/${routeId}`)
+            .get(`http://localhost:8081/routes/${routeId}`)
             .then((res) => {
                 setRouteStatus(res.data.status);
                 origemDaRota = res.data.origemPlaceId || "";
@@ -47,7 +47,7 @@ const RoutesPage = () => {
             })
             .finally(() => {
                 axios
-                    .get(`http://localhost:8080/checkins/route/${routeIdNumber}`)
+                    .get(`http://localhost:8081/checkins/route/${routeIdNumber}`)
                     .then(async (res) => {
                         const alunos = res.data.map((checkin: any) => ({
                             nome: checkin.usuario?.nome || checkin.usuario?.username || "Sem nome",
@@ -94,8 +94,8 @@ const RoutesPage = () => {
         }
         try {
             if (method === "put") {
-                await axios.put(`http://localhost:8080${endpoint}`);
-                const res = await axios.get(`http://localhost:8080/routes/${routeId}`);
+                await axios.put(`http://localhost:8081${endpoint}`);
+                const res = await axios.get(`http://localhost:8081/routes/${routeId}`);
                 setRouteStatus(res.data.status);
             }
         } catch (err) {

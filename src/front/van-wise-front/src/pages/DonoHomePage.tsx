@@ -21,8 +21,8 @@ const rotas = [
 ];
 
 const dadosMensais = [
-  { mes: "Jan", Vans: '' },
-  { mes: "Fev", Vans: '' },
+  { mes: "Jan", Vans: 3 },
+  { mes: "Fev", Vans: 50 },
   { mes: "Mar", Vans: '' },
   { mes: "Abr", Vans: '' },
   { mes: "Mai", Vans: '' },
@@ -36,12 +36,12 @@ const dadosMensais = [
 ];
 
 const dadosMensaisContratos = [
-  { mes: "Jan", contratos: 30 },
+  { mes: "Jan", contratos: 60 },
   { mes: "Fev", contratos: 28 },
   { mes: "Mar", contratos: 35 },
   { mes: "Abr", contratos: 40 },
   { mes: "Mai", contratos: 38 },
-  { mes: "Jun", contratos: 42 },
+  { mes: "Jun", contratos: 60 },
   { mes: "Jul", contratos: 45 },
   { mes: "Ago", contratos: 50 },
   { mes: "Set", contratos: 48 },

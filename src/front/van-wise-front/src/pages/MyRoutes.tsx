@@ -21,7 +21,7 @@ const MyRoutes = () => {
 
   const fetchRoutes = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/routes");
+      const res = await axios.get("http://localhost:8081/routes");
       setRoutes(res.data);
     } catch (err) {
       setMessage("Erro ao carregar rotas: " + (err as Error).message);
@@ -35,7 +35,7 @@ const MyRoutes = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/routes", {
+      await axios.post("http://localhost:8081/routes", {
         date,
         time,
         status: "PENDENTE",

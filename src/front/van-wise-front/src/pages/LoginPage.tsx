@@ -22,7 +22,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8080/usuarios/login', { email, senha: password });
+      const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
       console.log(response.data); // Login bem-sucedido
       const userType = response.data.tipoUsuario.toLowerCase();
       if (userType === "donoderede" || userType === "motorista" || userType === "responsavel") {
