@@ -68,7 +68,7 @@ export default function MotoristaHomepage() {
   const [modalVanOpen, setModalVanOpen] = useState(false);
   const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
 
-  const handleMenuClick = (item) => {
+  const handleMenuClick = (item: React.SetStateAction<string>) => {
     setActive(item);
   };
 

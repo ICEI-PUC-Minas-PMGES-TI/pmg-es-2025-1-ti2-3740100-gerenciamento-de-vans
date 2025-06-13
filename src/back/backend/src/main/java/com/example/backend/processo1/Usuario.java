@@ -36,6 +36,14 @@ public class Usuario {
         // Construtor vazio
     }
 
+    public Long getId() {
+        return idUsuario;
+    }
+
+    public void setId(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public String getNome() {
         return nome;
     }

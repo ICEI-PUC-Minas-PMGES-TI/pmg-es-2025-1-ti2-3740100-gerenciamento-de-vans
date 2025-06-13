@@ -113,7 +113,7 @@ export default function RegisterPage() {
 
     try {
       // Enviar dados para o backend
-      const response = await axios.post("http://localhost:8081/usuarios/salvar", {
+      const response = await axios.post("http://localhost:8080/usuarios/salvar", {
         nome,
         sobrenome,
         email,
