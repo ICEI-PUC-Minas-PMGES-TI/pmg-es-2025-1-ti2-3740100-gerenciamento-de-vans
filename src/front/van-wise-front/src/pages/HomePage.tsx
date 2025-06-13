@@ -14,6 +14,23 @@ type Van = {
   preco: string;
 };
 
+// Simulação de usuário logado (ajuste conforme necessário)
+const ID_PASSAGEIRO = 1;
+
+// Tipos para viagens e avaliações
+interface Viagem {
+  id: number;
+  idMotorista: number;
+  data: string;
+  checkOut: boolean;
+}
+interface Avaliacao {
+  idViagem: number;
+  nota: number;
+  comentario: string;
+  dataAvaliacao: string;
+}
+
 export default function Homepage() {
   const [vans, setVans] = useState<Van[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +50,11 @@ export default function Homepage() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [vanContratada, setVanContratada] = useState<Van | null>(null);
 
+  // Estado para avaliações pendentes
+  const [viagensPendentes, setViagensPendentes] = useState<Viagem[]>([]);
+  const [avaliacoes, setAvaliacoes] = useState<Avaliacao[]>([]);
+  const [showAvaliacaoNotif, setShowAvaliacaoNotif] = useState(false);
+
   useEffect(() => {
     axios
       .get<Van[]>("http://localhost:8081/usuarios/listarvans")
@@ -46,6 +68,34 @@ export default function Homepage() {
         setLoading(false);
       });
   }, []);
+
+  // Buscar viagens concluídas (checkOut true) do passageiro
+  useEffect(() => {
+    fetch(`http://localhost:8081/api/viagens?passageiro=${ID_PASSAGEIRO}`)
+      .then((res) => res.json())
+      .then((todasViagens: Viagem[]) => {
+        // Filtrar apenas concluídas
+        const concluidas = todasViagens.filter(v => v.checkOut);
+        setViagensPendentes(concluidas);
+      })
+      .catch(() => setViagensPendentes([]));
+  }, []);
+
+  // Buscar avaliações já feitas
+  useEffect(() => {
+    fetch(`http://localhost:8081/api/avaliacoes/por-passageiro/${ID_PASSAGEIRO}`)
+      .then((res) => res.json())
+      .then((avaliacoes: Avaliacao[]) => setAvaliacoes(avaliacoes))
+      .catch(() => setAvaliacoes([]));
+  }, []);
+
+  // Atualizar notificação de avaliações pendentes
+  useEffect(() => {
+    // Viagens concluídas que ainda não foram avaliadas
+    const idsAvaliadas = new Set(avaliacoes.map(a => a.idViagem));
+    const pendentes = viagensPendentes.filter(v => !idsAvaliadas.has(v.id));
+    setShowAvaliacaoNotif(pendentes.length >= 5);
+  }, [viagensPendentes, avaliacoes]);
 
   const handleMenuClick = (item: string) => {
     setActive(item);
@@ -111,6 +161,11 @@ export default function Homepage() {
     }
   };
 
+  // Redirecionar para avaliações ao clicar na notificação
+  const handleNotifClick = () => {
+    window.location.href = '/avaliacoes';
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       {/* Header */}
@@ -136,6 +191,17 @@ export default function Homepage() {
         <div className="fixed top-16 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
           <strong>Van contratada!</strong> Modelo: {vanContratada.modelo} | Placa:{" "}
           {vanContratada.placa}
+        </div>
+      )}
+
+      {/* Notificação permanente de avaliações pendentes */}
+      {showAvaliacaoNotif && (
+        <div
+          className="fixed top-24 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-6 py-3 rounded shadow-lg z-50 cursor-pointer animate-bounce"
+          onClick={handleNotifClick}
+        >
+          <strong>Atenção:</strong> Você possui 5 ou mais viagens concluídas sem avaliação!<br/>
+          Clique aqui para avaliar e remover esta notificação.
         </div>
       )}
 
