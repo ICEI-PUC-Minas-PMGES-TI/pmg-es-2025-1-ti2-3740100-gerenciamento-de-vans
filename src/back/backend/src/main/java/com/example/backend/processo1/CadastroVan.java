@@ -22,6 +22,7 @@ public class CadastroVan {
     private String horarios;
     private String turnos;
     private String preco;
+    private String cpf_motorista;
 
     public CadastroVan() {
         // Construtor vazio
@@ -90,6 +91,11 @@ public class CadastroVan {
     public void setPreco(String preco) {
         this.preco = preco;
     }
+
+    public String getCpf_motorista() {
+        return cpf_motorista;
+    }
+    
 
     
 }
