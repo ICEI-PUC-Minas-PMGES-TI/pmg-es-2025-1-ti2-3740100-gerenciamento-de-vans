@@ -77,7 +77,8 @@ const [modalAberto, setModalAberto] = useState(false);
     destinoFinal: "",
     horarios: "",
     turnos: "",
-    preco: ""
+    preco: "",
+    id_motorista: ""
   });
 
   const handleMenuClick = (item: string) => setActive(item);
@@ -122,6 +123,7 @@ const handleAddVan = async () => {
         horarios: novaVan.horarios,
         turnos: novaVan.turnos,
         preco: Number(novaVan.preco),
+        id_motorista: Number(novaVan.id_motorista),
       }),
     });
 
@@ -140,7 +142,8 @@ const handleAddVan = async () => {
       destinoFinal: "",
       horarios: "",
       turnos: "",
-      preco: ""
+      preco: "",
+      id_motorista: ""
     });
 
     setShowModal(false);
@@ -424,6 +427,13 @@ const handleDeleteVan = async (placa: string) => {
                 type="number"
                 value={novaVan.preco}
                 onChange={(e) => setNovaVan({ ...novaVan, preco: e.target.value })}
+              />
+              <input
+                className="border p-2 rounded"
+                placeholder="Capacidade"
+                type="number"
+                value={novaVan.capacidade}
+                onChange={(e) => setNovaVan({ ...novaVan, capacidade: e.target.value })}
               />
             </div>
             <div className="flex justify-end mt-4 gap-2">
