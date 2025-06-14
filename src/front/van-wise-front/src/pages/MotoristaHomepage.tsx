@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
 
 const AvaliacaoGeral = () => {
@@ -28,12 +28,6 @@ const AvaliacaoGeral = () => {
   );
 };
 
-const vanResponsavel = {
-  placa: "ABC-1234",
-  modelo: "Sprinter 16 lugares",
-  capacidade: 16,
-};
-
 const horariosTurnos = [
   { turno: "Manhã", inicio: "6:00", fim: "8:00" },
   { turno: "Tarde", inicio: "10:30", fim: "13:30" },
@@ -61,27 +55,55 @@ const passageiros = [
   },
 ];
 
-const menuItems = ["Rota", "Mural"];
+const VanInfo = ({ van }: { van: Van | null }) => {
+  if (!van) return <p>Carregando...</p>;
+
+  return (
+    <>
+      <p><strong>Placa:</strong> {van.placa}</p>
+      <p><strong>Modelo:</strong> {van.modelo}</p>
+      <p><strong>Capacidade:</strong> {van.capacidade} passageiros</p>
+      <p><strong>CPF:</strong> {van.cpf_motorista}</p>
+    </>
+  );
+};
+
+type Van = {
+  placa: string;
+  modelo: string;
+  capacidade: number;
+  cpf_motorista: string;
+};
 
 export default function MotoristaHomepage() {
   const [active, setActive] = useState("Rota");
   const [modalVanOpen, setModalVanOpen] = useState(false);
   const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
+  const [vanResponsavel, setVanResponsavel] = useState<Van | null>(null);
 
-  const handleMenuClick = (item: React.SetStateAction<string>) => {
-    setActive(item);
-  };
+  useEffect(() => {
+    fetch("http://localhost:8081/usuarios/listarvans")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setVanResponsavel(data[0]); // Exibe a primeira van
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar vans:", error);
+      });
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">
       <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
         <h1 className="text-xl font-bold text-gray-400">Olá Motorista, seja bem-vindo</h1>
         <nav className="flex gap-8">
-          {menuItems.map((item) => (
+          {["Rota", "Mural"].map((item) => (
             <button
               key={item}
               className={`hover:underline ${active === item ? "underline font-semibold" : ""}`}
-              onClick={() => handleMenuClick(item)}
+              onClick={() => setActive(item)}
             >
               {item}
             </button>
@@ -94,9 +116,7 @@ export default function MotoristaHomepage() {
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
             <div>
               <h2 className="text-xl font-bold mb-4">Sua Van</h2>
-              <p><strong>Placa:</strong> {vanResponsavel.placa}</p>
-              <p><strong>Modelo:</strong> {vanResponsavel.modelo}</p>
-              <p><strong>Capacidade:</strong> {vanResponsavel.capacidade} passageiros</p>
+              <VanInfo van={vanResponsavel} />
             </div>
             <button
               onClick={() => setModalVanOpen(true)}
@@ -109,7 +129,7 @@ export default function MotoristaHomepage() {
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
             <div>
               <h2 className="text-xl font-bold mb-4">Horários e Turnos</h2>
-              <p><strong>Turnos:</strong> Manhã, Tarde, Noite</p>
+              <p><strong>Turnos:</strong> {horariosTurnos.map(h => h.turno).join(", ")}</p>
             </div>
             <button
               onClick={() => setModalHorarioOpen(true)}
@@ -119,7 +139,6 @@ export default function MotoristaHomepage() {
             </button>
           </section>
         </div>
-
 
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Passageiros da Van</h2>
@@ -134,8 +153,8 @@ export default function MotoristaHomepage() {
                 </tr>
               </thead>
               <tbody>
-                {passageiros.map((p, index) => (
-                  <tr key={index} className="text-center">
+                {passageiros.map((p, i) => (
+                  <tr key={i} className="text-center">
                     <td className="p-2 border">{p.nome}</td>
                     <td className="p-2 border">{p.turno}</td>
                     <td className="p-2 border">{p.embarque}</td>
@@ -145,11 +164,9 @@ export default function MotoristaHomepage() {
               </tbody>
             </table>
           </div>
-
-          
         </section>
 
-              <AvaliacaoGeral />
+        <AvaliacaoGeral />
       </main>
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
@@ -167,9 +184,7 @@ export default function MotoristaHomepage() {
               &times;
             </button>
             <h2 className="text-3xl font-bold mb-6">Detalhes da Van</h2>
-            <p className="mb-2"><strong>Placa:</strong> {vanResponsavel.placa}</p>
-            <p className="mb-2"><strong>Modelo:</strong> {vanResponsavel.modelo}</p>
-            <p className="mb-2"><strong>Capacidade:</strong> {vanResponsavel.capacidade} passageiros</p>
+            <VanInfo van={vanResponsavel} />
           </div>
         </div>
       )}
