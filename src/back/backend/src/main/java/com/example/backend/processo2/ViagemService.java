@@ -11,18 +11,10 @@ public class ViagemService {
     @Autowired
     private ViagemRepository viagemRepository;
 
-    public Viagem registrarCheckOut(Long idViagem) {
-        Viagem viagem = viagemRepository.findById(idViagem).orElseThrow();
-        viagem.setCheckOut(true);
-        return viagemRepository.save(viagem);
-    }
-
     public List<Viagem> listarViagensElegiveisParaAvaliacao(Long idPassageiro, LocalDate data) {
-        // Apenas viagens do passageiro, na data, com checkOut true
+        // Apenas viagens do passageiro
         return viagemRepository.findAll().stream()
-                .filter(v -> v.getIdPassageiro().equals(idPassageiro)
-                        && v.getData().equals(data)
-                        && v.isCheckOut())
+                .filter(v -> v.getIdPassageiro().equals(idPassageiro))
                 .toList();
     }
 

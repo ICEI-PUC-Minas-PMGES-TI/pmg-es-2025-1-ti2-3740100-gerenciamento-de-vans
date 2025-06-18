@@ -8,22 +8,25 @@ interface Viagem {
   id: number;
   idMotorista: number;
   data: string;
-  checkOut: boolean;
 }
 
 interface Avaliacao {
   idViagem: number;
+  idPassageiro: number;
   nota: number;
   comentario: string;
   dataAvaliacao: string;
+  dataLimite: string;
 }
 
 interface AvaliacaoComViagem {
   id: number;
   idViagem: number;
+  idPassageiro: number;
   nota: number;
   comentario: string;
   dataAvaliacao: string;
+  dataLimite: string;
   viagem?: Viagem;
 }
 
@@ -34,10 +37,11 @@ export default function AvaliacaoPage() {
   const [comentario, setComentario] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [avaliacoes, setAvaliacoes] = useState<AvaliacaoComViagem[]>([]);
+  const [erro, setErro] = useState("");
 
-  // Buscar viagens elegíveis para avaliação (checkOut true, data de hoje)
+  // Buscar viagens elegíveis para avaliação
   useEffect(() => {
-    fetch(`http://localhost:8081/api/viagens?passageiro=${ID_PASSAGEIRO}`)
+    fetch(`http://localhost:8081/api/viagens/elegiveis?idPassageiro=${ID_PASSAGEIRO}&data=${new Date().toISOString().split('T')[0]}`)
       .then((res) => res.json())
       .then(setViagens)
       .catch(() => setViagens([]));
@@ -56,6 +60,7 @@ export default function AvaliacaoPage() {
     setNota(0);
     setComentario("");
     setMensagem("");
+    setErro("");
   };
 
   const handleEnviar = async () => {
@@ -63,28 +68,36 @@ export default function AvaliacaoPage() {
       setMensagem("Selecione uma nota de 1 a 5 estrelas.");
       return;
     }
-    const hoje = new Date().toISOString().slice(0, 10);
+
     const avaliacao: Avaliacao = {
       idViagem: avaliando.id,
+      idPassageiro: ID_PASSAGEIRO,
       nota,
       comentario,
       dataAvaliacao: avaliando.data,
+      dataLimite: new Date(new Date(avaliando.data).getTime() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
     };
-    const resp = await fetch("http://localhost:8081/api/avaliacoes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(avaliacao),
-    });
-    if (resp.ok) {
-      setMensagem("Avaliação enviada com sucesso!");
-      setAvaliando(null);
-      // Atualiza lista de avaliações para mostrar "Avaliado" para todas as viagens da data
-      setAvaliacoes((prev) => [
-        ...prev,
-        { ...avaliacao, id: Math.random() }
-      ]);
-    } else {
-      setAvaliando(null);
+
+    try {
+      const resp = await fetch("http://localhost:8081/api/avaliacoes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(avaliacao),
+      });
+
+      if (resp.ok) {
+        setMensagem("Avaliação enviada com sucesso!");
+        setAvaliando(null);
+        setAvaliacoes((prev) => [
+          ...prev,
+          { ...avaliacao, id: Math.random() }
+        ]);
+      } else {
+        const erro = await resp.text();
+        setErro(erro);
+      }
+    } catch (error) {
+      setErro("Erro ao enviar avaliação. Tente novamente.");
     }
   };
 
@@ -93,29 +106,22 @@ export default function AvaliacaoPage() {
     return data.split('-').reverse().join('/');
   }
 
-  // Agrupar viagens por data e exibir apenas uma por data
-  const viagensPorData: { [data: string]: Viagem } = {};
-  viagens.forEach((viagem) => {
-    // Só adiciona se ainda não existe viagem para essa data
-    if (!viagensPorData[viagem.data]) {
-      viagensPorData[viagem.data] = viagem;
-    }
-  });
-  // Lista de viagens únicas por data
-  const viagensUnicas = Object.values(viagensPorData);
+  // Função para verificar se a avaliação está expirada
+  function isAvaliacaoExpirada(dataViagem: string) {
+    const dataViagemObj = new Date(dataViagem);
+    const dataLimite = new Date(dataViagemObj.getTime() + 3 * 24 * 60 * 60 * 1000);
+    return new Date() > dataLimite;
+  }
 
-  // Filtrar viagens para exibir apenas as com data <= hoje
-  const hojeDate = new Date();
-  const viagensFiltradas = viagensUnicas.filter((viagem) => {
-    const dataViagem = new Date(viagem.data);
-    // Zera hora para comparar só a data
-    dataViagem.setHours(0,0,0,0);
-    hojeDate.setHours(0,0,0,0);
-    return dataViagem <= hojeDate;
-  });
-
-  // Agrupar avaliações por data
-  const datasAvaliadas = new Set(avaliacoes.map(a => a.dataAvaliacao));
+  // Função para verificar se pode avaliar (últimos 15 dias)
+  function podeAvaliar() {
+    const ultimaAvaliacao = avaliacoes[avaliacoes.length - 1];
+    if (!ultimaAvaliacao) return true;
+    
+    const dataUltimaAvaliacao = new Date(ultimaAvaliacao.dataAvaliacao);
+    const dataLimite = new Date(dataUltimaAvaliacao.getTime() + 15 * 24 * 60 * 60 * 1000);
+    return new Date() > dataLimite;
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
@@ -123,6 +129,9 @@ export default function AvaliacaoPage() {
         <h2 className="text-2xl font-bold mb-6">Avaliação de Motoristas</h2>
         {mensagem && (
           <div className="mb-4 text-center text-green-600 font-semibold">{mensagem}</div>
+        )}
+        {erro && (
+          <div className="mb-4 text-center text-red-600 font-semibold">{erro}</div>
         )}
         {/* Avaliações já feitas */}
         <div className="mb-8">
@@ -196,23 +205,25 @@ export default function AvaliacaoPage() {
           </div>
         ) : (
           <>
-            {viagensFiltradas.length === 0 ? (
+            {viagens.length === 0 ? (
               <div className="text-center text-gray-500">Nenhuma viagem elegível para avaliação hoje.</div>
             ) : (
               <div className="flex flex-col gap-4">
-                {viagensFiltradas.map((viagem) => {
-                  // Verifica se já existe avaliação para essa data
-                  const jaAvaliada = datasAvaliadas.has(viagem.data);
+                {viagens.map((viagem) => {
+                  const jaAvaliada = avaliacoes.some(a => a.idViagem === viagem.id);
+                  const expirada = isAvaliacaoExpirada(viagem.data);
+                  const podeAvaliarHoje = podeAvaliar();
+
                   return (
                     <div
-                      key={viagem.data}
+                      key={viagem.id}
                       className="flex items-center justify-between border rounded-lg p-4 shadow-sm"
                     >
                       <div>
                         <div className="font-semibold">Motorista: {viagem.idMotorista}</div>
                         <div className="text-sm text-gray-500">Data: {formatarDataBR(viagem.data)}</div>
                       </div>
-                      {!jaAvaliada && (
+                      {!jaAvaliada && !expirada && podeAvaliarHoje && (
                         <button
                           className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
                           onClick={() => handleAvaliar(viagem)}
@@ -226,6 +237,22 @@ export default function AvaliacaoPage() {
                           disabled
                         >
                           Avaliado
+                        </button>
+                      )}
+                      {expirada && !jaAvaliada && (
+                        <button
+                          className="px-4 py-2 bg-red-400 text-white rounded cursor-not-allowed"
+                          disabled
+                        >
+                          Expirado
+                        </button>
+                      )}
+                      {!podeAvaliarHoje && !jaAvaliada && !expirada && (
+                        <button
+                          className="px-4 py-2 bg-yellow-400 text-white rounded cursor-not-allowed"
+                          disabled
+                        >
+                          Aguarde 15 dias
                         </button>
                       )}
                     </div>

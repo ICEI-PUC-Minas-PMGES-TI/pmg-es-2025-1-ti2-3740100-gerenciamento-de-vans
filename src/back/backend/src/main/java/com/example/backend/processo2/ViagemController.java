@@ -12,11 +12,6 @@ public class ViagemController {
     @Autowired
     private ViagemService viagemService;
 
-    @PostMapping("/check-out/{idViagem}")
-    public Viagem registrarCheckOut(@PathVariable Long idViagem) {
-        return viagemService.registrarCheckOut(idViagem);
-    }
-
     @GetMapping("/elegiveis")
     public List<Viagem> listarViagensElegiveis(@RequestParam Long idPassageiro, @RequestParam String data) {
         return viagemService.listarViagensElegiveisParaAvaliacao(idPassageiro, LocalDate.parse(data));

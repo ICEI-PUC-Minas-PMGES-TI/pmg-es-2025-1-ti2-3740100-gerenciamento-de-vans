@@ -17,28 +17,43 @@ public class AvaliacaoService {
     private ViagemRepository viagemRepository;
 
     public Avaliacao registrarAvaliacao(Avaliacao avaliacao) {
-        Optional<Avaliacao> existente = avaliacaoRepository.findByIdViagemAndDataAvaliacao(
-            avaliacao.getIdViagem(), avaliacao.getDataAvaliacao()
-        );
-        if (existente.isPresent()) {
-            throw new DataIntegrityViolationException("Já existe avaliação para esta viagem nesta data.");
-        }
-        // Buscar a viagem para validar a data
+        // Buscar a viagem para validar
         Viagem viagem = viagemRepository.findById(avaliacao.getIdViagem())
             .orElseThrow(() -> new IllegalArgumentException("Viagem não encontrada."));
+
         LocalDate hoje = LocalDate.now();
-        if (viagem.getData().isAfter(hoje)) {
-            throw new IllegalArgumentException("Não é possível avaliar viagens futuras.");
+        
+        // Verifica se a viagem é do passageiro
+        if (!viagem.getIdPassageiro().equals(avaliacao.getIdPassageiro())) {
+            throw new IllegalArgumentException("Você não pode avaliar uma viagem que não é sua.");
         }
+
+        // Verifica se já passou o prazo de 3 dias
+        if (hoje.isAfter(viagem.getData().plusDays(3))) {
+            throw new IllegalArgumentException("O prazo para avaliação expirou (3 dias após a viagem).");
+        }
+
+        // Verifica se já existe avaliação para esta viagem
+        Optional<Avaliacao> existente = avaliacaoRepository.findByIdViagem(avaliacao.getIdViagem());
+        if (existente.isPresent()) {
+            throw new DataIntegrityViolationException("Já existe avaliação para esta viagem.");
+        }
+
+        // Verifica se já fez avaliação nos últimos 15 dias
+        List<Avaliacao> avaliacoesRecentes = avaliacaoRepository.findByDataAvaliacaoBetween(
+            hoje.minusDays(15), hoje);
+        if (!avaliacoesRecentes.isEmpty()) {
+            throw new IllegalArgumentException("Você já fez uma avaliação nos últimos 15 dias.");
+        }
+
+        // Define a data limite (3 dias após a viagem)
+        avaliacao.setDataLimite(viagem.getData().plusDays(3));
+        
         return avaliacaoRepository.save(avaliacao);
     }
 
     public List<Avaliacao> listarAvaliacoesPorPassageiro(Long idPassageiro) {
-        // Busca todas avaliações de viagens de um passageiro
-        // (No futuro pode ser otimizado com query customizada)
-        return avaliacaoRepository.findAll().stream()
-                .filter(a -> a.getIdViagem() != null) // Precisa buscar viagem para checar passageiro
-                .toList();
+        return avaliacaoRepository.findByIdPassageiro(idPassageiro);
     }
 
     public List<Avaliacao> listarTodas() {

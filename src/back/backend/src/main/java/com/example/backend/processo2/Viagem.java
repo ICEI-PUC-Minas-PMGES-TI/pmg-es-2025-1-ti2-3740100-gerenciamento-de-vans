@@ -18,9 +18,6 @@ public class Viagem {
     @Column(nullable = false)
     private LocalDate data;
 
-    @Column(nullable = false)
-    private boolean checkOut = false;
-
     // Getters e setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -30,6 +27,4 @@ public class Viagem {
     public void setIdMotorista(Long idMotorista) { this.idMotorista = idMotorista; }
     public LocalDate getData() { return data; }
     public void setData(LocalDate data) { this.data = data; }
-    public boolean isCheckOut() { return checkOut; }
-    public void setCheckOut(boolean checkOut) { this.checkOut = checkOut; }
 } 
