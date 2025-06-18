@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ModeToggle } from "@/components/ui/themebutton";
 import { Dialog } from "@headlessui/react";
-//import { Contract, columns } from "@/components/ui/columns";
-//import { DataTable } from "@/components/ui/contract-page-components/data-table";
 
 type Contract = {
   id: string;
@@ -12,14 +10,6 @@ type Contract = {
   status: string;
 };
 
-/*  async function getData(): Promise<Contract[]> {
-  return [
-    { id: "1", name: "Lucas", email: "lucas@gmail.com", status: "Aguardando confirmação" },
-    { id: "2", name: "Maria", email: "maria@example.com", status: "Aguardando confirmação" },
-    { id: "3", name: "Ana", email: "ana@example.com", status: "Aguardando confirmação" },
-    { id: "4", name: "Edward", email: "edward@example.com", status: "Aguardando confirmação" },
-  ];
-} */
 
 export default function ContractForm() {
   const [data, setData] = useState<Contract[]>([]);
@@ -91,6 +81,11 @@ const addContract = () => {
     .catch((error) => console.error("Erro ao adicionar contrato:", error));
 };
 
+  const totalContratos = data.length;
+  const contratosConfirmados = data.filter(c => c.status === "Contrato confirmado").length;
+  const contratosAguardando = data.filter(c => c.status === "Aguardando confirmação").length;
+  const taxaConfirmados = totalContratos > 0 ? ((contratosConfirmados / totalContratos) * 100).toFixed(1) : "0";
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -142,6 +137,22 @@ const addContract = () => {
             </tbody>
           </table>
         </section>
+        {/* Indicadores de desempenho */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+            <span className="text-3xl font-bold text-blue-700">{totalContratos}</span>
+            <span className="text-gray-600 mt-2 text-center">Total de Contratos</span>
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+            <span className="text-3xl font-bold text-green-700">{contratosConfirmados}</span>
+            <span className="text-gray-600 mt-2 text-center">Contratos Confirmados</span>
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
+            <span className="text-3xl font-bold text-purple-700">{taxaConfirmados}%</span>
+            <span className="text-gray-600 mt-2 text-center">Taxa de Confirmação</span>
+          </div>
+        </section>
+
       </main>
 
       {/* Modal de Confirmação */}
