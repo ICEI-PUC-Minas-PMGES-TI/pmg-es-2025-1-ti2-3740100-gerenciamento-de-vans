@@ -45,6 +45,8 @@ export default function DonoRedeHomepage() {
   ]);
 
   const [vansExcluidas, setVansExcluidas] = useState(0);
+  const [motoristas, setMotoristas] = useState<any[]>([]);
+
 
   const [showModal, setShowModal] = useState(false);
   const [novaVan, setNovaVan] = useState({
@@ -109,7 +111,6 @@ const handleAddVan = async () => {
   }
 };
 
-
 useEffect(() => {
   const buscarVans = async () => {
     try {
@@ -123,6 +124,24 @@ useEffect(() => {
 
   buscarVans();
 }, []);
+
+
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarMotoristas")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        const apenasMotoristas = data.filter(
+          (usuario) => usuario.tipoUsuario === "motorista"
+        );
+        setMotoristas(apenasMotoristas);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar motoristas:", error);
+    });
+}, []);
+
 
 const handleDeleteVan = async (placa: string) => {
   try {

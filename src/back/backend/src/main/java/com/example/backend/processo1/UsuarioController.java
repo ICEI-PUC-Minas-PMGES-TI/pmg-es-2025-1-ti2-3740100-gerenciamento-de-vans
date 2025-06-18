@@ -23,6 +23,7 @@ public class UsuarioController {
     private ContratarRepository contratarRepository;
 
 
+
     //==================================SALVAR USUÁRIO=================================
 
 
@@ -68,6 +69,13 @@ public class UsuarioController {
         public List<Usuario> listarResponsaveis() {
         return usuarioRepository.findByTipoUsuario("responsavel");
     }
+
+    //listar os motoristas
+    @GetMapping("/listarMotoristas")
+    public List<Usuario> listarMotoristas() {
+        return usuarioRepository.findByTipoUsuario("motorista");
+    }
+
 
 
 
