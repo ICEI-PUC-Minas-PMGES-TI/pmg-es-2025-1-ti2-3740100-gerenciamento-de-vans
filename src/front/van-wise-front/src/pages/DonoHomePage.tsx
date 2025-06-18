@@ -135,7 +135,7 @@ const handleDeleteVan = async (placa: string) => {
     }
 
     setVans(vans.filter((van) => van.placa !== placa));
-    setVansExcluidas(vansExcluidas + 1); // <-- Adicione esta linha
+    setVansExcluidas(vansExcluidas + 1); 
   } catch (error) {
     console.error("Erro ao deletar van:", error);
     alert("Erro ao deletar van.");
