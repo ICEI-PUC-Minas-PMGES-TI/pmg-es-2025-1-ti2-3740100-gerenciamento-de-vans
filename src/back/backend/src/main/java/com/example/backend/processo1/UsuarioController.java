@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -61,6 +62,13 @@ public class UsuarioController {
     public Iterable<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }
+
+    //listar os passageiros
+    @GetMapping("/listarResponsaveis")
+        public List<Usuario> listarResponsaveis() {
+        return usuarioRepository.findByTipoUsuario("responsavel");
+    }
+
 
 
     // Classe auxiliar para capturar email e senha

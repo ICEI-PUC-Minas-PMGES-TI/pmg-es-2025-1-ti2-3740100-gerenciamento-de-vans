@@ -28,6 +28,9 @@ export default function Homepage() {
     email: "",
     telefone: "",
     endereco: "",
+    entrada: "",
+    saida: "",
+    turno: "",
     pagamento: "pix",
   });
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -61,6 +64,9 @@ export default function Homepage() {
       email: "",
       telefone: "",
       endereco: "",
+      entrada: "",
+      saida: "",
+      turno: "",
       pagamento: "pix",
     });
     setShowConfirmModal(false);
@@ -91,7 +97,10 @@ export default function Homepage() {
           email: formData.email,
           telefone: formData.telefone,
           endereco: formData.endereco,
-          formaPagamento: formData.pagamento.toUpperCase(),
+          entrada: formData.entrada,
+          saida: formData.saida,
+          turno: formData.turno.toUpperCase(),
+          formaPagamento: "PIX",
         }),
       });
 
@@ -112,174 +121,202 @@ export default function Homepage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      {/* Header */}
-      <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
-        <nav className="flex gap-8">
-          {menuItems.map((item) => (
-            <button
-              key={item}
-              className={`hover:underline ${
-                active === item ? "underline font-semibold" : ""
-              }`}
-              onClick={() => handleMenuClick(item)}
+  <div className="min-h-screen flex flex-col relative">
+    <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
+      <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
+      <nav className="flex gap-8">
+        {menuItems.map((item) => (
+          <button
+            key={item}
+            className={`hover:underline ${active === item ? "underline font-semibold" : ""}`}
+            onClick={() => handleMenuClick(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </nav>
+    </header>
+
+    {vanContratada && (
+      <div className="fixed top-16 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+        <strong>Van contratada!</strong> Modelo: {vanContratada.modelo} | Placa: {vanContratada.placa}
+      </div>
+    )}
+
+    {page === "Home" && (
+      <main className="p-8">
+        <h2 className="text-3xl font-bold mb-6">Escolha a sua van</h2>
+        {loading && <p>Carregando vans...</p>}
+        {erro && <p className="text-red-500">{erro}</p>}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {vans.map((van) => (
+            <div
+              key={van.id}
+              className="bg-white p-4 rounded-lg shadow space-y-1 text-sm"
             >
-              {item}
-            </button>
-          ))}
-        </nav>
-      </header>
-
-      {/* Van contratada - notificação */}
-      {vanContratada && (
-        <div className="fixed top-16 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
-          <strong>Van contratada!</strong> Modelo: {vanContratada.modelo} | Placa:{" "}
-          {vanContratada.placa}
-        </div>
-      )}
-
-      {/* Página Home */}
-      {page === "Home" && (
-        <main className="p-8">
-          <h2 className="text-3xl font-bold mb-6">Escolha a sua van</h2>
-          {loading && <p>Carregando vans...</p>}
-          {erro && <p className="text-red-500">{erro}</p>}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {vans.map((van) => (
-              <div
-                key={van.id}
-                className="bg-white p-4 rounded-lg shadow space-y-1 text-sm"
-              >
-                <p><strong>Modelo:</strong> {van.modelo}</p>
-                <p><strong>Placa:</strong> {van.placa}</p>
-                <p><strong>Bairro Inicial:</strong> {van.bairroInicial}</p>
-                <p><strong>Destino Final:</strong> {van.destinoFinal}</p>
-                <p><strong>Horários:</strong> {van.horarios}</p>
-                <p><strong>Turnos:</strong> {van.turnos}</p>
-                <p><strong>Preço:</strong> {van.preco}</p>
-                <button
-                  className="mt-2 bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded text-sm"
-                  onClick={() => handleContratarClick(van)}
-                >
-                  Quero contratar
-                </button>
-              </div>
-            ))}
-          </div>
-        </main>
-      )}
-
-      {/* Outras páginas em construção */}
-      {["Mural", "Avaliações", "Rotas"].includes(page) && (
-        <div className="p-8 text-center text-gray-500 text-xl">
-          A tela <strong>{page}</strong> está em construção.
-        </div>
-      )}
-
-      {/* Modal formulário de contratação */}
-      {selectedVan && (
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-30">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md relative">
-            <button
-              onClick={() => setSelectedVan(null)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-            >
-              ✕
-            </button>
-            <h3 className="text-xl font-bold mb-4">Contratar: {selectedVan.modelo}</h3>
-            <form onSubmit={handleOpenConfirmModal} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium">Nome</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full border px-3 py-2 rounded"
-                  value={formData.nome}
-                  onChange={(e) => handleFormChange("nome", e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">E-mail</label>
-                <input
-                  type="email"
-                  required
-                  className="w-full border px-3 py-2 rounded"
-                  value={formData.email}
-                  onChange={(e) => handleFormChange("email", e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Telefone</label>
-                <input
-                  type="tel"
-                  required
-                  className="w-full border px-3 py-2 rounded"
-                  value={formData.telefone}
-                  onChange={(e) => handleFormChange("telefone", e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Endereço</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full border px-3 py-2 rounded"
-                  value={formData.endereco}
-                  onChange={(e) => handleFormChange("endereco", e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">Forma de pagamento</label>
-                <select
-                  className="w-full border px-3 py-2 rounded"
-                  value={formData.pagamento}
-                  onChange={(e) => handleFormChange("pagamento", e.target.value)}
-                >
-                  <option value="pix">Pix</option>
-                  <option value="cartao">Cartão</option>
-                  <option value="boleto">Boleto</option>
-                </select>
-              </div>
+              <p><strong>Modelo:</strong> {van.modelo}</p>
+              <p><strong>Placa:</strong> {van.placa}</p>
+              <p><strong>Bairro Inicial:</strong> {van.bairroInicial}</p>
+              <p><strong>Destino Final:</strong> {van.destinoFinal}</p>
+              <p><strong>Horários:</strong> {van.horarios}</p>
+              <p><strong>Turnos:</strong> {van.turnos}</p>
+              <p><strong>Preço:</strong> {van.preco}</p>
               <button
-                type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded"
+                className="mt-2 bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded text-sm"
+                onClick={() => handleContratarClick(van)}
               >
-                Confirmar Contratação
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Modal de confirmação final */}
-      {showConfirmModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-60 bg-black bg-opacity-30">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm text-center">
-            <h3 className="text-xl font-bold mb-4">Confirme seus dados</h3>
-            <p><strong>Van:</strong> {selectedVan?.modelo}</p>
-            <p><strong>Nome:</strong> {formData.nome}</p>
-            <p><strong>E-mail:</strong> {formData.email}</p>
-            <p><strong>Telefone:</strong> {formData.telefone}</p>
-            <p><strong>Endereço:</strong> {formData.endereco}</p>
-            <p><strong>Pagamento:</strong> {formData.pagamento}</p>
-            <div className="flex justify-between mt-6">
-              <button
-                onClick={handleCloseConfirmModal}
-                className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded"
-              >
-                Voltar
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
-              >
-                Enviar
+                Quero contratar
               </button>
             </div>
+          ))}
+        </div>
+      </main>
+    )}
+
+    {["Mural", "Avaliações", "Rotas"].includes(page) && (
+      <div className="p-8 text-center text-gray-500 text-xl">
+        A tela <strong>{page}</strong> está em construção.
+      </div>
+    )}
+
+    {selectedVan && (
+      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-30">
+        <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md relative overflow-y-auto max-h-[90vh]">
+          <button
+            onClick={() => setSelectedVan(null)}
+            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 z-10"
+          >
+            ✕
+          </button>
+          <h3 className="text-xl font-bold mb-4">Contratar: {selectedVan.modelo}</h3>
+          <form onSubmit={handleOpenConfirmModal} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium">Nome</label>
+              <input
+                type="text"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.nome}
+                onChange={(e) => handleFormChange("nome", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">E-mail</label>
+              <input
+                type="email"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.email}
+                onChange={(e) => handleFormChange("email", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Telefone</label>
+              <input
+                type="tel"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.telefone}
+                onChange={(e) => handleFormChange("telefone", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Endereço</label>
+              <input
+                type="text"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.endereco}
+                onChange={(e) => handleFormChange("endereco", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Horário de entrada</label>
+              <input
+                type="time"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.entrada}
+                onChange={(e) => handleFormChange("entrada", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Horário de saída</label>
+              <input
+                type="time"
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.saida}
+                onChange={(e) => handleFormChange("saida", e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Turno</label>
+              <select
+                required
+                className="w-full border px-3 py-2 rounded"
+                value={formData.turno}
+                onChange={(e) => handleFormChange("turno", e.target.value)}
+              >
+                <option value="">Selecione</option>
+                <option value="MANHA">MANHA</option>
+                <option value="TARDE">TARDE</option>
+                <option value="NOITE">NOITE</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium">Forma de pagamento</label>
+              <input
+                type="text"
+                readOnly
+                className="w-full border px-3 py-2 rounded bg-gray-100 text-gray-700"
+                value="Pix"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded"
+            >
+              Confirmar Contratação
+            </button>
+          </form>
+        </div>
+      </div>
+    )}
+
+    {showConfirmModal && (
+      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-60 bg-black bg-opacity-30">
+        <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm text-center overflow-y-auto max-h-[90vh]">
+          <h3 className="text-xl font-bold mb-4">Confirme seus dados</h3>
+          <p><strong>Van:</strong> {selectedVan?.modelo}</p>
+          <p><strong>Nome:</strong> {formData.nome}</p>
+          <p><strong>E-mail:</strong> {formData.email}</p>
+          <p><strong>Telefone:</strong> {formData.telefone}</p>
+          <p><strong>Endereço:</strong> {formData.endereco}</p>
+          <p><strong>Entrada:</strong> {formData.entrada}</p>
+          <p><strong>Saída:</strong> {formData.saida}</p>
+          <p><strong>Turno:</strong> {formData.turno}</p>
+          <p><strong>Pagamento:</strong> Pix</p>
+          <div className="flex justify-between mt-6">
+            <button
+              onClick={handleCloseConfirmModal}
+              className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded"
+            >
+              Voltar
+            </button>
+            <button
+              onClick={handleSubmit}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+            >
+              Enviar
+            </button>
           </div>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>
+);
 }
+
+
+
