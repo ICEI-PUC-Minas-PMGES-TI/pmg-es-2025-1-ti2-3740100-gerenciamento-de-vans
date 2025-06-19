@@ -69,13 +69,30 @@ export default function DonoRedeHomepage() {
 
 
 
+const verificarCpfMotorista = async (cpf: string): Promise<boolean> => {
+  try {
+    const res = await fetch(`http://localhost:8081/usuarios/existe/${cpf}`);
+    if (!res.ok) throw new Error("Erro na verificação do CPF");
+    const existe = await res.json();
+    return existe;
+  } catch (error) {
+    console.error("Erro ao verificar CPF do motorista:", error);
+    return false;
+  }
+};
+
+
 const handleAddVan = async () => {
   try {
+    const cpfValido = await verificarCpfMotorista(novaVan.cpf_motorista);
+    if (!cpfValido) {
+      alert("CPF do motorista não encontrado no sistema.");
+      return;
+    }
+
     const response = await fetch("http://localhost:8081/usuarios/cadastrarvan", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         modelo: novaVan.modelo,
         placa: novaVan.placa,
@@ -85,7 +102,7 @@ const handleAddVan = async () => {
         horarios: novaVan.horarios,
         turnos: novaVan.turnos,
         preco: Number(novaVan.preco),
-        cpf_motorista:novaVan.cpf_motorista,
+        cpf_motorista: novaVan.cpf_motorista,
       }),
     });
 

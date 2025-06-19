@@ -76,6 +76,12 @@ public class UsuarioController {
         return usuarioRepository.findByTipoUsuario("motorista");
     }
 
+    @GetMapping("/existe/{cpf}")
+    public ResponseEntity<Boolean> motoristaExiste(@PathVariable String cpf) {
+        boolean exists = usuarioRepository.existsByCpf(cpf);
+        return ResponseEntity.ok(exists);
+    }
+
 
 
 
