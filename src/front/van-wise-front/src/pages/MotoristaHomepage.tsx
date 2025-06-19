@@ -73,6 +73,8 @@ export default function MotoristaHomepage() {
   const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
   const [vanResponsavel, setVanResponsavel] = useState<Van | null>(null);
   const [passageiros, setPassageiros] = useState<Usuario[]>([]);
+  
+
 
   useEffect(() => {
     fetch("http://localhost:8081/usuarios/listarvans")
@@ -101,6 +103,8 @@ export default function MotoristaHomepage() {
         console.error("Erro ao buscar usuários:", error);
       });
   }, []);
+
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">

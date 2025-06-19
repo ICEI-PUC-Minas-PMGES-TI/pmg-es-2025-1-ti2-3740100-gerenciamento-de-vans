@@ -63,6 +63,10 @@ export default function DonoRedeHomepage() {
 
   const handleMenuClick = (item: string) => setActive(item);
 
+  const [responsaveis, setResponsaveis] = useState<any[]>([]);
+  const [rotas, setRotas] = useState<any[]>([]);
+
+
 
 
 const handleAddVan = async () => {
@@ -122,6 +126,7 @@ useEffect(() => {
     }
   };
 
+
   buscarVans();
 }, []);
 
@@ -141,6 +146,47 @@ useEffect(() => {
       console.error("Erro ao buscar motoristas:", error);
     });
 }, []);
+
+
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarResponsaveis")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        const somenteResponsaveis = data.filter(
+          (usuario) => usuario.tipoUsuario === "responsavel"
+        );
+        setResponsaveis(somenteResponsaveis);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar responsáveis:", error);
+    });
+}, []);
+
+
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarvans")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        // Mapeia cada van para um objeto rota
+        const rotasFormatadas = data.map((van: any) => ({
+          turno: van.turnos,
+          origem: van.bairroInicial,
+          destino: van.destinoFinal,
+          horario: van.horarios,
+        }));
+        setRotas(rotasFormatadas);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar vans:", error);
+    });
+}, []);
+
+
+
 
 
 const handleDeleteVan = async (placa: string) => {
@@ -259,28 +305,25 @@ const handleDeleteVan = async (placa: string) => {
           </div>
         </section>
 
-        {/* Passageiros */}
+        {/* Responsáveis */}
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Passageiros</h2>
           <table className={tableClass}>
             <thead>
               <tr>
                 <th className={thClass}>Nome</th>
-                <th className={thClass}>Van</th>
-                <th className={thClass}>Turno</th>
               </tr>
             </thead>
             <tbody>
-              {passageiros.map((p, index) => (
+              {responsaveis.map((r, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className={tdClass}>{p.nome}</td>
-                  <td className={tdClass}>{p.van}</td>
-                  <td className={tdClass}>{p.turno}</td>
+                  <td className={tdClass}>{r.nome}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
+
 
         {/* Motoristas */}
         <section className="bg-white p-6 rounded-xl shadow-md">
@@ -289,21 +332,18 @@ const handleDeleteVan = async (placa: string) => {
             <thead>
               <tr>
                 <th className={thClass}>Nome</th>
-                <th className={thClass}>Van</th>
               </tr>
             </thead>
             <tbody>
               {motoristas.map((m, index) => (
                 <tr key={index} className="hover:bg-gray-50">
                   <td className={tdClass}>{m.nome}</td>
-                  <td className={tdClass}>{m.van}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
 
-        {/* Rotas */}
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Rotas</h2>
           <table className={tableClass}>
@@ -327,6 +367,7 @@ const handleDeleteVan = async (placa: string) => {
             </tbody>
           </table>
         </section>
+
         
       </main>
 
