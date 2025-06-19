@@ -1,11 +1,9 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: WiseVan - Gerenciamento de van
 authors:
   - family-names: Abreu
     given-names: Natalie
-  - family-names: Ferraz
-    given-names: Maria Eduarda
   - family-names: Coelho
     given-names: Gabriel
   - family-names: Silva
@@ -28,4 +26,4 @@ keywords:
 repository-code: 
 license: CC-BY-4.0
 version: 1.0.0
-date-released:
+date-released: 20/06/2025
