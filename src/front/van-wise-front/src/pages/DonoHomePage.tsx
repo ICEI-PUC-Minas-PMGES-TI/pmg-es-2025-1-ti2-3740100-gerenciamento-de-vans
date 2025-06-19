@@ -3,7 +3,23 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-const menuItems = ["Rota", "Mural"];
+import ContractForm from "./ContractForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const menuItems = [
+  { nome: "Contrato", path: "/ContractForm" },
+];
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/contrato" element={<ContractForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 const passageiros = [
   { nome: "João", van: "ABC-1234", turno: "Manhã" },
@@ -20,43 +36,6 @@ const rotas = [
   { turno: "Tarde", origem: "Bairro B", destino: "Escola Y", horario: "13:00 - 13:50" },
 ];
 
-const dadosMensais = [
-  { mes: "Jan", Vans: 3 },
-  { mes: "Fev", Vans: 50 },
-  { mes: "Mar", Vans: '' },
-  { mes: "Abr", Vans: '' },
-  { mes: "Mai", Vans: '' },
-  { mes: "Jun", Vans: '' },
-  { mes: "Jul", Vans: '' },
-  { mes: "Ago", Vans: '' },
-  { mes: "Set", Vans: '' },
-  { mes: "Out", Vans: '' },
-  { mes: "Nov", Vans: '' },
-  { mes: "Dez", Vans: '' },
-];
-
-const dadosMensaisContratos = [
-  { mes: "Jan", contratos: 60 },
-  { mes: "Fev", contratos: 28 },
-  { mes: "Mar", contratos: 35 },
-  { mes: "Abr", contratos: 40 },
-  { mes: "Mai", contratos: 38 },
-  { mes: "Jun", contratos: 60 },
-  { mes: "Jul", contratos: 45 },
-  { mes: "Ago", contratos: 50 },
-  { mes: "Set", contratos: 48 },
-  { mes: "Out", contratos: 52 },
-  { mes: "Nov", contratos: 49 },
-  { mes: "Dez", contratos: 55 },
-];
-
-const taxaContratos = [
-  { name: "Renovados", value: 45 },
-  { name: "Novos", value: 30 },
-  { name: "Cancelados", value: 25 },
-];
-
-
 
 export default function DonoRedeHomepage() {
   const [active, setActive] = useState("Rota");
@@ -65,8 +44,9 @@ export default function DonoRedeHomepage() {
     { placa: "DEF-5678", modelo: "Master 20L", capacidade: 20 },
   ]);
 
-const [modalAberto, setModalAberto] = useState(false);
-  const contratosResumo = dadosMensaisContratos.slice(dadosMensaisContratos.length - 3);
+  const [vansExcluidas, setVansExcluidas] = useState(0);
+  const [motoristas, setMotoristas] = useState<any[]>([]);
+
 
   const [showModal, setShowModal] = useState(false);
   const [novaVan, setNovaVan] = useState({
@@ -82,38 +62,37 @@ const [modalAberto, setModalAberto] = useState(false);
   });
 
   const handleMenuClick = (item: string) => setActive(item);
-  /*const handleAddVan = () => {
-    setVans([...vans, { ...novaVan, capacidade: Number(novaVan.capacidade) }]);
-    setNovaVan({ modelo: "", placa: "", capacidade: "" });
-    setShowModal(false);
-  };*/
 
-  /*const handleAddVan = async () => {
+  const [responsaveis, setResponsaveis] = useState<any[]>([]);
+  const [rotas, setRotas] = useState<any[]>([]);
+
+
+
+
+const verificarCpfMotorista = async (cpf: string): Promise<boolean> => {
   try {
-    const response = await axios.post("http://localhost:8081/usuarios/cadastrarvan", {
-      modelo: novaVan.modelo,
-      placa: novaVan.placa,
-      capacidade: Number(novaVan.capacidade),
-    });
-
-    // Atualiza a lista local com a resposta da API
-    setVans([...vans, response.data]);
-    setNovaVan({ modelo: "", placa: "", capacidade: "" });
-    setShowModal(false);
+    const res = await fetch(`http://localhost:8081/usuarios/existe/${cpf}`);
+    if (!res.ok) throw new Error("Erro na verificação do CPF");
+    const existe = await res.json();
+    return existe;
   } catch (error) {
-    console.error("Erro ao cadastrar van:", error);
-    alert("Erro ao cadastrar van");
+    console.error("Erro ao verificar CPF do motorista:", error);
+    return false;
   }
-};*/
+};
 
 
 const handleAddVan = async () => {
   try {
+    const cpfValido = await verificarCpfMotorista(novaVan.cpf_motorista);
+    if (!cpfValido) {
+      alert("CPF do motorista não encontrado no sistema.");
+      return;
+    }
+
     const response = await fetch("http://localhost:8081/usuarios/cadastrarvan", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         modelo: novaVan.modelo,
         placa: novaVan.placa,
@@ -123,7 +102,7 @@ const handleAddVan = async () => {
         horarios: novaVan.horarios,
         turnos: novaVan.turnos,
         preco: Number(novaVan.preco),
-        cpf_motorista:novaVan.cpf_motorista,
+        cpf_motorista: novaVan.cpf_motorista,
       }),
     });
 
@@ -153,7 +132,6 @@ const handleAddVan = async () => {
   }
 };
 
-
 useEffect(() => {
   const buscarVans = async () => {
     try {
@@ -165,15 +143,67 @@ useEffect(() => {
     }
   };
 
+
   buscarVans();
 }, []);
 
 
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarMotoristas")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        const apenasMotoristas = data.filter(
+          (usuario) => usuario.tipoUsuario === "motorista"
+        );
+        setMotoristas(apenasMotoristas);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar motoristas:", error);
+    });
+}, []);
 
 
-  /*const handleDeleteVan = (placa: string) => {
-    setVans(vans.filter((van) => van.placa !== placa));
-  };*/
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarResponsaveis")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        const somenteResponsaveis = data.filter(
+          (usuario) => usuario.tipoUsuario === "responsavel"
+        );
+        setResponsaveis(somenteResponsaveis);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar responsáveis:", error);
+    });
+}, []);
+
+
+useEffect(() => {
+  fetch("http://localhost:8081/usuarios/listarvans")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        // Mapeia cada van para um objeto rota
+        const rotasFormatadas = data.map((van: any) => ({
+          turno: van.turnos,
+          origem: van.bairroInicial,
+          destino: van.destinoFinal,
+          horario: van.horarios,
+        }));
+        setRotas(rotasFormatadas);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar vans:", error);
+    });
+}, []);
+
+
+
 
 
 const handleDeleteVan = async (placa: string) => {
@@ -187,13 +217,16 @@ const handleDeleteVan = async (placa: string) => {
     }
 
     setVans(vans.filter((van) => van.placa !== placa));
+    setVansExcluidas(vansExcluidas + 1); 
   } catch (error) {
     console.error("Erro ao deletar van:", error);
     alert("Erro ao deletar van.");
   }
 };
 
-
+  const totalVans = vans.length + vansExcluidas;
+  const percentualAtivas = totalVans > 0 ? ((vans.length / totalVans) * 100).toFixed(1) : "0";
+  const percentualExcluidas = totalVans > 0 ? ((vansExcluidas / totalVans) * 100).toFixed(1) : "0";
 
 
   const tableClass = "w-full text-left border-collapse";
@@ -206,14 +239,16 @@ const handleDeleteVan = async (placa: string) => {
         <h1 className="text-xl font-bold">Seja bem vindo (a) ao painel do dono</h1>
         <nav className="flex gap-8">
           {menuItems.map((item) => (
-            <button
-              key={item}
-              className={`hover:underline ${active === item ? "underline font-semibold" : ""}`}
-              onClick={() => handleMenuClick(item)}
-            >
-              {item}
-            </button>
-          ))}
+    <Link
+      key={item.nome}
+      to={item.path}
+      className={`hover:underline ${active === item.nome ? "underline font-semibold" : ""}`}
+      onClick={() => handleMenuClick(item.nome)}
+    >
+      {item.nome}
+    </Link>
+  ))}
+
         </nav>
       </header>
 
@@ -258,28 +293,54 @@ const handleDeleteVan = async (placa: string) => {
           </table>
         </section>
 
-        {/* Passageiros */}
+                        {}
+        <section className="mb-8">
+          <h2 className="text-lg font-bold mb-2">Vans Ativas</h2>
+          <div className="flex items-end gap-8 h-32">
+            <div className="flex flex-col items-center">
+              <div
+                className="bg-blue-600 w-12 rounded-t"
+                style={{ height: `${vans.length * 20}px` }}
+                title={`Ativas: ${vans.length}`}
+              ></div>
+              <span className="mt-2 text-sm">
+                Ativas<br />
+                {vans.length} <span className="text-blue-700 font-bold">({percentualAtivas}%)</span>
+              </span>
+            </div>
+            <div className="flex flex-col items-center">
+              <div
+                className="bg-red-500 w-12 rounded-t"
+                style={{ height: `${vansExcluidas * 20}px` }}
+                title={`Inativas: ${vansExcluidas}`}
+              ></div>
+              <span className="mt-2 text-sm">
+                Inativas<br />
+                {vansExcluidas} <span className="text-red-700 font-bold">({percentualExcluidas}%)</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* Responsáveis */}
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Passageiros</h2>
           <table className={tableClass}>
             <thead>
               <tr>
                 <th className={thClass}>Nome</th>
-                <th className={thClass}>Van</th>
-                <th className={thClass}>Turno</th>
               </tr>
             </thead>
             <tbody>
-              {passageiros.map((p, index) => (
+              {responsaveis.map((r, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className={tdClass}>{p.nome}</td>
-                  <td className={tdClass}>{p.van}</td>
-                  <td className={tdClass}>{p.turno}</td>
+                  <td className={tdClass}>{r.nome}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
+
 
         {/* Motoristas */}
         <section className="bg-white p-6 rounded-xl shadow-md">
@@ -288,21 +349,18 @@ const handleDeleteVan = async (placa: string) => {
             <thead>
               <tr>
                 <th className={thClass}>Nome</th>
-                <th className={thClass}>Van</th>
               </tr>
             </thead>
             <tbody>
               {motoristas.map((m, index) => (
                 <tr key={index} className="hover:bg-gray-50">
                   <td className={tdClass}>{m.nome}</td>
-                  <td className={tdClass}>{m.van}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
 
-        {/* Rotas */}
         <section className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-4">Rotas</h2>
           <table className={tableClass}>
@@ -327,45 +385,7 @@ const handleDeleteVan = async (placa: string) => {
           </table>
         </section>
 
-        {/* Dashboard*/}
-        <section className="bg-white p-6 rounded-xl shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Vans Ativas</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={dadosMensais} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="mes" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Vans" fill="#3182ce" name="Vans" />
-            </BarChart>
-          </ResponsiveContainer>
-        </section>
-
-      {/* Dashboard Gráfico Mensal de Contratos */}
-        <section className="bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Contratos Mensais</h2>
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart data={contratosResumo} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="mes" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="contratos" fill="#2f855a" name="Contratos" />
-          </BarChart>
-        </ResponsiveContainer>
-
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={() => setModalAberto(true)}
-            className="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-700"
-          >
-            Ver mais
-          </button>
-        </div>
-      </section>
-
+        
       </main>
 
       <footer className="bg-gray-100 text-center text-sm text-gray-500 py-4 mt-auto">
@@ -452,35 +472,6 @@ const handleDeleteVan = async (placa: string) => {
           </div>
         </div>
       )}
-
-      {/* Modal com gráfico completo */}
-      {modalAberto && (
-  <div className="fixed inset-0 bg-white flex justify-center items-center z-50">
-    <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-3xl max-h-[80vh] overflow-auto">
-      <h2 className="text-xl font-bold mb-4">Contratos Mensais</h2>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={dadosMensaisContratos} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="mes" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="contratos" fill="#2f855a" name="Contratos" />
-        </BarChart>
-      </ResponsiveContainer>
-
-      <div className="flex justify-end mt-4">
-        <button
-          onClick={() => setModalAberto(false)}
-          className="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          Fechar
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
 
     </div>
   );

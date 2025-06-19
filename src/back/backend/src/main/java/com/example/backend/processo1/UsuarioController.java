@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ public class UsuarioController {
     private VanRepository vanRepository;
     @Autowired
     private ContratarRepository contratarRepository;
+
 
 
     //==================================SALVAR USUÁRIO=================================
@@ -61,6 +63,26 @@ public class UsuarioController {
     public Iterable<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }
+
+    //listar os passageiros
+    @GetMapping("/listarResponsaveis")
+        public List<Usuario> listarResponsaveis() {
+        return usuarioRepository.findByTipoUsuario("responsavel");
+    }
+
+    //listar os motoristas
+    @GetMapping("/listarMotoristas")
+    public List<Usuario> listarMotoristas() {
+        return usuarioRepository.findByTipoUsuario("motorista");
+    }
+
+    @GetMapping("/existe/{cpf}")
+    public ResponseEntity<Boolean> motoristaExiste(@PathVariable String cpf) {
+        boolean exists = usuarioRepository.existsByCpf(cpf);
+        return ResponseEntity.ok(exists);
+    }
+
+
 
 
     // Classe auxiliar para capturar email e senha

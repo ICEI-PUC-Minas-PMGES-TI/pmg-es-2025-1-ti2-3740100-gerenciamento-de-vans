@@ -1,5 +1,7 @@
 package com.example.backend.processo1;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -20,10 +22,15 @@ public class Contratar {
     private String email;
     private String telefone;
     private String endereco;
+    private String entrada;
+    private String saida;
 
+    @Enumerated(EnumType.STRING)
+    private Turno turno;
 
     @Enumerated(EnumType.STRING)
     private FormaPagamento formaPagamento;
+
 
 
     public Long getId() {
@@ -76,6 +83,38 @@ public class Contratar {
     }
 
 
+    public String getEntrada() {
+        return entrada;
+    }
+
+
+    public void setEntrada(String entrada) {
+        this.entrada = entrada;
+    }
+
+
+    public String getSaida() {
+        return saida;
+    }
+
+
+    public void setSaida(String saida) {
+        this.saida = saida;
+    }
+
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+
+
+    }
+
+
     public FormaPagamento getFormaPagamento() {
         return formaPagamento;
     }
@@ -85,10 +124,5 @@ public class Contratar {
         this.formaPagamento = formaPagamento;
     }
 
-
-    
-
-
-
-    
+   
 }

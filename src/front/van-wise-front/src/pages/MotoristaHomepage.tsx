@@ -34,36 +34,23 @@ const horariosTurnos = [
   { turno: "Noite", inicio: "17:00", fim: "19:30" },
 ];
 
-const passageiros = [
-  {
-    nome: "João Silva",
-    turno: "Manhã",
-    embarque: "Rua A, 123",
-    destino: "Escola Modelo",
-  },
-  {
-    nome: "Maria Oliveira",
-    turno: "Tarde",
-    embarque: "Av. B, 456",
-    destino: "Colégio Central",
-  },
-  {
-    nome: "Pedro Santos",
-    turno: "Manhã",
-    embarque: "Rua C, 789",
-    destino: "Escola Modelo",
-  },
-];
-
 const VanInfo = ({ van }: { van: Van | null }) => {
   if (!van) return <p>Carregando...</p>;
 
   return (
     <>
-      <p><strong>Placa:</strong> {van.placa}</p>
-      <p><strong>Modelo:</strong> {van.modelo}</p>
-      <p><strong>Capacidade:</strong> {van.capacidade} passageiros</p>
-      <p><strong>CPF:</strong> {van.cpf_motorista}</p>
+      <p>
+        <strong>Placa:</strong> {van.placa}
+      </p>
+      <p>
+        <strong>Modelo:</strong> {van.modelo}
+      </p>
+      <p>
+        <strong>Capacidade:</strong> {van.capacidade} passageiros
+      </p>
+      <p>
+        <strong>CPF:</strong> {van.cpf_motorista}
+      </p>
     </>
   );
 };
@@ -75,11 +62,19 @@ type Van = {
   cpf_motorista: string;
 };
 
+type Usuario = {
+  nome: string;
+  tipoUsuario: string; // para filtrar responsáveis
+};
+
 export default function MotoristaHomepage() {
   const [active, setActive] = useState("Rota");
   const [modalVanOpen, setModalVanOpen] = useState(false);
   const [modalHorarioOpen, setModalHorarioOpen] = useState(false);
   const [vanResponsavel, setVanResponsavel] = useState<Van | null>(null);
+  const [passageiros, setPassageiros] = useState<Usuario[]>([]);
+  
+
 
   useEffect(() => {
     fetch("http://localhost:8081/usuarios/listarvans")
@@ -92,17 +87,38 @@ export default function MotoristaHomepage() {
       .catch((error) => {
         console.error("Erro ao buscar vans:", error);
       });
+
+    // Buscar usuários responsáveis (tipoUsuario === "responsavel")
+    fetch("http://localhost:8081/usuarios/listarResponsaveis")
+      .then((res) => res.json())
+      .then((data: Usuario[]) => {
+        if (Array.isArray(data)) {
+          const responsaveis = data.filter(
+            (usuario) => usuario.tipoUsuario === "responsavel"
+          );
+          setPassageiros(responsaveis);
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar usuários:", error);
+      });
   }, []);
+
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">
       <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold text-gray-400">Olá Motorista, seja bem-vindo</h1>
+        <h1 className="text-xl font-bold text-gray-400">
+          Olá Motorista, seja bem-vindo
+        </h1>
         <nav className="flex gap-8">
           {["Rota", "Mural"].map((item) => (
             <button
               key={item}
-              className={`hover:underline ${active === item ? "underline font-semibold" : ""}`}
+              className={`hover:underline ${
+                active === item ? "underline font-semibold" : ""
+              }`}
               onClick={() => setActive(item)}
             >
               {item}
@@ -129,7 +145,9 @@ export default function MotoristaHomepage() {
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">
             <div>
               <h2 className="text-xl font-bold mb-4">Horários e Turnos</h2>
-              <p><strong>Turnos:</strong> {horariosTurnos.map(h => h.turno).join(", ")}</p>
+              <p>
+                <strong>Turnos:</strong> {horariosTurnos.map((h) => h.turno).join(", ")}
+              </p>
             </div>
             <button
               onClick={() => setModalHorarioOpen(true)}
@@ -147,18 +165,12 @@ export default function MotoristaHomepage() {
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-2 border">Nome</th>
-                  <th className="p-2 border">Turno</th>
-                  <th className="p-2 border">Embarque</th>
-                  <th className="p-2 border">Destino</th>
                 </tr>
               </thead>
               <tbody>
                 {passageiros.map((p, i) => (
                   <tr key={i} className="text-center">
                     <td className="p-2 border">{p.nome}</td>
-                    <td className="p-2 border">{p.turno}</td>
-                    <td className="p-2 border">{p.embarque}</td>
-                    <td className="p-2 border">{p.destino}</td>
                   </tr>
                 ))}
               </tbody>
@@ -224,3 +236,5 @@ export default function MotoristaHomepage() {
     </div>
   );
 }
+
+
