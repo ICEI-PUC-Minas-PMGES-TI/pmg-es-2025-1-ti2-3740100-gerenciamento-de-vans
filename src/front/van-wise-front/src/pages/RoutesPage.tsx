@@ -17,6 +17,7 @@ import { useMap } from '@vis.gl/react-google-maps';
 interface StudentCheckin {
     nome: string;
     destino: string;
+    saida: string;
     status: string;
 }
 
@@ -51,19 +52,29 @@ const RoutesPage = () => {
                     .then(async (res) => {
                         const alunos = res.data.map((checkin: any) => ({
                             nome: checkin.usuario?.nome || checkin.usuario?.username || "Sem nome",
-                            destino: checkin.destino,
+                            saida: checkin.saida || "Não definido",
+                            destino: checkin.destino || "Não definido",
                             destinoPlaceId: checkin.destinoPlaceId,
+                            saidaPlaceId: checkin.saidaPlaceId,
                             status: checkin.status
                         }));
                         setStudents(alunos);
-                        const destinos = alunos
-                            .filter((a: { destinoPlaceId: string; }) => a.destinoPlaceId && a.destinoPlaceId.trim() !== "")
-                            .map((a: { destinoPlaceId: string; }) => a.destinoPlaceId);
+                        const pontosDeSaida = res.data
+                            .map((c: any) => c.saidaPlaceId)
+                            .filter(Boolean);
 
+                        const pontosDeDestino = res.data
+                            .map((c: any) => c.destinoPlaceId)
+                            .filter(Boolean);
+
+                        // 2. Juntar os pontos de partida e de destino em uma única lista de paradas.
+                        const todasAsParadas = [...pontosDeSaida, ...pontosDeDestino];
+
+                        // 3. Definir os dados para o mapa.
                         setRouteData({
-                            origem: origemDaRota,
-                            destino: destinos[destinos.length - 1] || "",
-                            paradas: destinos.slice(0, -1),
+                            origem: origemDaRota, // A origem é o ponto de partida da van
+                            destino: todasAsParadas[todasAsParadas.length - 1] || "", // O destino final é a última parada da lista
+                            paradas: todasAsParadas.slice(0, -1), // As paradas são todos os pontos intermediários
                         });
                     })
                     .catch((err) => {
@@ -152,6 +163,7 @@ const RoutesPage = () => {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Nome</TableHead>
+                            <TableHead>Ponto de Partida</TableHead>
                             <TableHead>Destino</TableHead>
                             <TableHead>Status</TableHead>
                         </TableRow>
@@ -160,6 +172,7 @@ const RoutesPage = () => {
                         {students.map((aluno, index) => (
                             <TableRow key={index} className="hover:bg-gray-50 transition">
                                 <TableCell>{aluno.nome}</TableCell>
+                                <TableCell>{aluno.saida}</TableCell>
                                 <TableCell>{aluno.destino}</TableCell>
                                 <TableCell className="flex items-center gap-2">
                                     <Clock size={16} className="text-gray-400" />

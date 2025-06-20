@@ -181,6 +181,20 @@ useEffect(() => {
     });
 }, []);
 
+useEffect(() => {
+  fetch("http://localhost:8081/routes")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        setRotas(data);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar rotas:", error);
+    });
+}, []);
+
+
 
 useEffect(() => {
   fetch("http://localhost:8081/usuarios/listarvans")
@@ -223,6 +237,8 @@ const handleDeleteVan = async (placa: string) => {
     alert("Erro ao deletar van.");
   }
 };
+
+
 
   const totalVans = vans.length + vansExcluidas;
   const percentualAtivas = totalVans > 0 ? ((vans.length / totalVans) * 100).toFixed(1) : "0";
@@ -366,19 +382,21 @@ const handleDeleteVan = async (placa: string) => {
           <table className={tableClass}>
             <thead>
               <tr>
-                <th className={thClass}>Turno</th>
-                <th className={thClass}>Origem</th>
-                <th className={thClass}>Destino</th>
+                <th className={thClass}>ID</th>
+                <th className={thClass}>Data</th>
                 <th className={thClass}>Horário</th>
+                <th className={thClass}>Ponto de Partida</th>
+                <th className={thClass}>Status</th>
               </tr>
             </thead>
             <tbody>
-              {rotas.map((r, index) => (
+              {rotas.map((rota, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className={tdClass}>{r.turno}</td>
-                  <td className={tdClass}>{r.origem}</td>
-                  <td className={tdClass}>{r.destino}</td>
-                  <td className={tdClass}>{r.horario}</td>
+                  <td className={tdClass}>{rota.id}</td>
+                  <td className={tdClass}>{new Date(rota.date || rota.route_date).toLocaleDateString('pt-BR')}</td>
+                  <td className={tdClass}>{rota.time || rota.route_time}</td>
+                  <td className={tdClass}>{rota.origem}</td>
+                  <td className={tdClass}>{rota.status}</td>
                 </tr>
               ))}
             </tbody>

@@ -50,6 +50,7 @@ export function AutocompleteInput({ onPlaceSelected }: Props) {
 
     </div>
   );
+
 };
 
 
