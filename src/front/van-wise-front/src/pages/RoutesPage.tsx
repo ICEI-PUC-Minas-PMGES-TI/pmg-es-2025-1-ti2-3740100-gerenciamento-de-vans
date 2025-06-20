@@ -27,7 +27,8 @@ const RoutesPage = () => {
     const [routeStatus, setRouteStatus] = useState<string>("");
     const [students, setStudents] = useState<StudentCheckin[]>([]);
     const dataHoje = new Date().toLocaleDateString("pt-BR");
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [origemAddress, setOrigemAddress] = useState<string>(""); 
     const [routeData, setRouteData] = useState({
         origem: "",
         destino: "",
@@ -39,18 +40,29 @@ const RoutesPage = () => {
 
         axios
             .get(`http://localhost:8081/routes/${routeId}`)
-            .then((res) => {
+            .then(async(res) => {
                 setRouteStatus(res.data.status);
-                origemDaRota = res.data.origemPlaceId || "";
-            })
-            .catch((err) => {
-                console.error("Erro ao buscar status da rota:", err);
-            })
-            .finally(() => {
+                const origemPlaceId = res.data.origemPlaceId || "";
+
+                if (origemPlaceId) {
+                    try {
+                        const geocoder = new window.google.maps.Geocoder();
+                        const response = await geocoder.geocode({ placeId: origemPlaceId });
+                        if (response.results[0]) {
+                            setOrigemAddress(response.results[0].formatted_address);
+                        } else {
+                            setOrigemAddress("Endereço não encontrado.");
+                        }
+                    } catch (error) {
+                        console.error("Erro de geocodificação:", error);
+                        setOrigemAddress("Erro ao buscar endereço.");
+                    }
+                }
+
                 axios
                     .get(`http://localhost:8081/checkins/route/${routeIdNumber}`)
-                    .then(async (res) => {
-                        const alunos = res.data.map((checkin: any) => ({
+                    .then(async (resCheckins) => {
+                        const alunos = resCheckins.data.map((checkin: any) => ({
                             nome: checkin.usuario?.nome || checkin.usuario?.username || "Sem nome",
                             saida: checkin.saida || "Não definido",
                             destino: checkin.destino || "Não definido",
@@ -59,27 +71,28 @@ const RoutesPage = () => {
                             status: checkin.status
                         }));
                         setStudents(alunos);
-                        const pontosDeSaida = res.data
+                        const pontosDeSaida = resCheckins.data
                             .map((c: any) => c.saidaPlaceId)
                             .filter(Boolean);
 
-                        const pontosDeDestino = res.data
+                        const pontosDeDestino = resCheckins.data
                             .map((c: any) => c.destinoPlaceId)
                             .filter(Boolean);
 
-                        // 2. Juntar os pontos de partida e de destino em uma única lista de paradas.
                         const todasAsParadas = [...pontosDeSaida, ...pontosDeDestino];
 
-                        // 3. Definir os dados para o mapa.
                         setRouteData({
-                            origem: origemDaRota, // A origem é o ponto de partida da van
-                            destino: todasAsParadas[todasAsParadas.length - 1] || "", // O destino final é a última parada da lista
-                            paradas: todasAsParadas.slice(0, -1), // As paradas são todos os pontos intermediários
+                            origem: origemPlaceId, 
+                            destino: todasAsParadas[todasAsParadas.length - 1] || "",
+                            paradas: todasAsParadas.slice(0, -1), 
                         });
                     })
                     .catch((err) => {
                         console.error("Erro ao buscar check-ins:", err);
                     });
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar status da rota:", err);
             });
     }, [routeId, routeIdNumber]);
 
@@ -140,15 +153,14 @@ const RoutesPage = () => {
                 <div className="mb-4">
                     <span className="font-semibold">Ponto de partida: </span>
                     <span className="text-gray-700">
-                        {routeData.origem
-                            ? routeData.origem
+                        {origemAddress
+                            ? origemAddress
                             : "Endereço de origem não cadastrado ou inválido."}
                     </span>
                 </div>
             </div>
 
             <div className="flex gap-4">
-                <Button >EXPANDIR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("iniciar")}>INICIAR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("pausar")}>PAUSAR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("finalizar")}>FINALIZAR ROTA</Button>

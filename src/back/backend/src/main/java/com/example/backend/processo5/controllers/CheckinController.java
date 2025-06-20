@@ -66,11 +66,12 @@ public class CheckinController {
 
     Checkin checkin = new Checkin();
 
-    checkin.setDate(LocalDate.parse(req.getDate()));
     checkin.setTime(req.getTime());
     checkin.setStatus(Checkin.CheckinStatus.valueOf(req.getStatus()));
     checkin.setDestino(req.getDestino());
     checkin.setDestinoPlaceId(req.getDestinoPlaceId());
+    checkin.setSaida(req.getSaida());
+    checkin.setSaidaPlaceId(req.getSaidaPlaceId());
     checkin.setUsuario(usuario);
     checkin.setRoute(route);
 

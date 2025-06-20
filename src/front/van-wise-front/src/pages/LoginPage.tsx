@@ -10,25 +10,37 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginData, setLoginData] = useState({ email: '', senha: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
+    
+
     try {
-      const response = await axios.post('http://localhost:8081/usuarios/login', { email, senha: password });
+      const response = await axios.post('http://localhost:8081/usuarios/login', loginData);
       console.log(response.data); // Login bem-sucedido
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+
       const userType = response.data.tipoUsuario.toLowerCase();
       if (userType === "donoderede" || userType === "motorista" || userType === "responsavel") {
         localStorage.setItem("userType", userType);
         localStorage.setItem("userId", response.data.idUsuario); 
-
 
         if(userType === "motorista") {
           navigate("/MotoristaHomepage");
@@ -53,65 +65,63 @@ export default function LoginPage() {
 
   return (
     <main>
-      <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-        <div className="w-full max-w-sm md:max-w-4xl">
-          <Card className="overflow-hidden">
-            <div className="absolute top-4 right-4">
-              <ModeToggle />
+      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        <div className="flex items-center justify-center py-12">
+          <div className="mx-auto grid w-[350px] gap-6">
+            <div className="grid gap-2 text-center">
+              <h1 className="text-3xl font-bold">Bem Vindo</h1>
+              <p className="text-balance text-muted-foreground">
+                Entre em sua conta da wise
+              </p>
             </div>
-            <CardContent className="grid p-0 md:grid-cols-2 h-500px">
-              <form onSubmit={handleLogin} className="p-6 md:p-10">
-                <div className="flex flex-col gap-8">
-                  <div className="flex flex-col items-start">
-                    <h1 className="text-2xl font-bold">Bem Vindo</h1>
-                    <p className="text-balance text-muted-foreground">Entre em sua conta da wise</p>
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="flex items-center">
-                      <Label htmlFor="password">Senha</Label>
-                      <Link to="/forgotpassword" className="ml-auto text-sm underline-offset-2 hover:underline">
-                        Esqueceu sua senha?
-                      </Link>
-                    </div>
-                    <Input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full cursor-pointer" disabled={loading}>
-                    {loading ? 'Carregando...' : 'Login'}
-                  </Button>
-                  {error && <p className="text-red-500 text-center mt-2">{error}</p>}
-                  <div className="text-center text-sm">
-                    Não possui uma conta?{" "}
-                    <Link to="/register" className="underline underline-offset-4">
-                      Cadastre-se
-                    </Link>
-                  </div>
-                </div>
-              </form>
-              <div className="relative hidden md:block">
-                <img
-                  src="/vanescolar.jpg"
-                  className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-                  alt="Van"
+            <form onSubmit={handleLogin} className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                  value={loginData.email}
+                  onChange={handleChange}
                 />
               </div>
-            </CardContent>
-          </Card>
+              <div className="grid gap-2">
+                <div className="flex items-center">
+                  <Label htmlFor="password">Senha</Label>
+                </div>
+                <Input
+                  id="password"
+                  name="senha"
+                  type="password"
+                  required
+                  // 3. Corrigido o valor para corresponder ao estado
+                  value={loginData.senha}
+                  onChange={handleChange}
+                />
+              </div>
+              {error && <p className="text-sm text-red-500">{error}</p>}
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? 'Entrando...' : 'Login'}
+              </Button>
+            </form>
+            <div className="mt-4 text-center text-sm">
+              Não possui uma conta?{" "}
+              <Link to="/register" className="underline">
+                Cadastre-se
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="hidden bg-muted lg:block">
+          <img
+            src="\unnamed.png" 
+            alt="Van Escolar"
+            width="1920"
+            height="1080"
+            className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          />
         </div>
       </div>
     </main>

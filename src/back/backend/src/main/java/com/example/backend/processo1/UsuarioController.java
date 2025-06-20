@@ -192,7 +192,15 @@ public class UsuarioController {
     public ResponseEntity<?> listarContratacoes() {
         return ResponseEntity.ok(contratarRepository.findAll());
     }
+
+
+
+    //================================ BUSACAR EMAIL =================================
+
+    @GetMapping("/search-by-email")
+    public ResponseEntity<List<Usuario>> searchUsersByEmail(@RequestParam("email") String email) {
+        List<Usuario> usuarios = usuarioRepository.findByEmailContainingIgnoreCase(email);
+        return ResponseEntity.ok(usuarios);
+    }
 }
-
-
 

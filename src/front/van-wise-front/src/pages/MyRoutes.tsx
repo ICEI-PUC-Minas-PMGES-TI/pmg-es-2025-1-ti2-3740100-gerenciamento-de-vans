@@ -135,7 +135,7 @@ const MyRoutes = () => {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="time">Horário</Label>
+              <Label htmlFor="time">Horário de Partida</Label>
               <Input
                 type="time"
                 id="time"

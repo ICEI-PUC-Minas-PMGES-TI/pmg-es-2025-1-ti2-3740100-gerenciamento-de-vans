@@ -27,6 +27,7 @@ const initialBoletos: Boleto[] = [
 export default function FinanceiroSimples() {
   const [boletos, setBoletos] = useState<Boleto[]>(initialBoletos);
   const [boletoIndexSelecionado, setBoletoIndexSelecionado] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const abrirHome = () => {
     navigate('HomePage.tsx');
