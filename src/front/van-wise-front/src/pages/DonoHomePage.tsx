@@ -251,22 +251,9 @@ const handleDeleteVan = async (placa: string) => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold">Seja bem vindo (a) ao painel do dono</h1>
-        <nav className="flex gap-8">
-          {menuItems.map((item) => (
-    <Link
-      key={item.nome}
-      to={item.path}
-      className={`hover:underline ${active === item.nome ? "underline font-semibold" : ""}`}
-      onClick={() => handleMenuClick(item.nome)}
-    >
-      {item.nome}
-    </Link>
-  ))}
-
-        </nav>
-      </header>
+    <div className="px-6 py-4 flex justify-between items-center text-center ">
+      <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
+    </div>
 
       <main className="p-8 flex flex-col gap-10">
         {/* Vans */}

@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader, Autocomplete } from '@react-google-maps/api'
 import React, { useEffect, useRef, useState } from 'react';
 import { Input } from '../input';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
+import { Label } from "@/components/ui/label";
 
 interface Props {
   onPlaceSelected: (place: { formatted_address: string; place_id: string }) => void;

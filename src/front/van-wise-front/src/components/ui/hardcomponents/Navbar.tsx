@@ -57,6 +57,8 @@ export const Navbar = () => {
             <>
               <NavLink to="/checkin" className={getNavLinkClass}>Check-ins</NavLink>
               <NavLink to="/financialpassageiro" className={getNavLinkClass}>Meu Financeiro</NavLink>
+              <NavLink to="/avaliacoes" className={getNavLinkClass}>Avaliações</NavLink>
+
             </>
           )}
         </nav>

@@ -18,6 +18,7 @@ import FinancialPassageiro from './pages/FinancialPassageiro.tsx';
 import { ProtectedRoute } from './components/ui/hardcomponents/ProtectedRoute.tsx';
 import FinancialPage from './pages/FinancialPage.tsx';
 import FinancialMotoristaPage from './pages/FinancialMotorista.tsx';
+import AvaliacaoPage from './pages/AvaliacaoPage.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -56,8 +57,9 @@ createRoot(document.getElementById('root')!).render(
               <Route path='/checkin' element={<Checkins />} />
               <Route path='/financialpassageiro' element={<FinancialPassageiro />} />
               <Route path='/contractform' element={<ContractForm />} />
+              <Route path='/avaliacoes' element={<AvaliacaoPage />}/>
             </Route>
-          </Route>
+          </Route>        
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

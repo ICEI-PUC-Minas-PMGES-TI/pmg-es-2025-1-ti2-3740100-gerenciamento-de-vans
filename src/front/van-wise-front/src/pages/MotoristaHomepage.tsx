@@ -108,9 +108,9 @@ export default function MotoristaHomepage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">
-        <h1 className="text-xl font-bold text-gray-400 text-align-center p-6 bg-gray-100 shadow-md">
-          Olá Motorista, seja bem-vindo
-        </h1>
+        <div className="px-6 py-4 flex justify-between items-center text-center ">
+      <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
+        </div>
         
       <main className="p-8 flex flex-col gap-10 flex-grow">
         <div className="flex gap-6">
