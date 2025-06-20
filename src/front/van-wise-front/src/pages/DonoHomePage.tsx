@@ -196,25 +196,7 @@ useEffect(() => {
 
 
 
-useEffect(() => {
-  fetch("http://localhost:8081/usuarios/listarvans")
-    .then((res) => res.json())
-    .then((data) => {
-      if (Array.isArray(data)) {
-        // Mapeia cada van para um objeto rota
-        const rotasFormatadas = data.map((van: any) => ({
-          turno: van.turnos,
-          origem: van.bairroInicial,
-          destino: van.destinoFinal,
-          horario: van.horarios,
-        }));
-        setRotas(rotasFormatadas);
-      }
-    })
-    .catch((error) => {
-      console.error("Erro ao buscar vans:", error);
-    });
-}, []);
+
 
 
 
