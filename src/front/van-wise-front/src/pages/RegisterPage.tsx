@@ -141,12 +141,18 @@ export default function RegisterPage() {
       }
       setIsModalOpen(true);
     } catch (error: any) {
-      // Exibir mensagem de erro do back-end, se disponível
-      const errorMessage = error.response?.data || "Erro ao registrar. Tente novamente.";
-      setModalMessage(errorMessage);
+      let errorMessage = "Erro ao registrar. Tente novamente.";
+      const errorData = error.response?.data;
+      if (typeof errorData === 'object' && errorData !== null && errorData.error) {
+        errorMessage = errorData.error; 
+      } else if (typeof errorData === 'string') {
+        errorMessage = errorData; 
+      }
+      
+      setModalMessage(errorMessage); 
       setIsModalOpen(true);
-    }
-  };
+    }
+  };
 
   return (
     <main>
