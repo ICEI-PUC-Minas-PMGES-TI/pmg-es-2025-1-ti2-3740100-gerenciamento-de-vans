@@ -1,219 +1,226 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ModeToggle } from "@/components/ui/themebutton";
 import axios from "axios";
-import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { APIProvider, Map, ControlPosition } from '@vis.gl/react-google-maps';
+import React, { useEffect } from "react";
 import { AutocompleteInput } from "@/components/ui/hardcomponents/AutocompleteInput";
-import DirectionsMap from "@/components/ui/hardcomponents/DirectionsMap";
-
-const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
+import { Label } from "@/components/ui/label";
 
 const Checkins = () => {
-
-  React.useEffect(() => {
-    const id = localStorage.getItem("userId");
-    if (id) {
-      setUserId(id);
-    } else {
-      setUserId("");
-    }
-  }, []);
-
-
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const [selectedRoute, setSelectedRoute] = React.useState<any>(null);
-  const [message, setMessage] = React.useState("");
-  const [time, setTime] = React.useState("");
-  const [status, setStatus] = React.useState("");
-  const [destino, setDestino] = React.useState("");
-  const [driverId, setDriverId] = React.useState("");
-  const [date, setDate] = React.useState("");
-  const [checkins, setCheckins] = React.useState<any[]>([]);
-  const [checkinDate, setCheckinDate] = React.useState("");
-  const [checkinTime, setCheckinTime] = React.useState("");
-  const [checkinDestino, setCheckinDestino] = React.useState("");
-  const [destinoPlaceId, setCheckinDestinoPlaceId] = React.useState<string>("");
   const [userId, setUserId] = React.useState("");
-  const [routeId, setRouteId] = React.useState("");
-  const [routes, setRoutes] = React.useState([]);
-  const [showUserCheckins, setShowUserCheckins] = React.useState(false);
-  const placePickerRef = useRef<any>(null);
+  const [routes, setRoutes] = React.useState<any[]>([]);
+  const [checkins, setCheckins] = React.useState<any[]>([]);
+  const [message, setMessage] = React.useState("");
+  const [confirmationModalOpen, setConfirmationModalOpen] = React.useState(false);
+  const [selectedCheckin, setSelectedCheckin] = React.useState<any>(null);
+  const [actionToConfirm, setActionToConfirm] = React.useState<"CONFIRMED" | "CANCELLED" | "">("");
+  const [editModalOpen, setEditModalOpen] = React.useState(false);
+  const [checkinToEdit, setCheckinToEdit] = React.useState<any>(null);
+  const [newSaida, setNewSaida] = React.useState("");
+  const [newSaidaPlaceId, setNewSaidaPlaceId] = React.useState("");
+  const [newDestino, setNewDestino] = React.useState("");
+  const [newDestinoPlaceId, setNewDestinoPlaceId] = React.useState("");
 
-  // Filter checkins for the current user
-  const userCheckins = React.useMemo(
-    () => checkins.filter((c: any) => String(c.user_id || c.userId) === String(userId)),
-    [checkins, userId]
-  );
+  useEffect(() => {
+    const id = localStorage.getItem("userId");
+    if (id) setUserId(id);
+  }, []);
 
-  //Mostrar os checkins
-  const fetchCheckins = async () => {
+  const fetchAllData = async () => {
     try {
-      const res = await axios.get("http://localhost:8081/checkins");
-      setCheckins(res.data);
+      const [routesRes, checkinsRes] = await Promise.all([
+        axios.get("http://localhost:8081/routes"),
+        axios.get("http://localhost:8081/checkins")
+      ]);
+      setRoutes(routesRes.data);
+      setCheckins(checkinsRes.data);
     } catch (err) {
-      setMessage("Erro ao carregar checkins: " + (err as Error).message);
+      setMessage("Erro ao carregar dados: " + (err as Error).message);
     }
   };
 
   useEffect(() => {
-    if (placePickerRef.current) {
-      placePickerRef.current.addEventListener('gmpx-placechange', (event: any) => {
-        const place = event.detail;
-        setCheckinDestino(place.formattedAddress || "");
-      });
-    }
-  }, [modalOpen]);
-
-  useEffect(() => {
-    fetchCheckins();
+    fetchAllData();
   }, []);
 
-  //Mostrar as rotas
-  const fetchRoutes = async () => {
-    try {
-      const res = await axios.get("http://localhost:8081/routes");
-      setRoutes(res.data);
-    } catch (err) {
-      setMessage("Erro ao carregar rotas: " + (err as Error).message);
-    }
+  const findUserCheckinForRoute = (routeId: number) => {
+    return checkins.find(c => c.route?.id === routeId && c.usuario?.idUsuario === Number(userId));
   };
 
-  useEffect(() => {
-    fetchRoutes();
-  }, []);
+  const handleEditStatus = async (checkinId: number, newStatus: string) => {
+    const checkinToUpdate = checkins.find(c => c.id === checkinId);
+    if (!checkinToUpdate) return;
+    const updatedCheckin = { ...checkinToUpdate, status: newStatus };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
     try {
-      await axios.post("http://localhost:8081/checkins", {
-        date: formatDate(selectedRoute.date || selectedRoute.route_date),
-        time: selectedRoute.time || selectedRoute.route_time,
-        status: "PENDING",
-        destino: checkinDestino,
-        destinoPlaceId: destinoPlaceId,
-        usuarioId: Number(userId),
-        routeId: selectedRoute.id,
-      });
-      setMessage("checkin enviado com sucesso!")
-      setModalOpen(false);
-      fetchCheckins();
-    } catch (err) {
-      setMessage("Erro ao enviar checkin: " + (err as Error).message);
-    }
-  }
-
-  const handleEditStatus = async (chekinId: number, newStatus: string) => {
-    try {
-      await axios.put(`http://localhost:8081/checkins/${chekinId}`, {
-        status: newStatus
-      })
+      await axios.put(`http://localhost:8081/checkins/${checkinId}`, updatedCheckin);
       setMessage("Status atualizado com sucesso!");
-      fetchCheckins();
+      fetchAllData();
     } catch (err) {
       setMessage("Erro ao atualizar o status: " + (err as Error).message);
     }
   };
 
-  //abrir modal
-  const openCheckinModal = (route: number) => {
-    setSelectedRoute(route);
-    setModalOpen(true);
-  }
-
-  const formatDate = (dateObj: any) => {
-    if (typeof dateObj === "string" && dateObj.includes("-")) return dateObj;
-    const d = new Date(dateObj);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
+  const handleOpenEditModal = (checkin: any) => {
+    setCheckinToEdit(checkin); 
+    setNewSaida(checkin.saida || "");
+    setNewSaidaPlaceId(checkin.saidaPlaceId || "");
+    setNewDestino(checkin.destino || "");
+    setNewDestinoPlaceId(checkin.destinoPlaceId || "");
+    setEditModalOpen(true);
   };
 
+  const handleUpdateAddress = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!checkinToEdit) return;
 
+    const updatedCheckin = {
+      ...checkinToEdit,
+      saida: newSaida,
+      saidaPlaceId: newSaidaPlaceId,
+      destino: newDestino,
+      destinoPlaceId: newDestinoPlaceId,
+    };
+
+    try {
+      await axios.put(`http://localhost:8081/checkins/${checkinToEdit.id}`, updatedCheckin);
+      setMessage("Endereços atualizados com sucesso!");
+      setEditModalOpen(false);
+      fetchAllData();
+    } catch (err) {
+      setMessage("Erro ao atualizar endereços: " + (err as Error).message);
+    }
+  };
+
+  const openConfirmationModal = (checkin: any, action: "CONFIRMED" | "CANCELLED") => {
+    setSelectedCheckin(checkin);
+    setActionToConfirm(action);
+    setConfirmationModalOpen(true);
+  };
+
+  const handleConfirmation = async () => {
+    if (!selectedCheckin || !actionToConfirm) return;
+    await handleEditStatus(selectedCheckin.id, actionToConfirm);
+    setConfirmationModalOpen(false);
+  };
 
   return (
     <main>
       <div className="absolute top-4 right-4">
         <ModeToggle />
       </div>
-      {/*Rotas disponiveis*/}
       <div className="flex min-h-screen w-full justify-center p-6 md:p-10">
-        <div className="w-full max-w-3xl mr-8">
-          <p className="text-left mb-2 font-semibold">Rotas Disponíveis</p>
-          <Table className="mt-10">
-            <TableCaption>Lista de Rotas</TableCaption>
+        <div className="w-full max-w-4xl">
+          <p className="text-left mb-2 font-semibold">Minhas Rotas e Check-ins</p>
+          {message && <p className="text-center my-2 p-2 bg-secondary rounded-md">{message}</p>}
+          <Table className="mt-4">
+            <TableCaption>Gerencie seus check-ins para as rotas disponíveis.</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead>Id</TableHead>
+                <TableHead>ID da Rota</TableHead>
                 <TableHead>Data</TableHead>
-                <TableHead>Horário</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>Horário de Partida</TableHead>
+                <TableHead>Meu Status</TableHead>
+                <TableHead className="text-center">Ações</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {routes.map((route: any) => (
-                <TableRow key={route.id}>
-                  <TableCell>{route.id}</TableCell>
-                  <TableCell>
-                    {route.date
-                      ? new Date(route.date).toLocaleDateString("pt-BR")
-                      : route.route_date
-                        ? new Date(route.route_date).toLocaleDateString("pt-BR")
-                        : ""}
-                  </TableCell>
-                  <TableCell>{route.time || route.route_time}</TableCell>
-                  <TableCell>{route.status}</TableCell>
-                  <TableCell>
-                    <Button
-                      className="bg-gray-600 hover:bg-gray-700 text-white"
-                      type="button"
-                      onClick={() => openCheckinModal(route)}
-                    >
-                      Checkin</Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {routes.map((route: any) => {
+                const userCheckinForThisRoute = findUserCheckinForRoute(route.id);
+                return (
+                  <TableRow key={route.id}>
+                    <TableCell>{route.id}</TableCell>
+                    <TableCell>{new Date(route.date || route.route_date).toLocaleDateString("pt-BR")}</TableCell>
+                    <TableCell>{route.time || route.route_time}</TableCell>
+                    <TableCell>{userCheckinForThisRoute ? userCheckinForThisRoute.status : "Não aplicável"}</TableCell>
+                    <TableCell>
+                      {userCheckinForThisRoute && (
+                        <div className="flex justify-center gap-2">
+                          <Button
+                            className="bg-green-600 hover:bg-green-700"
+                            size="sm"
+                            onClick={() => openConfirmationModal(userCheckinForThisRoute, "CONFIRMED")}
+                            disabled={userCheckinForThisRoute.status !== 'PENDING'}
+                          >
+                            Confirmar
+                          </Button>
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => openConfirmationModal(userCheckinForThisRoute, "CANCELLED")}
+                            disabled={userCheckinForThisRoute.status === 'CANCELLED'}
+                          >
+                            Cancelar
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleOpenEditModal(userCheckinForThisRoute)}
+                          >
+                            Partida e Destino
+                          </Button>
+                        </div>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
-            
           </Table>
-
         </div>
       </div>
 
-      {/*Modal checkin*/}
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent aria-describedby="modal-desc">
+      {/* Modal de Confirmação de Ação (para status) */}
+      <Dialog open={confirmationModalOpen} onOpenChange={setConfirmationModalOpen}>
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle>Fazer Checkin</DialogTitle>
+            <DialogTitle>Confirmar Ação</DialogTitle>
+            <DialogDescription>
+              Você tem certeza que deseja {actionToConfirm === 'CONFIRMED' ? 'confirmar' : 'cancelar'} este check-in?
+            </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col items-center gap-4 justify-center mt-6">
-              <AutocompleteInput
-                onPlaceSelected={(place) => {
-                  console.log("PLACE AUTOCOMPLETE:", place);
-                  setCheckinDestino(place.formatted_address);
-                  setCheckinDestinoPlaceId(place.place_id)
-                }}
-              />              
-              <div className="flex flex-row gap-4 mt-2">
-                <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">
-                  Confirmar Checkin
-                </Button>
-                <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
-                  Cancelar
-                </Button>
-              </div>
+          <div className="flex justify-end gap-4 mt-4">
+            <Button variant="outline" onClick={() => setConfirmationModalOpen(false)}>Não</Button>
+            <Button
+              variant={actionToConfirm === 'CANCELLED' ? 'destructive' : 'default'}
+              onClick={handleConfirmation}
+            >
+              Sim
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal para Editar Endereços */}
+      <Dialog open={editModalOpen} onOpenChange={setEditModalOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Editar Endereços do Check-in</DialogTitle>
+            <DialogDescription>
+              Atualize seu local de partida e destino para a rota {checkinToEdit?.route?.id}.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleUpdateAddress} className="flex flex-col gap-4 mt-4">
+            <div>
+              <Label className="block text-sm font-medium mb-1">Local de Saída</Label>
+             <AutocompleteInput
+                onPlaceSelected={(p) => { setNewSaida(p.formatted_address); setNewSaidaPlaceId(p.place_id); }}
+              />
+            </div>
+            <div>
+              <Label className="block text-sm font-medium mb-1">Destino</Label>
+               <AutocompleteInput
+                onPlaceSelected={(p) => { setNewDestino(p.formatted_address); setNewDestinoPlaceId(p.place_id); }}
+              />
+            </div>
+            <div className="flex justify-end gap-4 mt-4">
+              <Button type="button" variant="outline" onClick={() => setEditModalOpen(false)}>Cancelar</Button>
+              <Button type="submit">Salvar </Button>
             </div>
           </form>
         </DialogContent>
       </Dialog>
-
-      {/*Checkins confirmados*/}
-
     </main>
   );
 };

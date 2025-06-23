@@ -32,18 +32,18 @@ public class Checkin {
   @JoinColumn(name = "usuario_id", nullable = false, updatable = false)
   private Usuario usuario;
 
-  @Column(name = "checkin_date", nullable = false)
-  @NotNull
-  @FutureOrPresent
-  private LocalDate date;
 
-  @Column(name = "checkin_time", nullable = false, length = 5)
-  @NotNull
-  @NotEmpty
+  @Column(name = "checkin_time", length = 5)
   @Pattern(regexp = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$")
   private String time;
 
-  @Column(name = "checkin_destino", nullable = false)
+  @Column(name = "checkin_saida")
+  private String saida;
+
+  @Column(name = "saida_place_id")
+  private String saidaPlaceId;
+
+  @Column(name = "checkin_destino")
   private String destino;
 
   @Column(name = "checkin_status", nullable = false)
@@ -59,15 +59,16 @@ public class Checkin {
 
   public Checkin() {}
 
-  public Checkin(Long id, Usuario usuario, LocalDate date, String time, String destino, CheckinStatus status, Route route, String destinoPlaceId) {
+  public Checkin(Long id, Usuario usuario, String time, String destino, CheckinStatus status, Route route, String destinoPlaceId, String saida, String saidaPlaceId) {
     this.destinoPlaceId = destinoPlaceId;
     this.id = id;
     this.usuario = usuario;
-    this.date = date;
     this.time = time;
     this.destino = destino;
     this.status = status;
     this.route = route;
+    this.saida = saida;
+    this.saidaPlaceId = saidaPlaceId;
   }
 
   public Long getId() {
@@ -86,13 +87,6 @@ public class Checkin {
     this.usuario = usuario;
   }
 
-  public LocalDate getDate() {
-    return date;
-  }
-
-  public void setDate(LocalDate date) {
-    this.date = date;
-  }
 
   public String getTime() {
     return time;
@@ -140,31 +134,43 @@ public class Checkin {
     this.destinoPlaceId = destinoPlaceId;
   }
 
-  @Override
-  public String toString() {
-    return "Checkin [id=" + id + ", usuario=" + usuario + ", date=" + date + ", time=" + time 
-      + ", destino=" + destino + ", status=" + status + ", route=" + route 
-      + ", destinoPlaceId=" + destinoPlaceId + "]";
+  public String getSaida(){
+    return saida;
+  }
+
+  public void setSaida(String saida){
+    this.saida = saida;
+  }
+
+  public String getSaidaPlaceId(){
+    return saidaPlaceId;
+  }
+
+  public void setSaidaPlaceId(String saidaPlaceId){
+    this.saidaPlaceId = saidaPlaceId;
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (obj == this)
-      return true;
-    if (obj == null) 
-      return false; 
-    if (!(obj instanceof Checkin)) 
-      return false;       
-    Checkin other = (Checkin) obj;
-    if (this.id == null) 
-      if (other.id != null) 
-        return false;
-      else if (!this.id.equals(other.id)) 
-        return false;
-    return Objects.equals(this.id, other.id) && Objects.equals(this.usuario, other.usuario) 
-      && Objects.equals(this.date, other.date) && Objects.equals(this.time, other.time) 
-      && this.status == other.status;
+  public String toString() {
+    return "Checkin [id=" + id + ", usuario=" + usuario + ", time=" + time 
+      + ", destino=" + destino + ", destinoPlaceId=" + destinoPlaceId 
+      + ", saida=" + saida + ", saidaPlaceId=" + saidaPlaceId 
+      + ", status=" + status + ", route=" + route + "]";
   }
+
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Checkin other = (Checkin) obj;
+    return Objects.equals(id, other.id);
+  }
+
 
   @Override
   public int hashCode(){

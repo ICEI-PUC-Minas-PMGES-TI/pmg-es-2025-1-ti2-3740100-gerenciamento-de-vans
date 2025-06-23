@@ -108,25 +108,10 @@ export default function MotoristaHomepage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-200">
-      <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold text-gray-400">
-          Olá Motorista, seja bem-vindo
-        </h1>
-        <nav className="flex gap-8">
-          {["Rota", "Mural"].map((item) => (
-            <button
-              key={item}
-              className={`hover:underline ${
-                active === item ? "underline font-semibold" : ""
-              }`}
-              onClick={() => setActive(item)}
-            >
-              {item}
-            </button>
-          ))}
-        </nav>
-      </header>
-
+        <div className="px-6 py-4 flex justify-between items-center text-center ">
+      <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
+        </div>
+        
       <main className="p-8 flex flex-col gap-10 flex-grow">
         <div className="flex gap-6">
           <section className="bg-white p-4 rounded-xl shadow-md w-72 flex flex-col justify-between">

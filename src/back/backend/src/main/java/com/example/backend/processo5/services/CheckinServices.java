@@ -22,12 +22,12 @@ public class CheckinServices {
   @Autowired
   private UsuarioRepository usuarioRepository;
 
-  public Checkin findById(long id){
+  public Checkin findById(long id) {
     Optional<Checkin> checkin = this.checkinRepository.findById(id);
     return checkin.orElseThrow(() -> new RuntimeException("Checkin not found"));
   }
 
-  public List<Checkin> findAllByUsuarioId(Long usuarioId){
+  public List<Checkin> findAllByUsuarioId(Long usuarioId) {
     return this.checkinRepository.findByUsuario_Id(usuarioId);
   }
 
@@ -36,9 +36,9 @@ public class CheckinServices {
   }
 
   @Transactional
-  public Checkin create(Checkin obj){
+  public Checkin create(Checkin obj) {
     Usuario usuario = this.usuarioRepository.findById(obj.getUsuario().getId())
-      .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     obj.setId(null);
     obj.setUsuario(usuario);
     obj = this.checkinRepository.save(obj);
@@ -46,15 +46,16 @@ public class CheckinServices {
   }
 
   @Transactional
-  public Checkin update(Checkin obj){
+  public Checkin update(Checkin obj) {
     Checkin newObj = findById(obj.getId());
     newObj.setUsuario(obj.getUsuario());
-    newObj.setDate(obj.getDate());
     newObj.setTime(obj.getTime());
     newObj.setDestino(obj.getDestino());
     newObj.setStatus(obj.getStatus());
     newObj.setRoute(obj.getRoute());
     newObj.setDestinoPlaceId(obj.getDestinoPlaceId());
+    newObj.setSaida(obj.getSaida());
+    newObj.setSaidaPlaceId(obj.getSaidaPlaceId());
     return this.checkinRepository.save(newObj);
   }
 
@@ -62,7 +63,7 @@ public class CheckinServices {
     return checkinRepository.findByRouteId(routeId);
   }
 
-  public void delete(long id){
+  public void delete(long id) {
     findById(id);
     try {
       this.checkinRepository.deleteById(id);

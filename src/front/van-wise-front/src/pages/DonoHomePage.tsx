@@ -181,26 +181,22 @@ useEffect(() => {
     });
 }, []);
 
-
 useEffect(() => {
-  fetch("http://localhost:8081/usuarios/listarvans")
+  fetch("http://localhost:8081/routes")
     .then((res) => res.json())
     .then((data) => {
       if (Array.isArray(data)) {
-        // Mapeia cada van para um objeto rota
-        const rotasFormatadas = data.map((van: any) => ({
-          turno: van.turnos,
-          origem: van.bairroInicial,
-          destino: van.destinoFinal,
-          horario: van.horarios,
-        }));
-        setRotas(rotasFormatadas);
+        setRotas(data);
       }
     })
     .catch((error) => {
-      console.error("Erro ao buscar vans:", error);
+      console.error("Erro ao buscar rotas:", error);
     });
 }, []);
+
+
+
+
 
 
 
@@ -224,6 +220,8 @@ const handleDeleteVan = async (placa: string) => {
   }
 };
 
+
+
   const totalVans = vans.length + vansExcluidas;
   const percentualAtivas = totalVans > 0 ? ((vans.length / totalVans) * 100).toFixed(1) : "0";
   const percentualExcluidas = totalVans > 0 ? ((vansExcluidas / totalVans) * 100).toFixed(1) : "0";
@@ -235,22 +233,9 @@ const handleDeleteVan = async (placa: string) => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-gray-200 text-gray-800 px-6 py-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold">Seja bem vindo (a) ao painel do dono</h1>
-        <nav className="flex gap-8">
-          {menuItems.map((item) => (
-    <Link
-      key={item.nome}
-      to={item.path}
-      className={`hover:underline ${active === item.nome ? "underline font-semibold" : ""}`}
-      onClick={() => handleMenuClick(item.nome)}
-    >
-      {item.nome}
-    </Link>
-  ))}
-
-        </nav>
-      </header>
+    <div className="px-6 py-4 flex justify-between items-center text-center ">
+      <h1 className="text-xl font-bold">Seja bem-vindo(a)</h1>
+    </div>
 
       <main className="p-8 flex flex-col gap-10">
         {/* Vans */}
@@ -366,19 +351,21 @@ const handleDeleteVan = async (placa: string) => {
           <table className={tableClass}>
             <thead>
               <tr>
-                <th className={thClass}>Turno</th>
-                <th className={thClass}>Origem</th>
-                <th className={thClass}>Destino</th>
+                <th className={thClass}>ID</th>
+                <th className={thClass}>Data</th>
                 <th className={thClass}>Horário</th>
+                <th className={thClass}>Ponto de Partida</th>
+                <th className={thClass}>Status</th>
               </tr>
             </thead>
             <tbody>
-              {rotas.map((r, index) => (
+              {rotas.map((rota, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className={tdClass}>{r.turno}</td>
-                  <td className={tdClass}>{r.origem}</td>
-                  <td className={tdClass}>{r.destino}</td>
-                  <td className={tdClass}>{r.horario}</td>
+                  <td className={tdClass}>{rota.id}</td>
+                  <td className={tdClass}>{new Date(rota.date || rota.route_date).toLocaleDateString('pt-BR')}</td>
+                  <td className={tdClass}>{rota.time || rota.route_time}</td>
+                  <td className={tdClass}>{rota.origem}</td>
+                  <td className={tdClass}>{rota.status}</td>
                 </tr>
               ))}
             </tbody>

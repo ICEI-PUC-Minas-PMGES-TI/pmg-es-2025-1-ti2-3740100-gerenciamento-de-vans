@@ -1,6 +1,8 @@
 package com.example.backend.processo5.models;
 import java.time.LocalDate;
+
 import java.util.Objects;
+
 
 import com.example.backend.processo1.Usuario; // Import correto
 
@@ -11,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -61,7 +64,7 @@ public class Route {
     this.driver = driver;
     this.origem = origem;
     this.origemPlaceId = origemPlaceId;
-  }
+    }
 
   public Long getId(){
     return id;
@@ -120,6 +123,7 @@ public class Route {
     return origemPlaceId;
   }
 
+
   public void setOrigemPlaceId(String origemPlaceId) {
     this.origemPlaceId = origemPlaceId;
   }
@@ -142,6 +146,7 @@ public class Route {
         && Objects.equals(this.driver, other.driver);
   }
 
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -153,4 +158,5 @@ public class Route {
     result = prime * result + ((driver == null) ? 0 : driver.hashCode());
     return result;
   }
+
 }

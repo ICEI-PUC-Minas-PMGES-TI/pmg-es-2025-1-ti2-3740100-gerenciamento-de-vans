@@ -17,6 +17,7 @@ import { useMap } from '@vis.gl/react-google-maps';
 interface StudentCheckin {
     nome: string;
     destino: string;
+    saida: string;
     status: string;
 }
 
@@ -26,7 +27,8 @@ const RoutesPage = () => {
     const [routeStatus, setRouteStatus] = useState<string>("");
     const [students, setStudents] = useState<StudentCheckin[]>([]);
     const dataHoje = new Date().toLocaleDateString("pt-BR");
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [origemAddress, setOrigemAddress] = useState<string>(""); 
     const [routeData, setRouteData] = useState({
         origem: "",
         destino: "",
@@ -38,37 +40,59 @@ const RoutesPage = () => {
 
         axios
             .get(`http://localhost:8081/routes/${routeId}`)
-            .then((res) => {
+            .then(async(res) => {
                 setRouteStatus(res.data.status);
-                origemDaRota = res.data.origemPlaceId || "";
-            })
-            .catch((err) => {
-                console.error("Erro ao buscar status da rota:", err);
-            })
-            .finally(() => {
+                const origemPlaceId = res.data.origemPlaceId || "";
+
+                if (origemPlaceId) {
+                    try {
+                        const geocoder = new window.google.maps.Geocoder();
+                        const response = await geocoder.geocode({ placeId: origemPlaceId });
+                        if (response.results[0]) {
+                            setOrigemAddress(response.results[0].formatted_address);
+                        } else {
+                            setOrigemAddress("Endereço não encontrado.");
+                        }
+                    } catch (error) {
+                        console.error("Erro de geocodificação:", error);
+                        setOrigemAddress("Erro ao buscar endereço.");
+                    }
+                }
+
                 axios
                     .get(`http://localhost:8081/checkins/route/${routeIdNumber}`)
-                    .then(async (res) => {
-                        const alunos = res.data.map((checkin: any) => ({
+                    .then(async (resCheckins) => {
+                        const alunos = resCheckins.data.map((checkin: any) => ({
                             nome: checkin.usuario?.nome || checkin.usuario?.username || "Sem nome",
-                            destino: checkin.destino,
+                            saida: checkin.saida || "Não definido",
+                            destino: checkin.destino || "Não definido",
                             destinoPlaceId: checkin.destinoPlaceId,
+                            saidaPlaceId: checkin.saidaPlaceId,
                             status: checkin.status
                         }));
                         setStudents(alunos);
-                        const destinos = alunos
-                            .filter((a: { destinoPlaceId: string; }) => a.destinoPlaceId && a.destinoPlaceId.trim() !== "")
-                            .map((a: { destinoPlaceId: string; }) => a.destinoPlaceId);
+                        const pontosDeSaida = resCheckins.data
+                            .map((c: any) => c.saidaPlaceId)
+                            .filter(Boolean);
+
+                        const pontosDeDestino = resCheckins.data
+                            .map((c: any) => c.destinoPlaceId)
+                            .filter(Boolean);
+
+                        const todasAsParadas = [...pontosDeSaida, ...pontosDeDestino];
 
                         setRouteData({
-                            origem: origemDaRota,
-                            destino: destinos[destinos.length - 1] || "",
-                            paradas: destinos.slice(0, -1),
+                            origem: origemPlaceId, 
+                            destino: todasAsParadas[todasAsParadas.length - 1] || "",
+                            paradas: todasAsParadas.slice(0, -1), 
                         });
                     })
                     .catch((err) => {
                         console.error("Erro ao buscar check-ins:", err);
                     });
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar status da rota:", err);
             });
     }, [routeId, routeIdNumber]);
 
@@ -129,15 +153,14 @@ const RoutesPage = () => {
                 <div className="mb-4">
                     <span className="font-semibold">Ponto de partida: </span>
                     <span className="text-gray-700">
-                        {routeData.origem
-                            ? routeData.origem
+                        {origemAddress
+                            ? origemAddress
                             : "Endereço de origem não cadastrado ou inválido."}
                     </span>
                 </div>
             </div>
 
             <div className="flex gap-4">
-                <Button >EXPANDIR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("iniciar")}>INICIAR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("pausar")}>PAUSAR A ROTA</Button>
                 <Button onClick={() => handleRouteAction("finalizar")}>FINALIZAR ROTA</Button>
@@ -152,6 +175,7 @@ const RoutesPage = () => {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Nome</TableHead>
+                            <TableHead>Ponto de Partida</TableHead>
                             <TableHead>Destino</TableHead>
                             <TableHead>Status</TableHead>
                         </TableRow>
@@ -160,6 +184,7 @@ const RoutesPage = () => {
                         {students.map((aluno, index) => (
                             <TableRow key={index} className="hover:bg-gray-50 transition">
                                 <TableCell>{aluno.nome}</TableCell>
+                                <TableCell>{aluno.saida}</TableCell>
                                 <TableCell>{aluno.destino}</TableCell>
                                 <TableCell className="flex items-center gap-2">
                                     <Clock size={16} className="text-gray-400" />
