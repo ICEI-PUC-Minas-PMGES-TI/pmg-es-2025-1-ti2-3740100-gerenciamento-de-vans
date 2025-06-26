@@ -155,8 +155,14 @@ export default function Homepage() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText);
+        let errorMessage = 'Erro ao contratar van.';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {
+          // Se não for JSON, mantém a mensagem padrão
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();

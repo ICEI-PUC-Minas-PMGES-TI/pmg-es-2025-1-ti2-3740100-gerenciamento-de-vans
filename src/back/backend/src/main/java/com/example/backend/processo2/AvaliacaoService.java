@@ -42,11 +42,15 @@ public class AvaliacaoService {
         // Verifica se já fez avaliação nos últimos 15 dias
         List<Avaliacao> avaliacoesRecentes = avaliacaoRepository.findByDataAvaliacaoBetween(
             hoje.minusDays(15), hoje);
-        if (!avaliacoesRecentes.isEmpty()) {
+        // Filtrar apenas as avaliações do passageiro específico
+        boolean jaAvaliouRecentemente = avaliacoesRecentes.stream()
+            .anyMatch(a -> a.getIdPassageiro().equals(avaliacao.getIdPassageiro()));
+        if (jaAvaliouRecentemente) {
             throw new IllegalArgumentException("Você já fez uma avaliação nos últimos 15 dias.");
         }
 
-        // Define a data limite (3 dias após a viagem)
+        // Define a data de avaliação (hoje) e a data limite (3 dias após a viagem)
+        avaliacao.setDataAvaliacao(hoje);
         avaliacao.setDataLimite(viagem.getData().plusDays(3));
         
         return avaliacaoRepository.save(avaliacao);

@@ -91,8 +91,14 @@ export default function AvaliacaoPage() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Erro ao enviar avaliação.');
+        let errorMessage = 'Erro ao enviar avaliação.';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {
+          // Se não for JSON, mantém a mensagem padrão
+        }
+        throw new Error(errorMessage);
       }
 
       setMensagem("Avaliação enviada com sucesso!");
