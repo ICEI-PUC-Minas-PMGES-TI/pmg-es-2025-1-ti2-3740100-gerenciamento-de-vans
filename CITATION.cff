@@ -2,29 +2,33 @@ cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: WiseVan - Gerenciamento de van
 authors:
-  - family-names: Abreu
+  - family-names: Santana Dias Abreu
     given-names: Natalie
-  - family-names: Coelho
+  - family-names: Dos Santos Silva Coelho
     given-names: Gabriel
-  - family-names: Silva
-    given-names: Paulo Victor
-  - family-names: Oliveira
-    given-names: Luiz Gustavo
-  - family-names: Santos
-    given-names: João Pedro
+  - family-names: Victor Fernandes de Araujo Silva
+    given-names: Paulo 
+  - family-names: Gustavo Silva Oliveira
+    given-names: Luiz
+  - family-names: Pedro De Oliveira Santos
+    given-names: João
   - name-suffix: Professora
     affiliation: PUC Minas
-    family-names: Andrade
+    family-names: Hanne Soares de Andrade
     given-names: Michelle
   - name-suffix: Professora
     affiliation: PUC Minas
-    family-names: Souza
-    given-names: Joana Gabriela
+    family-names: Gabriela Ribeiro de Souza
+    given-names: Joana
+ - name-suffix: Professora
+    affiliation: PUC Minas
+    family-names: De Quadros Maia Filho
+    given-names: Danilo
 keywords:
   - Van, transporte escolar.
   - Gerenciamento, controle.
   - Motorista, dono de rede, passageiro, responsável.
-repository-code: -
+repository-code: Local
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 20/06/2025
