@@ -1,6 +1,5 @@
 cff-version: 1.0.1
-message: O objetivo deste projeto é desenvolver um sistema de gerenciamento de vans que abranja seis processos essenciais: gestão de contratos, gestão financeira, gestão de rotas, 
-gestão de notificações, gestão de avaliações e gestão de cadastros e logins. O sistema visa otimizar a operação, garantindo mais eficiência, controle e segurança para gestores, motoristas e passageiros.
+message: Sistema de gerenciamento de vans escolares.
 title: WiseVan - Gerenciamento de van
 authors:
   - family-names: Santana Dias Abreu
@@ -15,21 +14,21 @@ authors:
     given-names: João
   - name-suffix: Professora
     affiliation: PUC Minas
-    family-names: Hanne Soares de Andrade
-    given-names: Michelle
+    family-names: Soares de Andrade
+    given-names: Michelle Hanne
   - name-suffix: Professora
     affiliation: PUC Minas
-    family-names: Gabriela Ribeiro de Souza
-    given-names: Joana
+    family-names: Ribeiro de Souza
+    given-names: Joana Gabriela
  - name-suffix: Professora
     affiliation: PUC Minas
     family-names: De Quadros Maia Filho
     given-names: Danilo
 keywords:
-  - Van, transporte escolar.
-  - Gerenciamento, controle.
-  - Motorista, dono de rede, passageiro, responsável.
+  - Transporte escolar.
+  - Gerenciamento de vans.
+  - Sistema de vans escolares
 repository-code: Local
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 20/06/2025
+date-released: 2025-06-27
